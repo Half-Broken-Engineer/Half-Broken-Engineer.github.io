@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>記事一覧 on 壊れかけのエンジニアのログ</title>
-    <link>https://half-broken-engineer.github.io/posts/</link>
-    <description>Recent content in 記事一覧 on 壊れかけのエンジニアのログ</description>
+    <title>transcript on 壊れかけのエンジニアのログ</title>
+    <link>https://half-broken-engineer.github.io/categories/transcript/</link>
+    <description>Recent content in transcript on 壊れかけのエンジニアのログ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 31 Dec 2022 20:33:24 +0900</lastBuildDate><atom:link href="https://half-broken-engineer.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 31 Dec 2022 20:33:24 +0900</lastBuildDate><atom:link href="https://half-broken-engineer.github.io/categories/transcript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AAPL_2022Q4_transcript</title>
       <link>https://half-broken-engineer.github.io/2022/12/aapl_2022q4_transcript/</link>
@@ -15,15 +15,6 @@
       <guid>https://half-broken-engineer.github.io/2022/12/aapl_2022q4_transcript/</guid>
       <description>Operator: Good day, and welcome to the Apple Q4 Fiscal Year 2022 Earnings Conference Call. For your information, today&amp;rsquo;s call is being recorded. At this time, for opening remarks and introductions, I would like to turn the call over to Tejas Gala, Director of Investor Relations and Corporate Finance. Please go ahead.
 Tejas Gala: Speaking first today is Apple&amp;rsquo;s CEO, Tim Cook; and he&amp;rsquo;ll be followed by CFO, Luca Maestri. After that, we&amp;rsquo;ll open the call to questions from analysts.</description>
-    </item>
-    
-    <item>
-      <title>Test</title>
-      <link>https://half-broken-engineer.github.io/2022/12/test/</link>
-      <pubDate>Sat, 31 Dec 2022 20:33:24 +0900</pubDate>
-      
-      <guid>https://half-broken-engineer.github.io/2022/12/test/</guid>
-      <description></description>
     </item>
     
   </channel>
