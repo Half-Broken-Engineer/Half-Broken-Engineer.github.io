@@ -6,7 +6,19 @@
     <description>Recent content in 記事一覧 on 壊れかけのエンジニアのログ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 04 May 2023 21:35:32 -0400</lastBuildDate><atom:link href="https://half-broken-engineer.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Jun 2023 02:18:24 +0900</lastBuildDate><atom:link href="https://half-broken-engineer.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>はじめに</title>
+      <link>https://half-broken-engineer.github.io/2023/06/%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB/</link>
+      <pubDate>Mon, 26 Jun 2023 02:18:24 +0900</pubDate>
+      
+      <guid>https://half-broken-engineer.github.io/2023/06/%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB/</guid>
+      <description>&lt;p&gt;知識と情報の整理というか置き場として使ってます。
+あんまり人に見られることを想定していないです…&lt;/p&gt;
+&lt;p&gt;投資関連情報は以下のリンク先から取ってきています
+&lt;a href=&#34;https://financialmodelingprep.com/developer/docs/&#34;&gt;Data provided by Financial Modeling Prep&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>AAPL_2023_Q2</title>
       <link>https://half-broken-engineer.github.io/2023/05/aapl_2023_q2/</link>
