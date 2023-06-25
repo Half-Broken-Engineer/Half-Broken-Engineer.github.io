@@ -2,19 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://half-broken-engineer.github.io/tags/aapl/</loc>
-    <lastmod>2022-12-31T20:33:24+09:00</lastmod>
-  </url><url>
-    <loc>https://half-broken-engineer.github.io/2022/12/aapl_2022q4_transcript/</loc>
-    <lastmod>2022-12-31T20:33:24+09:00</lastmod>
-  </url><url>
     <loc>https://half-broken-engineer.github.io/categories/</loc>
     <lastmod>2022-12-31T20:33:24+09:00</lastmod>
   </url><url>
     <loc>https://half-broken-engineer.github.io/categories/category/</loc>
-    <lastmod>2022-12-31T20:33:24+09:00</lastmod>
-  </url><url>
-    <loc>https://half-broken-engineer.github.io/categories/earnings/</loc>
     <lastmod>2022-12-31T20:33:24+09:00</lastmod>
   </url><url>
     <loc>https://half-broken-engineer.github.io/categories/subcategory/</loc>
@@ -32,15 +23,20 @@
     <loc>https://half-broken-engineer.github.io/2022/12/test/</loc>
     <lastmod>2022-12-31T20:33:24+09:00</lastmod>
   </url><url>
-    <loc>https://half-broken-engineer.github.io/categories/transcript/</loc>
-    <lastmod>2022-12-31T20:33:24+09:00</lastmod>
-  </url><url>
     <loc>https://half-broken-engineer.github.io/</loc>
     <lastmod>2022-12-31T20:33:24+09:00</lastmod>
   </url><url>
     <loc>https://half-broken-engineer.github.io/posts/</loc>
     <lastmod>2022-12-31T20:33:24+09:00</lastmod>
   </url><url>
+    <loc>https://half-broken-engineer.github.io/tags/aapl/</loc>
+  </url><url>
+    <loc>https://half-broken-engineer.github.io/1/01/aapl_2022q4_transcript/</loc>
+  </url><url>
     <loc>https://half-broken-engineer.github.io/archives/</loc>
+  </url><url>
+    <loc>https://half-broken-engineer.github.io/categories/earnings/</loc>
+  </url><url>
+    <loc>https://half-broken-engineer.github.io/categories/transcript/</loc>
   </url>
 </urlset>
