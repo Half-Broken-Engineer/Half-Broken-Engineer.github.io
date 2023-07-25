@@ -464,7 +464,8 @@
 <h2 id="パラメータ更新手法">パラメータ更新手法</h2>
 <h3 id="勾配降下法">勾配降下法</h3>
 <p>ηを学習率として、以下のようにパラメータ更新を実施する。</p>
-<p>$$w^{(k+1)} = w^{(k)} - \eta \frac{\partial E(w)}{\partial w}
+<p>$$
+w^{(k+1)} = w^{(k)} - \eta \frac{\partial E(w)}{\partial w}
 $$</p>
 <h4 id="特徴">特徴</h4>
 <ul>
@@ -479,7 +480,8 @@ $$</p>
 <p>参考：学習率についてはAdamなどの収束性向上のためのアルゴリズムが存在する（Day2）</p>
 <h3 id="確率的勾配降下法">確率的勾配降下法</h3>
 <p>ランダムに抽出したサンプルの誤差でパラメータ更新を行う。
-$$w^{(k+1)} = w^{(k)} - \eta \frac{\partial E_i(w)}{\partial w}
+$$
+w^{(k+1)} = w^{(k)} - \eta \frac{\partial E_i(w)}{\partial w}
 $$</p>
 <h4 id="特徴-1">特徴</h4>
 <ul>
@@ -489,8 +491,8 @@ $$</p>
 </ul>
 <h3 id="ミニバッチ勾配降下法">ミニバッチ勾配降下法</h3>
 <p>ランダムに分割したデータ集合（ミニバッチ）Dtに属するサンプルの平均誤差でパラメータ更新を行う。
-$$
-\begin{split}
+$$</p>
+<p>\begin{split}
 &amp;w^{(t + 1)} = w^{(t)} - \epsilon \nabla E_t \<br>
 &amp;E_t = \frac{1}{N_t} \sum_{n \in D_t} E_n \<br>
 &amp;N_t = | D_t | \  &amp; (N_t: バッチ数)<br>
@@ -518,7 +520,8 @@ $\frac{\partial E}{\partial w_m} \approx \frac{E(w_m + h) - E(w_m - h)}{2h}$</p>
 </blockquote>
 <p>メリット：誤差（計算結果）から微分を逆算していくことで、不要な再帰的計算を避けて微分を算出できる</p>
 <p>MSEの例<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230129151434.png" alt="/img/Pasted_image_20230129151434.png"></p>
-<p>$$\Rightarrow
+<p>$$
+\Rightarrow
 \frac{\partial E}{\partial w_{ji}^{(2)}}
 = \frac{\partial E}{\partial y} \frac{\partial y}{\partial u} \frac{\partial u}{\partial w_{ji}^{(2)}} = (y - d) \cdot 1 \cdot
 \left[

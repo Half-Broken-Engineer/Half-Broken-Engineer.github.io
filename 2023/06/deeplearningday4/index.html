@@ -521,13 +521,16 @@
 <h3 id="方策勾配法">方策勾配法</h3>
 <p>方策をモデル化して最適化する手法</p>
 <p>方策の良さ (価値関数) を J として、方策関数のパラメータを更新していく</p>
-<p>$$\pi(s, a | \theta) \<br>
+<p>$$
+\pi(s, a | \theta) \<br>
 \space\<br>
 \underbrace{\theta^{(t+1)}}<em>{パラメータ} = \theta^{(t)} + \epsilon \nabla \underbrace{J(\theta)}</em>{報酬の期待値} \
 $$</p>
-<p>$$\nabla_\theta J(\theta) = \nabla_{\theta} \underbrace{\sum_{a \in A}\pi_{\theta}(a|s) Q^{\pi}(s, a)}_{報酬の期待値}
+<p>$$
+\nabla_\theta J(\theta) = \nabla_{\theta} \underbrace{\sum_{a \in A}\pi_{\theta}(a|s) Q^{\pi}(s, a)}_{報酬の期待値}
 $$</p>
-<p>$$\nabla_{\theta}J(\theta) = \mathbb{E}<em>{\pi</em>{\theta}}[(\nabla_{\theta}log\pi_{\theta}(a|s)Q^{\pi}(s,a))]
+<p>$$
+\nabla_{\theta}J(\theta) = \mathbb{E}<em>{\pi</em>{\theta}}[(\nabla_{\theta}log\pi_{\theta}(a|s)Q^{\pi}(s,a))]
 $$</p>
 <h3 id="参考文献レポート">参考文献レポート</h3>
 <p>黒本において、１７章　深層学習を用いた強化学習が該当
@@ -636,15 +639,16 @@ DQN の工夫は</p>
 <p>黒本　p３６６、３６９に該当の問題があった。
 各学習ステージにおけるパラメータの勾配の式があったため、以下にまとめる。</p>
 <h4 id="教師有り学習による方策ネットワーク学習勾配上昇法">教師有り学習による方策ネットワーク学習　（勾配上昇法）</h4>
-<p>$$
-\Delta \sigma=\frac{\alpha}{m} \sum_{k=1}^m \frac{\partial \log p_\sigma\left(a^k \mid s^k\right)}{\partial \sigma}\
+<p>$$</p>
+<p>\Delta \sigma=\frac{\alpha}{m} \sum_{k=1}^m \frac{\partial \log p_\sigma\left(a^k \mid s^k\right)}{\partial \sigma}\
 $$</p>
 <h4 id="強化学習による方策ネットワーク学習勾配上昇法">強化学習による方策ネットワーク学習　（勾配上昇法）</h4>
-<p>$$\Delta \rho=\frac{\alpha}{n} \sum_{i=1}^n \sum_{t=1}^{T^i} \frac{\partial \log p_\rho\left(a_t^i \mid s_t^i\right)}{\partial \rho}\left(z_t^i-v\left(s_t^i\right)\right)\
+<p>$$
+\Delta \rho=\frac{\alpha}{n} \sum_{i=1}^n \sum_{t=1}^{T^i} \frac{\partial \log p_\rho\left(a_t^i \mid s_t^i\right)}{\partial \rho}\left(z_t^i-v\left(s_t^i\right)\right)\
 $$</p>
 <h4 id="強化学習による価値ネットワーク学習勾配降下法">強化学習による価値ネットワーク学習（勾配降下法）</h4>
-<p>$$
-\Delta \boldsymbol{\theta}=\frac{\alpha}{m} \sum_{k=1}^m\left(z^k-v_\theta\left(s^k\right)\right) \frac{\partial v_\theta\left(s^k\right)}{\partial \theta}
+<p>$$</p>
+<p>\Delta \boldsymbol{\theta}=\frac{\alpha}{m} \sum_{k=1}^m\left(z^k-v_\theta\left(s^k\right)\right) \frac{\partial v_\theta\left(s^k\right)}{\partial \theta}
 $$</p>
 <p>モンテカルロ法についても記載があったので、簡単にまとめると
 AlphaGo で使われるモンテカルロ木探索アルゴリズムは Asynchronous policy and Value MCTS と呼ばれる。
@@ -958,7 +962,8 @@ Causal 畳み込みと同等の処理にマスクテンソルと畳み込みフ�
 （講義スライドより引用）</p>
 <h4 id="skip-connection">Skip Connection</h4>
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230710095249.png" alt="/img/Pasted_image_20230710095249.png"></p>
-<p>$$ H(x) = F(x) + x
+<p>$$
+H(x) = F(x) + x
 $$</p>
 <p>※H(x) が中間層の出力、学習部分は F(x) となる</p>
 <p>深い NN の学習を可能に
@@ -1011,8 +1016,8 @@ S. Zagoruyko and N. Komodakis, “Wide Residual Networks,&ldquo;<a href="https:/
 <li>Resolution (r、幅・高さ): 高解像度の入力を与えることで画像中の詳細なパターンを獲得できる</li>
 </ul>
 <h5 id="スケーラの扱い">スケーラの扱い</h5>
-<p>$$
-\begin{aligned}
+<p>$$</p>
+<p>\begin{aligned}
 &amp; \text { depth: } d=\alpha^\phi \
 &amp; \text { width: } w=\beta^\phi \
 &amp; \text { resolution: } r=\gamma^\phi \
@@ -1354,10 +1359,12 @@ Selective Searchの方法、検知速度が遅い問題から、Fast,Faster R-CN
 <h4 id="損失関数-1">損失関数</h4>
 <p>クラス間のサンプルの不均衡を考慮したFocal Lossと位置ずれに関する損失関数IoU Lossを計算している (GT:Ground Truth,PA:Predicted Area)</p>
 <p>　
-$$Focal_Loss(p_t) = -(1-p_t)^\gamma log(p_t)
 $$
-　
-$$IoU_Loss = 1 - \frac{GT\cap PA}{GT\cup PA}
+Focal_Loss(p_t) = -(1-p_t)^\gamma log(p_t)
+$$</p>
+<p>　
+$$
+IoU_Loss = 1 - \frac{GT\cap PA}{GT\cup PA}
 $$</p>
 <h3 id="参考文献レポート-6">参考文献レポート</h3>
 <p>Focal Lossについて提案論文で確認した
@@ -1373,9 +1380,10 @@ $$</p>
 <h3 id="rnnと言語モデル">RNNと言語モデル</h3>
 <p>言語モデル：単語の並びに確率を与える（単語の並びが文章として自然なのかを確率で評価する）
 同時確率を事後確率の総乗で表現する</p>
-<p>$$P(w_1,w_2,\dots,w_m) = \overset{m}{\underset{i=1}{\prod}}P(w_i|w_1,w_2,\dots,w_{i-1})
-$$
-<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230713113903.png" alt="/img/Pasted_image_20230713113903.png">
+<p>$$
+P(w_1,w_2,\dots,w_m) = \overset{m}{\underset{i=1}{\prod}}P(w_i|w_1,w_2,\dots,w_{i-1})
+$$</p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230713113903.png" alt="/img/Pasted_image_20230713113903.png">
 （講義スライドより引用）</p>
 <h3 id="seq2seq">Seq2Seq</h3>
 <p>Encoder RNNで文脈ベクトル（最終内部状態）を生成して、それをDecoder RNNの初期内部状態にして単語生成していく</p>
@@ -1452,11 +1460,13 @@ $$
 <li>文章の長さに関係なく、それぞれの位置が同じ位置ベクトルに対応する必要がある</li>
 <li>埋め込みベクトルに対して位置情報ベクトルが大きくなりすぎては行けない
 →
-$${PE\left( pos,2i\right) =\sin \left( \dfrac{pos}{10000^{2i/d_{model}}}\right)
+$$
+{PE\left( pos,2i\right) =\sin \left( \dfrac{pos}{10000^{2i/d_{model}}}\right)
 }
 $$</li>
 </ul>
-<p>$${PE\left( pos,2i+1\right) =\cos \left( \dfrac{pos}{10000^{2i/d_{model}}}\right)
+<p>$$
+{PE\left( pos,2i+1\right) =\cos \left( \dfrac{pos}{10000^{2i/d_{model}}}\right)
 }
 $$</p>
 <p>※10000はハイパーパラメータでどれだけ長い文章が来ても同じ値にならないために十分大きな値を取っている
@@ -1500,26 +1510,27 @@ $$</p>
 こちらは、推論時の分布と訓練時の分布が異なるという問題がある。</p>
 <h3 id="参考文献レポート-7">参考文献レポート</h3>
 <p>認定テストにおいて、BLEUの演算に関する問題が出たのでまとめる
-$$
-\mathrm{BLEU}=\mathrm{BP} \cdot \exp \left(\sum_{n=1}^N w_n \log p_n\right)
+$$</p>
+<p>\mathrm{BLEU}=\mathrm{BP} \cdot \exp \left(\sum_{n=1}^N w_n \log p_n\right)
 $$</p>
 <p>※対数荷重平均なのは、nが大きくなるほどスコアが指数的に高くなることを防ぐため</p>
-<p>$$Brevity Penalty =  exp(1-\frac{r}{c})
-$$
-r：参照文の長さ
+<p>$$
+Brevity Penalty =  exp(1-\frac{r}{c})
+$$</p>
+<p>r：参照文の長さ
 c：候補文の長さ</p>
 <p>このペナルティは、候補文が単に短いためにmodified precisionが高くなり、BLEUが高くなることを防ぐために導入された
 参考：&ldquo;<a href="https://blog.pangeanic.com/ensuring-good-machine-translation-using-bleu-scoring%22">https://blog.pangeanic.com/ensuring-good-machine-translation-using-bleu-scoring"</a></p>
 <p>modified n-gram precision
 あるngramトークンの候補文における出現回数をCount,
 参照訳ごとの出現回数のうち最大値をMax_Ref_Countとして
-$$
-Count_{clip}=\min (\text { Count }, max_Ref_Count)
-$$
-$$
-p_n = \frac{\sum_{\text {n-gram } \in C} \operatorname{Count}<em>{\text {clip }}(\mathrm{n} \text {-gram })}{\sum</em>{\mathrm{n} \text {-gram } \in C} \operatorname{Count}(\mathrm{n} \text {-gram })}
-$$
-参考：&ldquo;<a href="https://nryotaro.dev/posts/bleu/%22">https://nryotaro.dev/posts/bleu/"</a></p>
+$$</p>
+<p>Count_{clip}=\min (\text { Count }, max_Ref_Count)
+$$</p>
+<p>$$</p>
+<p>p_n = \frac{\sum_{\text {n-gram } \in C} \operatorname{Count}<em>{\text {clip }}(\mathrm{n} \text {-gram })}{\sum</em>{\mathrm{n} \text {-gram } \in C} \operatorname{Count}(\mathrm{n} \text {-gram })}
+$$</p>
+<p>参考：&ldquo;<a href="https://nryotaro.dev/posts/bleu/%22">https://nryotaro.dev/posts/bleu/"</a></p>
 <!-- raw HTML omitted -->
 <h2 id="bert">BERT</h2>
 <p>Bidirectional Transformers</p>
@@ -1565,15 +1576,19 @@ $$
 （講義スライドより引用）</p>
 <h4 id="事前学習タスク">事前学習タスク</h4>
 <ul>
-<li>マスク単語予測タスク:入力系列のうち１５%がMASK対象に選ばれてフラグが付与される。そのうち８０％をMASKトークン、１０％がランダムな他の単語、10%はそのままにして、フラグがついている位置の単語がなにか予測する
+<li>
+<p>マスク単語予測タスク:入力系列のうち１５%がMASK対象に選ばれてフラグが付与される。そのうち８０％をMASKトークン、１０％がランダムな他の単語、10%はそのままにして、フラグがついている位置の単語がなにか予測する</p>
 <ul>
 <li>通常の言語モデルの同時確率＝条件付き確率の時系列での総乗が未来の情報のリークによって使えない
 →CBOW(continuous bag-of-words)の考え方を使う
-$$L = - \frac{1}{M}\underset{i\in{Mask}}{\sum} log P(w_i|W\lnot _{j\in{Mask}})
+$$
+L = - \frac{1}{M}\underset{i\in{Mask}}{\sum} log P(w_i|W\lnot _{j\in{Mask}})
 $$</li>
 </ul>
 </li>
-<li>隣接文判定タスク:２つの連なる文章ペアに対して、隣接文を50%の確率でシャッフル→入力された２つの文章が隣接文かの判定をおこなう</li>
+<li>
+<p>隣接文判定タスク:２つの連なる文章ペアに対して、隣接文を50%の確率でシャッフル→入力された２つの文章が隣接文かの判定をおこなう</p>
+</li>
 </ul>
 <h4 id="汎用モデルとしてのbert">汎用モデルとしてのBERT</h4>
 <p>見る出力の箇所を変えることで、複数のタスクに対応することが可能</p>
@@ -1626,19 +1641,29 @@ NNの記憶機能としては、8,000→64000単語</p>
 <p>言語モデルの最尤推定を行う
 →同時確率＝時系列の条件付き確率の総乗　の　対数を取って、尤度を最大化するパラメータΘを求める。
 コンテキストウィンドウ（サイズをｋとする）で次の単語を予測する際に見る過去の系列の範囲を定める
-$$L(U;\Theta) = \sum log P(u_i|u_{i-k},\dots,u_{i-1};\Theta)
+$$
+L(U;\Theta) = \sum log P(u_i|u_{i-k},\dots,u_{i-1};\Theta)
 $$</p>
 <h4 id="ネットワークの演算">ネットワークの演算</h4>
 <ol>
-<li>次の単語を予測するためのコンテキストウィンドウ分の単語系列UをWeで単語ベクトル空間に埋め込み、位置エンコーディングを付加する
-$$h_0 = UW_e + W_p
-$$</li>
-<li>層数分のTransformerのデコードを実行する
-$$h_l = transformer_block(h_{l-1}) \forall l \in [1,n]
-$$</li>
-<li>単語ベクトル空間から系列の次元に戻した後にSoftmax関数で確率の値に変換
-$$P(u) = softmax(h_nW_e^T)
-$$</li>
+<li>
+<p>次の単語を予測するためのコンテキストウィンドウ分の単語系列UをWeで単語ベクトル空間に埋め込み、位置エンコーディングを付加する
+$$
+h_0 = UW_e + W_p
+$$</p>
+</li>
+<li>
+<p>層数分のTransformerのデコードを実行する
+$$
+h_l = transformer_block(h_{l-1}) \forall l \in [1,n]
+$$</p>
+</li>
+<li>
+<p>単語ベクトル空間から系列の次元に戻した後にSoftmax関数で確率の値に変換
+$$
+P(u) = softmax(h_nW_e^T)
+$$</p>
+</li>
 </ol>
 <h4 id="学習タスク別の入力系列整形と出力表現の変更">学習タスク別の入力系列整形と出力表現の変更</h4>
 <p>下図に示すように、タスクによって、入力系列に予約済みのTokenを付加したり、Transformerの後の線形結合の取り方を変更する</p>
@@ -1702,14 +1727,16 @@ $$</li>
 <h4 id="フーリエ変換">フーリエ変換</h4>
 <p>フーリエ変換</p>
 <p>関数の級数展開とオイラーの公式と三角関数の直交性から、各周波数成分の大きさを抽出する操作であることがわかる
-$$\hat{f}(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} , dt
+$$
+\hat{f}(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} , dt
 $$</p>
 <ul>
 <li>周波数領域の関数の微分は-iω倍になる</li>
 <li>畳み込んだ関数のフーリエ変換はフーリエ変換した関数の積に等しい、関数の積のフーリエ変換はフーリエ変換された関数の畳み込みに等しい</li>
 </ul>
 <p>フーリエ逆変換</p>
-<p>$$f(t) = \dfrac{1}{2\pi} \int_{-\infty}^{\infty} \hat{f}(\omega) e^{i\omega t} , d\omega
+<p>$$
+f(t) = \dfrac{1}{2\pi} \int_{-\infty}^{\infty} \hat{f}(\omega) e^{i\omega t} , d\omega
 $$</p>
 <h5 id="dftとfft">DFTとFFT</h5>
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230715184739.png" alt="/img/Pasted_image_20230715184739.png">
@@ -1726,7 +1753,8 @@ $$</p>
 （スペクトログラムの例：講義スライドより引用）</p>
 <h5 id="窓関数">窓関数</h5>
 <p>元の関数f(t)と窓関数w(t)をつかって新しく周期的な関数g(t)を作成する</p>
-<p>$$g(t) =  w_i(t)\times f(t)
+<p>$$
+g(t) =  w_i(t)\times f(t)
 $$</p>
 <p>このとき一番カンタンな窓関数は矩形窓で着目する領域が1でそれ以外が0のステップ関数だが下に示す様に
 窓1つを取ったときに周期の整数倍で終わっていないと、不連続な点が生まれて、スペクトルに不要な周波数が現れる
@@ -1805,20 +1833,20 @@ $$</p>
 <h3 id="forward-backward-algorythmを用いたrnnの学習">forward-backward algorythmを用いたRNNの学習</h3>
 <h4 id="目的関数-1">目的関数</h4>
 <p>正解テキスト系列$l^\star$、入力系列$x$としたときの$P(l^\star|x)$が最大となるパラメータを求める</p>
-<p>$$
-\begin{aligned}
+<p>$$</p>
+<p>\begin{aligned}
 P(\boldsymbol{l^\star} \mid \boldsymbol{x}) &amp; =P([\mathrm{a},-, \mathrm{b}, \mathrm{b}, \mathrm{b}, \mathrm{c},-,-] \mid \boldsymbol{x})+P([-,-, \mathrm{a},-, \mathrm{b}, \mathrm{b},-, \mathrm{c}] \mid \boldsymbol{x})+\cdots \
 &amp; =\sum_{\boldsymbol{\pi} \in \mathcal{B}^{-1}(\boldsymbol{l^\star})} P(\boldsymbol{\pi} \mid \boldsymbol{x})
 \end{aligned}
 $$</p>
 <p>$P(l^\star|x)$は上に示す様に、縮約して$l^\star$になる入力系列の確率をすべて足し合わせたものになる。
 各パターンの確率は各ラベルの得られる確率$y_k^t$(ｋはラベル、ｔはフレーム)の総乗になるので</p>
-<p>$$
-P\left(\boldsymbol{l}^* \mid \boldsymbol{x}\right)=\sum_{\boldsymbol{\pi} \in \mathcal{B}^{-1}\left(\boldsymbol{l}^<em>\right)} P(\boldsymbol{\pi} \mid \boldsymbol{x})=\sum_{\pi \in \mathcal{B}^{-1}\left(\boldsymbol{l}^</em>\right)} \prod_{t=1}^T y_{\pi_t}^t
+<p>$$</p>
+<p>P\left(\boldsymbol{l}^* \mid \boldsymbol{x}\right)=\sum_{\boldsymbol{\pi} \in \mathcal{B}^{-1}\left(\boldsymbol{l}^<em>\right)} P(\boldsymbol{\pi} \mid \boldsymbol{x})=\sum_{\pi \in \mathcal{B}^{-1}\left(\boldsymbol{l}^</em>\right)} \prod_{t=1}^T y_{\pi_t}^t
 $$</p>
 <p>損失関数としては
-$$
-L_{CTC} = - log P(l^\star|x)
+$$</p>
+<p>L_{CTC} = - log P(l^\star|x)
 $$</p>
 <h4 id="効率的な計算のためのforward-backward-algorythm">効率的な計算のためのforward-backward algorythm</h4>
 <p>問題意識：$P(l^\star|x)$を算出する際に愚直に行うのは効率が悪い</p>
@@ -1826,37 +1854,51 @@ $$</p>
 <li>排反な事象への分類：特定のフレームにおいて特定のラベルを通って正解テキスト$l^\star$に縮約したときになる確率を考える
 ($l^\prime$は$l^\star$の各ラベルの間にブランクを挿入したラベル系列)</li>
 </ol>
-<p>$$\left.P\left(\boldsymbol{l}^* \mid \boldsymbol{x}\right)=\sum_{s=1}^{\left|\boldsymbol{l}^{\prime}\right|} \underbrace{\sum_{\substack{\boldsymbol{\pi} \in \mathcal{B}^{-1}\left(\boldsymbol{l}^*\right), \pi_t=l_s^{\prime}}} P(\boldsymbol{\pi} \mid \boldsymbol{x})}_{\text{※１：特定フレームに着目した排反事象の確率の和}} \quad \right.\text{ (for any t )}
-$$
-2. 前向き確率、後ろ向き確率を使って※１の値を表現する
+<p>$$
+\left.P\left(\boldsymbol{l}^* \mid \boldsymbol{x}\right)=\sum_{s=1}^{\left|\boldsymbol{l}^{\prime}\right|} \underbrace{\sum_{\substack{\boldsymbol{\pi} \in \mathcal{B}^{-1}\left(\boldsymbol{l}^*\right), \pi_t=l_s^{\prime}}} P(\boldsymbol{\pi} \mid \boldsymbol{x})}_{\text{※１：特定フレームに着目した排反事象の確率の和}} \quad \right.\text{ (for any t )}
+$$</p>
+<ol start="2">
+<li>前向き確率、後ろ向き確率を使って※１の値を表現する
 (以下の数式中の[]はガウス記号で、その値を超えない最大の整数を示す。ベクトルの下付き文字a:bは成分a~bまでの要素を持つベクトルを示す)
-- 前向き確率 $\alpha_t(s)$
-始点からフレーム $t$ 、拡張ラベル $s$ の頂点に到達するまでの全パスの確率の総和</p>
-<p>$$
-\alpha_t(s) \equiv \sum_{\mathcal{B}\left(\pi_{1: t}\right)=l_{1:[s / 2]}^*} \prod_{t^{\prime}=1}^t y_{\pi_{t^{\prime}}}^{t^{\prime}}</p>
-<p>$$
-- 後ろ向き確率 $\beta_t(s)$
-フレーム $t$ 、拡張ラベル $s$ の頂点から終点まで到達する全パスの確率の総和</p>
-<p>$$
-\beta_t(s) \equiv \sum_{\mathcal{B}\left(\pi_{t: T}\right)=l_{[s / 2]: l^* \mid}} \prod_{t^{\prime}=t}^T y_{t_{t^{\prime}}}^{t^{\prime}}</p>
+<ul>
+<li>前向き確率 $\alpha_t(s)$
+始点からフレーム $t$ 、拡張ラベル $s$ の頂点に到達するまでの全パスの確率の総和</li>
+</ul>
+</li>
+</ol>
 <p>$$</p>
-<p>$$
-\begin{aligned}
-\alpha_t(s) \beta_t(s) &amp;=\left(\sum_{\mathcal{B}\left(\pi_{1: t}\right)=l_{1:[s / 2]}^<em>} \prod_{t^{\prime}=1}^t y_{\pi_{t^{\prime}}}^{t^{\prime}}\right)\left(\sum_{\mathcal{B}\left(\pi_{t: T}\right)=l_{[s / 2]: ! l \mid}^</em>} \prod_{t^{\prime}=t}^T y_{\pi_{t^{\prime}}}^{t^{\prime}}\right) \
-&amp;=\sum_{\mathcal{B}\left(\rho_{1: t}\right)=l_{1:[s / 2]}^<em>} \sum_{\mathcal{B}\left(\boldsymbol{\sigma}<em>{t: T}\right)=l</em>{[s / 2]:|l|}^</em>} \prod_{\tau=1}^t y_{\rho_\tau}^\tau \prod_{\nu=t}^T y_{\sigma_\nu}^\nu \
-&amp; =y_{l_s^{\prime}}^t \sum_{\pi \in \mathcal{B}^{-1}\left(l^<em>\right), \Pi_t=l_s^\prime} \prod_{\pi_{t^{\prime}}}^{t^{\prime}}y_{\pi_{t^\prime}}^{t^\prime} \
-&amp; =y_{l_s^{\prime}}^t \sum_{\substack{\pi \in \mathcal{B}^{-1}\left(l^</em>\right), \pi_t=l_s^{\prime}}} P(\boldsymbol{\pi} \mid \boldsymbol{x}) \
-&amp;
-\end{aligned}</p>
-<p>$$
-以上より、前向き確率と後ろ向き確率を用いて、フレームｔにおいてラベルｓの頂点を通るパスの確率の総和は以下の様に示せる</p>
-<p>$$
-\sum_{\substack{\pi \in \mathcal{B}^{-1}\left(l^*\right), \pi_t=l_s^{\prime}}} P(\boldsymbol{\pi} \mid \boldsymbol{x}) = \frac{\alpha_t(s) \beta_t(s)}{y_{l_s^\star}^{t}}</p>
-<p>$$
-3. 前向き確率、後ろ向き確率を再帰計算によって求める
-初項についてはブランクか、正解ラベルの１文字目の２通りしか無いので以下の様になる。</p>
-<p>$$
-\begin{equation}\
+<pre><code>   \alpha_t(s) \equiv \sum_{\mathcal{B}\left(\pi_{1: t}\right)=l_{1:[s / 2]}^*} \prod_{t^{\prime}=1}^t y_{\pi_{t^{\prime}}}^{t^{\prime}}
+</code></pre>
+<p>$$</p>
+<pre><code>- 後ろ向き確率 $\beta_t(s)$
+   フレーム $t$ 、拡張ラベル $s$ の頂点から終点まで到達する全パスの確率の総和
+</code></pre>
+<p>$$</p>
+<pre><code>   \beta_t(s) \equiv \sum_{\mathcal{B}\left(\pi_{t: T}\right)=l_{[s / 2]: l^* \mid}} \prod_{t^{\prime}=t}^T y_{t_{t^{\prime}}}^{t^{\prime}}
+</code></pre>
+<p>$$</p>
+<p>$$</p>
+<pre><code>   \begin{aligned}
+   \alpha_t(s) \beta_t(s) &amp;=\left(\sum_{\mathcal{B}\left(\pi_{1: t}\right)=l_{1:[s / 2]}^*} \prod_{t^{\prime}=1}^t y_{\pi_{t^{\prime}}}^{t^{\prime}}\right)\left(\sum_{\mathcal{B}\left(\pi_{t: T}\right)=l_{[s / 2]: ! l \mid}^*} \prod_{t^{\prime}=t}^T y_{\pi_{t^{\prime}}}^{t^{\prime}}\right) \\
+   &amp;=\sum_{\mathcal{B}\left(\rho_{1: t}\right)=l_{1:[s / 2]}^*} \sum_{\mathcal{B}\left(\boldsymbol{\sigma}_{t: T}\right)=l_{[s / 2]:|l|}^*} \prod_{\tau=1}^t y_{\rho_\tau}^\tau \prod_{\nu=t}^T y_{\sigma_\nu}^\nu \\
+   &amp; =y_{l_s^{\prime}}^t \sum_{\pi \in \mathcal{B}^{-1}\left(l^*\right), \Pi_t=l_s^\prime} \prod_{\pi_{t^{\prime}}}^{t^{\prime}}y_{\pi_{t^\prime}}^{t^\prime} \\
+   &amp; =y_{l_s^{\prime}}^t \sum_{\substack{\pi \in \mathcal{B}^{-1}\left(l^*\right), \pi_t=l_s^{\prime}}} P(\boldsymbol{\pi} \mid \boldsymbol{x}) \\
+   &amp;
+   \end{aligned}
+</code></pre>
+<p>$$</p>
+<pre><code>   以上より、前向き確率と後ろ向き確率を用いて、フレームｔにおいてラベルｓの頂点を通るパスの確率の総和は以下の様に示せる
+</code></pre>
+<p>$$</p>
+<pre><code>   \sum_{\substack{\pi \in \mathcal{B}^{-1}\left(l^*\right), \pi_t=l_s^{\prime}}} P(\boldsymbol{\pi} \mid \boldsymbol{x}) = \frac{\alpha_t(s) \beta_t(s)}{y_{l_s^\star}^{t}}
+</code></pre>
+<p>$$</p>
+<ol start="3">
+<li>前向き確率、後ろ向き確率を再帰計算によって求める
+初項についてはブランクか、正解ラベルの１文字目の２通りしか無いので以下の様になる。</li>
+</ol>
+<p>$$</p>
+<p>\begin{equation}\
 a_0(s) =
 \begin{cases}
 y_{_}^0 &amp; \text{s=1:ブランク} \
@@ -1864,18 +1906,18 @@ y_{l_{1}^\star}^0 &amp; \text{s=2:正解ラベルの１文字目} \
 0       &amp; \text{else}
 \end{cases}
 \end{equation}</p>
-<p>$$
-それ以降の遷移について考えると下図の様に３通りで
+<p>$$</p>
+<p>それ以降の遷移について考えると下図の様に３通りで
 <img src="https://half-broken-engineer.github.io/img/Pasted_image_20230716131712.png" alt="/img/Pasted_image_20230716131712.png">
 （状態遷移：講義スライドより引用）</p>
-<p>$$
-\alpha_{t+1}(s)= \begin{cases}{\left[\alpha_t(s)+\alpha_t(s-1)\right] y_{l_s^<em>}^{t+1}} &amp; \text { (if } l_s^</em>=\text { blank or } l_{s-2}^<em>=l_s^</em> \text { ) } \ {\left[\alpha_t(s)+\alpha_t(s-1)+\alpha_t(s-2)\right] y_{l_s^*}^{t+1}} &amp; \text { (otherwise) }\end{cases}</p>
+<p>$$</p>
+<p>\alpha_{t+1}(s)= \begin{cases}{\left[\alpha_t(s)+\alpha_t(s-1)\right] y_{l_s^<em>}^{t+1}} &amp; \text { (if } l_s^</em>=\text { blank or } l_{s-2}^<em>=l_s^</em> \text { ) } \ {\left[\alpha_t(s)+\alpha_t(s-1)+\alpha_t(s-2)\right] y_{l_s^*}^{t+1}} &amp; \text { (otherwise) }\end{cases}</p>
 <p>$$</p>
 <p>後ろ向き確率についても同様</p>
 <h4 id="損失関数の誤差逆伝播">損失関数の誤差逆伝播</h4>
 <p>出力層の各ノード$y_k^t$に対する損失関数の勾配の計算は、前向き確率及び、後ろ向き確率を用いて以下の様になる。</p>
-<p>$$
-\begin{aligned}
+<p>$$</p>
+<p>\begin{aligned}
 \frac{\partial \mathcal{L}<em>{\mathrm{CTC}}}{\partial y_k^t} &amp; =-\frac{1}{P\left(\boldsymbol{l}^* \mid \boldsymbol{x}\right)} \frac{\partial P\left(\boldsymbol{l}^* \mid \boldsymbol{x}\right)}{\partial y_k^t} \
 &amp; =-\frac{1}{P\left(\boldsymbol{l}^* \mid \boldsymbol{x}\right)} \frac{\partial}{\partial y_k^t}\left(\sum</em>{s=1}^{\left|\boldsymbol{l}^<em>\right|} \frac{\alpha_t(s) \beta_t(s)}{y_{l_s^</em>}^t}\right) \
 &amp; =-\frac{1}{P\left(\boldsymbol{l}^* \mid \boldsymbol{x}\right)}\left(-\sum_{s \in \operatorname{lab}\left(\boldsymbol{l}^<em>, k\right)} \frac{\alpha_t(s) \beta_t(s)}{\left(y_{l_s^</em>}^t\right)^2}\right) \
@@ -1903,8 +1945,8 @@ Discriminator:入力データが真のデータか、乱数から生成された
 <h4 id="2player-min-max-game">2player min-max game</h4>
 <p>一人が自分の勝利する確率を最大化、もうひとりが相手の勝利する確率を最小化する作戦をとる
 Discriminatorが最大化、Generatorが最小化をする
-$$
-\begin{gathered}
+$$</p>
+<p>\begin{gathered}
 \min <em>G \max <em>D V(D, G) \
 V(D, G)=\mathbb{E}</em>{\boldsymbol{x} \sim p</em>{\text {data }}(\boldsymbol{x})}[\log D(\boldsymbol{x})]+\mathbb{E}<em>{\mathbf{z} \sim p</em>{\boldsymbol{z}}(\mathbf{z})}[\log (1-D(G(\mathbf{z})))]
 \end{gathered}
@@ -1921,8 +1963,8 @@ $$</p>
 <li>上記のD(x)を価値関数に代入して、Gが価値関数を最小化する条件を算出</li>
 </ol>
 <h5 id="価値関数の最大化">価値関数の最大化</h5>
-<p>$$
-\begin{aligned}
+<p>$$</p>
+<p>\begin{aligned}
 &amp; V(D, G)= \mathbb{E}<em>{\boldsymbol{x} \sim p</em>{\text {data }}(\boldsymbol{x})}[\log D(\boldsymbol{x})]+\mathbb{E}<em>{\mathbf{z} \sim p_z(\mathbf{z})}[\log (1-D(G(\mathbf{z})))] \
 &amp;= \int</em>{\boldsymbol{x}} p_{\text {data }}(\boldsymbol{x}) \log (D(\boldsymbol{x})) d x+\int_{\boldsymbol{z}} p_z(\mathbf{z}) \log (1-D(G(\mathbf{z}))) d z \
 &amp;= \int_{\boldsymbol{x}} p_{\text {data }}(\boldsymbol{x}) \log (D(\boldsymbol{x}))+p_g(\boldsymbol{x}) \log (1-D(\boldsymbol{x})) d x\
@@ -1932,50 +1974,50 @@ $$</p>
 \end{aligned}
 $$</p>
 <p>変分問題の公式を考えると、</p>
-<p>$$
-\mathcal{L}[f] = \int L(x, f(x)) dx
-$$
-以上のような目的関数があるとき、
+<p>$$</p>
+<p>\mathcal{L}[f] = \int L(x, f(x)) dx
+$$</p>
+<p>以上のような目的関数があるとき、
 この目的関数の停留関数（最大化または最小化を実現する関数）f(x)は以下の方程式を満たす。
-$$
-\frac{dL(x, f(x))}{df(x)} = 0
+$$</p>
+<p>\frac{dL(x, f(x))}{df(x)} = 0
 $$</p>
 <p>以上のことから、y=f(x)とみると
 $V(D,G) = \int_{\boldsymbol{x}} a \log (y)+b \log (1-y)dx$
 なので、$a \log (y)+b \log (1-y)$をyで微分して
-$$
-\begin{align}
+$$</p>
+<p>\begin{align}
 &amp;\frac{a}{y}+\frac{b}{1-y}(-1) = 0\
 &amp;\frac{a}{y}=\frac{b}{1-y}\
 &amp;a-ay = by\
 &amp;y = \frac{a}{a+b}
 \end{align}
-$$
-より,</p>
-<p>$$
-D^\star(x) = \frac{p_{data}(x)}{p_{data}(x)+p_g(x)}
+$$</p>
+<p>より,</p>
+<p>$$</p>
+<p>D^\star(x) = \frac{p_{data}(x)}{p_{data}(x)+p_g(x)}
 $$</p>
 <h5 id="価値関数の最小化">価値関数の最小化</h5>
 <p>ここまで求めてきた$D^\star(x)$を用いて、価値関数は以下のようになる
-$$
-\begin{aligned}
+$$</p>
+<p>\begin{aligned}
 V &amp; =\mathbb{E}<em>{\boldsymbol{x} \sim p</em>{\text {data }}} \log \left[\frac{p_{\text {data }}(\boldsymbol{x})}{p_{\text {data }}(\boldsymbol{x})+p_g(\boldsymbol{x})}\right]+\mathbb{E}<em>{\boldsymbol{x} \sim p_g} \log \left[1-\frac{p</em>{\text {data }}(\boldsymbol{x})}{p_{\text {data }}(\boldsymbol{x})+p_g(\boldsymbol{x})}\right] \
 &amp; =\mathbb{E}<em>{\boldsymbol{x} \sim p</em>{\text {data }}} \log \left[\frac{p_{\text {data }}(\boldsymbol{x})}{p_{\text {data }}(\boldsymbol{x})+p_g(\boldsymbol{x})}\right]+\mathbb{E}<em>{\boldsymbol{x} \sim p_g} \log \left[\frac{p_g}{p</em>{\text {data }}(\boldsymbol{x})+p_g(\boldsymbol{x})}\right]
 \end{aligned}
 $$</p>
 <p>ここでJSダイバージェンスを思い出すと
-$$
-JS(p||q) = \frac{1}{2} (\mathbb{E}<em>{x\sim p}log(\frac{2p}{p+q})+\mathbb{E}</em>{x\sim q}log(\frac{2q}{p+q}))
-$$
-なので、
-$$
-V = 2 \times JS(p_{data}||p_g) - 2log2
+$$</p>
+<p>JS(p||q) = \frac{1}{2} (\mathbb{E}<em>{x\sim p}log(\frac{2p}{p+q})+\mathbb{E}</em>{x\sim q}log(\frac{2q}{p+q}))
+$$</p>
+<p>なので、
+$$</p>
+<p>V = 2 \times JS(p_{data}||p_g) - 2log2
 $$</p>
 <p>JSダイバージェンスは2つの確率分布が一致するときに最小値０を取る非負の値なので
-$$
-\underset{p_g}{argmin}\quad V = p_{data}
-$$
-$p_g = p_{data}$のとき、最小値が得られる。</p>
+$$</p>
+<p>\underset{p_g}{argmin}\quad V = p_{data}
+$$</p>
+<p>$p_g = p_{data}$のとき、最小値が得られる。</p>
 <h3 id="dcganとは">DCGANとは</h3>
 <p>Deep Convolutional GANの略で、いくつかの構造制約を持つ</p>
 <ul>
@@ -2133,25 +2175,25 @@ PatchGANについての内容。</p>
 <p>方策勾配法：パラメータΘに基づく方策πに従ったときの期待収益が最大化されるようにΘを最適化する
 方策勾配定理により、パラメータ更新に用いられる勾配は以下のように示される
 ※b(s)はベースライン、行動価値関数から引くことで推定量の分散を小さくして学習の安定化効果がある
-$$
-\nabla_\theta \rho_\theta=\mathbb{E}\left[\nabla_\theta \log \pi(a \mid s, \theta)\left(Q^{\pi_\theta}(s, a)-b(s)\right)\right]
-$$
-ここで、b(s)の推定には$V_\theta^{\pi_\omega}(s_t)$,価値関数Q(s,a)をアドバンテージ関数としてkステップ先読みした収益をもちいて
-$$
-\begin{align}
+$$</p>
+<p>\nabla_\theta \rho_\theta=\mathbb{E}\left[\nabla_\theta \log \pi(a \mid s, \theta)\left(Q^{\pi_\theta}(s, a)-b(s)\right)\right]
+$$</p>
+<p>ここで、b(s)の推定には$V_\theta^{\pi_\omega}(s_t)$,価値関数Q(s,a)をアドバンテージ関数としてkステップ先読みした収益をもちいて
+$$</p>
+<p>\begin{align}
 &amp;Q(s,a) = (\sum_{i=0}^{k-1}\gamma^i R_{t+i+1})+V_\theta^{\pi_\omega}(s_{t+k})\
 &amp;b(s) = V_\theta^{\pi_\omega}(s_t)
 \end{align}
-$$
-$$
-\nabla_\theta \log \pi(a \mid s ; \theta)\left((\sum_{i=0}^{k-1} \gamma^i R_{t+i+1})+V_\theta^{\pi_\omega}\left(s_{t+k}\right)-V_\theta^{\pi_\omega}\left(s_t\right)\right)
+$$</p>
+<p>$$</p>
+<p>\nabla_\theta \log \pi(a \mid s ; \theta)\left((\sum_{i=0}^{k-1} \gamma^i R_{t+i+1})+V_\theta^{\pi_\omega}\left(s_{t+k}\right)-V_\theta^{\pi_\omega}\left(s_t\right)\right)
 $$</p>
 <p>上記の期待値が方策勾配となる。</p>
 <h5 id="方策エントロピー">方策エントロピー</h5>
 <p>ランダム性の高い方策にボーナスを与えることで、方策の収束が早すぎて局所解に収束することを防ぐ
 方策関数の正則化効果をもつ
-$$
--\sum_a \pi\left(a_t \mid s_t\right) \log \pi\left(a_t \mid s_t\right)
+$$</p>
+<p>-\sum_a \pi\left(a_t \mid s_t\right) \log \pi\left(a_t \mid s_t\right)
 $$</p>
 <h3 id="性能-1">性能</h3>
 <p>より短い訓練時間でGPUを使用しなくても高いスコアを実現</p>
@@ -2185,10 +2227,10 @@ $$</p>
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230718111913.png" alt="/img/Pasted_image_20230718111913.png">
 （Siamese Networkの概念図：講義スライドより引用）</p>
 <p>Contrastive Loss（損失関数）は以下の様に表現される
-$$
-L=\frac{1}{2}\left[y D^2+(1-y) \max (m-D, 0)^2\right]
-$$
-各変数は
+$$</p>
+<p>L=\frac{1}{2}\left[y D^2+(1-y) \max (m-D, 0)^2\right]
+$$</p>
+<p>各変数は
 D:埋め込み空間でのデータの距離、ユークリッド距離
 y:識別ラベル、２入力が同じクラスのとき１、違うクラスのとき０
 m:マージン、どの程度の距離まで罰則項を追加するか</p>
@@ -2207,10 +2249,10 @@ Siamese networkでは類似クラスと非類似クラスの判定がタスク�
 <li>アンカーサンプルの類似サンプル(positive sample)と非類似サンプル(negative sample)を一つずつ選択</li>
 <li>３つの入力データのセットをそれぞれ同一のCNNに入力する</li>
 <li>Triplet Loss（損失関数）を計算
-$$
-L = max(D_p-D_n+m,0)
 $$</li>
 </ol>
+<p>L = max(D_p-D_n+m,0)
+$$</p>
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230718113444.png" alt="/img/Pasted_image_20230718113444.png">
 (埋め込み空間における、データサンプルと距離の関係：講義資料より引用)</p>
 <h6 id="課題-1">課題</h6>
@@ -2279,8 +2321,8 @@ $$</li>
 <h3 id="畳み込みとは">畳み込みとは</h3>
 <p>ここでは、<strong>重要な部分の抽出と不要な部分の切り捨てを行う操作</strong>とする</p>
 <h4 id="空間的畳み込み">空間的畳み込み</h4>
-<p>$$
-\begin{align}
+<p>$$</p>
+<p>\begin{align}
 連続関数　(f<em>g)(t) &amp;= \int f(\tau)g(t,\tau)d\tau \
 離散関数　(f</em>g)(m)&amp; = \sum_n f(n)g(m,n)
 \end{align}
@@ -2288,23 +2330,25 @@ $$</p>
 <h4 id="スペクトル畳み込み">スペクトル畳み込み</h4>
 <p>フーリエ変換の性質より、
 下の式の様に畳み込みのフーリエ変換はフーリエ変換の積に等しいので、
-$$
-\mathbb{F}(f*g) = \mathbb{F}(f)\mathbb{F}(g)
-$$
-フーリエ変換した後、特徴的な周波数だけ残すようなフィルタ関数をかけて、再度フーリエ逆変換を行う</p>
+$$</p>
+<p>\mathbb{F}(f*g) = \mathbb{F}(f)\mathbb{F}(g)
+$$</p>
+<p>フーリエ変換した後、特徴的な周波数だけ残すようなフィルタ関数をかけて、再度フーリエ逆変換を行う</p>
 <h3 id="spatial-gcn">Spatial GCN</h3>
 <p>ノードｊの近くにあるノードを以下のように、ノード間の重みが一定以上であるノードとして定義
-$$N_\delta(j) = {i \in \Omega: W_{ij}&gt;\delta}
 $$
-これの重心を次の層のノードして扱い、層に分けてクラスタリングを繰り返す</p>
+N_\delta(j) = {i \in \Omega: W_{ij}&gt;\delta}
+$$</p>
+<p>これの重心を次の層のノードして扱い、層に分けてクラスタリングを繰り返す</p>
 <p>隣接関係（ｋ層における、分割したクラスタ内の要素同士の関係、iは分割したクラスタのi番目の要素）
-$$N_k = {N_{k,i};i=1,\dots,d_{k-1}}
 $$
-<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230717193344.png" alt="/img/Pasted_image_20230717193344.png">
+N_k = {N_{k,i};i=1,\dots,d_{k-1}}
+$$</p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230717193344.png" alt="/img/Pasted_image_20230717193344.png">
 （グラフデータのクラスタリング：講義資料より引用）</p>
 <p>k層目の出力（ｋ＋１層目の入力）は以下の様に書ける
-$$
-x_{k+1, j}=L_k h\left(\sum_{i=1}^{f_{k-1}} F_{k, i, j} x_{k, i}\right) \quad\left(j=1 \ldots f_k\right)
+$$</p>
+<p>x_{k+1, j}=L_k h\left(\sum_{i=1}^{f_{k-1}} F_{k, i, j} x_{k, i}\right) \quad\left(j=1 \ldots f_k\right)
 $$</p>
 <ul>
 <li>$L_k$はプーリングの機能</li>
@@ -2324,22 +2368,25 @@ $$</p>
 →グラフラプラシアンを固有値分解</p>
 <p>ここで離散フーリエ変換について、考えると
 元の関数に大きさ１の独立した成分の和をとる操作であるため
-$$F(t) = \sum f(x) exp(-i\frac{2\pi x}{N})
 $$
-固有ベクトルと入力ベクトルの内積を取って和をとることに等しい
+F(t) = \sum f(x) exp(-i\frac{2\pi x}{N})
+$$</p>
+<p>固有ベクトルと入力ベクトルの内積を取って和をとることに等しい
 このことから固有ベクトルからなる行列を$\mathbb{Q}$とすると
 GFT:Graph Fourier Transformは
-$$\mathbb{F} = F_G(\vec{f}) = \mathbb{Q}^T\vec{f}
+$$
+\mathbb{F} = F_G(\vec{f}) = \mathbb{Q}^T\vec{f}
 $$</p>
 <p>グラフラプラシアンが実対称行列であることから、$\mathbb{Q}$は直交行列であり$\mathbb{Q}^{-1} = \mathbb{Q}^T$なので
 IGFT: Inverse Graph Fourier Transformは
-$$F_G^{-1}(\mathbb{F}) = \mathbb{Q}\mathbb{F}
+$$
+F_G^{-1}(\mathbb{F}) = \mathbb{Q}\mathbb{F}
 $$</p>
 <h5 id="グラフラプラシアン">グラフラプラシアン</h5>
-<p>$$
-L = D -A
-$$
-L:グラフラプラシアン (実対象行列→固有値ベクトルが直行)
+<p>$$</p>
+<p>L = D -A
+$$</p>
+<p>L:グラフラプラシアン (実対象行列→固有値ベクトルが直行)
 D:次数行列　（ノードから何本エッジが伸びているか、対角成分のみを持つ）
 A:隣接行列　（どのノードに繋がっているか、01の値を持つ対称行列）</p>
 <h3 id="gcnの弱点">GCNの弱点</h3>
@@ -2376,12 +2423,12 @@ Global Average PoolingがCNNが潜在的に着目している部分を可視化�
 <p>出力層の重みを特徴マップ上に投影することで画像領域の重要性を識別
 <img src="https://half-broken-engineer.github.io/img/Pasted_image_20230718010059.png" alt="/img/Pasted_image_20230718010059.png">
 （CAMのコンセプト図：講義資料より引用）</p>
-<p>$$
-\begin{equation}
+<p>$$</p>
+<p>\begin{equation}
 M_c(x, y)=\sum_k w_k^c f_k(x, y)
 \end{equation}
-$$
-Mc:クラスCの位置(x,y)の重要度
+$$</p>
+<p>Mc:クラスCの位置(x,y)の重要度
 $w_k^c$:最後の畳み込み層のk番目のフィルタからクラスCにつながる重み
 $f_k$:最後の畳み込み層のチャンネルのうちｋ番目の特徴マップ</p>
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230718010656.png" alt="/img/Pasted_image_20230718010656.png">
@@ -2402,15 +2449,15 @@ Visual Explanations from Deep Networks via Gradient-based Localization
 ※CAMにおいて、特徴マップにGAP－出力層間の重みを使用していたところを勾配で代用している</li>
 <li>GAPがなくても使える、出力がクラスでなくても良いため、<strong>様々なタスクで使える</strong></li>
 </ul>
-<p>$$
-\alpha_k^c=\overbrace{\frac{1}{Z} \sum_i \sum_j}^{\text {global average pooling }} \underbrace{\frac{\partial y^c}{\partial A_{i j}^k}}_{\text {gradients via backprop }}
+<p>$$</p>
+<p>\alpha_k^c=\overbrace{\frac{1}{Z} \sum_i \sum_j}^{\text {global average pooling }} \underbrace{\frac{\partial y^c}{\partial A_{i j}^k}}_{\text {gradients via backprop }}
 $$</p>
 <p>$a_k^c$:クラスCのk番目のフィルタに関する重み係数
 $y_c$:クラスCのスコア
 $A_{ij}^k$:k番目の特徴マップの座標i,jにおける値</p>
 <p>ヒートマップの値は以下の様に示される。
-$$
-L_{c} = ReLU \left( \sum_{k} \alpha_{k}^{c} A^k \right)
+$$</p>
+<p>L_{c} = ReLU \left( \sum_{k} \alpha_{k}^{c} A^k \right)
 $$</p>
 <h3 id="limelocal-interpretable-model-agnostic-explanations">LIME　Local Interpretable Model-agnostic Explanations</h3>
 <p>&ldquo;Why Should I Trust You?&rdquo;: Explaining the Predictions of Any Classifier
@@ -2438,8 +2485,8 @@ Ex.)</p>
 （講義資料より引用）</p>
 <h5 id="目的関数-2">目的関数</h5>
 <p>入力データに対して、元のモデルと近似するモデルの距離に基づく不正確さ（第一項）及び近似モデルの複雑さを示す正則化項（第二項）の和が最小になるような近似モデルgをGから選択する
-$$
-\xi(x) = \underset{g\in G}{argmin}(L(f,g,\pi_x) + \Omega (g))
+$$</p>
+<p>\xi(x) = \underset{g\in G}{argmin}(L(f,g,\pi_x) + \Omega (g))
 $$</p>
 <p>近似モデルの入力には、元の入力に摂動を加えたものを用いる
 摂動の例</p>
@@ -2450,10 +2497,10 @@ $$</p>
 </ul>
 <p>$\mathcal{Z}$は説明したいデータ周辺のデータセット、
 元の入力ｚに対して摂動を加えた入力をｚ’とすると、
-$$
-\mathcal{L}\left(f, g, \pi_x\right)=\sum_{z, z^{\prime} \in \mathcal{Z}} \pi_x(z)\left(f(z)-g\left(z^{\prime}\right)\right)^2
-$$
-このとき、$\pi_x(z) = exp(-D(x,z)/\sigma^2)$でσはハイパーパラメータで設定基準が無い問題がある。</p>
+$$</p>
+<p>\mathcal{L}\left(f, g, \pi_x\right)=\sum_{z, z^{\prime} \in \mathcal{Z}} \pi_x(z)\left(f(z)-g\left(z^{\prime}\right)\right)^2
+$$</p>
+<p>このとき、$\pi_x(z) = exp(-D(x,z)/\sigma^2)$でσはハイパーパラメータで設定基準が無い問題がある。</p>
 <h4 id="解釈例">解釈例</h4>
 <p>講義ではテキストをキリスト教、無神論の２クラスに分類するモデルについて
 LIMEを使って分類時の単語の重要度を可視化した</p>

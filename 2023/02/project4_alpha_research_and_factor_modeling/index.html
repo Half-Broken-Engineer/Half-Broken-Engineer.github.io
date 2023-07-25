@@ -32,7 +32,7 @@
     }
     
   },
-  "description": "OverViews\nOverviews Methods Knowledge Factor Covariance Matrix $$F = \\frac{1}{N-1} f \\cdot f^T　\\times annualization_factor $$\nN：要素数 f：ファクターリターン annualization_factor:　252/days_passed\nActual Retrurn $$r_p = \\sum_i^N \\beta_i\\times f_i + s_p $$\ncommon return ファクターリターンとファクターエクスポージャの内積\nファクターリターンの計算 日付をインデックスとして、ティッカーをカラムとするreturnsがあるとき\nfrom sklearn.decomposition import PCA model = PCA(n_components=num_factor) pca.fit(returns) factor_returns = pca.transform(returns) ファクターエクスポージャーの計算 from sklearn.linear_model import LinearRegression model = LinearRegression() model.fit(factor_returns,portfolio_actual_return) exposure = model.coef_ specific return 実際のリターンからコモンリターンを引いたあたいで、ファクターで説明されない部分のリターンを示す。\nこの値は小さくしたい",
+  "description": "OverViews\nOverviews Methods Knowledge Factor Covariance Matrix $$ F = \\frac{1}{N-1} f \\cdot f^T　\\times annualization_factor $$\nN：要素数 f：ファクターリターン annualization_factor:　252/days_passed\nActual Retrurn $$ r_p = \\sum_i^N \\beta_i\\times f_i + s_p $$\ncommon return ファクターリターンとファクターエクスポージャの内積\nファクターリターンの計算 日付をインデックスとして、ティッカーをカラムとするreturnsがあるとき\nfrom sklearn.decomposition import PCA model = PCA(n_components=num_factor) pca.fit(returns) factor_returns = pca.transform(returns) ファクターエクスポージャーの計算 from sklearn.linear_model import LinearRegression model = LinearRegression() model.fit(factor_returns,portfolio_actual_return) exposure = model.coef_ specific return 実際のリターンからコモンリターンを引いたあたいで、ファクターで説明されない部分のリターンを示す。\nこの値は小さくしたい",
   "keywords": []
 }
 
@@ -44,9 +44,9 @@
 <meta name="author" content="Half-Broken Engineer">
 <meta name="keywords" content="">
 <meta name="description" content="OverViews
-Overviews Methods Knowledge Factor Covariance Matrix $$F = \frac{1}{N-1} f \cdot f^T　\times annualization_factor $$
+Overviews Methods Knowledge Factor Covariance Matrix $$ F = \frac{1}{N-1} f \cdot f^T　\times annualization_factor $$
 N：要素数 f：ファクターリターン annualization_factor:　252/days_passed
-Actual Retrurn $$r_p = \sum_i^N \beta_i\times f_i &#43; s_p $$
+Actual Retrurn $$ r_p = \sum_i^N \beta_i\times f_i &#43; s_p $$
 common return ファクターリターンとファクターエクスポージャの内積
 ファクターリターンの計算 日付をインデックスとして、ティッカーをカラムとするreturnsがあるとき
 from sklearn.decomposition import PCA model = PCA(n_components=num_factor) pca.fit(returns) factor_returns = pca.transform(returns) ファクターエクスポージャーの計算 from sklearn.linear_model import LinearRegression model = LinearRegression() model.fit(factor_returns,portfolio_actual_return) exposure = model.coef_ specific return 実際のリターンからコモンリターンを引いたあたいで、ファクターで説明されない部分のリターンを示す。
@@ -54,9 +54,9 @@ from sklearn.decomposition import PCA model = PCA(n_components=num_factor) pca.f
 
 
 <meta property="og:description" content="OverViews
-Overviews Methods Knowledge Factor Covariance Matrix $$F = \frac{1}{N-1} f \cdot f^T　\times annualization_factor $$
+Overviews Methods Knowledge Factor Covariance Matrix $$ F = \frac{1}{N-1} f \cdot f^T　\times annualization_factor $$
 N：要素数 f：ファクターリターン annualization_factor:　252/days_passed
-Actual Retrurn $$r_p = \sum_i^N \beta_i\times f_i &#43; s_p $$
+Actual Retrurn $$ r_p = \sum_i^N \beta_i\times f_i &#43; s_p $$
 common return ファクターリターンとファクターエクスポージャの内積
 ファクターリターンの計算 日付をインデックスとして、ティッカーをカラムとするreturnsがあるとき
 from sklearn.decomposition import PCA model = PCA(n_components=num_factor) pca.fit(returns) factor_returns = pca.transform(returns) ファクターエクスポージャーの計算 from sklearn.linear_model import LinearRegression model = LinearRegression() model.fit(factor_returns,portfolio_actual_return) exposure = model.coef_ specific return 実際のリターンからコモンリターンを引いたあたいで、ファクターで説明されない部分のリターンを示す。
@@ -68,17 +68,17 @@ from sklearn.decomposition import PCA model = PCA(n_components=num_factor) pca.f
 <meta property="twitter:url" content="https://half-broken-engineer.github.io/2023/02/project4_alpha_research_and_factor_modeling/">
 <meta property="og:site_name" content="壊れかけのエンジニアのログ">
 <meta property="og:description" content="OverViews
-Overviews Methods Knowledge Factor Covariance Matrix $$F = \frac{1}{N-1} f \cdot f^T　\times annualization_factor $$
+Overviews Methods Knowledge Factor Covariance Matrix $$ F = \frac{1}{N-1} f \cdot f^T　\times annualization_factor $$
 N：要素数 f：ファクターリターン annualization_factor:　252/days_passed
-Actual Retrurn $$r_p = \sum_i^N \beta_i\times f_i &#43; s_p $$
+Actual Retrurn $$ r_p = \sum_i^N \beta_i\times f_i &#43; s_p $$
 common return ファクターリターンとファクターエクスポージャの内積
 ファクターリターンの計算 日付をインデックスとして、ティッカーをカラムとするreturnsがあるとき
 from sklearn.decomposition import PCA model = PCA(n_components=num_factor) pca.fit(returns) factor_returns = pca.transform(returns) ファクターエクスポージャーの計算 from sklearn.linear_model import LinearRegression model = LinearRegression() model.fit(factor_returns,portfolio_actual_return) exposure = model.coef_ specific return 実際のリターンからコモンリターンを引いたあたいで、ファクターで説明されない部分のリターンを示す。
 この値は小さくしたい">
 <meta name="twitter:description" content="OverViews
-Overviews Methods Knowledge Factor Covariance Matrix $$F = \frac{1}{N-1} f \cdot f^T　\times annualization_factor $$
+Overviews Methods Knowledge Factor Covariance Matrix $$ F = \frac{1}{N-1} f \cdot f^T　\times annualization_factor $$
 N：要素数 f：ファクターリターン annualization_factor:　252/days_passed
-Actual Retrurn $$r_p = \sum_i^N \beta_i\times f_i &#43; s_p $$
+Actual Retrurn $$ r_p = \sum_i^N \beta_i\times f_i &#43; s_p $$
 common return ファクターリターンとファクターエクスポージャの内積
 ファクターリターンの計算 日付をインデックスとして、ティッカーをカラムとするreturnsがあるとき
 from sklearn.decomposition import PCA model = PCA(n_components=num_factor) pca.fit(returns) factor_returns = pca.transform(returns) ファクターエクスポージャーの計算 from sklearn.linear_model import LinearRegression model = LinearRegression() model.fit(factor_returns,portfolio_actual_return) exposure = model.coef_ specific return 実際のリターンからコモンリターンを引いたあたいで、ファクターで説明されない部分のリターンを示す。
@@ -327,13 +327,15 @@ from sklearn.decomposition import PCA model = PCA(n_components=num_factor) pca.f
 <h1 id="methods">Methods</h1>
 <h1 id="knowledge">Knowledge</h1>
 <h2 id="factor-covariance-matrix">Factor Covariance Matrix</h2>
-<p>$$F = \frac{1}{N-1} f \cdot f^T　\times annualization_factor
+<p>$$
+F = \frac{1}{N-1} f \cdot f^T　\times annualization_factor
 $$</p>
 <p>N：要素数
 f：ファクターリターン
 annualization_factor:　252/days_passed</p>
 <h2 id="actual-retrurn">Actual Retrurn</h2>
-<p>$$r_p = \sum_i^N \beta_i\times f_i + s_p
+<p>$$
+r_p = \sum_i^N \beta_i\times f_i + s_p
 $$</p>
 <h2 id="common-return">common return</h2>
 <p>ファクターリターンとファクターエクスポージャの内積</p>
