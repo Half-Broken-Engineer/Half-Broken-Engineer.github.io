@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AppliedMathematics",
+  
+  "datePublished": "2023-01-25T00:00:00+09:00",
+  "dateModified": "2023-01-25T00:00:00+09:00",
+  "author": {
+    "@type": "Person",
+    "name": "Half-Broken Engineer",
+    
+    "image": "https://half-broken-engineer.github.io/img/profile.png"
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/half-broken-engineer.github.io\/2023\/01\/appliedmathematics\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "壊れかけのエンジニアのログ",
+    
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://half-broken-engineer.github.io/img/profile.png"
+    }
+    
+  },
+  "description": "要点(最低100字) 目次 線形代数 確率・統計 情報理論 線形代数 固有値・固有ベクトルの求め方 固有値分解とは 特異値・特位置ベクトルの概要 特異値分解について 固有値・固有ベクトル 固有ベクトルは対応する行列をかけた際に、ベクトルの方向が変わらないベクトル。 固有値は固有ベクトルに行列をかけたときに何倍になるかを示す。\n$$A\\vec{a}=\\lambda\\vec{a} \\tag{1}$$ のとき、$\\vec{a}$が固有ベクトル、λが固有値\n求め方は[[固有方程式]]で固有値を求めたあと、固有値を（１）式に代入して連立方程式を解く。\n固有ベクトルの大きさについては１にしておくのが一般的。（※後の特異値を求めるときにそちらのほうが都合が良い）\n固有値分解 固有値ベクトルを列ベクトルに持つ行列Vと、対応する固有値を対角成分に持つ対角行列Λを用いて行列Aは以下の式に分解できる。 $$ A = V\\Lambda V^{-1} \\tag{2}$$\nプログラミング的には、対角行列の演算負荷が低いことから、計算速度向上、リソース節約につながる。\nimport numpy as np values,vectors = np.linalg.eig(matrix) 特異値・特異ベクトル 固有値については正方行列のみしか扱えなかったが、これをm×nの行列に拡張したもの。\nUの列ベクトルを左特異ベクトル、、Vの列ベクトルを右特異ベクトルという。 Σの対角成分は特異値という。 ※このとき、ベクトルのノルムは１、σ\u0026gt;0,特異値の数はmin(m,n)となる。今回はｍ＜ｎとした。\n$$ A = U\\Sigma V^{\\top} \\tag{3}$$ $$A\\vec{v}=\\sigma\\vec{u} \\tag{4}$$ $$A^\\top\\vec{u}=\\sigma\\vec{v} \\tag{5}$$ $\\sum =$ $$ \\begin{pmatrix} \\sigma_{1} \u0026amp; 0 \u0026amp; \\dots \u0026amp; \u0026amp; \u0026amp;0 \\ 0\u0026amp;\\sigma_{2}\u0026amp; 0 \u0026amp; \\dots \u0026amp; \u0026amp;0\\ 0 \u0026amp; 0 \u0026amp;\\ddots\u0026amp;0 \u0026amp;\\dots\u0026amp;\\vdots\\ \\vdots\u0026amp;\\dots\u0026amp;0\u0026amp;\\sigma_m\u0026amp;0\u0026amp;\\dots \\end{pmatrix} $$",
+  "keywords": []
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.112.5 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Half-Broken Engineer">
+<meta name="keywords" content="">
+<meta name="description" content="要点(最低100字) 目次 線形代数 確率・統計 情報理論 線形代数 固有値・固有ベクトルの求め方 固有値分解とは 特異値・特位置ベクトルの概要 特異値分解について 固有値・固有ベクトル 固有ベクトルは対応する行列をかけた際に、ベクトルの方向が変わらないベクトル。 固有値は固有ベクトルに行列をかけたときに何倍になるかを示す。
+$$A\vec{a}=\lambda\vec{a} \tag{1}$$ のとき、$\vec{a}$が固有ベクトル、λが固有値
+求め方は[[固有方程式]]で固有値を求めたあと、固有値を（１）式に代入して連立方程式を解く。
+固有ベクトルの大きさについては１にしておくのが一般的。（※後の特異値を求めるときにそちらのほうが都合が良い）
+固有値分解 固有値ベクトルを列ベクトルに持つ行列Vと、対応する固有値を対角成分に持つ対角行列Λを用いて行列Aは以下の式に分解できる。 $$ A = V\Lambda V^{-1} \tag{2}$$
+プログラミング的には、対角行列の演算負荷が低いことから、計算速度向上、リソース節約につながる。
+import numpy as np values,vectors = np.linalg.eig(matrix) 特異値・特異ベクトル 固有値については正方行列のみしか扱えなかったが、これをm×nの行列に拡張したもの。
+Uの列ベクトルを左特異ベクトル、、Vの列ベクトルを右特異ベクトルという。 Σの対角成分は特異値という。 ※このとき、ベクトルのノルムは１、σ&gt;0,特異値の数はmin(m,n)となる。今回はｍ＜ｎとした。
+$$ A = U\Sigma V^{\top} \tag{3}$$ $$A\vec{v}=\sigma\vec{u} \tag{4}$$ $$A^\top\vec{u}=\sigma\vec{v} \tag{5}$$ $\sum =$ $$ \begin{pmatrix} \sigma_{1} &amp; 0 &amp; \dots &amp; &amp; &amp;0 \ 0&amp;\sigma_{2}&amp; 0 &amp; \dots &amp; &amp;0\ 0 &amp; 0 &amp;\ddots&amp;0 &amp;\dots&amp;\vdots\ \vdots&amp;\dots&amp;0&amp;\sigma_m&amp;0&amp;\dots \end{pmatrix} $$">
+
+
+<meta property="og:description" content="要点(最低100字) 目次 線形代数 確率・統計 情報理論 線形代数 固有値・固有ベクトルの求め方 固有値分解とは 特異値・特位置ベクトルの概要 特異値分解について 固有値・固有ベクトル 固有ベクトルは対応する行列をかけた際に、ベクトルの方向が変わらないベクトル。 固有値は固有ベクトルに行列をかけたときに何倍になるかを示す。
+$$A\vec{a}=\lambda\vec{a} \tag{1}$$ のとき、$\vec{a}$が固有ベクトル、λが固有値
+求め方は[[固有方程式]]で固有値を求めたあと、固有値を（１）式に代入して連立方程式を解く。
+固有ベクトルの大きさについては１にしておくのが一般的。（※後の特異値を求めるときにそちらのほうが都合が良い）
+固有値分解 固有値ベクトルを列ベクトルに持つ行列Vと、対応する固有値を対角成分に持つ対角行列Λを用いて行列Aは以下の式に分解できる。 $$ A = V\Lambda V^{-1} \tag{2}$$
+プログラミング的には、対角行列の演算負荷が低いことから、計算速度向上、リソース節約につながる。
+import numpy as np values,vectors = np.linalg.eig(matrix) 特異値・特異ベクトル 固有値については正方行列のみしか扱えなかったが、これをm×nの行列に拡張したもの。
+Uの列ベクトルを左特異ベクトル、、Vの列ベクトルを右特異ベクトルという。 Σの対角成分は特異値という。 ※このとき、ベクトルのノルムは１、σ&gt;0,特異値の数はmin(m,n)となる。今回はｍ＜ｎとした。
+$$ A = U\Sigma V^{\top} \tag{3}$$ $$A\vec{v}=\sigma\vec{u} \tag{4}$$ $$A^\top\vec{u}=\sigma\vec{v} \tag{5}$$ $\sum =$ $$ \begin{pmatrix} \sigma_{1} &amp; 0 &amp; \dots &amp; &amp; &amp;0 \ 0&amp;\sigma_{2}&amp; 0 &amp; \dots &amp; &amp;0\ 0 &amp; 0 &amp;\ddots&amp;0 &amp;\dots&amp;\vdots\ \vdots&amp;\dots&amp;0&amp;\sigma_m&amp;0&amp;\dots \end{pmatrix} $$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AppliedMathematics">
+<meta name="twitter:title" content="AppliedMathematics">
+<meta property="og:url" content="https://half-broken-engineer.github.io/2023/01/appliedmathematics/">
+<meta property="twitter:url" content="https://half-broken-engineer.github.io/2023/01/appliedmathematics/">
+<meta property="og:site_name" content="壊れかけのエンジニアのログ">
+<meta property="og:description" content="要点(最低100字) 目次 線形代数 確率・統計 情報理論 線形代数 固有値・固有ベクトルの求め方 固有値分解とは 特異値・特位置ベクトルの概要 特異値分解について 固有値・固有ベクトル 固有ベクトルは対応する行列をかけた際に、ベクトルの方向が変わらないベクトル。 固有値は固有ベクトルに行列をかけたときに何倍になるかを示す。
+$$A\vec{a}=\lambda\vec{a} \tag{1}$$ のとき、$\vec{a}$が固有ベクトル、λが固有値
+求め方は[[固有方程式]]で固有値を求めたあと、固有値を（１）式に代入して連立方程式を解く。
+固有ベクトルの大きさについては１にしておくのが一般的。（※後の特異値を求めるときにそちらのほうが都合が良い）
+固有値分解 固有値ベクトルを列ベクトルに持つ行列Vと、対応する固有値を対角成分に持つ対角行列Λを用いて行列Aは以下の式に分解できる。 $$ A = V\Lambda V^{-1} \tag{2}$$
+プログラミング的には、対角行列の演算負荷が低いことから、計算速度向上、リソース節約につながる。
+import numpy as np values,vectors = np.linalg.eig(matrix) 特異値・特異ベクトル 固有値については正方行列のみしか扱えなかったが、これをm×nの行列に拡張したもの。
+Uの列ベクトルを左特異ベクトル、、Vの列ベクトルを右特異ベクトルという。 Σの対角成分は特異値という。 ※このとき、ベクトルのノルムは１、σ&gt;0,特異値の数はmin(m,n)となる。今回はｍ＜ｎとした。
+$$ A = U\Sigma V^{\top} \tag{3}$$ $$A\vec{v}=\sigma\vec{u} \tag{4}$$ $$A^\top\vec{u}=\sigma\vec{v} \tag{5}$$ $\sum =$ $$ \begin{pmatrix} \sigma_{1} &amp; 0 &amp; \dots &amp; &amp; &amp;0 \ 0&amp;\sigma_{2}&amp; 0 &amp; \dots &amp; &amp;0\ 0 &amp; 0 &amp;\ddots&amp;0 &amp;\dots&amp;\vdots\ \vdots&amp;\dots&amp;0&amp;\sigma_m&amp;0&amp;\dots \end{pmatrix} $$">
+<meta name="twitter:description" content="要点(最低100字) 目次 線形代数 確率・統計 情報理論 線形代数 固有値・固有ベクトルの求め方 固有値分解とは 特異値・特位置ベクトルの概要 特異値分解について 固有値・固有ベクトル 固有ベクトルは対応する行列をかけた際に、ベクトルの方向が変わらないベクトル。 固有値は固有ベクトルに行列をかけたときに何倍になるかを示す。
+$$A\vec{a}=\lambda\vec{a} \tag{1}$$ のとき、$\vec{a}$が固有ベクトル、λが固有値
+求め方は[[固有方程式]]で固有値を求めたあと、固有値を（１）式に代入して連立方程式を解く。
+固有ベクトルの大きさについては１にしておくのが一般的。（※後の特異値を求めるときにそちらのほうが都合が良い）
+固有値分解 固有値ベクトルを列ベクトルに持つ行列Vと、対応する固有値を対角成分に持つ対角行列Λを用いて行列Aは以下の式に分解できる。 $$ A = V\Lambda V^{-1} \tag{2}$$
+プログラミング的には、対角行列の演算負荷が低いことから、計算速度向上、リソース節約につながる。
+import numpy as np values,vectors = np.linalg.eig(matrix) 特異値・特異ベクトル 固有値については正方行列のみしか扱えなかったが、これをm×nの行列に拡張したもの。
+Uの列ベクトルを左特異ベクトル、、Vの列ベクトルを右特異ベクトルという。 Σの対角成分は特異値という。 ※このとき、ベクトルのノルムは１、σ&gt;0,特異値の数はmin(m,n)となる。今回はｍ＜ｎとした。
+$$ A = U\Sigma V^{\top} \tag{3}$$ $$A\vec{v}=\sigma\vec{u} \tag{4}$$ $$A^\top\vec{u}=\sigma\vec{v} \tag{5}$$ $\sum =$ $$ \begin{pmatrix} \sigma_{1} &amp; 0 &amp; \dots &amp; &amp; &amp;0 \ 0&amp;\sigma_{2}&amp; 0 &amp; \dots &amp; &amp;0\ 0 &amp; 0 &amp;\ddots&amp;0 &amp;\dots&amp;\vdots\ \vdots&amp;\dots&amp;0&amp;\sigma_m&amp;0&amp;\dots \end{pmatrix} $$">
+<meta property="og:locale" content="ja">
+
+  
+    <meta property="article:published_time" content="2023-01-25T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2023-01-25T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="RabbitChallenge">
+    
+  
+  
+    
+      <meta property="article:tag" content="obsidian_note">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@overcome_kidney">
+
+
+  <meta name="twitter:creator" content="@overcome_kidney">
+
+
+
+
+
+
+  <meta property="og:image" content="https://half-broken-engineer.github.io/img/profile.png">
+  <meta property="twitter:image" content="https://half-broken-engineer.github.io/img/profile.png">
+
+
+
+
+
+
+    <title>AppliedMathematics</title>
+
+    <link rel="icon" href="https://half-broken-engineer.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://half-broken-engineer.github.io/2023/01/appliedmathematics/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://half-broken-engineer.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://half-broken-engineer.github.io/css/mystyle.css">
+      
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://half-broken-engineer.github.io/" aria-label="ホームページへ">壊れかけのエンジニアのログ</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://half-broken-engineer.github.io/#about" aria-label="リンクを開く: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://half-broken-engineer.github.io/img/profile.png" alt="プロフィール画像" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://half-broken-engineer.github.io/#about" aria-label="著者についてもっと読む">
+          <img class="sidebar-profile-picture" src="https://half-broken-engineer.github.io/img/profile.png" alt="プロフィール画像" />
+        </a>
+        <h4 class="sidebar-profile-name">Half-Broken Engineer</h4>
+        
+          <h5 class="sidebar-profile-bio">🤖　　　　壊れかけのエンジニア　　　　💻不安を解消したいから💰のお勉強もする</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">ホーム</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">カテゴリー</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">タグ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">アーカイブ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">プロフィール</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Half-Broken-Engineer" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      AppliedMathematics
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2023-01-25T00:00:00&#43;09:00">
+        
+  
+  
+  
+  
+    2023-01-25
+  
+
+      </time>
+    
+    
+  
+  
+    <span>カテゴリー</span>
+    
+      <a class="category-link" href="https://half-broken-engineer.github.io/categories/rabbitchallenge">RabbitChallenge</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <ul>
+<li></li>
+</ul>
+<h1 id="要点最低100字">要点(最低100字)</h1>
+<h2 id="目次">目次</h2>
+<ul>
+<li><a href="#%e7%b7%9a%e5%bd%a2%e4%bb%a3%e6%95%b0">線形代数</a></li>
+<li><a href="#%e7%a2%ba%e7%8e%87%e3%83%bb%e7%b5%b1%e8%a8%88">確率・統計</a></li>
+<li><a href="#%e6%83%85%e5%a0%b1%e7%90%86%e8%ab%96">情報理論</a></li>
+</ul>
+<h3 id="線形代数">線形代数</h3>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 固有値・固有ベクトルの求め方</li>
+<li><input checked="" disabled="" type="checkbox"> 固有値分解とは</li>
+<li><input checked="" disabled="" type="checkbox"> 特異値・特位置ベクトルの概要</li>
+<li><input checked="" disabled="" type="checkbox"> 特異値分解について</li>
+</ul>
+<h4 id="固有値固有ベクトル">固有値・固有ベクトル</h4>
+<p>固有ベクトルは対応する行列をかけた際に、ベクトルの方向が変わらないベクトル。
+固有値は固有ベクトルに行列をかけたときに何倍になるかを示す。</p>
+<p>$$A\vec{a}=\lambda\vec{a}  \tag{1}$$
+のとき、$\vec{a}$が固有ベクトル、λが固有値</p>
+<p>求め方は[[固有方程式]]で固有値を求めたあと、固有値を（１）式に代入して連立方程式を解く。</p>
+<p>固有ベクトルの大きさについては１にしておくのが一般的。（※後の特異値を求めるときにそちらのほうが都合が良い）</p>
+<h4 id="固有値分解">固有値分解</h4>
+<p>固有値ベクトルを列ベクトルに持つ行列Vと、対応する固有値を対角成分に持つ対角行列Λを用いて行列Aは以下の式に分解できる。
+$$ A = V\Lambda V^{-1} \tag{2}$$</p>
+<p>プログラミング的には、対角行列の演算負荷が低いことから、計算速度向上、リソース節約につながる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>values,vectors <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>eig(matrix)
+</span></span></code></pre></div><h4 id="特異値特異ベクトル">特異値・特異ベクトル</h4>
+<p>固有値については正方行列のみしか扱えなかったが、これをm×nの行列に拡張したもの。</p>
+<p>Uの列ベクトルを左特異ベクトル、、Vの列ベクトルを右特異ベクトルという。
+Σの対角成分は特異値という。
+※このとき、ベクトルのノルムは１、σ&gt;0,特異値の数はmin(m,n)となる。今回はｍ＜ｎとした。</p>
+<p>$$ A = U\Sigma V^{\top} \tag{3}$$
+$$A\vec{v}=\sigma\vec{u}  \tag{4}$$
+$$A^\top\vec{u}=\sigma\vec{v}  \tag{5}$$
+$\sum =$
+$$
+\begin{pmatrix}
+\sigma_{1} &amp; 0  &amp; \dots &amp; &amp; &amp;0  \
+0&amp;\sigma_{2}&amp; 0 &amp; \dots &amp; &amp;0\
+0 &amp; 0 &amp;\ddots&amp;0  &amp;\dots&amp;\vdots\
+\vdots&amp;\dots&amp;0&amp;\sigma_m&amp;0&amp;\dots
+\end{pmatrix}
+$$</p>
+<h4 id="特異値分解">特異値分解</h4>
+<ol>
+<li>$AA^\top$または$A^\top A$を求める　（計算量の問題で、$A^\top A$のほうが次数が少ないときはそちらを使う。式(4)に$A^\top$を掛けるか、式(5)にAを掛けるかの違い）</li>
+<li>$AA^\top$または$A^\top A$の固有方程式を解く</li>
+<li>固有値の正の平方根を特異値とする</li>
+<li>特異値を$(A^{\top} A  - \sigma^2 E) \vec{v}  = \vec{0}$または$(AA^{\top} - \sigma^2 E ) \vec{u}  = \vec{0}$に代入して、どちらかの特異ベクトルを求める<!-- raw HTML omitted -->※重解のときはグラムシュミットの直交化方を用いて、同じ特異値に対する特異ベクトルを直交化すること。</li>
+<li>式(4)または(5)を用いてもう一方の特異ベクトルを求める</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>u,sigma,vt <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>svd(matrix)
+</span></span></code></pre></div><h3 id="確率統計">確率・統計</h3>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 条件付き確率について理解を深める</li>
+<li><input checked="" disabled="" type="checkbox"> ベイズ則の概要を知る</li>
+<li><input checked="" disabled="" type="checkbox"> 期待値・分散の求め方</li>
+<li><input checked="" disabled="" type="checkbox"> 様々な確率分布の概要を知る</li>
+</ul>
+<h4 id="客観確率と主観確率">客観確率と主観確率</h4>
+<ul>
+<li>客観確率：頻度確率とも言う。データに基づく事実</li>
+<li>主観確率：ベイズ確率。条件の元で推測される信念の度合い。　診断など</li>
+</ul>
+<h4 id="条件付き確率">条件付き確率</h4>
+<p>事象Y＝ｙが与えられた上での、事象X=xとなる確率
+$P(X=x|Y=y) = \frac{P(X=x,Y=y)}{P(Y=y)}$</p>
+<h4 id="同時確率">同時確率</h4>
+<p>事象X＝ｘ∧事象Y=yとなる確率
+2つ目はXとYを入れ替えても同じ。　※実運用上はyが観測変数でxが直接観測出来ない変数になる
+2つ目の式がベイズ則に繋がる。
+$$P(X=x,Y=y) =
+\begin{cases}
+P(X=x) \times P(Y=y) &amp;(XとYが独立) \
+P(X=x|Y=y) \times P(Y=y)&amp;(XとYが独立でない)
+\end{cases}
+$$</p>
+<h4 id="期待値と分散">期待値と分散</h4>
+<ul>
+<li>期待値　$E(X) = \int P(X)f(X)dx$  離散変数ならΣ</li>
+<li>分散　$E(f(X)^2)-(E(f(X))^2$</li>
+<li>共分散　$E(fg(X)) - E(f)E(g)$</li>
+</ul>
+<h4 id="主要な確率分布">主要な確率分布</h4>
+<ul>
+<li>ベルヌーイ分布　
+<ul>
+<li>説明：2種類の結果のみが得られるベルヌーイ施行の結果を示す確率分布</li>
+<li>式：$P(x|\mu) = \mu^x(1-\mu)^{(1-x)}$   μはxが真の確率、xが真のときx=1,偽のときx=0</li>
+<li>期待値：p</li>
+<li>分散: p(1-p)</li>
+</ul>
+</li>
+<li>二項分布
+<ul>
+<li>説明：ベルヌーイ施行を繰り返し行ったときのその成功回数の分布</li>
+<li>式：$P(x|\lambda,n) = _nC_x \times \lambda ^x(1-\lambda)^{(1-x)}$   λは成功確率、xは成功回数,ｎは施行回数</li>
+</ul>
+</li>
+<li>正規分布
+<ul>
+<li>説明:</li>
+<li>式$X(x;\mu,\sigma^2) = \sqrt{\frac{1}{2\pi\sigma^2}} \times \exp(-\frac{(x-\mu)^2}{2\sigma^2})$</li>
+</ul>
+</li>
+</ul>
+<h3 id="情報理論">情報理論</h3>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 自己情報量・シャノンエントロピーの定義</li>
+<li><input checked="" disabled="" type="checkbox"> KLダイバージェンス・交差エントロピーの概要
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230705165144.png" alt="/img/Pasted_image_20230705165144.png"></li>
+</ul>
+<h4 id="自己情報量">自己情報量</h4>
+<p>$I(x) = -log(P(x))$</p>
+<p>底によって単位を変える。</p>
+<ul>
+<li>2:bit</li>
+<li>e:nat</li>
+</ul>
+<h4 id="シャノンエントロピー">シャノンエントロピー</h4>
+<p>各事象の情報量の平均
+自己情報量の期待値
+$H(x) = - \sum P(x) \times log(P(x))$</p>
+<h4 id="klダイバージェンス">KLダイバージェンス</h4>
+<p>2つの確率分布の類似度合いを見る指標。０に近いほど分布が近く、大きくなるほど分布が異なる。
+KL情報量ともいう。
+PとQについて非対称。</p>
+<p>$D_{KL}(P||Q) = \int_{-\infty}^{\infty}p(x) \log \frac{p(x)}{q(x)}dx$</p>
+<p>p(x)側にデータサンプルから得られた確率。q(x)側に想定する確率分布を取ることで、想定分布がどの程度データの特徴を捉えているかを評価できる。</p>
+<p>VAEなどで潜在変数の分布のパラメータをKLダイバージェンスを損失関数に取ることで学習できる。</p>
+<p>[[ギブスの不等式]]により、
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230125204336.png" alt="/img/Pasted_image_20230125204336.png">
+なので、必ず非負の値になる。</p>
+<h4 id="交差エントロピー">交差エントロピー</h4>
+<p>[[#KLダイバージェンス]]の対数の分母側を切り出した値。
+Qの自己情報量をPの分布で平均する。</p>
+<p>$H(P,Q) = H(P) + D_{KL}(P||Q)$</p>
+<h1 id="実装演習結果">実装演習結果</h1>
+<p>今回は実装なし。</p>
+<h1 id="考察">考察</h1>
+<p>数学の内容なので特に考察ではないが、
+今回受けたステージテストのように選択肢問題であることを考えると、
+愚直に解かなくても選択肢から確認する必要のある項目だけチェックすれば解答速度を上げられるように感じた。</p>
+<h1 id="参考文献サイト">参考文献/サイト</h1>
+<p><a href="https://www.headboost.jp/docs/linear-algebra-for-programmers/factorization/eigen/">固有値分解 | 行列の分解 | プログラマーのための線形代数</a>
+<a href="https://www.momoyama-usagi.com/">工業大学生ももやまのうさぎ塾</a></p>
+
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">タグ</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://half-broken-engineer.github.io/tags/obsidian_note/">obsidian_note</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/2023/01/msft_2023_q2/" data-tooltip="MSFT_2023_Q2" aria-label="次: MSFT_2023_Q2">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">次</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/2023/01/rabbitchallenge/" data-tooltip="RabbitChallenge" aria-label="前: RabbitChallenge">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">前</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="この記事を共有する">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://half-broken-engineer.github.io/2023/01/appliedmathematics/" title="Twitterで共有" aria-label="Twitterで共有">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="コメントを残す">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="トップに戻る">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/half-broken-engineer.github.io\/2023\/01\/appliedmathematics\/';
+        
+          this.page.identifier = '\/2023\/01\/appliedmathematics\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2023 <a href="https://github.com/Half-Broken-Engineer">Half-Broken-Engineer</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/2023/01/msft_2023_q2/" data-tooltip="MSFT_2023_Q2" aria-label="次: MSFT_2023_Q2">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">次</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/2023/01/rabbitchallenge/" data-tooltip="RabbitChallenge" aria-label="前: RabbitChallenge">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">前</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="この記事を共有する">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://half-broken-engineer.github.io/2023/01/appliedmathematics/" title="Twitterで共有" aria-label="Twitterで共有">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="コメントを残す">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="トップに戻る">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fhalf-broken-engineer.github.io%2F2023%2F01%2Fappliedmathematics%2F" aria-label="Twitterで共有">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitterで共有</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://half-broken-engineer.github.io/img/profile.png" alt="プロフィール画像" />
+    
+    <h4 id="about-card-name">Half-Broken Engineer</h4>
+    
+      <div id="about-card-bio">🤖　　　　壊れかけのエンジニア　　　　💻不安を解消したいから💰のお勉強もする</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Japan
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://half-broken-engineer.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://half-broken-engineer.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

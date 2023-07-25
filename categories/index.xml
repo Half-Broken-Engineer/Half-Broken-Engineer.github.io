@@ -6,7 +6,16 @@
     <description>Recent content in Categories on 壊れかけのエンジニアのログ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 04 May 2023 21:35:32 -0400</lastBuildDate><atom:link href="https://half-broken-engineer.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Jun 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://half-broken-engineer.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RabbitChallenge</title>
+      <link>https://half-broken-engineer.github.io/categories/rabbitchallenge/</link>
+      <pubDate>Tue, 27 Jun 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://half-broken-engineer.github.io/categories/rabbitchallenge/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>earning call</title>
       <link>https://half-broken-engineer.github.io/categories/earning-call/</link>
@@ -22,6 +31,24 @@
       <pubDate>Thu, 04 May 2023 21:35:32 -0400</pubDate>
       
       <guid>https://half-broken-engineer.github.io/categories/transcript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>G_Certification</title>
+      <link>https://half-broken-engineer.github.io/categories/g_certification/</link>
+      <pubDate>Wed, 01 Mar 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://half-broken-engineer.github.io/categories/g_certification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Udacity_AI_for_Trading</title>
+      <link>https://half-broken-engineer.github.io/categories/udacity_ai_for_trading/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://half-broken-engineer.github.io/categories/udacity_ai_for_trading/</guid>
       <description></description>
     </item>
     
