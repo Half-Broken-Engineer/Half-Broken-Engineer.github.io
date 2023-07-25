@@ -550,9 +550,9 @@ DeepNetworkでは、深くなった隠れ層において各層とActivationご�
     <div class="postShorten-excerpt">
       
         OverViews
-Overviews Methods Knowledge Factor Covariance Matrix $$F = \frac{1}{N-1} f \cdot f^T　\times annualization_factor$$
+Overviews Methods Knowledge Factor Covariance Matrix $$F = \frac{1}{N-1} f \cdot f^T　\times annualization_factor $$
 N：要素数 f：ファクターリターン annualization_factor:　252/days_passed
-Actual Retrurn $$r_p = \sum_i^N \beta_i\times f_i + s_p$$
+Actual Retrurn $$r_p = \sum_i^N \beta_i\times f_i + s_p $$
 common return ファクターリターンとファクターエクスポージャの内積
 ファクターリターンの計算 日付をインデックスとして、ティッカーをカラムとするreturnsがあるとき
 from sklearn.decomposition import PCA model = PCA(n_components=num_factor) pca.fit(returns) factor_returns = pca.transform(returns) ファクターエクスポージャーの計算 from sklearn.linear_model import LinearRegression model = LinearRegression() model.fit(factor_returns,portfolio_actual_return) exposure = model.coef_ specific return 実際のリターンからコモンリターンを引いたあたいで、ファクターで説明されない部分のリターンを示す。

@@ -401,11 +401,21 @@ $W_{(out)}$：中間層から出力層への重み</p>
 <h4 id="bpttの数学的記述">BPTTの数学的記述</h4>
 <p>※（パラメータ更新と合わせて、実装例と一致するように、数式展開で確認しながら表現変えてます）
 誤差関数を3つの重みと２つのバイアスでそれぞれ微分する。
-$$\frac{\partial E^t}{\partial W_{(in)}} = \frac{\partial E^t}{\partial u^t}\left[\frac{\partial u^t}{\partial W_{(in)}}\right]^T = \sum_{0\leq k \leq t} \delta^{k}\cdot x^{k}$$
-$$\frac{\partial E^t}{\partial W_{(out)}} = \frac{\partial E^t}{\partial v^t}\frac{\partial v^t}{\partial W_{(out)}} = \delta^{out, t}\cdot z^t$$
-$$\frac{\partial E^t}{\partial W} = \frac{\partial E^t}{\partial u^t}\left[\frac{\partial u^t}{\partial W}\right]^T= \sum_{0\leq k \leq t} \delta^{k}\cdot z^{k-1}$$
-$$\frac{\partial E^t}{\partial b} = \frac{\partial E^t}{\partial u^t} \left[\frac{\partial u^t}{\partial b}\right]^T = \sum_{0\leq k \leq t} \delta^{k}$$
-$$\frac{\partial E^t}{\partial c} = \frac{\partial E^t}{\partial v^t} \frac{\partial v^t}{\partial c} = \delta^{out, t} \cdot 1 = \delta^{out, t}$$
+$$
+frac{\partial E^t}{\partial W_{(in)}} = \frac{\partial E^t}{\partial u^t}\left[\frac{\partial u^t}{\partial W_{(in)}}\right]^T = \sum_{0\leq k \leq t} \delta^{k}\cdot x^{k}
+$$
+$$
+frac{\partial E^t}{\partial W_{(out)}} = \frac{\partial E^t}{\partial v^t}\frac{\partial v^t}{\partial W_{(out)}} = \delta^{out, t}\cdot z^t
+$$
+$$
+frac{\partial E^t}{\partial W} = \frac{\partial E^t}{\partial u^t}\left[\frac{\partial u^t}{\partial W}\right]^T= \sum_{0\leq k \leq t} \delta^{k}\cdot z^{k-1}
+$$
+$$
+frac{\partial E^t}{\partial b} = \frac{\partial E^t}{\partial u^t} \left[\frac{\partial u^t}{\partial b}\right]^T = \sum_{0\leq k \leq t} \delta^{k}
+$$
+$$
+frac{\partial E^t}{\partial c} = \frac{\partial E^t}{\partial v^t} \frac{\partial v^t}{\partial c} = \delta^{out, t} \cdot 1 = \delta^{out, t}
+$$
 ※$\delta^t = \frac{\partial E}{\partial u^t}$ ,$\delta^{out, t} = \frac{\partial E}{\partial v^t}$とおいている。$\left[\right]^T$は転置ではなく、時間に遡って微分という意味。新しい処理が入ったというよりも、$u_t$にかかわるパラメータは過去時刻の中間層出力ｚを介して時間を遡る必要があることを明示しているだけ。</p>
 <p>$$
 \frac{\partial E^t}{\partial u^t} = \frac{\partial E^t}{\partial v^t} \frac{\partial v^t}{\partial u^t}=\frac{\partial E^t}{\partial v^t} \frac{\partial{W_{(out)}f(u^t) + c}}{\partial u^t} = \delta^{out, t} f&rsquo;(u^t)W^T_{(out)} = \delta^t
@@ -435,11 +445,21 @@ $$
 ※kはt-1以下の任意の定数</p>
 <h3 id="パラメータ更新">パラメータ更新</h3>
 <p>上の式で各時刻tに対して行っていたのを全域にわたって和を取ってパラメータ更新する。</p>
-<p>$$W^{new}<em>{(in)} = W^{old}</em>{(in)} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E^t}{\partial W_{(in)}} = W^{old}<em>{(in)} - \epsilon \sum</em>{0\leq t \leq \tau} \sum_{0\leq k \leq t} \delta^{k}\cdot x^{k}$$
-$$W^{new}<em>{(out)} = W^{old}</em>{(out)} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E^t}{\partial W_{(out)}} = W^{old}<em>{(out)} - \epsilon \sum</em>{0\leq t \leq \tau}\delta^{out, t}z^t$$
-$$W^{new} = W^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partial W} = W^{old} - \epsilon \sum_{0\leq t \leq \tau} \sum_{0\leq k \leq t} \delta^{k}\cdot z^{k-1}$$
-$$b^{new} = b^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partial b} = b^{old} - \epsilon \sum_{0\leq t \leq \tau} \sum_{0\leq k \leq t} \delta^{k}$$
-$$c^{new} = c^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partial c} = c^{old} - \epsilon \sum_{0\leq t \leq \tau}\delta^{out, t}$$</p>
+<p>$$
+^{new}<em>{(in)} = W^{old}</em>{(in)} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E^t}{\partial W_{(in)}} = W^{old}<em>{(in)} - \epsilon \sum</em>{0\leq t \leq \tau} \sum_{0\leq k \leq t} \delta^{k}\cdot x^{k}
+$$
+$$
+^{new}<em>{(out)} = W^{old}</em>{(out)} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E^t}{\partial W_{(out)}} = W^{old}<em>{(out)} - \epsilon \sum</em>{0\leq t \leq \tau}\delta^{out, t}z^t
+$$
+$$
+^{new} = W^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partial W} = W^{old} - \epsilon \sum_{0\leq t \leq \tau} \sum_{0\leq k \leq t} \delta^{k}\cdot z^{k-1}
+$$
+$$
+^{new} = b^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partial b} = b^{old} - \epsilon \sum_{0\leq t \leq \tau} \sum_{0\leq k \leq t} \delta^{k}
+$$
+$$
+^{new} = c^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partial c} = c^{old} - \epsilon \sum_{0\leq t \leq \tau}\delta^{out, t}
+$$</p>
 <h2 id="lstm">LSTM</h2>
 <p>BPTTの一つ前の時刻のδを求める式を見るとわかる様に、ワンステップ戻るのに活性化関数の導関数と重みを掛ける計算になっているため、時系列を遡るほど勾配消失問題が起こりやすくなる。
 →長い時系列の学習が困難。</p>
@@ -458,7 +478,8 @@ $$c^{new} = c^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partia
 <p>勾配消失問題及び、勾配爆発問題の解決方法として勾配が１であれば良い。
 $$
 \delta^{t-z-1} = \delta^{t-z}\left{W f&rsquo;(u^{t-z-1})\right}=1
-$$ $$
+$$</p>
+<p>$$
 \frac{\partial E}{\partial c^{t-1}}
 = \frac{\partial E}{\partial c^t} \frac{\partial c^t}{\partial c^{t-1}}
 = \frac{\partial E}{\partial c^t} \frac{\partial}{\partial c^{t-1}}{a^t - c^{t-1}}

@@ -525,8 +525,10 @@
 \space\<br>
 \underbrace{\theta^{(t+1)}}<em>{パラメータ} = \theta^{(t)} + \epsilon \nabla \underbrace{J(\theta)}</em>{報酬の期待値} \
 $$</p>
-<p>$$\nabla_\theta J(\theta) = \nabla_{\theta} \underbrace{\sum_{a \in A}\pi_{\theta}(a|s) Q^{\pi}(s, a)}_{報酬の期待値}$$</p>
-<p>$$\nabla_{\theta}J(\theta) = \mathbb{E}<em>{\pi</em>{\theta}}[(\nabla_{\theta}log\pi_{\theta}(a|s)Q^{\pi}(s,a))]$$</p>
+<p>$$\nabla_\theta J(\theta) = \nabla_{\theta} \underbrace{\sum_{a \in A}\pi_{\theta}(a|s) Q^{\pi}(s, a)}_{報酬の期待値}
+$$</p>
+<p>$$\nabla_{\theta}J(\theta) = \mathbb{E}<em>{\pi</em>{\theta}}[(\nabla_{\theta}log\pi_{\theta}(a|s)Q^{\pi}(s,a))]
+$$</p>
 <h3 id="参考文献レポート">参考文献レポート</h3>
 <p>黒本において、１７章　深層学習を用いた強化学習が該当
 強化学習において問題とされる経験の自己相関に関わる内容として、DQN における体験再生の話題が入っていた。
@@ -956,7 +958,8 @@ Causal 畳み込みと同等の処理にマスクテンソルと畳み込みフ�
 （講義スライドより引用）</p>
 <h4 id="skip-connection">Skip Connection</h4>
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230710095249.png" alt="/img/Pasted_image_20230710095249.png"></p>
-<p>$$ H(x) = F(x) + x$$</p>
+<p>$$ H(x) = F(x) + x
+$$</p>
 <p>※H(x) が中間層の出力、学習部分は F(x) となる</p>
 <p>深い NN の学習を可能に
 - 勾配消失の回避
@@ -1015,7 +1018,8 @@ S. Zagoruyko and N. Komodakis, “Wide Residual Networks,&ldquo;<a href="https:/
 &amp; \text { resolution: } r=\gamma^\phi \
 &amp; \text { s.t. } \alpha \cdot \beta^2 \cdot \gamma^2 \approx 2 \
 &amp; \alpha \geq 1, \beta \geq 1, \gamma \geq 1
-\end{aligned}$$</p>
+\end{aligned}
+$$</p>
 <ul>
 <li>単一の係数Φによりネットワークのスケーリング
 畳み込みの演算量FLOPSは$d,w^2,r^2$に比例
@@ -1349,8 +1353,12 @@ Selective Searchの方法、検知速度が遅い問題から、Fast,Faster R-CN
 <p>centerness:縦横の4辺までの距離を大きい方で小さい方を割った値の幾何平均</p>
 <h4 id="損失関数-1">損失関数</h4>
 <p>クラス間のサンプルの不均衡を考慮したFocal Lossと位置ずれに関する損失関数IoU Lossを計算している (GT:Ground Truth,PA:Predicted Area)</p>
-<p>　$$Focal_Loss(p_t) = -(1-p_t)^\gamma log(p_t)$$
-　$$IoU_Loss = 1 - \frac{GT\cap PA}{GT\cup PA}$$</p>
+<p>　
+$$Focal_Loss(p_t) = -(1-p_t)^\gamma log(p_t)
+$$
+　
+$$IoU_Loss = 1 - \frac{GT\cap PA}{GT\cup PA}
+$$</p>
 <h3 id="参考文献レポート-6">参考文献レポート</h3>
 <p>Focal Lossについて提案論文で確認した
 論文中では$\gamma=2$となっている,$\gamma=0$はクロスエントロピーロスになる
@@ -1365,7 +1373,8 @@ Selective Searchの方法、検知速度が遅い問題から、Fast,Faster R-CN
 <h3 id="rnnと言語モデル">RNNと言語モデル</h3>
 <p>言語モデル：単語の並びに確率を与える（単語の並びが文章として自然なのかを確率で評価する）
 同時確率を事後確率の総乗で表現する</p>
-<p>$$P(w_1,w_2,\dots,w_m) = \overset{m}{\underset{i=1}{\prod}}P(w_i|w_1,w_2,\dots,w_{i-1})$$
+<p>$$P(w_1,w_2,\dots,w_m) = \overset{m}{\underset{i=1}{\prod}}P(w_i|w_1,w_2,\dots,w_{i-1})
+$$
 <img src="https://half-broken-engineer.github.io/img/Pasted_image_20230713113903.png" alt="/img/Pasted_image_20230713113903.png">
 （講義スライドより引用）</p>
 <h3 id="seq2seq">Seq2Seq</h3>
@@ -1444,10 +1453,12 @@ Selective Searchの方法、検知速度が遅い問題から、Fast,Faster R-CN
 <li>埋め込みベクトルに対して位置情報ベクトルが大きくなりすぎては行けない
 →
 $${PE\left( pos,2i\right) =\sin \left( \dfrac{pos}{10000^{2i/d_{model}}}\right)
-}$$</li>
+}
+$$</li>
 </ul>
 <p>$${PE\left( pos,2i+1\right) =\cos \left( \dfrac{pos}{10000^{2i/d_{model}}}\right)
-}$$</p>
+}
+$$</p>
 <p>※10000はハイパーパラメータでどれだけ長い文章が来ても同じ値にならないために十分大きな値を取っている
 ※位置情報ベクトルの系列後半だと（iが大きくなると）周波数が小さな値となり、位置の変化の影響が小さくなる。</p>
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230713222737.png" alt="/img/Pasted_image_20230713222737.png">
@@ -1493,7 +1504,8 @@ $$
 \mathrm{BLEU}=\mathrm{BP} \cdot \exp \left(\sum_{n=1}^N w_n \log p_n\right)
 $$</p>
 <p>※対数荷重平均なのは、nが大きくなるほどスコアが指数的に高くなることを防ぐため</p>
-<p>$$Brevity Penalty =  exp(1-\frac{r}{c})$$
+<p>$$Brevity Penalty =  exp(1-\frac{r}{c})
+$$
 r：参照文の長さ
 c：候補文の長さ</p>
 <p>このペナルティは、候補文が単に短いためにmodified precisionが高くなり、BLEUが高くなることを防ぐために導入された
@@ -1556,7 +1568,9 @@ $$
 <li>マスク単語予測タスク:入力系列のうち１５%がMASK対象に選ばれてフラグが付与される。そのうち８０％をMASKトークン、１０％がランダムな他の単語、10%はそのままにして、フラグがついている位置の単語がなにか予測する
 <ul>
 <li>通常の言語モデルの同時確率＝条件付き確率の時系列での総乗が未来の情報のリークによって使えない
-→CBOW(continuous bag-of-words)の考え方を使う$$L = - \frac{1}{M}\underset{i\in{Mask}}{\sum} log P(w_i|W\lnot _{j\in{Mask}})$$</li>
+→CBOW(continuous bag-of-words)の考え方を使う
+$$L = - \frac{1}{M}\underset{i\in{Mask}}{\sum} log P(w_i|W\lnot _{j\in{Mask}})
+$$</li>
 </ul>
 </li>
 <li>隣接文判定タスク:２つの連なる文章ペアに対して、隣接文を50%の確率でシャッフル→入力された２つの文章が隣接文かの判定をおこなう</li>
@@ -1612,12 +1626,19 @@ NNの記憶機能としては、8,000→64000単語</p>
 <p>言語モデルの最尤推定を行う
 →同時確率＝時系列の条件付き確率の総乗　の　対数を取って、尤度を最大化するパラメータΘを求める。
 コンテキストウィンドウ（サイズをｋとする）で次の単語を予測する際に見る過去の系列の範囲を定める
-$$L(U;\Theta) = \sum log P(u_i|u_{i-k},\dots,u_{i-1};\Theta)$$</p>
+$$L(U;\Theta) = \sum log P(u_i|u_{i-k},\dots,u_{i-1};\Theta)
+$$</p>
 <h4 id="ネットワークの演算">ネットワークの演算</h4>
 <ol>
-<li>次の単語を予測するためのコンテキストウィンドウ分の単語系列UをWeで単語ベクトル空間に埋め込み、位置エンコーディングを付加する$$h_0 = UW_e + W_p$$</li>
-<li>層数分のTransformerのデコードを実行する$$h_l = transformer_block(h_{l-1}) \forall l \in [1,n]$$</li>
-<li>単語ベクトル空間から系列の次元に戻した後にSoftmax関数で確率の値に変換$$P(u) = softmax(h_nW_e^T)$$</li>
+<li>次の単語を予測するためのコンテキストウィンドウ分の単語系列UをWeで単語ベクトル空間に埋め込み、位置エンコーディングを付加する
+$$h_0 = UW_e + W_p
+$$</li>
+<li>層数分のTransformerのデコードを実行する
+$$h_l = transformer_block(h_{l-1}) \forall l \in [1,n]
+$$</li>
+<li>単語ベクトル空間から系列の次元に戻した後にSoftmax関数で確率の値に変換
+$$P(u) = softmax(h_nW_e^T)
+$$</li>
 </ol>
 <h4 id="学習タスク別の入力系列整形と出力表現の変更">学習タスク別の入力系列整形と出力表現の変更</h4>
 <p>下図に示すように、タスクによって、入力系列に予約済みのTokenを付加したり、Transformerの後の線形結合の取り方を変更する</p>
@@ -1681,13 +1702,15 @@ $$L(U;\Theta) = \sum log P(u_i|u_{i-k},\dots,u_{i-1};\Theta)$$</p>
 <h4 id="フーリエ変換">フーリエ変換</h4>
 <p>フーリエ変換</p>
 <p>関数の級数展開とオイラーの公式と三角関数の直交性から、各周波数成分の大きさを抽出する操作であることがわかる
-$$\hat{f}(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} , dt$$</p>
+$$\hat{f}(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} , dt
+$$</p>
 <ul>
 <li>周波数領域の関数の微分は-iω倍になる</li>
 <li>畳み込んだ関数のフーリエ変換はフーリエ変換した関数の積に等しい、関数の積のフーリエ変換はフーリエ変換された関数の畳み込みに等しい</li>
 </ul>
 <p>フーリエ逆変換</p>
-<p>$$f(t) = \dfrac{1}{2\pi} \int_{-\infty}^{\infty} \hat{f}(\omega) e^{i\omega t} , d\omega$$</p>
+<p>$$f(t) = \dfrac{1}{2\pi} \int_{-\infty}^{\infty} \hat{f}(\omega) e^{i\omega t} , d\omega
+$$</p>
 <h5 id="dftとfft">DFTとFFT</h5>
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230715184739.png" alt="/img/Pasted_image_20230715184739.png">
 （フーリエ変換の応用例：講義スライドより引用）</p>
@@ -1703,7 +1726,8 @@ $$\hat{f}(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} , dt$$</p>
 （スペクトログラムの例：講義スライドより引用）</p>
 <h5 id="窓関数">窓関数</h5>
 <p>元の関数f(t)と窓関数w(t)をつかって新しく周期的な関数g(t)を作成する</p>
-<p>$$g(t) =  w_i(t)\times f(t)$$</p>
+<p>$$g(t) =  w_i(t)\times f(t)
+$$</p>
 <p>このとき一番カンタンな窓関数は矩形窓で着目する領域が1でそれ以外が0のステップ関数だが下に示す様に
 窓1つを取ったときに周期の整数倍で終わっていないと、不連続な点が生まれて、スペクトルに不要な周波数が現れる
 （参考：<a href="https://daigakudenki.com/windowing/">窓関数は周波数特性を調べて使い分ける！［サンプルコードあり］ - 大学の知識で学ぶ電気電子工学</a>&ldquo;<a href="https://daigakudenki.com/windowing/%22">https://daigakudenki.com/windowing/"</a>　）
@@ -1799,44 +1823,39 @@ $$</p>
 <h4 id="効率的な計算のためのforward-backward-algorythm">効率的な計算のためのforward-backward algorythm</h4>
 <p>問題意識：$P(l^\star|x)$を算出する際に愚直に行うのは効率が悪い</p>
 <ol>
-<li>
-<p>排反な事象への分類：特定のフレームにおいて特定のラベルを通って正解テキスト$l^\star$に縮約したときになる確率を考える
-($l^\prime$は$l^\star$の各ラベルの間にブランクを挿入したラベル系列)
-$$\left.P\left(\boldsymbol{l}^* \mid \boldsymbol{x}\right)=\sum_{s=1}^{\left|\boldsymbol{l}^{\prime}\right|} \underbrace{\sum_{\substack{\boldsymbol{\pi} \in \mathcal{B}^{-1}\left(\boldsymbol{l}^*\right), \pi_t=l_s^{\prime}}} P(\boldsymbol{\pi} \mid \boldsymbol{x})}_{\text{※１：特定フレームに着目した排反事象の確率の和}} \quad \right.\text{ (for any t )}$$</p>
-</li>
-<li>
-<p>前向き確率、後ろ向き確率を使って※１の値を表現する
-(以下の数式中の[]はガウス記号で、その値を超えない最大の整数を示す。ベクトルの下付き文字a:bは成分a~bまでの要素を持つベクトルを示す)</p>
-<ul>
-<li>前向き確率 $\alpha_t(s)$
-始点からフレーム $t$ 、拡張ラベル $s$ の頂点に到達するまでの全パスの確率の総和
+<li>排反な事象への分類：特定のフレームにおいて特定のラベルを通って正解テキスト$l^\star$に縮約したときになる確率を考える
+($l^\prime$は$l^\star$の各ラベルの間にブランクを挿入したラベル系列)</li>
+</ol>
+<p>$$\left.P\left(\boldsymbol{l}^* \mid \boldsymbol{x}\right)=\sum_{s=1}^{\left|\boldsymbol{l}^{\prime}\right|} \underbrace{\sum_{\substack{\boldsymbol{\pi} \in \mathcal{B}^{-1}\left(\boldsymbol{l}^*\right), \pi_t=l_s^{\prime}}} P(\boldsymbol{\pi} \mid \boldsymbol{x})}_{\text{※１：特定フレームに着目した排反事象の確率の和}} \quad \right.\text{ (for any t )}
 $$
-\alpha_t(s) \equiv \sum_{\mathcal{B}\left(\pi_{1: t}\right)=l_{1:[s / 2]}^*} \prod_{t^{\prime}=1}^t y_{\pi_{t^{\prime}}}^{t^{\prime}}
-$$</li>
-<li>後ろ向き確率 $\beta_t(s)$
-フレーム $t$ 、拡張ラベル $s$ の頂点から終点まで到達する全パスの確率の総和
-$$
-\beta_t(s) \equiv \sum_{\mathcal{B}\left(\pi_{t: T}\right)=l_{[s / 2]: l^* \mid}} \prod_{t^{\prime}=t}^T y_{t_{t^{\prime}}}^{t^{\prime}}
-$$
-$$
+2. 前向き確率、後ろ向き確率を使って※１の値を表現する
+(以下の数式中の[]はガウス記号で、その値を超えない最大の整数を示す。ベクトルの下付き文字a:bは成分a~bまでの要素を持つベクトルを示す)
+- 前向き確率 $\alpha_t(s)$
+始点からフレーム $t$ 、拡張ラベル $s$ の頂点に到達するまでの全パスの確率の総和</p>
+<p>$$
+\alpha_t(s) \equiv \sum_{\mathcal{B}\left(\pi_{1: t}\right)=l_{1:[s / 2]}^*} \prod_{t^{\prime}=1}^t y_{\pi_{t^{\prime}}}^{t^{\prime}}</p>
+<p>$$
+- 後ろ向き確率 $\beta_t(s)$
+フレーム $t$ 、拡張ラベル $s$ の頂点から終点まで到達する全パスの確率の総和</p>
+<p>$$
+\beta_t(s) \equiv \sum_{\mathcal{B}\left(\pi_{t: T}\right)=l_{[s / 2]: l^* \mid}} \prod_{t^{\prime}=t}^T y_{t_{t^{\prime}}}^{t^{\prime}}</p>
+<p>$$</p>
+<p>$$
 \begin{aligned}
 \alpha_t(s) \beta_t(s) &amp;=\left(\sum_{\mathcal{B}\left(\pi_{1: t}\right)=l_{1:[s / 2]}^<em>} \prod_{t^{\prime}=1}^t y_{\pi_{t^{\prime}}}^{t^{\prime}}\right)\left(\sum_{\mathcal{B}\left(\pi_{t: T}\right)=l_{[s / 2]: ! l \mid}^</em>} \prod_{t^{\prime}=t}^T y_{\pi_{t^{\prime}}}^{t^{\prime}}\right) \
 &amp;=\sum_{\mathcal{B}\left(\rho_{1: t}\right)=l_{1:[s / 2]}^<em>} \sum_{\mathcal{B}\left(\boldsymbol{\sigma}<em>{t: T}\right)=l</em>{[s / 2]:|l|}^</em>} \prod_{\tau=1}^t y_{\rho_\tau}^\tau \prod_{\nu=t}^T y_{\sigma_\nu}^\nu \
 &amp; =y_{l_s^{\prime}}^t \sum_{\pi \in \mathcal{B}^{-1}\left(l^<em>\right), \Pi_t=l_s^\prime} \prod_{\pi_{t^{\prime}}}^{t^{\prime}}y_{\pi_{t^\prime}}^{t^\prime} \
 &amp; =y_{l_s^{\prime}}^t \sum_{\substack{\pi \in \mathcal{B}^{-1}\left(l^</em>\right), \pi_t=l_s^{\prime}}} P(\boldsymbol{\pi} \mid \boldsymbol{x}) \
 &amp;
-\end{aligned}
-$$
-以上より、前向き確率と後ろ向き確率を用いて、フレームｔにおいてラベルｓの頂点を通るパスの確率の総和は以下の様に示せる
-$$
-\sum_{\substack{\pi \in \mathcal{B}^{-1}\left(l^*\right), \pi_t=l_s^{\prime}}} P(\boldsymbol{\pi} \mid \boldsymbol{x}) = \frac{\alpha_t(s) \beta_t(s)}{y_{l_s^\star}^{t}}
-$$</li>
-</ul>
-</li>
-<li>
-<p>前向き確率、後ろ向き確率を再帰計算によって求める
-初項についてはブランクか、正解ラベルの１文字目の２通りしか無いので以下の様になる。
-$$
+\end{aligned}</p>
+<p>$$
+以上より、前向き確率と後ろ向き確率を用いて、フレームｔにおいてラベルｓの頂点を通るパスの確率の総和は以下の様に示せる</p>
+<p>$$
+\sum_{\substack{\pi \in \mathcal{B}^{-1}\left(l^*\right), \pi_t=l_s^{\prime}}} P(\boldsymbol{\pi} \mid \boldsymbol{x}) = \frac{\alpha_t(s) \beta_t(s)}{y_{l_s^\star}^{t}}</p>
+<p>$$
+3. 前向き確率、後ろ向き確率を再帰計算によって求める
+初項についてはブランクか、正解ラベルの１文字目の２通りしか無いので以下の様になる。</p>
+<p>$$
 \begin{equation}\
 a_0(s) =
 \begin{cases}
@@ -1848,12 +1867,10 @@ y_{l_{1}^\star}^0 &amp; \text{s=2:正解ラベルの１文字目} \
 <p>$$
 それ以降の遷移について考えると下図の様に３通りで
 <img src="https://half-broken-engineer.github.io/img/Pasted_image_20230716131712.png" alt="/img/Pasted_image_20230716131712.png">
-（状態遷移：講義スライドより引用）
-$$
-\alpha_{t+1}(s)= \begin{cases}{\left[\alpha_t(s)+\alpha_t(s-1)\right] y_{l_s^<em>}^{t+1}} &amp; \text { (if } l_s^</em>=\text { blank or } l_{s-2}^<em>=l_s^</em> \text { ) } \ {\left[\alpha_t(s)+\alpha_t(s-1)+\alpha_t(s-2)\right] y_{l_s^*}^{t+1}} &amp; \text { (otherwise) }\end{cases}
-$$</p>
-</li>
-</ol>
+（状態遷移：講義スライドより引用）</p>
+<p>$$
+\alpha_{t+1}(s)= \begin{cases}{\left[\alpha_t(s)+\alpha_t(s-1)\right] y_{l_s^<em>}^{t+1}} &amp; \text { (if } l_s^</em>=\text { blank or } l_{s-2}^<em>=l_s^</em> \text { ) } \ {\left[\alpha_t(s)+\alpha_t(s-1)+\alpha_t(s-2)\right] y_{l_s^*}^{t+1}} &amp; \text { (otherwise) }\end{cases}</p>
+<p>$$</p>
 <p>後ろ向き確率についても同様</p>
 <h4 id="損失関数の誤差逆伝播">損失関数の誤差逆伝播</h4>
 <p>出力層の各ノード$y_k^t$に対する損失関数の勾配の計算は、前向き確率及び、後ろ向き確率を用いて以下の様になる。</p>
@@ -2277,10 +2294,12 @@ $$
 フーリエ変換した後、特徴的な周波数だけ残すようなフィルタ関数をかけて、再度フーリエ逆変換を行う</p>
 <h3 id="spatial-gcn">Spatial GCN</h3>
 <p>ノードｊの近くにあるノードを以下のように、ノード間の重みが一定以上であるノードとして定義
-$$N_\delta(j) = {i \in \Omega: W_{ij}&gt;\delta} $$
+$$N_\delta(j) = {i \in \Omega: W_{ij}&gt;\delta}
+$$
 これの重心を次の層のノードして扱い、層に分けてクラスタリングを繰り返す</p>
 <p>隣接関係（ｋ層における、分割したクラスタ内の要素同士の関係、iは分割したクラスタのi番目の要素）
-$$N_k = {N_{k,i};i=1,\dots,d_{k-1}}$$
+$$N_k = {N_{k,i};i=1,\dots,d_{k-1}}
+$$
 <img src="https://half-broken-engineer.github.io/img/Pasted_image_20230717193344.png" alt="/img/Pasted_image_20230717193344.png">
 （グラフデータのクラスタリング：講義資料より引用）</p>
 <p>k層目の出力（ｋ＋１層目の入力）は以下の様に書ける
@@ -2305,14 +2324,17 @@ $$</p>
 →グラフラプラシアンを固有値分解</p>
 <p>ここで離散フーリエ変換について、考えると
 元の関数に大きさ１の独立した成分の和をとる操作であるため
-$$F(t) = \sum f(x) exp(-i\frac{2\pi x}{N})$$
+$$F(t) = \sum f(x) exp(-i\frac{2\pi x}{N})
+$$
 固有ベクトルと入力ベクトルの内積を取って和をとることに等しい
 このことから固有ベクトルからなる行列を$\mathbb{Q}$とすると
 GFT:Graph Fourier Transformは
-$$\mathbb{F} = F_G(\vec{f}) = \mathbb{Q}^T\vec{f}$$</p>
+$$\mathbb{F} = F_G(\vec{f}) = \mathbb{Q}^T\vec{f}
+$$</p>
 <p>グラフラプラシアンが実対称行列であることから、$\mathbb{Q}$は直交行列であり$\mathbb{Q}^{-1} = \mathbb{Q}^T$なので
 IGFT: Inverse Graph Fourier Transformは
-$$F_G^{-1}(\mathbb{F}) = \mathbb{Q}\mathbb{F}$$</p>
+$$F_G^{-1}(\mathbb{F}) = \mathbb{Q}\mathbb{F}
+$$</p>
 <h5 id="グラフラプラシアン">グラフラプラシアン</h5>
 <p>$$
 L = D -A
