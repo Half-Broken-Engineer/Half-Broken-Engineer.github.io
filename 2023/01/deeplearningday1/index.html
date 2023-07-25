@@ -464,49 +464,15 @@
 <h2 id="パラメータ更新手法">パラメータ更新手法</h2>
 <h3 id="勾配降下法">勾配降下法</h3>
 <p>ηを学習率として、以下のようにパラメータ更新を実施する。</p>
-<p>$$
-w^{(k+1)} = w^{(k)} - \eta \frac{\partial E(w)}{\partial w}
-$$</p>
-<h4 id="特徴">特徴</h4>
-<ul>
-<li>全サンプルの誤差を用いるので、効率が悪い</li>
-<li>学習率の大きさによって学習の収束性や効率が大きく異なる
-<ul>
-<li>学習率が大きすぎる：収束しない</li>
-<li>小さすぎる：収束までに時間がかかる。局所解に陥る可能性がある</li>
-</ul>
-</li>
-</ul>
+<!-- raw HTML omitted -->
 <p>参考：学習率についてはAdamなどの収束性向上のためのアルゴリズムが存在する（Day2）</p>
 <h3 id="確率的勾配降下法">確率的勾配降下法</h3>
-<p>ランダムに抽出したサンプルの誤差でパラメータ更新を行う。
-$$
-w^{(k+1)} = w^{(k)} - \eta \frac{\partial E_i(w)}{\partial w}
-$$</p>
-<h4 id="特徴-1">特徴</h4>
-<ul>
-<li>データが冗長な場合の計算コストの削減</li>
-<li>望まない局所最適解に陥る可能性の低減</li>
-<li>オンライン学習ができる</li>
-</ul>
+<p>ランダムに抽出したサンプルの誤差でパラメータ更新を行う。</p>
+<!-- raw HTML omitted -->
 <h3 id="ミニバッチ勾配降下法">ミニバッチ勾配降下法</h3>
 <p>ランダムに分割したデータ集合（ミニバッチ）Dtに属するサンプルの平均誤差でパラメータ更新を行う。
 $$</p>
-<p>\begin{split}
-&amp;w^{(t + 1)} = w^{(t)} - \epsilon \nabla E_t \<br>
-&amp;E_t = \frac{1}{N_t} \sum_{n \in D_t} E_n \<br>
-&amp;N_t = | D_t | \  &amp; (N_t: バッチ数)<br>
-\end{split}
-$$</p>
-<h4 id="特徴-2">特徴</h4>
-<ul>
-<li>確率的勾配降下法のメリットを損なわず、計算機の計算資源を有効活用できる
-<ul>
-<li>CPUのスレッド並列化</li>
-<li>GPUのSIMD(Single Instruction Multi Data)並列化</li>
-</ul>
-</li>
-</ul>
+<!-- raw HTML omitted -->
 <h2 id="勾配の計算法">勾配の計算法</h2>
 <h3 id="数値微分">数値微分</h3>
 <p>数学の微分の定義に従って、微小に値をずらしたときの値を用いて計算する。
@@ -520,21 +486,7 @@ $\frac{\partial E}{\partial w_m} \approx \frac{E(w_m + h) - E(w_m - h)}{2h}$</p>
 </blockquote>
 <p>メリット：誤差（計算結果）から微分を逆算していくことで、不要な再帰的計算を避けて微分を算出できる</p>
 <p>MSEの例<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230129151434.png" alt="/img/Pasted_image_20230129151434.png"></p>
-<p>$$
-\Rightarrow
-\frac{\partial E}{\partial w_{ji}^{(2)}}
-= \frac{\partial E}{\partial y} \frac{\partial y}{\partial u} \frac{\partial u}{\partial w_{ji}^{(2)}} = (y - d) \cdot 1 \cdot
-\left[
-\begin{array}{c}
-0 \<br>
-\vdots \<br>
-z_i \<br>
-\vdots \<br>
-0
-\end{array}
-\right]
-= (y_j - d_j) z_i
-$$</p>
+<!-- raw HTML omitted -->
 <h2 id="モデルの設計">モデルの設計</h2>
 <h3 id="入力層">入力層</h3>
 <h4 id="取りうるデータ">取りうるデータ</h4>

@@ -32,7 +32,7 @@
     }
     
   },
-  "description": "要点(最低100字) 機械学習モデリングプロセス 問題設定 データ選定 前処理 機械学習モデル剪定 モデルの学習 モデルの評価 ルールベースと機械学習の比較 タスクTと性能指標Pがあるときに、性能が経験Eによって改善されるとき、 タスクTおよび性能指標Pに関して経験E から学習すると言われる\n人がプログラムするのは学習の仕方　（認識の仕方では無い） ルールベースは認識の仕方自体をプログラムする。\n主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。\n線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式\n直線、平面→線形回帰 曲線、局面→非線形\n線形回帰に関連する値 教師データに含まれるもの 入力$\\vec{x} = (x_1,x_2,\\dots,x_m)^\\top \\in R^m$ 出力$y\\in R$ 学習によって最適化していくもの パラメータ$\\vec{w} = (w_1,w_2,\\dots,w_m)^\\top \\in R^m $$\n切片$w_0$\n学習の際に使う値 予測値$\\hat{y} = w_0 + \\sum_{i=1}^n \\vec{w}^\\top \\vec{x}$　（※データセットで考えるときは$\\vec{\\hat{y}} = X・\\vec{w}$） 誤差$\\epsilon = y - \\hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \\frac{1}{n_{train}}\\sum(y-\\hat{y})^2$ を用いて最適化する。 $\\hat{\\vec{w}} = arg \\min_{w \\in R^m} MSE$ MSEが最小値を取るとき $$ \\frac{\\partial MSE}{\\partial \\vec{w}} = 0 $$",
+  "description": "要点(最低100字) 機械学習モデリングプロセス 問題設定 データ選定 前処理 機械学習モデル剪定 モデルの学習 モデルの評価 ルールベースと機械学習の比較 タスクTと性能指標Pがあるときに、性能が経験Eによって改善されるとき、 タスクTおよび性能指標Pに関して経験E から学習すると言われる\n人がプログラムするのは学習の仕方　（認識の仕方では無い） ルールベースは認識の仕方自体をプログラムする。\n主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。\n線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式\n直線、平面→線形回帰 曲線、局面→非線形\n線形回帰に関連する値 教師データに含まれるもの 入力$\\vec{x} = (x_1,x_2,\\dots,x_m)^\\top \\in R^m$ 出力$y\\in R$ 学習によって最適化していくもの パラメータ$\\vec{w} = (w_1,w_2,\\dots,w_m)^\\top \\in R^m $$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \\frac{1}{n_{train}}\\sum(y-\\hat{y})^2$ を用いて最適化する。 $\\hat{\\vec{w}} = arg \\min_{w \\in R^m} MSE$ MSEが最小値を取るとき\n以上より、 $\\hat{\\vec{w}} = (X^T X)^{-1}X^T Y( = X^{-1}Y)$",
   "keywords": []
 }
 
@@ -48,9 +48,8 @@
 主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。
 線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式
 直線、平面→線形回帰 曲線、局面→非線形
-線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m $$
-切片$w_0$
-学習の際に使う値 予測値$\hat{y} = w_0 &#43; \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき $$ \frac{\partial MSE}{\partial \vec{w}} = 0 $$">
+線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m $$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき
+以上より、 $\hat{\vec{w}} = (X^T X)^{-1}X^T Y( = X^{-1}Y)$">
 
 
 <meta property="og:description" content="要点(最低100字) 機械学習モデリングプロセス 問題設定 データ選定 前処理 機械学習モデル剪定 モデルの学習 モデルの評価 ルールベースと機械学習の比較 タスクTと性能指標Pがあるときに、性能が経験Eによって改善されるとき、 タスクTおよび性能指標Pに関して経験E から学習すると言われる
@@ -58,9 +57,8 @@
 主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。
 線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式
 直線、平面→線形回帰 曲線、局面→非線形
-線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m $$
-切片$w_0$
-学習の際に使う値 予測値$\hat{y} = w_0 &#43; \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき $$ \frac{\partial MSE}{\partial \vec{w}} = 0 $$">
+線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m $$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき
+以上より、 $\hat{\vec{w}} = (X^T X)^{-1}X^T Y( = X^{-1}Y)$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MachineLearning">
 <meta name="twitter:title" content="MachineLearning">
@@ -72,17 +70,15 @@
 主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。
 線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式
 直線、平面→線形回帰 曲線、局面→非線形
-線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m $$
-切片$w_0$
-学習の際に使う値 予測値$\hat{y} = w_0 &#43; \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき $$ \frac{\partial MSE}{\partial \vec{w}} = 0 $$">
+線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m $$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき
+以上より、 $\hat{\vec{w}} = (X^T X)^{-1}X^T Y( = X^{-1}Y)$">
 <meta name="twitter:description" content="要点(最低100字) 機械学習モデリングプロセス 問題設定 データ選定 前処理 機械学習モデル剪定 モデルの学習 モデルの評価 ルールベースと機械学習の比較 タスクTと性能指標Pがあるときに、性能が経験Eによって改善されるとき、 タスクTおよび性能指標Pに関して経験E から学習すると言われる
 人がプログラムするのは学習の仕方　（認識の仕方では無い） ルールベースは認識の仕方自体をプログラムする。
 主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。
 線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式
 直線、平面→線形回帰 曲線、局面→非線形
-線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m $$
-切片$w_0$
-学習の際に使う値 予測値$\hat{y} = w_0 &#43; \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき $$ \frac{\partial MSE}{\partial \vec{w}} = 0 $$">
+線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m $$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき
+以上より、 $\hat{\vec{w}} = (X^T X)^{-1}X^T Y( = X^{-1}Y)$">
 <meta property="og:locale" content="ja">
 
   
@@ -386,56 +382,22 @@
 </li>
 <li>学習によって最適化していくもの
 <ul>
-<li>
-<p>パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m
-$$</p>
-</li>
-<li>
-<p>切片$w_0$</p>
-</li>
-</ul>
-</li>
-<li>学習の際に使う値
-<ul>
-<li>予測値$\hat{y} = w_0 + \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$）</li>
-<li>誤差$\epsilon = y - \hat{y}$</li>
+<li>パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m
+$$</li>
 </ul>
 </li>
 </ul>
+<!-- raw HTML omitted -->
 <h4 id="線形回帰の最適化手法最尤法">線形回帰の最適化手法(最尤法)</h4>
 <p>最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。
 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$
-MSEが最小値を取るとき
-$$
-\frac{\partial MSE}{\partial \vec{w}} = 0
-$$</p>
-<p>$$
-\frac{\partial MSE}{\partial \vec{w}} = \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(X・\vec{w}-Y)^2
-$$</p>
-<p>$$
-= \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(X・\vec{w}-Y)^{\top}(X・\vec{w}-Y)
-$$</p>
-<p>$$
-= \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(\vec{w^{\top}}・X^\top-Y^\top)(X・\vec{w}-Y)
-$$</p>
-<p>$$
-= \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(\vec{w^{\top}}X^\top X\vec{w}　- \vec{w^{\top}}・X^\top Y - Y^\top X・\vec{w} + Y^\top Y)
-$$</p>
-<p>第２項と３項は$(AB)^T = B^T A^T$より同じ、
-$\frac{\partial w^T X}{\partial w} = X$,$\frac{\partial w^T A x}{\partial w} = (A+A^T)w$, $(X^T X)^T = X^T X$から第１項は$2X^\top X\vec{w}$
-$$
-=\frac{1}{n_{train}}(2X^\top X\vec{w} - 2X^\top Y) = 0
-$$</p>
+MSEが最小値を取るとき</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>以上より、
 $\hat{\vec{w}} = (X^T X)^{-1}X^T Y( = X^{-1}Y)$</p>
-<p>学習後の予測値は
-$$
-\hat{y} = w_0 + \sum_{i=1}^n \vec{\hat{w}}^\top \vec{x}
-$$</p>
-<p>$$
-= X_{test} (X_{train}^T X_{train})^{-1}X_{train}^T Y_{train}
-$$</p>
-<p>※逆行列は常に存在するわけでは無い、一般化逆行列をもちいる。</p>
+<p>学習後の予測値は</p>
+<!-- raw HTML omitted -->
 <blockquote>
 <p>[!note]
 外れ値に弱いという特徴があるので、[[Huber損失]]、[[Tukey損失]]を使うこともある</p>
@@ -488,10 +450,8 @@ $$</p>
 <h4 id="非線形回帰に関する最適化">非線形回帰に関する最適化</h4>
 <p>非線形回帰となっているが、パラメータについては線形なので、結局計算式はほぼ変わらない。
 差分は基底関数によって説明変数を一度別の空間に飛ばしているだけ。</p>
-<p>学習後の予測値は線形回帰のときの説明変数の行列Xを$\Phi(X)$に入れ替えれば良いので、
-$$
-\hat{y} = \Phi(X_{test}) (\Phi(X_{train})^T \Phi(X_{train}))^{-1}\Phi(X_{train})^T Y_{train}
-$$</p>
+<p>学習後の予測値は線形回帰のときの説明変数の行列Xを$\Phi(X)$に入れ替えれば良いので、</p>
+<!-- raw HTML omitted -->
 <h2 id="分類問題">分類問題</h2>
 <ul>
 <li>識別的アプローチ：入力Xが与えられたときのクラスｋに当てはまる確率自体をモデル化する</li>
@@ -516,31 +476,17 @@ L(w) = $\Pi_{i=0}^n (\sigma(\vec{w}^T\cdot\vec{x_i})^{y_i}\times(1-\sigma(\vec{w
 <p>$E(w) = -log(L(w))$と置くと。　※logは単調増加関数なので、尤度関数最大のとき損失関数最小</p>
 <p>$E(w) = -\sum_{i=1}^n(y_i\cdot log(p_i) + (1-y_i)log(1-p_i))$
 $E(w) = \sum_{i=1}^n E_i(w)$,$z_i = w^Tx_i$とすると</p>
-<p>$$
-\frac{\partial E(w)}{\partial w} = \sum_{i=1}^n\frac{\partial E_i(w)}{\partial p_i} \times \frac{\partial p_i}{\partial z_i} \times \frac{\partial z_i}{\partial w}
-$$
-　
-$$
-\frac{\partial E(w)}{\partial w} = \sum_{i=1}^n(-1)(\frac{y_i}{p_i}-\frac{1-y_i}{1-p_i})\times(p_i \cdot (1-p_i))\times(x_i)
-$$</p>
-<p>$$
-\frac{\partial E(w)}{\partial w} = \sum_{i=1}^n(-1)(y_i-p_i)\times(x_i)
-$$</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <h5 id="勾配降下法">勾配降下法</h5>
 <p>学習率$\eta$と損失関数の微分値を用いて以下のようにパラメータを更新する。</p>
-<p>$$
-w^{(k+1)} = w^{(k)} - \eta \frac{\partial E(w)}{\partial w} = w^{(k)} + \eta \sum_{i=1}^n(y_i-p_i)x_i
-$$</p>
+<!-- raw HTML omitted -->
 <p>※　すべてのデータを用いるので、メモリや計算時間が大きい問題がある。
 →　[[確率的勾配降下法]]</p>
 <h5 id="確率的勾配降下法">確率的勾配降下法</h5>
 <p>ランダムにデータを一個選んで、それによってパラメータを更新する。
-勾配降下法で１回更新する間に、データ数回分パラメータを更新できるので効率が良い。
-$$
-w^{(k+1)} = w^{(k)} - \eta \frac{\partial E_i(w)}{\partial w} = w^{(k)} + \eta (y_i-p_i)x_i
-$$</p>
-<h3 id="svmサポートベクターマシン">SVMサポートベクターマシン</h3>
-<p>決定的な出力を出す分類器。</p>
+勾配降下法で１回更新する間に、データ数回分パラメータを更新できるので効率が良い。</p>
+<!-- raw HTML omitted -->
 <p>線形SVM：$y(x) = w^Tx + b$
 非線形SVM：$y(x) = w^T\Phi(x) + b$</p>
 <p>マージンを最大化する境界面を与えるパラメータw,bを学習する。

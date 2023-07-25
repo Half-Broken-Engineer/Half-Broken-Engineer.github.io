@@ -142,10 +142,8 @@ DeepNetworkでは、深くなった隠れ層において各層とActivationご�
       
       <guid>https://half-broken-engineer.github.io/2023/02/project4_alpha_research_and_factor_modeling/</guid>
       <description>OverViews
-Overviews Methods Knowledge Factor Covariance Matrix $$ F = \frac{1}{N-1} f \cdot f^T　\times annualization_factor $$
-N：要素数 f：ファクターリターン annualization_factor:　252/days_passed
-Actual Retrurn $$ r_p = \sum_i^N \beta_i\times f_i + s_p $$
-common return ファクターリターンとファクターエクスポージャの内積
+Overviews Methods Knowledge Factor Covariance Matrix N：要素数 f：ファクターリターン annualization_factor:　252/days_passed
+Actual Retrurn common return ファクターリターンとファクターエクスポージャの内積
 ファクターリターンの計算 日付をインデックスとして、ティッカーをカラムとするreturnsがあるとき
 from sklearn.decomposition import PCA model = PCA(n_components=num_factor) pca.fit(returns) factor_returns = pca.transform(returns) ファクターエクスポージャーの計算 from sklearn.linear_model import LinearRegression model = LinearRegression() model.fit(factor_returns,portfolio_actual_return) exposure = model.coef_ specific return 実際のリターンからコモンリターンを引いたあたいで、ファクターで説明されない部分のリターンを示す。
 この値は小さくしたい</description>
@@ -304,9 +302,8 @@ Tensorflow:Google keras:tensorflowのラッパーのライブラリ Caffe:BVLC�
 主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。
 線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式
 直線、平面→線形回帰 曲線、局面→非線形
-線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m $$
-切片$w_0$
-学習の際に使う値 予測値$\hat{y} = w_0 + \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき $$ \frac{\partial MSE}{\partial \vec{w}} = 0 $$</description>
+線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m $$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき
+以上より、 $\hat{\vec{w}} = (X^T X)^{-1}X^T Y( = X^{-1}Y)$</description>
     </item>
     
     <item>
@@ -316,19 +313,13 @@ Tensorflow:Google keras:tensorflowのラッパーのライブラリ Caffe:BVLC�
       
       <guid>https://half-broken-engineer.github.io/2023/01/appliedmathematics/</guid>
       <description>要点(最低100字) 目次 線形代数 確率・統計 情報理論 線形代数 固有値・固有ベクトルの求め方 固有値分解とは 特異値・特位置ベクトルの概要 特異値分解について 固有値・固有ベクトル 固有ベクトルは対応する行列をかけた際に、ベクトルの方向が変わらないベクトル。 固有値は固有ベクトルに行列をかけたときに何倍になるかを示す。
-$$ A\vec{a}=\lambda\vec{a} \tag{1} $$
-のとき、$\vec{a}$が固有ベクトル、λが固有値
 求め方は[[固有方程式]]で固有値を求めたあと、固有値を（１）式に代入して連立方程式を解く。
 固有ベクトルの大きさについては１にしておくのが一般的。（※後の特異値を求めるときにそちらのほうが都合が良い）
-固有値分解 固有値ベクトルを列ベクトルに持つ行列Vと、対応する固有値を対角成分に持つ対角行列Λを用いて行列Aは以下の式に分解できる。 $$ A = V\Lambda V^{-1} \tag{2} $$
+固有値分解 固有値ベクトルを列ベクトルに持つ行列Vと、対応する固有値を対角成分に持つ対角行列Λを用いて行列Aは以下の式に分解できる。
 プログラミング的には、対角行列の演算負荷が低いことから、計算速度向上、リソース節約につながる。
 import numpy as np values,vectors = np.linalg.eig(matrix) 特異値・特異ベクトル 固有値については正方行列のみしか扱えなかったが、これをm×nの行列に拡張したもの。
 Uの列ベクトルを左特異ベクトル、、Vの列ベクトルを右特異ベクトルという。 Σの対角成分は特異値という。 ※このとき、ベクトルのノルムは１、σ&amp;gt;0,特異値の数はmin(m,n)となる。今回はｍ＜ｎとした。
-$$ A = U\Sigma V^{\top} \tag{3} $$
-$$ A\vec{v}=\sigma\vec{u} \tag{4} $$
-$$ A^\top\vec{u}=\sigma\vec{v} \tag{5} $$
-$\sum =$ $$
-\begin{pmatrix} \sigma_{1} &amp;amp; 0 &amp;amp; \dots &amp;amp; &amp;amp; &amp;amp;0 \ 0&amp;amp;\sigma_{2}&amp;amp; 0 &amp;amp; \dots &amp;amp; &amp;amp;0\ 0 &amp;amp; 0 &amp;amp;\ddots&amp;amp;0 &amp;amp;\dots&amp;amp;\vdots\ \vdots&amp;amp;\dots&amp;amp;0&amp;amp;\sigma_m&amp;amp;0&amp;amp;\dots \end{pmatrix} $$</description>
+特異値分解 $AA^\top$または$A^\top A$を求める　（計算量の問題で、$A^\top A$のほうが次数が少ないときはそちらを使う。式(4)に$A^\top$を掛けるか、式(5)にAを掛けるかの違い） $AA^\top$または$A^\top A$の固有方程式を解く 固有値の正の平方根を特異値とする 特異値を$(A^{\top} A - \sigma^2 E) \vec{v} = \vec{0}$または$(AA^{\top} - \sigma^2 E ) \vec{u} = \vec{0}$に代入して、どちらかの特異ベクトルを求める※重解のときはグラムシュミットの直交化方を用いて、同じ特異値に対する特異ベクトルを直交化すること。 式(4)または(5)を用いてもう一方の特異ベクトルを求める import numpy as np u,sigma,vt = np.linalg.svd(matrix) 確率・統計 条件付き確率について理解を深める ベイズ則の概要を知る 期待値・分散の求め方 様々な確率分布の概要を知る 客観確率と主観確率 客観確率：頻度確率とも言う。データに基づく事実 主観確率：ベイズ確率。条件の元で推測される信念の度合い。　診断など 条件付き確率 事象Y＝ｙが与えられた上での、事象X=xとなる確率 $P(X=x|Y=y) = \frac{P(X=x,Y=y)}{P(Y=y)}$</description>
     </item>
     
     <item>
@@ -637,8 +628,6 @@ AIプロジェクトの進め方 検討すべきこと そもそもAIを活用�
 モデルの説明 各分岐でのジニ不純度の変化によって特徴量の重要度を説明する。
 各種値の説明 用語 internal node:分岐のこと terminal node:決定木の底の分類の個数 depth:分岐条件の深さ [[ハイパーパラメータ]] maximum depth minimum number of samples to split minimum number of samples per leaf エントロピー 同時確率の二進対数を取って符号を逆転したものの平均値を取る。このときの単位はbit。
 $$
-entropy=-p_1​log_2​(p_1​)-p_2​log_2​(p_2​)-&amp;hellip;-p_n​log_2​(p_n​)=-\sum_{i-1}^n​p_i​log_2​(p_i​) $$
-情報量 エントロピーの逆符号。※基本的に対数の底は２ 情報量のゲインは親のエントロピーからこのエントロピーを引いたもの $plog_2(p)$
 ジニ不純度 $G=\sum^{K}_{k=1}p(k)(1-p(k))$
 cost complexity pruning $R_\alpha(T)=R(T)+\alpha|T|$
 Where |T| is the number of leaves , R(T) is the sum of gini impurity of all leaves belonging to the tree.</description>

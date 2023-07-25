@@ -414,8 +414,6 @@
 モデルの説明 各分岐でのジニ不純度の変化によって特徴量の重要度を説明する。
 各種値の説明 用語 internal node:分岐のこと terminal node:決定木の底の分類の個数 depth:分岐条件の深さ [[ハイパーパラメータ]] maximum depth minimum number of samples to split minimum number of samples per leaf エントロピー 同時確率の二進対数を取って符号を逆転したものの平均値を取る。このときの単位はbit。
 $$
-entropy=-p_1​log_2​(p_1​)-p_2​log_2​(p_2​)-&hellip;-p_n​log_2​(p_n​)=-\sum_{i-1}^n​p_i​log_2​(p_i​) $$
-情報量 エントロピーの逆符号。※基本的に対数の底は２ 情報量のゲインは親のエントロピーからこのエントロピーを引いたもの $plog_2(p)$
 ジニ不純度 $G=\sum^{K}_{k=1}p(k)(1-p(k))$
 cost complexity pruning $R_\alpha(T)=R(T)+\alpha|T|$
 Where |T| is the number of leaves , R(T) is the sum of gini impurity of all leaves belonging to the tree.

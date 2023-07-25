@@ -526,39 +526,8 @@ RMSPropはAdaGradが学習段階初期の特徴量分布に大きく依存する
 <h3 id="正則化">正則化</h3>
 <p>過学習が起こらない範囲で重みのばらつきを出す必要がある。
 重みに制約を与えることを荷重減衰という。WeightDecay</p>
-<p>pノルムに係数をかけて誤差関数に加える。
-$$
-\begin{array}{ll}
-E_n(w) +  \frac{1}{p} \overbrace{\lambda}^{hyper \space parameter} || w ||_p^p &amp; : 誤差関数に、pノルムのp乗を加える \<br>
-|| w ||_p =
-\Bigl(
-|w_1|^p  + \cdots + |w_n|^p
-\Bigr)^{\frac{1}{p}} &amp; : pノルムの計算
-\end{array}
-$$</p>
-<p>※λの前の1/pは微分したときに無駄な係数が出ないための調整項。
-P＝１のときマンハッタン距離
-P＝２のときユークリッド距離
-という</p>
-<h4 id="l1正則化">L1正則化</h4>
-<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230326104817.png" alt="/img/Pasted_image_20230326104817.png">
-（講義スライドより引用）</p>
-<h4 id="l2正則化">L2正則化</h4>
-<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230326104631.png" alt="/img/Pasted_image_20230326104631.png">
-（講義スライドより引用）</p>
-<h4 id="確認問題６">確認問題６</h4>
-<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230326104300.png" alt="/img/Pasted_image_20230326104300.png">
-右のLasso推定量、スパース推定のグラフ
-<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230326105311.png" alt="/img/Pasted_image_20230326105311.png">
-（講義スライドより引用）
-答え：（４）
-もとめたいのは微分結果で、損失関数に追加されている項は$\frac{1}{p}<em>rate</em>(||x||_p)^p$なので、paramのみがのこる
-<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230326112101.png" alt="/img/Pasted_image_20230326112101.png">
-答え：（３）
-求めたいのは微分結果で、正則化項は1/1×rate×|w|なので、符号とrateが残れば良い。
-<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230326112400.png" alt="/img/Pasted_image_20230326112400.png">
-答え：（４）
-一般に画像データは左上が原点で今回のデータは関数の説明から縦→横→チャンネルの順だから。</p>
+<p>pノルムに係数をかけて誤差関数に加える。</p>
+<!-- raw HTML omitted -->
 <h4 id="ドロップアウト">ドロップアウト</h4>
 <p>学習時にランダムにノードを削除してパラメータを更新する。
 推論時には落とさない。
@@ -607,7 +576,7 @@ P＝２のときユークリッド距離
 (Yann LeCun et al. Gradient-Based Learning Applied to Document Recognitionより引用)</p>
 <h2 id="cnnの各処理の説明">CNNの各処理の説明</h2>
 <p>![[深層学習モデル#基本構造]]</p>
-<h4 id="確認問題６-1">確認問題６</h4>
+<h4 id="確認問題６">確認問題６</h4>
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230326160302.png" alt="/img/Pasted_image_20230326160302.png">
 回答：７×７
 (6+1×2 - 2)/1 +1 = 7</p>
