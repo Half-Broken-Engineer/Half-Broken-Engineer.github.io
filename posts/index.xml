@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>記事一覧 on 壊れかけのエンジニアのログ</title>
+    <title>Posts on 壊れかけのエンジニアのログ</title>
     <link>https://half-broken-engineer.github.io/posts/</link>
-    <description>Recent content in 記事一覧 on 壊れかけのエンジニアのログ</description>
+    <description>Recent content in Posts on 壊れかけのエンジニアのログ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <lastBuildDate>Mon, 26 Jun 2023 02:18:24 +0900</lastBuildDate><atom:link href="https://half-broken-engineer.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
