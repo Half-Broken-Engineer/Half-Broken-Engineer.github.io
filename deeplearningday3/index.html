@@ -444,9 +444,7 @@ $$c^{new} = c^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partia
 <p>BPTTの一つ前の時刻のδを求める式を見るとわかる様に、ワンステップ戻るのに活性化関数の導関数と重みを掛ける計算になっているため、時系列を遡るほど勾配消失問題が起こりやすくなる。
 →長い時系列の学習が困難。</p>
 <p>上記の課題を解決するための新しい構造がLSTM</p>
-<p>vault backup: 2023-07-26 18:02:06 Ken_obsidian</p>
-<p>Affected files:
-.obsidian_win/workspace.json</p>
+<p><img src="https://half-broken-engineer.github.io/DeepLearningDay2/%E5%8B%BE%E9%85%8D%E6%B6%88%E5%A4%B1%E5%95%8F%E9%A1%8C%E3%81%AE%E5%BE%A9%E7%BF%92" alt="勾配消失問題の復習"></p>
 <h3 id="lstmの全体像">LSTMの全体像</h3>
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416171731.png" alt="/img/Pasted_image_20230416171731.png">
 (講義スライドより引用)
@@ -560,9 +558,7 @@ $$</p>
 <h3 id="vae">VAE</h3>
 <h4 id="08_projectg_certificationオートエンコーダhttpshalf-broken-engineergithubio08_projectg_certificationオートエンコーダ"><a href="https://half-broken-engineer.github.io/08_project/G_Certification/%e3%82%aa%e3%83%bc%e3%83%88%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%80">08_project/G_Certification/オートエンコーダ</a></h4>
 <p>隠れ層を潜在変数ｚとする
-vault backup: 2023-07-26 18:02:06 Ken_obsidian</p>
-<p>Affected files:
-.obsidian_win/workspace.json</p>
+<img src="https://half-broken-engineer.github.io/08_project/G_Certification/%E3%82%AA%E3%83%BC%E3%83%88%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%80" alt="08_project/G_Certification/オートエンコーダ"></p>
 <h4 id="vaeの特徴">VAEの特徴</h4>
 <p>潜在変数zに確率分布z~N(0,1)を仮定し確率分布という構造に押し込めたもの
 元のデータの分布（近さや遠さ）が潜在変数の分布にも反映されてほしい</p>
@@ -599,11 +595,10 @@ $$</li>
 <h4 id="目的">目的</h4>
 <ul>
 <li>適切なデータ表現の獲得：自然界の特徴を捉えるにおいて、離散的な表現が適していると想定されることから。</li>
-<li>[Posterior Collapse](<a href="https://half-broken-engineer.github.io/Posterior">https://half-broken-engineer.github.io/Posterior</a> Collapse)を防ぐ
-vault backup: 2023-07-26 18:02:06 Ken_obsidian</li>
+<li>[Posterior Collapse](<a href="https://half-broken-engineer.github.io/Posterior">https://half-broken-engineer.github.io/Posterior</a> Collapse)を防ぐ</li>
 </ul>
-<p>Affected files:
-.obsidian_win/workspace.json</p>
+<p>VAEをPixel CNNなどの強力なデコーダーと組み合わせたときに、潜在変数がデータの特徴をうまく捉えられなくなる現象。
+VQ-VAEで離散的な潜在変数を学習するようにすることで回避できるとされる</p>
 <h3 id="学習">学習</h3>
 <h4 id="損失関数">損失関数</h4>
 <blockquote>
@@ -839,9 +834,50 @@ tf.keras.Inputから始めて、順伝播の経路に従って関数に引数を
 </ul>
 <h3 id="考察α">考察＋α</h3>
 <h5 id="活性化関数に関するサーベイ論文より">活性化関数に関するサーベイ論文より</h5>
-<p>vault backup: 2023-07-26 18:02:06 Ken_obsidian</p>
-<p>Affected files:
-.obsidian_win/workspace.json</p>
+<h1 id="重要な要素">重要な要素</h1>
+<ul>
+<li>Must
+<ul>
+<li>微分可能：誤差逆伝播が出来なくなる</li>
+<li>非線形：線形だと層を深くする意味がなくなる</li>
+</ul>
+</li>
+<li>Better
+<ul>
+<li>勾配消失しない：層を深くしたときの学習がすすまなくなる</li>
+<li>計算効率</li>
+</ul>
+</li>
+</ul>
+<h1 id="経験則">経験則</h1>
+<p><a href="https://arxiv.org/abs/2109.14545">2021年サーベイ論文（Activation Functions in Deep Learning: A Comprehensive Survey and Benchmark）</a></p>
+<ul>
+<li>シグモイド関数と tanh は、畳み込みニューラルネットワーク (CNN) には使わない</li>
+<li>ReLU がデフォルトの選択肢になっているが、Swish, Mish, PAU (Molina et al., 2019) などは問題によって検討の価値がある</li>
+<li>ReLU, Mish, PDELU は VGG16 と GoogLeNet に、ReLU, LReLU, ELU, GELU, CELU, PDELU は、ResNet など残差接続を持つモデルに向いている</li>
+<li>PAU のようなパラメトリックな活性化関数は、より良い収束性能を示す</li>
+<li>tanh と SELU は言語翻訳タスクに適している</li>
+<li>PReLU, GELU, Swish, Mish, PAU は、音声認識モデルに適している</li>
+<li>トランスフォーマーでは、GELU に加え、Squared ReLU や、GLU の変種 (ReGLU, GEGLU, SwiGLU) を試す</li>
+</ul>
+<h1 id="relu">ReLU</h1>
+<h2 id="gelu">GELU</h2>
+<p>Gaussian Error Linear Unit
+確率的正則化を取り入れた活性化関数。
+入力がちいさくなるほど、値が０にドロップされる確率が高くなる。
+入力を正規分布と仮定し、その累積分布関数$\phi(x)$の大きさによってマスクを０，１にする。
+これを確率的でなく決定的に扱うために期待値を取って、
+$f(x) = x\phi(x)$</p>
+<h3 id="有効だったタスク">有効だったタスク</h3>
+<ul>
+<li>画像分類　及び　そのオートエンコーダー</li>
+<li>品詞分析</li>
+<li>音素認識</li>
+</ul>
+<h2 id="glu">GLU</h2>
+<p>ゲート付き線形ユニット
+非線形活性化関数の出力に、同じ入力を持つ線形変換の出力の要素積を取る
+${\rm GLU}(x) = \sigma(xW + b) \otimes (xV + c)$</p>
 <h1 id="確認問題">確認問題</h1>
 <h3 id="cnnの復習">CNNの復習</h3>
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230414101507.png" alt="/img/Pasted_image_20230414101507.png"></p>

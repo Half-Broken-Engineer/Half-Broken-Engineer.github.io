@@ -654,8 +654,8 @@ AlphaGo で使われるモンテカルロ木探索アルゴリズムは Asynchro
 <h3 id="分散深層学習">分散深層学習</h3>
 <p>深層学習はデータ量、パラメータ更新のための計算量から高速な計算が求められる
 →複数の計算資源（ワーカー）を使用して並列で NN を構成することで効率のよい学習を行いたい</p>
-<p>モデルが大きいとき→<a href="https://half-broken-engineer.github.io/DeepLearningDay4/%e3%83%a2%e3%83%87%e3%83%ab%e4%b8%a6%e5%88%97">モデル並列</a>
-データが多いとき→<a href="https://half-broken-engineer.github.io/DeepLearningDay4/%e3%83%87%e3%83%bc%e3%82%bf%e4%b8%a6%e5%88%97">データ並列</a></p>
+<p>モデルが大きいとき→<a href="#%e3%83%a2%e3%83%87%e3%83%ab%e4%b8%a6%e5%88%97">モデル並列</a>
+データが多いとき→<a href="#%e3%83%87%e3%83%bc%e3%82%bf%e4%b8%a6%e5%88%97">データ並列</a></p>
 <h4 id="モデル並列">モデル並列</h4>
 <p>モデルが大きいときに利用
 パラメータ数が多いほどスピードアップの効率も向上</p>
@@ -859,9 +859,14 @@ w = {0,1} のため、</p>
 <li>ハイパーパラメータの追加：Growth_rate</li>
 </ul>
 <h3 id="layer-正規化instance-正規化">Layer 正規化/Instance 正規化</h3>
-<p>vault backup: 2023-07-26 18:02:06 Ken_obsidian</p>
-<p>Affected files:
-.obsidian_win/workspace.json</p>
+<p>2015年に提案。各層において、活性関数を掛ける前に伝播してきたデータを正規化する処理。</p>
+<h2 id="効果">効果</h2>
+<ul>
+<li>学習の高速化：正規化することで極端に小さな値をクリッピングできることで、勾配消失の解決</li>
+<li>初期値への依存が少なくなる</li>
+<li>過学習が起こりにくい：各層の出力の正規化により、外れ値が少なくなる</li>
+<li><a href="https://half-broken-engineer.github.io/08_project/G_Certification/%e5%86%85%e9%83%a8%e5%85%b1%e5%a4%89%e9%87%8f%e3%82%b7%e3%83%95%e3%83%88">08_project/G_Certification/内部共変量シフト</a> への対応</li>
+</ul>
 <p>バッチ正規化はミニバッチ単位で Normalization するのでバッチサイズが小さいときに学習が収束しない問題が起こる。
 その際には Layer Normalization などを使う</p>
 <h4 id="正規化手法のイメージ比較">正規化手法のイメージ比較</h4>
@@ -1130,13 +1135,40 @@ S. Zagoruyko and N. Komodakis, “Wide Residual Networks,&ldquo;<a href="https:/
 <p>IoUを固定してmAPを算出する
 IoUを変化させたときの平均を取った$mAP_{COCO}$という指標もある</p>
 <h4 id="クラス分類">クラス分類</h4>
-<p>vault backup: 2023-07-26 18:02:06 Ken_obsidian</p>
-<p>Affected files:
-.obsidian_win/workspace.json</p>
-<p>vault backup: 2023-07-26 18:02:06 Ken_obsidian</p>
-<p>Affected files:
-.obsidian_win/workspace.json</p>
-<p>モデルの利用目的ごとに適切な閾値の設定を行う</p>
+<h1 id="表">表</h1>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230711184301.png" alt="/img/Pasted_image_20230711184301.png">
+※True/Falseは正誤、Positive/Negativeは陽性/陰性を示す</p>
+<h1 id="指標">指標</h1>
+<ul>
+<li>Accuracy： $\frac{TP+TN}{TP+FP+TN+FN}$
+正解率とよばれ、全データのうち、正しく分類できたサンプルの割合を示す</li>
+<li>Precision ：$\frac{TP}{TP+FP}$
+精度と呼ばれ、陽性と判定したもののうち、実際に陽性だった割合を示す</li>
+<li>Recall ：$\frac{TP}{TP+FN}$
+検出率とよばれ、陽性のデータのうち、陽性と正しく判定できた割合をしめす</li>
+<li>(Specificity)：$\frac{TN}{TN+FP}$
+特異度とよばれ、陰性のデータのうち、陰性と正しく判定できた割合をしめす
+※検出率の陰性データ版</li>
+</ul>
+<h1 id="概要-3">概要</h1>
+<ul>
+<li>縦軸にPrecision（精度）、横軸にRecall(再現率)を取ったグラフで、閾値を変化させたときの２変数の推移を描画する</li>
+<li>モデルごとに一つの曲線が描かれる</li>
+</ul>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230711195641.png" alt="/img/Pasted_image_20230711195641.png"></p>
+<h1 id="使い方">使い方</h1>
+<ul>
+<li>分類の閾値を変化させたときのトレードオフの関係を見て閾値を設定するために用いる</li>
+<li>モデル自体の良さはAP（Average Precision）を用いて判定</li>
+</ul>
+<p>※似た考え方にROC曲線があるが、PRカーブはデータの不均衡の影響を特に受けるので、不均衡データに対して使用すると良い</p>
+<h2 id="map">mAP</h2>
+<p>PR曲線の下側の面積、閾値Rを０～１の範囲でPrecisionを積分したときの値
+$$AP = \int_0^1 \operatorname{P}(R) dR$$
+$$mAP = \frac{1}{C}\overset{N}{\underset{i=1}\sum{AP_i}}$$
+他クラス分類のときはmAP(mean Average Precision)が使われる
+※Cはクラス数
+モデルの利用目的ごとに適切な閾値の設定を行う</p>
 <h4 id="bounding-boxの予測性能">Bounding Boxの予測性能</h4>
 <p>指標：IoU （Intercection over Union）　※別名Jaccard係数</p>
 <p>※Ground Truthの中のTPでもなく、予測したBounding BoxのなかのGTでもないことに注意</p>
@@ -1314,7 +1346,7 @@ Fast R-CNN ：画像全体をCNNに入力して、特徴量を抽出したFeatur
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230713090927.png" alt="/img/Pasted_image_20230713090927.png">
 （講義スライドより引用）</p>
 <h4 id="roi-align">ROI Align</h4>
-<p>[ROI Pooling](<a href="https://half-broken-engineer.github.io/DeepLearningDay4/ROI">https://half-broken-engineer.github.io/DeepLearningDay4/ROI</a> Pooling)の位置ずれ問題に対応</p>
+<p>[ROI Pooling](#ROI Pooling)の位置ずれ問題に対応</p>
 <ol>
 <li>(丸め込みは行わない)</li>
 <li>N×Nの固定領域の際は候補領域を縦横でN等分ずつにする</li>
@@ -1884,7 +1916,7 @@ $$</p>
 <!-- raw HTML omitted -->
 <h2 id="dcgan">DCGAN</h2>
 <h3 id="gan">GAN</h3>
-<h4 id="概要-3">概要</h4>
+<h4 id="概要-4">概要</h4>
 <p>Generator: 乱数からデータを生成
 Discriminator:入力データが真のデータか、乱数から生成されたデータかを識別
 <img src="https://half-broken-engineer.github.io/img/Pasted_image_20230716201724.png" alt="/img/Pasted_image_20230716201724.png">
@@ -2065,7 +2097,7 @@ PatchGANについての内容。</p>
 <p>Pix2Pixの生成器でUNetを使う効果はエッジ位置の共有。</p>
 <!-- raw HTML omitted -->
 <h2 id="a3c-asynchronous-advantage-actor-critic">A3C (Asynchronous Advantage Actor-Critic)</h2>
-<h3 id="概要-4">概要</h3>
+<h3 id="概要-5">概要</h3>
 <p>強化学習の学習手法の一つで
 <strong>複数</strong>のエージェントが<strong>同一の環境</strong>で<strong>非同期的に学習</strong>する</p>
 <ul>

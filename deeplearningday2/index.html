@@ -591,17 +591,59 @@ P＝２のときユークリッド距離
 <p>過学習はバリアンスが高くてバイアスが低い状態といえる。</p>
 <p>バイアスとバリアンスはトレードオフの関係にあり、うまくバランスを取ることが必要。</p>
 <h5 id="バギング">バギング</h5>
-<p>vault backup: 2023-07-26 18:02:06 Ken_obsidian</p>
-<p>Affected files:
-.obsidian_win/workspace.json</p>
+<h1 id="概要">概要</h1>
+<p>全体から重複を許してランダムサンプリング(<a href="https://half-broken-engineer.github.io/%e3%83%96%e3%83%bc%e3%83%88%e3%82%b9%e3%83%88%e3%83%a9%e3%83%83%e3%83%97%e3%82%b5%e3%83%b3%e3%83%97%e3%83%aa%e3%83%b3%e3%82%b0">ブートストラップサンプリング</a> )して
+それぞれのサンプルごとに個別のモデルを学習して</p>
+<ul>
+<li>回帰なら平均値</li>
+<li>分類なら多数決
+の結果を全体の出力とする</li>
+</ul>
+<p>主なモデルとしては
+<a href="https://half-broken-engineer.github.io/%e3%83%a9%e3%83%b3%e3%83%80%e3%83%a0%e3%83%95%e3%82%a9%e3%83%ac%e3%82%b9%e3%83%88">ランダムフォレスト</a> が上げられる
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230326141234.png" alt="/img/Pasted_image_20230326141234.png">
+(<a href="https://zero2one.jp/ai-word/bootslap-sampling/">ブートストラップサンプリング – 【AI・機械学習用語集】</a>より引用)</p>
+<h1 id="メリット-4">メリット</h1>
+<ul>
+<li>複数の弱学習器を使うことからバリアンスを抑えることができ、過学習を避けやすい</li>
+<li>並列に処理できるため学習時間が短い</li>
+</ul>
+<h1 id="デメリット-1">デメリット</h1>
+<ul>
+<li>精度向上自体はブートストラップサンプリングの多様性に依存するため思った程は無い</li>
+<li>(注意点)データのサンプリングをしすぎると結局バリアンスが高くなってしまい過学習に繋がる可能性がある</li>
+</ul>
 <h5 id="ブースティング">ブースティング</h5>
-<p>vault backup: 2023-07-26 18:02:06 Ken_obsidian</p>
-<p>Affected files:
-.obsidian_win/workspace.json</p>
+<h1 id="概要-1">概要</h1>
+<p>バギングと異なりすべてのデータを利用する。
+モデルの学習結果を受けてデータの重み付けを行い、
+前のモデルの弱点を克服するモデルを順次学習して、
+最終的に集計した結果を用いる。</p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230326153823.png" alt="/img/Pasted_image_20230326153823.png">
+(<a href="https://datawokagaku.com/ensemble/#i-4">アンサンブル学習を超わかりやすく解説【機械学習入門30】</a>より引用）</p>
+<h1 id="メリット-5">メリット</h1>
+<ul>
+<li>モデルの弱点を克服するように学習していくのでバイアスが下がりやすい</li>
+</ul>
+<h1 id="デメリット-2">デメリット</h1>
+<ul>
+<li>同じデータを何度も使うため、過学習に陥りやすい</li>
+<li></li>
+</ul>
 <h5 id="スタッキング">スタッキング</h5>
-<p>vault backup: 2023-07-26 18:02:06 Ken_obsidian</p>
-<p>Affected files:
-.obsidian_win/workspace.json</p>
+<h1 id="概要-2">概要</h1>
+<p>複数のモデルの結果を入力として学習するメタモデルを積み重ねていく手法
+２層より増やすこともある。
+各モデルのバイアス、バリアンスのバランスを調整して最終的に高い精度を出すことができる。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230326154350.png" alt="/img/Pasted_image_20230326154350.png"></p>
+<h1 id="メリット-6">メリット</h1>
+<ul>
+<li>様々な計算方法を目的に合わせて使用できるため、精度が上がりやすい</li>
+</ul>
+<h1 id="デメリット-3">デメリット</h1>
+<ul>
+<li>複数モデルを作り、その上でメタモデルも学習するので学習コストが大きい</li>
+</ul>
 <h2 id="畳み込みニューラルネットワークの概念">畳み込みニューラルネットワークの概念</h2>
 <p>CNNの特徴として次元感で繋がりのあるデータを扱えるということがあげられる</p>
 <h3 id="lenet">LeNet</h3>
@@ -610,17 +652,13 @@ P＝２のときユークリッド距離
 <img src="https://half-broken-engineer.github.io/img/Pasted_image_20230326155053.png" alt="/img/Pasted_image_20230326155053.png">
 (Yann LeCun et al. Gradient-Based Learning Applied to Document Recognitionより引用)</p>
 <h2 id="cnnの各処理の説明">CNNの各処理の説明</h2>
-<p>vault backup: 2023-07-26 18:02:06 Ken_obsidian</p>
-<p>Affected files:
-.obsidian_win/workspace.json</p>
+<p><img src="https://half-broken-engineer.github.io/%E6%B7%B1%E5%B1%A4%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB/%E5%9F%BA%E6%9C%AC%E6%A7%8B%E9%80%A0" alt="基本構造"></p>
 <h4 id="確認問題６-1">確認問題６</h4>
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230326160302.png" alt="/img/Pasted_image_20230326160302.png">
 回答：７×７
 (6+1×2 - 2)/1 +1 = 7</p>
 <h2 id="初期のcnn">初期のCNN</h2>
-<p>vault backup: 2023-07-26 18:02:06 Ken_obsidian</p>
-<p>Affected files:
-.obsidian_win/workspace.json</p>
+<p><img src="https://half-broken-engineer.github.io/08_project/G_Certification/AlexNet" alt="08_project/G_Certification/AlexNet"></p>
 <h1 id="実装演習結果">実装演習結果</h1>
 <h2 id="2_1_network_modifiedipynb">2_1_network_modified.ipynb</h2>
 <p>コードを一部変更して重みの初期化ごとの結果を確認した。
@@ -807,7 +845,7 @@ backward処理も基本的に同様でforwardでした内容の逆をして計�
 正規化を適用していないモデルでは、学習が進むに連れテスト誤差が上がってきてしまっているが、
 L1,L2及びErasticNetではそれが抑制できていることがわかる。</p>
 <h2 id="2_10_layer-normalizationipynb">2_10_layer-normalization.ipynb</h2>
-<p>レイヤ正規化自体の説明は<a href="https://half-broken-engineer.github.io/DeepLearningDay2/%e3%83%97%e3%83%a9%e3%82%b9%e3%82%a2%e3%83%ab%e3%83%95%e3%82%a1">プラスアルファ</a>のところに記載。</p>
+<p>レイヤ正規化自体の説明は<a href="#%e3%83%97%e3%83%a9%e3%82%b9%e3%82%a2%e3%83%ab%e3%83%95%e3%82%a1">プラスアルファ</a>のところに記載。</p>
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230329154629.png" alt="/img/Pasted_image_20230329154629.png">
 レイヤ正規化では過学習が発生しているようだが、特徴量次元方向で正規化した結果、確信度が低い特徴量の切り捨てが多く発生したのでは無いかと考えられる。インスタンス正規化の方はあまりその傾向が見られないため、その可能性は高いのでは無いかとおもう。</p>
 <h2 id="2_11_dropoutipynb">2_11_dropout.ipynb</h2>

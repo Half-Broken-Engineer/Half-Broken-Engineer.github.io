@@ -467,9 +467,12 @@ $$\hat{y} = \Phi(X_{test}) (\Phi(X_{train})^T \Phi(X_{train}))^{-1}\Phi(X_{train
 <li>生成的アプローチ：事前確率と観測モデルをモデル化して、ベイズの定理を用いて事後確率を求める</li>
 </ul>
 <p>回帰問題と違い目的変数の値域が狭いので、関数で射影して値域を狭める。
-よく使うのはvault backup: 2023-07-26 18:02:06 Ken_obsidian</p>
-<p>Affected files:
-.obsidian_win/workspace.json</p>
+よく使うのは</p>
+<p>ロジスティック回帰など分類問題で使われる。</p>
+<p>値域は$[0,1]$ でx=0のとき0.5,</p>
+<p>$\frac{1}{1+exp(-x)}$</p>
+<p>微分値は　
+$\frac{\delta\sigma(x)}{\delta x} = \sigma(x)\times (1-\sigma(x))$</p>
 <h3 id="ロジスティック回帰">ロジスティック回帰</h3>
 <p>確率的な出力をする分類器。
 識別的アプローチになる。</p>
