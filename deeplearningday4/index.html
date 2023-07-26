@@ -1526,8 +1526,7 @@ $${PE\left( pos,2i\right) =\sin \left( \dfrac{pos}{10000^{2i/d_{model}}}\right)
 一つ前の時刻のターゲットをデコーダー入力とする、Teacher Forcingという手法
 こちらは、推論時の分布と訓練時の分布が異なるという問題がある。</p>
 <h3 id="参考文献レポート-7">参考文献レポート</h3>
-<p>認定テストにおいて、BLEUの演算に関する問題が出たのでまとめる
-$$
+<p>認定テストにおいて、BLEUの演算に関する問題が出たのでまとめ\n\n$$
 \mathrm{BLEU}=\mathrm{BP} \cdot \exp \left(\sum_{n=1}^N w_n \log p_n\right)
 $$</p>
 <p>※対数荷重平均なのは、nが大きくなるほどスコアが指数的に高くなることを防ぐため</p>
@@ -1594,7 +1593,7 @@ $$
 <li>マスク単語予測タスク:入力系列のうち１５%がMASK対象に選ばれてフラグが付与される。そのうち８０％をMASKトークン、１０％がランダムな他の単語、10%はそのままにして、フラグがついている位置の単語がなにか予測する
 <ul>
 <li>通常の言語モデルの同時確率＝条件付き確率の時系列での総乗が未来の情報のリークによって使えない
-→CBOW(continuous bag-of-words)の考え方を使う$$L = - \frac{1}{M}\underset{i\in{Mask}}{\sum} log P(w_i|W\lnot _{j\in{Mask}})$$</li>
+→CBOW(continuous bag-of-words)の考え方を使\n\n$$L = - \frac{1}{M}\underset{i\in{Mask}}{\sum} log P(w_i|W\lnot _{j\in{Mask}})$$</li>
 </ul>
 </li>
 <li>隣接文判定タスク:２つの連なる文章ペアに対して、隣接文を50%の確率でシャッフル→入力された２つの文章が隣接文かの判定をおこなう</li>
@@ -1649,13 +1648,12 @@ NNの記憶機能としては、8,000→64000単語</p>
 <h4 id="目的関数">目的関数</h4>
 <p>言語モデルの最尤推定を行う
 →同時確率＝時系列の条件付き確率の総乗　の　対数を取って、尤度を最大化するパラメータΘを求める。
-コンテキストウィンドウ（サイズをｋとする）で次の単語を予測する際に見る過去の系列の範囲を定める
-$$L(U;\Theta) = \sum log P(u_i|u_{i-k},\dots,u_{i-1};\Theta)$$</p>
+コンテキストウィンドウ（サイズをｋとする）で次の単語を予測する際に見る過去の系列の範囲を定め\n\n$$L(U;\Theta) = \sum log P(u_i|u_{i-k},\dots,u_{i-1};\Theta)$$</p>
 <h4 id="ネットワークの演算">ネットワークの演算</h4>
 <ol>
-<li>次の単語を予測するためのコンテキストウィンドウ分の単語系列UをWeで単語ベクトル空間に埋め込み、位置エンコーディングを付加する$$h_0 = UW_e + W_p$$</li>
-<li>層数分のTransformerのデコードを実行する$$h_l = transformer_block(h_{l-1}) \forall l \in [1,n]$$</li>
-<li>単語ベクトル空間から系列の次元に戻した後にSoftmax関数で確率の値に変換$$P(u) = softmax(h_nW_e^T)$$</li>
+<li>次の単語を予測するためのコンテキストウィンドウ分の単語系列UをWeで単語ベクトル空間に埋め込み、位置エンコーディングを付加す\n\n$$h_0 = UW_e + W_p$$</li>
+<li>層数分のTransformerのデコードを実行す\n\n$$h_l = transformer_block(h_{l-1}) \forall l \in [1,n]$$</li>
+<li>単語ベクトル空間から系列の次元に戻した後にSoftmax関数で確率の値に変\n\n$$P(u) = softmax(h_nW_e^T)$$</li>
 </ol>
 <h4 id="学習タスク別の入力系列整形と出力表現の変更">学習タスク別の入力系列整形と出力表現の変更</h4>
 <p>下図に示すように、タスクによって、入力系列に予約済みのTokenを付加したり、Transformerの後の線形結合の取り方を変更する</p>
@@ -1718,8 +1716,7 @@ $$L(U;\Theta) = \sum log P(u_i|u_{i-k},\dots,u_{i-1};\Theta)$$</p>
 </ul>
 <h4 id="フーリエ変換">フーリエ変換</h4>
 <p>フーリエ変換</p>
-<p>関数の級数展開とオイラーの公式と三角関数の直交性から、各周波数成分の大きさを抽出する操作であることがわかる
-$$\hat{f}(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} , dt$$</p>
+<p>関数の級数展開とオイラーの公式と三角関数の直交性から、各周波数成分の大きさを抽出する操作であることがわか\n\n$$\hat{f}(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} , dt$$</p>
 <ul>
 <li>周波数領域の関数の微分は-iω倍になる</li>
 <li>畳み込んだ関数のフーリエ変換はフーリエ変換した関数の積に等しい、関数の積のフーリエ変換はフーリエ変換された関数の畳み込みに等しい</li>
@@ -1830,8 +1827,7 @@ $$</p>
 <p>$$
 P\left(\boldsymbol{l}^* \mid \boldsymbol{x}\right)=\sum_{\boldsymbol{\pi} \in \mathcal{B}^{-1}\left(\boldsymbol{l}^<em>\right)} P(\boldsymbol{\pi} \mid \boldsymbol{x})=\sum_{\pi \in \mathcal{B}^{-1}\left(\boldsymbol{l}^</em>\right)} \prod_{t=1}^T y_{\pi_t}^t
 $$</p>
-<p>損失関数としては
-$$
+<p>損失関数として\n\n$$
 L_{CTC} = - log P(l^\star|x)
 $$</p>
 <h4 id="効率的な計算のためのforward-backward-algorythm">効率的な計算のためのforward-backward algorythm</h4>
@@ -1923,8 +1919,7 @@ Discriminator:入力データが真のデータか、乱数から生成された
 （GANの概念図：講義資料より引用）</p>
 <h4 id="2player-min-max-game">2player min-max game</h4>
 <p>一人が自分の勝利する確率を最大化、もうひとりが相手の勝利する確率を最小化する作戦をとる
-Discriminatorが最大化、Generatorが最小化をする
-$$
+Discriminatorが最大化、Generatorが最小化をす\n\n$$
 \begin{gathered}
 \min <em>G \max <em>D V(D, G) \
 V(D, G)=\mathbb{E}</em>{\boldsymbol{x} \sim p</em>{\text {data }}(\boldsymbol{x})}[\log D(\boldsymbol{x})]+\mathbb{E}<em>{\mathbf{z} \sim p</em>{\boldsymbol{z}}(\mathbf{z})}[\log (1-D(G(\mathbf{z})))]
@@ -1963,8 +1958,7 @@ $$
 $$</p>
 <p>以上のことから、y=f(x)とみると
 $V(D,G) = \int_{\boldsymbol{x}} a \log (y)+b \log (1-y)dx$
-なので、$a \log (y)+b \log (1-y)$をyで微分して
-$$
+なので、$a \log (y)+b \log (1-y)$をyで微分し\n\n$$
 \begin{align}
 &amp;\frac{a}{y}+\frac{b}{1-y}(-1) = 0\
 &amp;\frac{a}{y}=\frac{b}{1-y}\
@@ -1977,23 +1971,20 @@ $$
 D^\star(x) = \frac{p_{data}(x)}{p_{data}(x)+p_g(x)}
 $$</p>
 <h5 id="価値関数の最小化">価値関数の最小化</h5>
-<p>ここまで求めてきた$D^\star(x)$を用いて、価値関数は以下のようになる
-$$
+<p>ここまで求めてきた$D^\star(x)$を用いて、価値関数は以下のようにな\n\n$$
 \begin{aligned}
 V &amp; =\mathbb{E}<em>{\boldsymbol{x} \sim p</em>{\text {data }}} \log \left[\frac{p_{\text {data }}(\boldsymbol{x})}{p_{\text {data }}(\boldsymbol{x})+p_g(\boldsymbol{x})}\right]+\mathbb{E}<em>{\boldsymbol{x} \sim p_g} \log \left[1-\frac{p</em>{\text {data }}(\boldsymbol{x})}{p_{\text {data }}(\boldsymbol{x})+p_g(\boldsymbol{x})}\right] \
 &amp; =\mathbb{E}<em>{\boldsymbol{x} \sim p</em>{\text {data }}} \log \left[\frac{p_{\text {data }}(\boldsymbol{x})}{p_{\text {data }}(\boldsymbol{x})+p_g(\boldsymbol{x})}\right]+\mathbb{E}<em>{\boldsymbol{x} \sim p_g} \log \left[\frac{p_g}{p</em>{\text {data }}(\boldsymbol{x})+p_g(\boldsymbol{x})}\right]
 \end{aligned}
 $$</p>
-<p>ここでJSダイバージェンスを思い出すと
-$$
+<p>ここでJSダイバージェンスを思い出す\n\n$$
 JS(p||q) = \frac{1}{2} (\mathbb{E}<em>{x\sim p}log(\frac{2p}{p+q})+\mathbb{E}</em>{x\sim q}log(\frac{2q}{p+q}))
 $$
 なので、
 $$
 V = 2 \times JS(p_{data}||p_g) - 2log2
 $$</p>
-<p>JSダイバージェンスは2つの確率分布が一致するときに最小値０を取る非負の値なので
-$$
+<p>JSダイバージェンスは2つの確率分布が一致するときに最小値０を取る非負の値なの\n\n$$
 \underset{p_g}{argmin}\quad V = p_{data}
 $$
 $p_g = p_{data}$のとき、最小値が得られる。</p>
@@ -2153,12 +2144,10 @@ PatchGANについての内容。</p>
 <h5 id="advantage方策勾配">Advantage方策勾配</h5>
 <p>方策勾配法：パラメータΘに基づく方策πに従ったときの期待収益が最大化されるようにΘを最適化する
 方策勾配定理により、パラメータ更新に用いられる勾配は以下のように示される
-※b(s)はベースライン、行動価値関数から引くことで推定量の分散を小さくして学習の安定化効果がある
-$$
+※b(s)はベースライン、行動価値関数から引くことで推定量の分散を小さくして学習の安定化効果があ\n\n$$
 \nabla_\theta \rho_\theta=\mathbb{E}\left[\nabla_\theta \log \pi(a \mid s, \theta)\left(Q^{\pi_\theta}(s, a)-b(s)\right)\right]
 $$
-ここで、b(s)の推定には$V_\theta^{\pi_\omega}(s_t)$,価値関数Q(s,a)をアドバンテージ関数としてkステップ先読みした収益をもちいて
-$$
+ここで、b(s)の推定には$V_\theta^{\pi_\omega}(s_t)$,価値関数Q(s,a)をアドバンテージ関数としてkステップ先読みした収益をもちい\n\n$$
 \begin{align}
 &amp;Q(s,a) = (\sum_{i=0}^{k-1}\gamma^i R_{t+i+1})+V_\theta^{\pi_\omega}(s_{t+k})\
 &amp;b(s) = V_\theta^{\pi_\omega}(s_t)
@@ -2170,8 +2159,7 @@ $$</p>
 <p>上記の期待値が方策勾配となる。</p>
 <h5 id="方策エントロピー">方策エントロピー</h5>
 <p>ランダム性の高い方策にボーナスを与えることで、方策の収束が早すぎて局所解に収束することを防ぐ
-方策関数の正則化効果をもつ
-$$
+方策関数の正則化効果をも\n\n$$
 -\sum_a \pi\left(a_t \mid s_t\right) \log \pi\left(a_t \mid s_t\right)
 $$</p>
 <h3 id="性能-1">性能</h3>
@@ -2205,8 +2193,7 @@ $$</p>
 <h5 id="siamese-network">Siamese network</h5>
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230718111913.png" alt="/img/Pasted_image_20230718111913.png">
 （Siamese Networkの概念図：講義スライドより引用）</p>
-<p>Contrastive Loss（損失関数）は以下の様に表現される
-$$
+<p>Contrastive Loss（損失関数）は以下の様に表現され\n\n$$
 L=\frac{1}{2}\left[y D^2+(1-y) \max (m-D, 0)^2\right]
 $$
 各変数は
@@ -2314,15 +2301,13 @@ $$
 $$
 フーリエ変換した後、特徴的な周波数だけ残すようなフィルタ関数をかけて、再度フーリエ逆変換を行う</p>
 <h3 id="spatial-gcn">Spatial GCN</h3>
-<p>ノードｊの近くにあるノードを以下のように、ノード間の重みが一定以上であるノードとして定義
-$$N_\delta(j) = {i \in \Omega: W_{ij}&gt;\delta} $$
+<p>ノードｊの近くにあるノードを以下のように、ノード間の重みが一定以上であるノードとして定\n\n$$N_\delta(j) = {i \in \Omega: W_{ij}&gt;\delta} $$
 これの重心を次の層のノードして扱い、層に分けてクラスタリングを繰り返す</p>
 <p>隣接関係（ｋ層における、分割したクラスタ内の要素同士の関係、iは分割したクラスタのi番目の要素）
 $$N_k = {N_{k,i};i=1,\dots,d_{k-1}}$$
 <img src="https://half-broken-engineer.github.io/img/Pasted_image_20230717193344.png" alt="/img/Pasted_image_20230717193344.png">
 （グラフデータのクラスタリング：講義資料より引用）</p>
-<p>k層目の出力（ｋ＋１層目の入力）は以下の様に書ける
-$$
+<p>k層目の出力（ｋ＋１層目の入力）は以下の様に書け\n\n$$
 x_{k+1, j}=L_k h\left(\sum_{i=1}^{f_{k-1}} F_{k, i, j} x_{k, i}\right) \quad\left(j=1 \ldots f_k\right)
 $$</p>
 <ul>
@@ -2342,15 +2327,12 @@ $$</p>
 →固有値・固有ベクトルの関係
 →グラフラプラシアンを固有値分解</p>
 <p>ここで離散フーリエ変換について、考えると
-元の関数に大きさ１の独立した成分の和をとる操作であるため
-$$F(t) = \sum f(x) exp(-i\frac{2\pi x}{N})$$
+元の関数に大きさ１の独立した成分の和をとる操作であるた\n\n$$F(t) = \sum f(x) exp(-i\frac{2\pi x}{N})$$
 固有ベクトルと入力ベクトルの内積を取って和をとることに等しい
 このことから固有ベクトルからなる行列を$\mathbb{Q}$とすると
-GFT:Graph Fourier Transformは
-$$\mathbb{F} = F_G(\vec{f}) = \mathbb{Q}^T\vec{f}$$</p>
+GFT:Graph Fourier Transform\n\n$$\mathbb{F} = F_G(\vec{f}) = \mathbb{Q}^T\vec{f}$$</p>
 <p>グラフラプラシアンが実対称行列であることから、$\mathbb{Q}$は直交行列であり$\mathbb{Q}^{-1} = \mathbb{Q}^T$なので
-IGFT: Inverse Graph Fourier Transformは
-$$F_G^{-1}(\mathbb{F}) = \mathbb{Q}\mathbb{F}$$</p>
+IGFT: Inverse Graph Fourier Transform\n\n$$F_G^{-1}(\mathbb{F}) = \mathbb{Q}\mathbb{F}$$</p>
 <h5 id="グラフラプラシアン">グラフラプラシアン</h5>
 <p>$$
 L = D -A
@@ -2453,8 +2435,7 @@ Ex.)</p>
 <img src="https://half-broken-engineer.github.io/img/Pasted_image_20230718094504.png" alt="/img/Pasted_image_20230718094504.png">
 （講義資料より引用）</p>
 <h5 id="目的関数-2">目的関数</h5>
-<p>入力データに対して、元のモデルと近似するモデルの距離に基づく不正確さ（第一項）及び近似モデルの複雑さを示す正則化項（第二項）の和が最小になるような近似モデルgをGから選択する
-$$
+<p>入力データに対して、元のモデルと近似するモデルの距離に基づく不正確さ（第一項）及び近似モデルの複雑さを示す正則化項（第二項）の和が最小になるような近似モデルgをGから選択す\n\n$$
 \xi(x) = \underset{g\in G}{argmin}(L(f,g,\pi_x) + \Omega (g))
 $$</p>
 <p>近似モデルの入力には、元の入力に摂動を加えたものを用いる
@@ -2777,10 +2758,13 @@ tensorflow.gfile →　tensorflow.compat.v1.io.gfile</p>
 !unzip -O sjjs 799_ruby_6024.zip
 </code></pre><h3 id="文字化けを治す">文字化けを治す</h3>
 <pre tabindex="0"><code class="language-code" data-lang="code"># nkfコマンドを実行環境にインストール
+
 !apt install nkf
 # コマンドを使って文字化けを上書き
+
 !nkf -w --overwrite kokoro.txt sorekara.txt yume_juya.txt
 # テキストファイルを一つにまとめる
+
 !cat kokoro.txt sorekara.txt yume_juya.txt &gt; train.txt
 </code></pre><h3 id="transformersから学習済みのtokenizerとモデルを取得する">transformersから学習済みのTokenizerとモデルを取得する</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> transformers <span style="color:#f92672">import</span> TFBertModel
@@ -2815,6 +2799,7 @@ tensorflow.gfile →　tensorflow.compat.v1.io.gfile</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>seq_length <span style="color:#f92672">=</span> <span style="color:#ae81ff">128</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 訓練用サンプルとターゲットを作る</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>char_dataset <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>Dataset<span style="color:#f92672">.</span>from_tensor_slices(text_as_int)
 </span></span><span style="display:flex;"><span>sequences <span style="color:#f92672">=</span> char_dataset<span style="color:#f92672">.</span>batch(seq_length<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, drop_remainder<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">split_input_target</span>(chunk):
@@ -2939,6 +2924,7 @@ Loss関数の値は低下傾向のままなので、まだ学習が進む余地�
 </span></span><span style="display:flex;"><span>            )
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e"># batchの平均をとる</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>            real_loss <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>math<span style="color:#f92672">.</span>reduce_mean(real_loss)
 </span></span><span style="display:flex;"><span>            fake_loss <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>math<span style="color:#f92672">.</span>reduce_mean(fake_loss)
 </span></span><span style="display:flex;"><span>            adv_loss <span style="color:#f92672">=</span> real_loss <span style="color:#f92672">+</span> fake_loss

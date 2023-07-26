@@ -411,8 +411,10 @@ $$\frac{\partial E^t}{\partial c} = \frac{\partial E^t}{\partial v^t} \frac{\par
 \frac{\partial E^t}{\partial u^t} = \frac{\partial E^t}{\partial v^t} \frac{\partial v^t}{\partial u^t}=\frac{\partial E^t}{\partial v^t} \frac{\partial{W_{(out)}f(u^t) + c}}{\partial u^t} = \delta^{out, t} f&rsquo;(u^t)W^T_{(out)} = \delta^t
 $$</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#75715e"># １つ目の計算方法</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>delta[:, t] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>dot(delta_out[:, t]<span style="color:#f92672">.</span>T, W_out<span style="color:#f92672">.</span>T) <span style="color:#f92672">*</span> functions<span style="color:#f92672">.</span>d_sigmoid(u[:, t])
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># ２つめの計算方法</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>delta[:, t] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>dot(delta[:, t<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>T, W<span style="color:#f92672">.</span>T) <span style="color:#f92672">*</span> functions<span style="color:#f92672">.</span>d_sigmoid(u[:, t])
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
@@ -488,16 +490,13 @@ $$</p>
 メモリは今回更新する分を前回メモリから除く構造になっている。
 <img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416181802.png" alt="/img/Pasted_image_20230416181802.png"></p>
 <p>隠れ層の状態
-これと前回の隠れ層出力の加重平均を新たな隠れ層出力とする
-$$
+これと前回の隠れ層出力の加重平均を新たな隠れ層出力とす\n\n$$
 h_{tmp}(t) = f(W_h x(t) + U_h \cdot (r(t) \cdot h(t-1)) +  b_h(t))
 $$</p>
-<p>リセットゲートの出力
-$$
+<p>リセットゲートの出\n\n$$
 r(t) = W_r x(t) + U_r \cdot h(t-1) + b_r(t)
 $$
-更新ゲートの出力
-$$
+更新ゲートの出\n\n$$
 z(t) = W_z x(t) + U_z \cdot h(t-1) + b_z(t)
 $$
 隠れ層からの出力 (１ステップ前の中間表現と計算された中間表現の線形和)
@@ -584,8 +583,7 @@ VAE：潜在変数をガウス分布に従う様に学習させる</p>
 <h4 id="vqの手順">VQの手順</h4>
 <ol>
 <li>Encoderから出力される離散化前の潜在変数と事前に用意されているK個の埋め込みベクトルの距離（L2ノルム）を算出する</li>
-<li>潜在変数をK個の埋め込みベクトルのうち最も近い（似ている）ベクトルに置き換える
-$$
+<li>潜在変数をK個の埋め込みベクトルのうち最も近い（似ている）ベクトルに置き換え\n\n$$
 z_q(x) = e_k
 $$
 $$
@@ -611,8 +609,7 @@ Vector-Quantizationに伴う誤差項は以下の２つ</p>
 $：埋め込みベクトルの更新に用いる</li>
 <li>Commitment Loss = $
 \beta\left|\boldsymbol{z}<em>{\mathrm{e}}(\boldsymbol{x})-\operatorname{sg}[\boldsymbol{e}]\right|</em>{2}^{2}
-$:　Encoderネットワークの更新に用いる
-$$
+$:　Encoderネットワークの更新に用い\n\n$$
 \mathcal{L}<em>{\mathrm{VQ}-\mathrm{VAE}}=\log p\left(\boldsymbol{x} \mid \boldsymbol{z}</em>{\mathrm{q}}(\boldsymbol{x})\right)+\left|\operatorname{sg}\left[\boldsymbol{z}<em>{\mathrm{e}}(\boldsymbol{x})\right]-\boldsymbol{e}\right|</em>{2}^{2}+\beta\left|\boldsymbol{z}<em>{\mathrm{e}}(\boldsymbol{x})-\operatorname{sg}[\boldsymbol{e}]\right|</em>{2}^{2}
 $$</li>
 </ul>
@@ -682,15 +679,18 @@ tf.keras.Inputから始めて、順伝播の経路に従って関数に引数を
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>backend<span style="color:#f92672">.</span>clear_session()
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># エンコーダー</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>e_input <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input(shape<span style="color:#f92672">=</span>(NUM_STEPS, NUM_ENC_TOKENS), name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;e_input&#39;</span>)
 </span></span><span style="display:flex;"><span>_, e_state <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>SimpleRNN(NUM_HIDDEN_PARAMS, return_state<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;e_rnn&#39;</span>)(e_input)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># デコーダー</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>d_input <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input(shape<span style="color:#f92672">=</span>(NUM_STEPS, NUM_DEC_TOKENS), name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;d_input&#39;</span>)
 </span></span><span style="display:flex;"><span>d_rnn <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>SimpleRNN(NUM_HIDDEN_PARAMS, return_sequences<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, return_state<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;d_rnn&#39;</span>)
 </span></span><span style="display:flex;"><span>d_rnn_out, _ <span style="color:#f92672">=</span> d_rnn(d_input, initial_state<span style="color:#f92672">=</span>[e_state])
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 全結合</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>d_dense <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(NUM_DEC_TOKENS, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;linear&#39;</span>, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;d_output&#39;</span>)
 </span></span><span style="display:flex;"><span>d_output <span style="color:#f92672">=</span> d_dense(d_rnn_out)
 </span></span><span style="display:flex;"><span>
@@ -798,19 +798,24 @@ tf.keras.Inputから始めて、順伝播の経路に従って関数に引数を
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">mix_up</span>(ds_one, ds_two, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.4</span>):
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ds_oneとds_twoは10枚分ずれたmnistのデータセット。</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># どちらのデータセットにも入力データの画像とラベルが含まれている。</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    images_one, labels_one <span style="color:#f92672">=</span> ds_one
 </span></span><span style="display:flex;"><span>    images_two, labels_two <span style="color:#f92672">=</span> ds_two
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># この後の処理で必要なため、データセットのバッチサイズを取得</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    batch_size <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>shape(images_one)[<span style="color:#ae81ff">0</span>]
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 上で定義したベータ分布に基づくサンプリングで、バッチサイズ分の混合割合を取得。</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    l <span style="color:#f92672">=</span> sample_beta_distribution(batch_size, alpha, alpha)
 </span></span><span style="display:flex;"><span>    x_l <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>reshape(l, (batch_size, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>))
 </span></span><span style="display:flex;"><span>    y_l <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>reshape(l, (batch_size, <span style="color:#ae81ff">1</span>))
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 2つのデータセットを混合割合に基づいて、入力データ･ラベルの両方を混合する。</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    images <span style="color:#f92672">=</span> images_one <span style="color:#f92672">*</span> x_l <span style="color:#f92672">+</span> images_two <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> x_l)
 </span></span><span style="display:flex;"><span>    labels <span style="color:#f92672">=</span> labels_one <span style="color:#f92672">*</span> y_l <span style="color:#f92672">+</span> labels_two <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> y_l)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (images, labels)

@@ -32,7 +32,7 @@
     }
     
   },
-  "description": "要点(最低100字) 機械学習モデリングプロセス 問題設定 データ選定 前処理 機械学習モデル剪定 モデルの学習 モデルの評価 ルールベースと機械学習の比較 タスクTと性能指標Pがあるときに、性能が経験Eによって改善されるとき、 タスクTおよび性能指標Pに関して経験E から学習すると言われる\n人がプログラムするのは学習の仕方　（認識の仕方では無い） ルールベースは認識の仕方自体をプログラムする。\n主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。\n線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式\n直線、平面→線形回帰 曲線、局面→非線形\n線形回帰に関連する値 教師データに含まれるもの 入力$\\vec{x} = (x_1,x_2,\\dots,x_m)^\\top \\in R^m$ 出力$y\\in R$ 学習によって最適化していくもの パラメータ$\\vec{w} = (w_1,w_2,\\dots,w_m)^\\top \\in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\\hat{y} = w_0 + \\sum_{i=1}^n \\vec{w}^\\top \\vec{x}$　（※データセットで考えるときは$\\vec{\\hat{y}} = X・\\vec{w}$） 誤差$\\epsilon = y - \\hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \\frac{1}{n_{train}}\\sum(y-\\hat{y})^2$ を用いて最適化する。 $\\hat{\\vec{w}} = arg \\min_{w \\in R^m} MSE$ MSEが最小値を取るとき $$\\frac{\\partial MSE}{\\partial \\vec{w}} = 0$$ $$\\frac{\\partial MSE}{\\partial \\vec{w}} = \\frac{1}{n_{train}}\\frac{\\partial}{\\partial \\vec{w}}(X・\\vec{w}-Y)^2$$",
+  "description": "要点(最低100字) 機械学習モデリングプロセス 問題設定 データ選定 前処理 機械学習モデル剪定 モデルの学習 モデルの評価 ルールベースと機械学習の比較 タスクTと性能指標Pがあるときに、性能が経験Eによって改善されるとき、 タスクTおよび性能指標Pに関して経験E から学習すると言われる\n人がプログラムするのは学習の仕方　（認識の仕方では無い） ルールベースは認識の仕方自体をプログラムする。\n主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。\n線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式\n直線、平面→線形回帰 曲線、局面→非線形\n線形回帰に関連する値 教師データに含まれるもの 入力$\\vec{x} = (x_1,x_2,\\dots,x_m)^\\top \\in R^m$ 出力$y\\in R$ 学習によって最適化していくもの パラメータ$\\vec{w} = (w_1,w_2,\\dots,w_m)^\\top \\in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\\hat{y} = w_0 + \\sum_{i=1}^n \\vec{w}^\\top \\vec{x}$　（※データセットで考えるときは$\\vec{\\hat{y}} = X・\\vec{w}$） 誤差$\\epsilon = y - \\hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \\frac{1}{n_{train}}\\sum(y-\\hat{y})^2$ を用いて最適化する。 $\\hat{\\vec{w}} = arg \\min_{w \\in R^m} MSE$ MSEが最小値を取ると\\n\\n$$\\frac{\\partial MSE}{\\partial \\vec{w}} = 0$$ $$\\frac{\\partial MSE}{\\partial \\vec{w}} = \\frac{1}{n_{train}}\\frac{\\partial}{\\partial \\vec{w}}(X・\\vec{w}-Y)^2$$",
   "keywords": []
 }
 
@@ -48,7 +48,7 @@
 主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。
 線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式
 直線、平面→線形回帰 曲線、局面→非線形
-線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\hat{y} = w_0 &#43; \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき $$\frac{\partial MSE}{\partial \vec{w}} = 0$$ $$\frac{\partial MSE}{\partial \vec{w}} = \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(X・\vec{w}-Y)^2$$">
+線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\hat{y} = w_0 &#43; \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取ると\n\n$$\frac{\partial MSE}{\partial \vec{w}} = 0$$ $$\frac{\partial MSE}{\partial \vec{w}} = \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(X・\vec{w}-Y)^2$$">
 
 
 <meta property="og:description" content="要点(最低100字) 機械学習モデリングプロセス 問題設定 データ選定 前処理 機械学習モデル剪定 モデルの学習 モデルの評価 ルールベースと機械学習の比較 タスクTと性能指標Pがあるときに、性能が経験Eによって改善されるとき、 タスクTおよび性能指標Pに関して経験E から学習すると言われる
@@ -56,7 +56,7 @@
 主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。
 線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式
 直線、平面→線形回帰 曲線、局面→非線形
-線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\hat{y} = w_0 &#43; \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき $$\frac{\partial MSE}{\partial \vec{w}} = 0$$ $$\frac{\partial MSE}{\partial \vec{w}} = \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(X・\vec{w}-Y)^2$$">
+線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\hat{y} = w_0 &#43; \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取ると\n\n$$\frac{\partial MSE}{\partial \vec{w}} = 0$$ $$\frac{\partial MSE}{\partial \vec{w}} = \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(X・\vec{w}-Y)^2$$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MachineLearning">
 <meta name="twitter:title" content="MachineLearning">
@@ -68,13 +68,13 @@
 主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。
 線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式
 直線、平面→線形回帰 曲線、局面→非線形
-線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\hat{y} = w_0 &#43; \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき $$\frac{\partial MSE}{\partial \vec{w}} = 0$$ $$\frac{\partial MSE}{\partial \vec{w}} = \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(X・\vec{w}-Y)^2$$">
+線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\hat{y} = w_0 &#43; \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取ると\n\n$$\frac{\partial MSE}{\partial \vec{w}} = 0$$ $$\frac{\partial MSE}{\partial \vec{w}} = \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(X・\vec{w}-Y)^2$$">
 <meta name="twitter:description" content="要点(最低100字) 機械学習モデリングプロセス 問題設定 データ選定 前処理 機械学習モデル剪定 モデルの学習 モデルの評価 ルールベースと機械学習の比較 タスクTと性能指標Pがあるときに、性能が経験Eによって改善されるとき、 タスクTおよび性能指標Pに関して経験E から学習すると言われる
 人がプログラムするのは学習の仕方　（認識の仕方では無い） ルールベースは認識の仕方自体をプログラムする。
 主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。
 線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式
 直線、平面→線形回帰 曲線、局面→非線形
-線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\hat{y} = w_0 &#43; \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき $$\frac{\partial MSE}{\partial \vec{w}} = 0$$ $$\frac{\partial MSE}{\partial \vec{w}} = \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(X・\vec{w}-Y)^2$$">
+線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\hat{y} = w_0 &#43; \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取ると\n\n$$\frac{\partial MSE}{\partial \vec{w}} = 0$$ $$\frac{\partial MSE}{\partial \vec{w}} = \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(X・\vec{w}-Y)^2$$">
 <meta property="og:locale" content="ja">
 
   
@@ -392,8 +392,7 @@
 <h4 id="線形回帰の最適化手法最尤法">線形回帰の最適化手法(最尤法)</h4>
 <p>最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。
 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$
-MSEが最小値を取るとき
-$$\frac{\partial MSE}{\partial \vec{w}} = 0$$
+MSEが最小値を取ると\n\n$$\frac{\partial MSE}{\partial \vec{w}} = 0$$
 $$\frac{\partial MSE}{\partial \vec{w}} = \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(X・\vec{w}-Y)^2$$</p>
 <p>$$  = \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(X・\vec{w}-Y)^{\top}(X・\vec{w}-Y)$$
 $$  = \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(\vec{w^{\top}}・X^\top-Y^\top)(X・\vec{w}-Y)$$
@@ -403,8 +402,7 @@ $\frac{\partial w^T X}{\partial w} = X$,$\frac{\partial w^T A x}{\partial w} = (
 $$=\frac{1}{n_{train}}(2X^\top X\vec{w} - 2X^\top Y) = 0$$</p>
 <p>以上より、
 $\hat{\vec{w}} = (X^T X)^{-1}X^T Y( = X^{-1}Y)$</p>
-<p>学習後の予測値は
-$$\hat{y} = w_0 + \sum_{i=1}^n \vec{\hat{w}}^\top \vec{x}$$
+<p>学習後の予測値\n\n$$\hat{y} = w_0 + \sum_{i=1}^n \vec{\hat{w}}^\top \vec{x}$$
 $$ = X_{test} (X_{train}^T X_{train})^{-1}X_{train}^T Y_{train}$$
 ※逆行列は常に存在するわけでは無い、一般化逆行列をもちいる。</p>
 <blockquote>
@@ -417,9 +415,12 @@ $$ = X_{test} (X_{train}^T X_{train})^{-1}X_{train}^T Y_{train}$$
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> LinearRegression() <span style="color:#75715e">#モデルインスタンスの生成</span>
 </span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit(input_train,target_train) <span style="color:#75715e"># 学習</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>prediction <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>predict(input_test) <span style="color:#75715e"># 予測結果</span>
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>coef_ <span style="color:#75715e"># 学習後に各特徴量の係数が得られる</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>intercept_ <span style="color:#75715e"># 学習後の切片</span>
 </span></span></code></pre></div><h3 id="非線形回帰">非線形回帰</h3>
 <p>特徴量の２次以上の項を使ったり、非線形関数を使った回帰。</p>
@@ -573,6 +574,7 @@ L2ノルムを使った正則化をすると、パラメータ全体の値がち
 <li>どれだけの主成分を残すべきかは、Total Varianceに対して、Variance by PCがどのくらいあるかで判断する。可視化の観点では3次元以下</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Make the bar plot</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>bar(np<span style="color:#f92672">.</span>arange(num_factor_exposures), pca<span style="color:#f92672">.</span>explained_variance_ratio_);
 </span></span></code></pre></div><p>画像圧縮に使われることもある
 <a href="https://ichi.pro/shuseibun-bunseki-niyoru-gazo-asshuku-271480171554223#:~:text=%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E3%81%AB%E3%82%88%E3%82%8B%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE.%20%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E3%81%AB%E3%82%88%E3%82%8B%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE%E3%81%AF%E3%80%81%E6%AC%A1%E5%85%83%E5%89%8A%E6%B8%9B%E6%89%8B%E6%B3%95%E3%81%AE%E9%A0%BB%E7%B9%81%E3%81%AB%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A7%E3%81%99%E3%80%82.%20%E7%94%BB%E5%83%8F%E3%82%92%E5%9C%A7%E7%B8%AE%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AB%E7%89%B9%E7%95%B0%E5%80%A4%E5%88%86%E8%A7%A3%E3%82%92%E6%8E%A1%E7%94%A8%E3%81%97%E3%81%9F%E4%BB%A5%E5%89%8D%E3%81%AE%E6%8A%95%E7%A8%BF%E3%82%92%E6%80%9D%E3%81%84%E5%87%BA%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82.%20%E7%94%BB%E5%83%8F%E3%81%AFRGB%E3%82%AB%E3%83%A9%E3%83%BC%E5%80%A4%E3%81%A7%E8%A1%A8%E3%81%95%E3%82%8C%E3%82%8B%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E8%A1%8C%E5%88%97%E3%81%A7%E3%81%99%E3%80%82.,%E3%81%97%E3%81%9F%E3%81%8C%E3%81%A3%E3%81%A6%E3%80%81%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E3%80%81%E8%A1%8C%E5%88%97%EF%BC%88%E7%94%BB%E5%83%8F%EF%BC%89%E3%81%AE%E6%AC%A1%E5%85%83%E3%82%92%E7%B8%AE%E5%B0%8F%E3%81%97%E3%80%81%E3%81%9D%E3%82%8C%E3%82%89%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84%E6%AC%A1%E5%85%83%E3%82%92%E6%8A%95%E5%BD%B1%E3%81%97%E3%81%A6%E3%80%81%E5%93%81%E8%B3%AA%E3%82%92%E7%B6%AD%E6%8C%81%E3%81%97%E3%81%AA%E3%81%8C%E3%82%89k%E9%87%8D%E3%81%BF%E3%81%8C%E5%B0%8F%E3%81%95%E3%81%84%E7%94%BB%E5%83%8F%E3%82%92%E5%86%8D%E6%A7%8B%E6%88%90%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82.%20%E3%81%AB%E3%82%88%E3%82%8B%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE%20https%3A%2F%2Faaronschlegel.me%2Fprincipal-component-analysis-r-example.html%20%E3%81%AF%E3%80%81%E6%AC%A1%E5%85%83%E5%89%8A%E6%B8%9B%E6%89%8B%E6%B3%95%E3%81%AE%E9%A0%BB%E7%B9%81%E3%81%AB%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A7%E3%81%99%E3%80%82.">主成分分析による画像圧縮</a></p>
@@ -652,6 +654,7 @@ L2ノルムを使った正則化をすると、パラメータ全体の値がち
 </ul>
 <h3 id="個人的に一から実装したコード">個人的に一から実装したコード</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;housing_price_regression.ipynb
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Automatically generated by Colaboratory.
@@ -673,6 +676,7 @@ L2ノルムを使った正則化をすると、パラメータ全体の値がち
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># データセットの取得</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>boston <span style="color:#f92672">=</span> load_boston()
 </span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> DataFrame(boston[<span style="color:#e6db74">&#39;data&#39;</span>],columns<span style="color:#f92672">=</span>boston[<span style="color:#e6db74">&#39;feature_names&#39;</span>])
 </span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#39;target&#39;</span>]<span style="color:#f92672">=</span>boston<span style="color:#f92672">.</span>target
@@ -680,34 +684,47 @@ L2ノルムを使った正則化をすると、パラメータ全体の値がち
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 前処理なしで学習</span>
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## 学習用変数をデータセットから抽出</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>target_train <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>loc[:,<span style="color:#e6db74">&#39;target&#39;</span>]<span style="color:#f92672">.</span>values
 </span></span><span style="display:flex;"><span>input_train <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>loc[:,boston[<span style="color:#e6db74">&#39;feature_names&#39;</span>]]<span style="color:#f92672">.</span>values
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## モデルの学習</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> LinearRegression()
 </span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit(input_train,target_train)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## 学習結果の可視化　各特徴量の寄与度を確認（後のデータ前処理ありとの比較用）</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>bar(boston[<span style="color:#e6db74">&#39;feature_names&#39;</span>],list(model<span style="color:#f92672">.</span>coef_))
 </span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 前処理ありで学習</span>
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## 学習用変数をデータセットから抽出</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>mm <span style="color:#f92672">=</span> MinMaxScaler()
 </span></span><span style="display:flex;"><span>standardized_target_train <span style="color:#f92672">=</span> mm<span style="color:#f92672">.</span>fit_transform(df<span style="color:#f92672">.</span>loc[:,<span style="color:#e6db74">&#39;target&#39;</span>]<span style="color:#f92672">.</span>values<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>))<span style="color:#f92672">.</span>squeeze()
 </span></span><span style="display:flex;"><span>standardized_input_train <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>loc[:,boston[<span style="color:#e6db74">&#39;feature_names&#39;</span>]]<span style="color:#f92672">.</span>apply(zscore)<span style="color:#f92672">.</span>values
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## モデルの学習</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>model_2 <span style="color:#f92672">=</span> LinearRegression()
 </span></span><span style="display:flex;"><span>model_2<span style="color:#f92672">.</span>fit(standardized_input_train,standardized_target_train)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## 学習結果の可視化　各特徴量の寄与度を確認</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>bar(boston[<span style="color:#e6db74">&#39;feature_names&#39;</span>],list(model_2<span style="color:#f92672">.</span>coef_))
 </span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## TOP3とBOTTOM3の取得と可視化</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sorted_indices_by_coef <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argsort(model_2<span style="color:#f92672">.</span>coef_)
 </span></span><span style="display:flex;"><span>top3_positive_features <span style="color:#f92672">=</span> boston[<span style="color:#e6db74">&#39;feature_names&#39;</span>][sorted_indices_by_coef[:<span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]]
 </span></span><span style="display:flex;"><span>worst3_negative_features <span style="color:#f92672">=</span> boston[<span style="color:#e6db74">&#39;feature_names&#39;</span>][sorted_indices_by_coef[:<span style="color:#ae81ff">3</span>]]
@@ -808,11 +825,13 @@ RBFカーネルのパラメータ設定は規定の1/n_featuresを参考にし�
 </span></span><span style="display:flex;"><span><span style="color:#f92672">%</span>matplotlib inline
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># kaggle公式から落としてきたデータのロード</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>titanic_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;./datasets/titanic/train.csv&#34;</span>)
 </span></span><span style="display:flex;"><span>test_titanic_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;./datasets/titanic/test.csv&#34;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 欠損値の確認</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> column <span style="color:#f92672">in</span> titanic_df<span style="color:#f92672">.</span>columns:
 </span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Does </span><span style="color:#e6db74">{</span>column<span style="color:#e6db74">}</span><span style="color:#e6db74"> have null record? : </span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;yes&#39;</span> <span style="color:#66d9ef">if</span> any(titanic_df[column]<span style="color:#f92672">.</span>isna()) <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;No&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#endfor</span>
@@ -822,22 +841,32 @@ RBFカーネルのパラメータ設定は規定の1/n_featuresを参考にし�
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#endfor</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># データの確認</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sns<span style="color:#f92672">.</span>pairplot(titanic_df,hue<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Survived&#39;</span>)
 </span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># [markdown]</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Passenger IDは特に意味のあるデータでは無いので、対象から外す。</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 名前は家族関係などを示すため意味が無いとは言えないが、数値変換するのが今回に関して困難なため削除。</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># チケット番号はIDのようなもののため削除。</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># キャビン番号は活動位置情報に関わりそうだが、今回は見送り。やるならアルファベッド部分ごとに列をつくって続く数字を変数とするか？</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Survivedが目的変数で0=死亡,1＝生存</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 順序尺度は線形変換＋シグモイドでそのまま解釈がうまく行かなさそうなのと、分布的にone-hotベクトルに変更したほうがうまく行きそうなので、２パターン作って確認する</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 前処理用の関数定義</span>
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## one-hot coding</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">one_hot</span>(df,columns):
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> column <span style="color:#f92672">in</span> columns:
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> symbol <span style="color:#f92672">in</span> df[column]<span style="color:#f92672">.</span>unique():
@@ -847,6 +876,7 @@ RBFカーネルのパラメータ設定は規定の1/n_featuresを参考にし�
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">#endfor</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## 前処理　名義尺度の変数をone-hotコーディングするのと、余分なカラムの削除、スケーリングを行う</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">preprocess_titanic_df</span>(df,standard_scalar,is_train<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>):
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    df:                 DataFrame (titanic dataset)
@@ -855,26 +885,38 @@ RBFカーネルのパラメータ設定は規定の1/n_featuresを参考にし�
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>    output_df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>copy()
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># change numerical value</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    one_hot(output_df,[<span style="color:#e6db74">&#39;Sex&#39;</span>,<span style="color:#e6db74">&#39;Embarked&#39;</span>])
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># remove unnecessary columns</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    output_df<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#39;PassengerId&#39;</span>,<span style="color:#e6db74">&#39;Name&#39;</span>,<span style="color:#e6db74">&#39;Ticket&#39;</span>,<span style="color:#e6db74">&#39;Cabin&#39;</span>,<span style="color:#e6db74">&#39;Sex&#39;</span>,<span style="color:#e6db74">&#39;Embarked&#39;</span>],axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># manage missing data</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    output_df<span style="color:#f92672">.</span>loc[output_df[<span style="color:#e6db74">&#39;Age&#39;</span>]<span style="color:#f92672">.</span>isna(),<span style="color:#e6db74">&#39;Age&#39;</span>] <span style="color:#f92672">=</span> output_df[<span style="color:#e6db74">&#39;Age&#39;</span>]<span style="color:#f92672">.</span>mean()
 </span></span><span style="display:flex;"><span>    output_df<span style="color:#f92672">.</span>loc[output_df[<span style="color:#e6db74">&#39;Fare&#39;</span>]<span style="color:#f92672">.</span>isna(),<span style="color:#e6db74">&#39;Fare&#39;</span>] <span style="color:#f92672">=</span> output_df[<span style="color:#e6db74">&#39;Fare&#39;</span>]<span style="color:#f92672">.</span>mean()
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># change scale</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">## regularize variables on ratio scale</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> is_train:
 </span></span><span style="display:flex;"><span>        output_df[<span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>](https:<span style="color:#f92672">//</span>half<span style="color:#f92672">-</span>broken<span style="color:#f92672">-</span>engineer<span style="color:#f92672">.</span>github<span style="color:#f92672">.</span>io<span style="color:#f92672">/</span><span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>) <span style="color:#f92672">=</span> standard_scalar<span style="color:#f92672">.</span>fit_transform(output_df[<span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>](https:<span style="color:#f92672">//</span>half<span style="color:#f92672">-</span>broken<span style="color:#f92672">-</span>engineer<span style="color:#f92672">.</span>github<span style="color:#f92672">.</span>io<span style="color:#f92672">/</span><span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>))
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
 </span></span><span style="display:flex;"><span>        output_df[<span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>](https:<span style="color:#f92672">//</span>half<span style="color:#f92672">-</span>broken<span style="color:#f92672">-</span>engineer<span style="color:#f92672">.</span>github<span style="color:#f92672">.</span>io<span style="color:#f92672">/</span><span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>) <span style="color:#f92672">=</span> standard_scalar<span style="color:#f92672">.</span>transform(output_df[<span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>](https:<span style="color:#f92672">//</span>half<span style="color:#f92672">-</span>broken<span style="color:#f92672">-</span>engineer<span style="color:#f92672">.</span>github<span style="color:#f92672">.</span>io<span style="color:#f92672">/</span><span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>))
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">#endif</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">## normalize variable on ordinal scale </span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    PCLASS_MAX <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
 </span></span><span style="display:flex;"><span>    PCLASS_MIN <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>    output_df[<span style="color:#e6db74">&#39;Pclass&#39;</span>] <span style="color:#f92672">=</span> (output_df[<span style="color:#e6db74">&#39;Pclass&#39;</span>] <span style="color:#f92672">-</span> PCLASS_MIN)<span style="color:#f92672">/</span>(PCLASS_MAX<span style="color:#f92672">-</span>PCLASS_MIN)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> output_df
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## 順序尺度の方も変更one-hotベクトルに変更</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">preprocess_titanic_df_2</span>(df,standard_scalar,is_train<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>):
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    df:                 DataFrame (titanic dataset)
@@ -883,14 +925,24 @@ RBFカーネルのパラメータ設定は規定の1/n_featuresを参考にし�
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>    output_df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>copy()
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># change numerical value</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    one_hot(output_df,[<span style="color:#e6db74">&#39;Sex&#39;</span>,<span style="color:#e6db74">&#39;Embarked&#39;</span>,<span style="color:#e6db74">&#39;Pclass&#39;</span>])
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># remove unnecessary columns</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    output_df<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#39;Pclass&#39;</span>,<span style="color:#e6db74">&#39;PassengerId&#39;</span>,<span style="color:#e6db74">&#39;Name&#39;</span>,<span style="color:#e6db74">&#39;Ticket&#39;</span>,<span style="color:#e6db74">&#39;Cabin&#39;</span>,<span style="color:#e6db74">&#39;Sex&#39;</span>,<span style="color:#e6db74">&#39;Embarked&#39;</span>],axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># manage missing data</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    output_df<span style="color:#f92672">.</span>loc[output_df[<span style="color:#e6db74">&#39;Age&#39;</span>]<span style="color:#f92672">.</span>isna(),<span style="color:#e6db74">&#39;Age&#39;</span>] <span style="color:#f92672">=</span> output_df[<span style="color:#e6db74">&#39;Age&#39;</span>]<span style="color:#f92672">.</span>mean()
 </span></span><span style="display:flex;"><span>    output_df<span style="color:#f92672">.</span>loc[output_df[<span style="color:#e6db74">&#39;Fare&#39;</span>]<span style="color:#f92672">.</span>isna(),<span style="color:#e6db74">&#39;Fare&#39;</span>] <span style="color:#f92672">=</span> output_df[<span style="color:#e6db74">&#39;Fare&#39;</span>]<span style="color:#f92672">.</span>mean()
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># change scale</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">## regularize variables on ratio scale</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> is_train:
 </span></span><span style="display:flex;"><span>        output_df[<span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>](https:<span style="color:#f92672">//</span>half<span style="color:#f92672">-</span>broken<span style="color:#f92672">-</span>engineer<span style="color:#f92672">.</span>github<span style="color:#f92672">.</span>io<span style="color:#f92672">/</span><span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>) <span style="color:#f92672">=</span> standard_scalar<span style="color:#f92672">.</span>fit_transform(output_df[<span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>](https:<span style="color:#f92672">//</span>half<span style="color:#f92672">-</span>broken<span style="color:#f92672">-</span>engineer<span style="color:#f92672">.</span>github<span style="color:#f92672">.</span>io<span style="color:#f92672">/</span><span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>))
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
@@ -908,6 +960,7 @@ RBFカーネルのパラメータ設定は規定の1/n_featuresを参考にし�
 </span></span><span style="display:flex;"><span>titanic_df_preprocessed_2<span style="color:#f92672">.</span>head()
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 学習器にかけるデータの準備</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>feature_train <span style="color:#f92672">=</span> titanic_df_preprocessed[titanic_df_preprocessed<span style="color:#f92672">.</span>columns[<span style="color:#ae81ff">1</span>:]]<span style="color:#f92672">.</span>values
 </span></span><span style="display:flex;"><span>feature_train_2 <span style="color:#f92672">=</span> titanic_df_preprocessed_2[titanic_df_preprocessed_2<span style="color:#f92672">.</span>columns[<span style="color:#ae81ff">1</span>:]]<span style="color:#f92672">.</span>values
 </span></span><span style="display:flex;"><span>label_train <span style="color:#f92672">=</span> titanic_df_preprocessed[<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>values
@@ -915,12 +968,14 @@ RBFカーネルのパラメータ設定は規定の1/n_featuresを参考にし�
 </span></span><span style="display:flex;"><span>feature_test_2 <span style="color:#f92672">=</span> test_titanic_df_preprocessed_2[titanic_df_preprocessed_2<span style="color:#f92672">.</span>columns[<span style="color:#ae81ff">1</span>:]]<span style="color:#f92672">.</span>values
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># ロジスティック回帰モデルの学習</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>logi_reg <span style="color:#f92672">=</span> LogisticRegressionCV()
 </span></span><span style="display:flex;"><span>logi_reg2 <span style="color:#f92672">=</span> LogisticRegressionCV()
 </span></span><span style="display:flex;"><span>logi_reg<span style="color:#f92672">.</span>fit(feature_train,label_train)
 </span></span><span style="display:flex;"><span>logi_reg2<span style="color:#f92672">.</span>fit(feature_train_2,label_train)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 予測</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>train_prediction <span style="color:#f92672">=</span> logi_reg<span style="color:#f92672">.</span>predict(feature_train)
 </span></span><span style="display:flex;"><span>test_prediction <span style="color:#f92672">=</span> logi_reg<span style="color:#f92672">.</span>predict(feature_test)
 </span></span><span style="display:flex;"><span>

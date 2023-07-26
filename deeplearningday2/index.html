@@ -876,7 +876,9 @@ oplimizers内のクラスが持つapply_gradientsメソッドに（勾配、勾�
 </span></span><span style="display:flex;"><span>        y <span style="color:#f92672">=</span> linear_regression(inputs, W, b)
 </span></span><span style="display:flex;"><span>        loss <span style="color:#f92672">=</span> calc_loss(y, labels)
 </span></span><span style="display:flex;"><span>    gradients <span style="color:#f92672">=</span> tape<span style="color:#f92672">.</span>gradient(loss, trainable_variables) <span style="color:#75715e"># 勾配 (loss を trainable_variables の各変数で微分) を求める</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    optimizer<span style="color:#f92672">.</span>apply_gradients(zip(gradients, trainable_variables)) <span style="color:#75715e"># 勾配を用いて変数の更新</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> loss
 </span></span></code></pre></div><h2 id="2_app_2_save_loadipynb">2_app_2_save_load.ipynb</h2>
 <h3 id="tensorflowでの実装の続き">tensorflowでの実装の続き</h3>

@@ -639,20 +639,24 @@ z_i \<br>
 <pre tabindex="0"><code>- 確認５：1-1のファイルから中間層の出力を定義しているソースを抜き出せ
   ```python
     # 2層の総入力
+
     u2 = np.dot(z1, W2) + b2
     
     # 2層の総出力
+
+
     z2 = functions.relu(u2)
 </code></pre><ul>
 <li>確認６：線形と非線形の違いを図に書いて簡単に説明せよ
 <img src="https://half-broken-engineer.github.io/img/Pasted_image_20230129135245.png" alt="/img/Pasted_image_20230129135245.png"></li>
 <li>確認７：活性化関数に該当する箇所をぬきだせ
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 1層の総出力</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>z1 <span style="color:#f92672">=</span> functions<span style="color:#f92672">.</span>relu(u1)
 </span></span></code></pre></div></li>
 </ul>
-<p>　# 2層の総出力
-z2 = functions.relu(u2)</p>
+<p>　# 2層の総出力</p>
+<p>z2 = functions.relu(u2)</p>
 <pre tabindex="0"><code>- 確認８：$E_n(w) = \frac{1}{2} \sum_{j=1}^{J} (y_j - d_j)^2 = \frac{1}{2} ||(y - d)||^2$について２乗する意味と1/2する意味は？
 ただ引き算する場合だと、誤差に対して符号がついてしまい、y-dが負のときに誤差があるのに良いモデルとして学習してしまうから。
 1/2は単純に2乗の値を微分したときにでてくる2倍の操作と打ち消して計算を簡単にする便宜的な意味がある。
@@ -662,13 +666,24 @@ $\overbrace{f(i, u)}^{(1)}  = \frac{\overbrace{e^{u_i}}^{(2)} }{ \underbrace{\su
 def softmax(x): 
     if x.ndim == 2:
         # ミニバッチのときの処理
+
         x = x.T # 転置
+
+
         x = x - np.max(x, axis=0)  # オーバーフロー対策
+
+
         y = np.exp(x) / np.sum(np.exp(x), axis=0) # ソフトマックスの計算 各クラス確率の合計が１になるようにスケーリング
+
         rerurn y.T # 転置
+
+
       
     x = x - np.max(x)   # オーバーフロー対策
+
+
     return np.exp(x) / np.sum(np.exp(x)) # ソフトマックスの計算
+
 　```
 - 確認10：(1)～(2)の数式に該当するソースコードを示し、1行ずつ処理の説明をせよ。$\overbrace{E_n(w)}^{(1)}  = \overbrace{- \sum_{i=1}^{I} d_i \log y_i}^{(2)}$
 
@@ -676,13 +691,21 @@ def softmax(x):
 ```python
   def cross_entropy_error(d, y):
       if y.ndim == 1:                 # 1次元行列の場合
+
   	    d = d.reshape(1, d.size)    # 2次元行列に変形
+
+
           y = y.reshape(1, y.size)    # 2次元行列に変形
+
+
       
       if d.size == y.size:# 教師データｄがone-hot-vectorの場合	        
+
           d = d.argmax(axis=1)        # 正解クラスのインデックスを取得
+
       
       batch_size = y.shape[0]         # バッチサイズを取得
+
       return -np.sum(np.log(y[np.arange(batch_size), d] + 1e-7)) / batch_size # 交差エントロピーを計算して返す ＋1e-7はx→0でlog(x)→-∞になることの対策。数式中のdiは正解クラスのとき１でそれ以外が0なので、バッチ内の各要素についてはモデルが予測した正解クラスの確率の対数の逆符号を取れば良い。バッチ方向に和を取っているので、最後にバッチサイズで割っている
 </code></pre><ul>
 <li>
@@ -696,22 +719,29 @@ def softmax(x):
 <li>
 <p>確認１３：誤差逆伝播法では不要な再帰的処理を避ける事が出来る。 既に行った計算結果を保持しているソースコードを抽出せよ。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  <span style="color:#75715e"># 出力層でのデルタ</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  delta2 <span style="color:#f92672">=</span> functions<span style="color:#f92672">.</span>d_mean_squared_error(d, y)
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e"># b2の勾配</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  grad[<span style="color:#e6db74">&#39;b2&#39;</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sum(delta2, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e"># W2の勾配</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  grad[<span style="color:#e6db74">&#39;W2&#39;</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>dot(z1<span style="color:#f92672">.</span>T, delta2)
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e"># 中間層でのデルタ</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">#delta1 = np.dot(delta2, W2.T) * functions.d_relu(z1)</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">## 試してみよう</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  delta1 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>dot(delta2, W2<span style="color:#f92672">.</span>T) <span style="color:#f92672">*</span> functions<span style="color:#f92672">.</span>d_sigmoid(z1)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  delta1 <span style="color:#f92672">=</span> delta1[np<span style="color:#f92672">.</span>newaxis, :]
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e"># b1の勾配</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  grad[<span style="color:#e6db74">&#39;b1&#39;</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sum(delta1, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
 </span></span><span style="display:flex;"><span>  x <span style="color:#f92672">=</span> x[np<span style="color:#f92672">.</span>newaxis, :]
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e"># W1の勾配</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  grad[<span style="color:#e6db74">&#39;W1&#39;</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>dot(x<span style="color:#f92672">.</span>T, delta1)
 </span></span></code></pre></div></li>
 </ul>
