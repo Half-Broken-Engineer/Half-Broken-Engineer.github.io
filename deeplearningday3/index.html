@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "DeepLearningDay3",
+  
+  "datePublished": "2023-03-29T00:00:00+09:00",
+  "dateModified": "2023-03-29T00:00:00+09:00",
+  "author": {
+    "@type": "Person",
+    "name": "Half-Broken Engineer",
+    
+    "image": "https://half-broken-engineer.github.io/img/profile.png"
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/half-broken-engineer.github.io\/deeplearningday3\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "壊れかけのエンジニアのログ",
+    
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://half-broken-engineer.github.io/img/profile.png"
+    }
+    
+  },
+  "description": "要点(最低100字) 再帰型NNの概念 要点 実装キャプチャ・演習 LSTM 要点 GRU 要点 実装キャプチャ ・演習 双方向RNN 要点 実装キャプチャ・演習 Seq2Seq 要点 Word2vec 要点 Attention Mechanism 要点 VQ-VAE 要点 フレームワーク演習：双方向RNN/勾配のクリッピング 要点 実装キャプチャ フレームワーク演習：Seq2Seq 要点 実装キャプチャ フレームワーク演習：Data-Augumentation 要点 実装キャプチャ フレームワーク演習：Activate-Functions 要点 実装キャプチャ 再帰型NNの概念 再帰型NN→RNN\n時系列データとは 時間的順序を追って一定間隔ごとに観察され、 相互に統計的依存関係が認められるようなデータの系列\n時系列データの例 音声データ テキストデータ RNNの全体像 $u^t = W_{(in)}x^t + W{z^{t-1}} + b$ $z^t = f(W_{(in)}x^t + Wz^{t-1} + b)$ $v^t = W_{(out)} z^t + c$ $y^t = g(W_{(out)} z^t + c)$",
+  "keywords": []
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.112.5 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Half-Broken Engineer">
+<meta name="keywords" content="">
+<meta name="description" content="要点(最低100字) 再帰型NNの概念 要点 実装キャプチャ・演習 LSTM 要点 GRU 要点 実装キャプチャ ・演習 双方向RNN 要点 実装キャプチャ・演習 Seq2Seq 要点 Word2vec 要点 Attention Mechanism 要点 VQ-VAE 要点 フレームワーク演習：双方向RNN/勾配のクリッピング 要点 実装キャプチャ フレームワーク演習：Seq2Seq 要点 実装キャプチャ フレームワーク演習：Data-Augumentation 要点 実装キャプチャ フレームワーク演習：Activate-Functions 要点 実装キャプチャ 再帰型NNの概念 再帰型NN→RNN
+時系列データとは 時間的順序を追って一定間隔ごとに観察され、 相互に統計的依存関係が認められるようなデータの系列
+時系列データの例 音声データ テキストデータ RNNの全体像 $u^t = W_{(in)}x^t &#43; W{z^{t-1}} &#43; b$ $z^t = f(W_{(in)}x^t &#43; Wz^{t-1} &#43; b)$ $v^t = W_{(out)} z^t &#43; c$ $y^t = g(W_{(out)} z^t &#43; c)$">
+
+
+<meta property="og:description" content="要点(最低100字) 再帰型NNの概念 要点 実装キャプチャ・演習 LSTM 要点 GRU 要点 実装キャプチャ ・演習 双方向RNN 要点 実装キャプチャ・演習 Seq2Seq 要点 Word2vec 要点 Attention Mechanism 要点 VQ-VAE 要点 フレームワーク演習：双方向RNN/勾配のクリッピング 要点 実装キャプチャ フレームワーク演習：Seq2Seq 要点 実装キャプチャ フレームワーク演習：Data-Augumentation 要点 実装キャプチャ フレームワーク演習：Activate-Functions 要点 実装キャプチャ 再帰型NNの概念 再帰型NN→RNN
+時系列データとは 時間的順序を追って一定間隔ごとに観察され、 相互に統計的依存関係が認められるようなデータの系列
+時系列データの例 音声データ テキストデータ RNNの全体像 $u^t = W_{(in)}x^t &#43; W{z^{t-1}} &#43; b$ $z^t = f(W_{(in)}x^t &#43; Wz^{t-1} &#43; b)$ $v^t = W_{(out)} z^t &#43; c$ $y^t = g(W_{(out)} z^t &#43; c)$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DeepLearningDay3">
+<meta name="twitter:title" content="DeepLearningDay3">
+<meta property="og:url" content="https://half-broken-engineer.github.io/deeplearningday3/">
+<meta property="twitter:url" content="https://half-broken-engineer.github.io/deeplearningday3/">
+<meta property="og:site_name" content="壊れかけのエンジニアのログ">
+<meta property="og:description" content="要点(最低100字) 再帰型NNの概念 要点 実装キャプチャ・演習 LSTM 要点 GRU 要点 実装キャプチャ ・演習 双方向RNN 要点 実装キャプチャ・演習 Seq2Seq 要点 Word2vec 要点 Attention Mechanism 要点 VQ-VAE 要点 フレームワーク演習：双方向RNN/勾配のクリッピング 要点 実装キャプチャ フレームワーク演習：Seq2Seq 要点 実装キャプチャ フレームワーク演習：Data-Augumentation 要点 実装キャプチャ フレームワーク演習：Activate-Functions 要点 実装キャプチャ 再帰型NNの概念 再帰型NN→RNN
+時系列データとは 時間的順序を追って一定間隔ごとに観察され、 相互に統計的依存関係が認められるようなデータの系列
+時系列データの例 音声データ テキストデータ RNNの全体像 $u^t = W_{(in)}x^t &#43; W{z^{t-1}} &#43; b$ $z^t = f(W_{(in)}x^t &#43; Wz^{t-1} &#43; b)$ $v^t = W_{(out)} z^t &#43; c$ $y^t = g(W_{(out)} z^t &#43; c)$">
+<meta name="twitter:description" content="要点(最低100字) 再帰型NNの概念 要点 実装キャプチャ・演習 LSTM 要点 GRU 要点 実装キャプチャ ・演習 双方向RNN 要点 実装キャプチャ・演習 Seq2Seq 要点 Word2vec 要点 Attention Mechanism 要点 VQ-VAE 要点 フレームワーク演習：双方向RNN/勾配のクリッピング 要点 実装キャプチャ フレームワーク演習：Seq2Seq 要点 実装キャプチャ フレームワーク演習：Data-Augumentation 要点 実装キャプチャ フレームワーク演習：Activate-Functions 要点 実装キャプチャ 再帰型NNの概念 再帰型NN→RNN
+時系列データとは 時間的順序を追って一定間隔ごとに観察され、 相互に統計的依存関係が認められるようなデータの系列
+時系列データの例 音声データ テキストデータ RNNの全体像 $u^t = W_{(in)}x^t &#43; W{z^{t-1}} &#43; b$ $z^t = f(W_{(in)}x^t &#43; Wz^{t-1} &#43; b)$ $v^t = W_{(out)} z^t &#43; c$ $y^t = g(W_{(out)} z^t &#43; c)$">
+<meta property="og:locale" content="ja">
+
+  
+    <meta property="article:published_time" content="2023-03-29T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2023-03-29T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="RabbitChallenge">
+    
+  
+  
+    
+      <meta property="article:tag" content="obsidian_note">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@overcome_kidney">
+
+
+  <meta name="twitter:creator" content="@overcome_kidney">
+
+
+
+
+
+
+  <meta property="og:image" content="https://half-broken-engineer.github.io/img/profile.png">
+  <meta property="twitter:image" content="https://half-broken-engineer.github.io/img/profile.png">
+
+
+
+
+
+
+    <title>DeepLearningDay3</title>
+
+    <link rel="icon" href="https://half-broken-engineer.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://half-broken-engineer.github.io/deeplearningday3/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://half-broken-engineer.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://half-broken-engineer.github.io/css/mystyle.css">
+      
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://half-broken-engineer.github.io/" aria-label="ホームページへ">壊れかけのエンジニアのログ</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://half-broken-engineer.github.io/#about" aria-label="リンクを開く: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://half-broken-engineer.github.io/img/profile.png" alt="プロフィール画像" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://half-broken-engineer.github.io/#about" aria-label="著者についてもっと読む">
+          <img class="sidebar-profile-picture" src="https://half-broken-engineer.github.io/img/profile.png" alt="プロフィール画像" />
+        </a>
+        <h4 class="sidebar-profile-name">Half-Broken Engineer</h4>
+        
+          <h5 class="sidebar-profile-bio">🤖　　　　壊れかけのエンジニア　　　　💻不安を解消したいから💰のお勉強もする</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">ホーム</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">カテゴリー</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">タグ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">アーカイブ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">プロフィール</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Half-Broken-Engineer" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      DeepLearningDay3
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2023-03-29T00:00:00&#43;09:00">
+        
+  
+  
+  
+  
+    2023-03-29
+  
+
+      </time>
+    
+    
+  
+  
+    <span>カテゴリー</span>
+    
+      <a class="category-link" href="https://half-broken-engineer.github.io/categories/rabbitchallenge">RabbitChallenge</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <ul>
+<li></li>
+</ul>
+<h1 id="要点最低100字">要点(最低100字)</h1>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 再帰型NNの概念
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 要点</li>
+<li><input checked="" disabled="" type="checkbox"> 実装キャプチャ・演習</li>
+</ul>
+</li>
+<li><input checked="" disabled="" type="checkbox"> LSTM
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 要点</li>
+</ul>
+</li>
+<li><input checked="" disabled="" type="checkbox"> GRU
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 要点</li>
+<li><input checked="" disabled="" type="checkbox"> 実装キャプチャ ・演習</li>
+</ul>
+</li>
+<li><input checked="" disabled="" type="checkbox"> 双方向RNN
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 要点</li>
+<li><input checked="" disabled="" type="checkbox"> 実装キャプチャ・演習</li>
+</ul>
+</li>
+<li><input checked="" disabled="" type="checkbox"> Seq2Seq
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 要点</li>
+</ul>
+</li>
+<li><input checked="" disabled="" type="checkbox"> Word2vec
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 要点</li>
+</ul>
+</li>
+<li><input checked="" disabled="" type="checkbox"> Attention Mechanism
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 要点</li>
+</ul>
+</li>
+<li><input checked="" disabled="" type="checkbox"> VQ-VAE
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 要点</li>
+</ul>
+</li>
+<li><input checked="" disabled="" type="checkbox"> フレームワーク演習：双方向RNN/勾配のクリッピング
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 要点</li>
+<li><input checked="" disabled="" type="checkbox"> 実装キャプチャ</li>
+</ul>
+</li>
+<li><input checked="" disabled="" type="checkbox"> フレームワーク演習：Seq2Seq
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 要点</li>
+<li><input checked="" disabled="" type="checkbox"> 実装キャプチャ</li>
+</ul>
+</li>
+<li><input checked="" disabled="" type="checkbox"> フレームワーク演習：Data-Augumentation
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 要点</li>
+<li><input checked="" disabled="" type="checkbox"> 実装キャプチャ</li>
+</ul>
+</li>
+<li><input checked="" disabled="" type="checkbox"> フレームワーク演習：Activate-Functions
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 要点</li>
+<li><input checked="" disabled="" type="checkbox"> 実装キャプチャ</li>
+</ul>
+</li>
+</ul>
+<h2 id="再帰型nnの概念">再帰型NNの概念</h2>
+<p>再帰型NN→RNN</p>
+<h3 id="時系列データとは">時系列データとは</h3>
+<p>時間的順序を追って一定間隔ごとに観察され、
+相互に統計的依存関係が認められるようなデータの系列</p>
+<h4 id="時系列データの例">時系列データの例</h4>
+<ul>
+<li>音声データ</li>
+<li>テキストデータ</li>
+</ul>
+<h3 id="rnnの全体像">RNNの全体像</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230414102514.png" alt="/img/Pasted_image_20230414102514.png"></p>
+<p>$u^t = W_{(in)}x^t + W{z^{t-1}} + b$
+$z^t = f(W_{(in)}x^t + Wz^{t-1} + b)$
+$v^t = W_{(out)} z^t + c$
+$y^t = g(W_{(out)} z^t + c)$</p>
+<p>$W_{(in)}$：入力層から中間層への重み
+$W_{(out)}$：中間層から出力層への重み</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>u[:,t<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>dot(X,W_in) <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>dot(z[:,t]<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">1</span>,<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>),W) <span style="color:#f92672">+</span> b
+</span></span><span style="display:flex;"><span>z[:,t<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> functions<span style="color:#f92672">.</span>sigmoid(u[:,t<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>v <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>dot(z[:,t<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">1</span>,<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>),W_out)
+</span></span><span style="display:flex;"><span>y[:,t] <span style="color:#f92672">=</span> functions<span style="color:#f92672">.</span>sigmoid(v <span style="color:#f92672">+</span> c)
+</span></span></code></pre></div><p>※実装上は1次元目がデータ列になるため、重みに対して左から入力を掛ける形になる。</p>
+<h3 id="rnnの特徴">RNNの特徴</h3>
+<p>初期の状態と過去の時間t-1の状態を保持し、そこから次の時間でのtを再帰的に求める再帰構造をもつ</p>
+<h3 id="bptt-back-propagation-through-time">BPTT (Back Propagation Through Time)</h3>
+<h4 id="bpの復習">BPの復習</h4>
+<p>誤差を微分のチェインルールに従って、誤差から逆算していくことで不要な再起的計算を避けて微分を算出できる。</p>
+<h4 id="bpttの数学的記述">BPTTの数学的記述</h4>
+<p>※（パラメータ更新と合わせて、実装例と一致するように、数式展開で確認しながら表現変えてます）
+誤差関数を3つの重みと２つのバイアスでそれぞれ微分する。
+$$\frac{\partial E^t}{\partial W_{(in)}} = \frac{\partial E^t}{\partial u^t}\left[\frac{\partial u^t}{\partial W_{(in)}}\right]^T = \sum_{0\leq k \leq t} \delta^{k}\cdot x^{k}$$
+$$\frac{\partial E^t}{\partial W_{(out)}} = \frac{\partial E^t}{\partial v^t}\frac{\partial v^t}{\partial W_{(out)}} = \delta^{out, t}\cdot z^t$$
+$$\frac{\partial E^t}{\partial W} = \frac{\partial E^t}{\partial u^t}\left[\frac{\partial u^t}{\partial W}\right]^T= \sum_{0\leq k \leq t} \delta^{k}\cdot z^{k-1}$$
+$$\frac{\partial E^t}{\partial b} = \frac{\partial E^t}{\partial u^t} \left[\frac{\partial u^t}{\partial b}\right]^T = \sum_{0\leq k \leq t} \delta^{k}$$
+$$\frac{\partial E^t}{\partial c} = \frac{\partial E^t}{\partial v^t} \frac{\partial v^t}{\partial c} = \delta^{out, t} \cdot 1 = \delta^{out, t}$$
+※$\delta^t = \frac{\partial E}{\partial u^t}$ ,$\delta^{out, t} = \frac{\partial E}{\partial v^t}$とおいている。$\left[\right]^T$は転置ではなく、時間に遡って微分という意味。新しい処理が入ったというよりも、$u_t$にかかわるパラメータは過去時刻の中間層出力ｚを介して時間を遡る必要があることを明示しているだけ。</p>
+<p>$$
+\frac{\partial E^t}{\partial u^t} = \frac{\partial E^t}{\partial v^t} \frac{\partial v^t}{\partial u^t}=\frac{\partial E^t}{\partial v^t} \frac{\partial{W_{(out)}f(u^t) + c}}{\partial u^t} = \delta^{out, t} f&rsquo;(u^t)W^T_{(out)} = \delta^t
+$$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#75715e"># １つ目の計算方法</span>
+</span></span><span style="display:flex;"><span>delta[:, t] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>dot(delta_out[:, t]<span style="color:#f92672">.</span>T, W_out<span style="color:#f92672">.</span>T) <span style="color:#f92672">*</span> functions<span style="color:#f92672">.</span>d_sigmoid(u[:, t])
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ２つめの計算方法</span>
+</span></span><span style="display:flex;"><span>delta[:, t] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>dot(delta[:, t<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>T, W<span style="color:#f92672">.</span>T) <span style="color:#f92672">*</span> functions<span style="color:#f92672">.</span>d_sigmoid(u[:, t])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">スライド中ではなぜか和をとって代入していたが、数式的におかしいのでは？
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">２で割ってればわからなくも無いがあえてやる必要も無いと思う。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span></code></pre></div><p>中間層～中間層の重みと入力層の重みは時間的に遡って誤差を逆伝播させるので、前の時間との関係式を確認
+する。
+$$
+\delta^{t-1} = \frac{\partial E^t}{\partial u^{t-1}} = \frac{\partial E^t}{\partial u^t} \frac{\partial u^t}{\partial u^{t-1}}
+$$
+$$
+= \delta^t\left{
+\frac{\partial u^t}{\partial z^{t-1}} \frac{\partial z^{t-1}}{\partial u^{t-1}}
+\right} = \delta^t {W f&rsquo;(u^{t-1})}
+$$
+$$
+\delta^{t-k-1} = \delta^{t-k}{Wf&rsquo;(u^{t-k-1})}
+$$
+※kはt-1以下の任意の定数</p>
+<h3 id="パラメータ更新">パラメータ更新</h3>
+<p>上の式で各時刻tに対して行っていたのを全域にわたって和を取ってパラメータ更新する。</p>
+<p>$$W^{new}<em>{(in)} = W^{old}</em>{(in)} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E^t}{\partial W_{(in)}} = W^{old}<em>{(in)} - \epsilon \sum</em>{0\leq t \leq \tau} \sum_{0\leq k \leq t} \delta^{k}\cdot x^{k}$$
+$$W^{new}<em>{(out)} = W^{old}</em>{(out)} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E^t}{\partial W_{(out)}} = W^{old}<em>{(out)} - \epsilon \sum</em>{0\leq t \leq \tau}\delta^{out, t}z^t$$
+$$W^{new} = W^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partial W} = W^{old} - \epsilon \sum_{0\leq t \leq \tau} \sum_{0\leq k \leq t} \delta^{k}\cdot z^{k-1}$$
+$$b^{new} = b^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partial b} = b^{old} - \epsilon \sum_{0\leq t \leq \tau} \sum_{0\leq k \leq t} \delta^{k}$$
+$$c^{new} = c^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partial c} = c^{old} - \epsilon \sum_{0\leq t \leq \tau}\delta^{out, t}$$</p>
+<h2 id="lstm">LSTM</h2>
+<p>BPTTの一つ前の時刻のδを求める式を見るとわかる様に、ワンステップ戻るのに活性化関数の導関数と重みを掛ける計算になっているため、時系列を遡るほど勾配消失問題が起こりやすくなる。
+→長い時系列の学習が困難。</p>
+<p>上記の課題を解決するための新しい構造がLSTM</p>
+<p>vault backup: 2023-07-26 17:01:06 Ken_obsidian</p>
+<p>Affected files:</p>
+<h3 id="lstmの全体像">LSTMの全体像</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416171731.png" alt="/img/Pasted_image_20230416171731.png">
+(講義スライドより引用)
+※活性化関数</p>
+<ul>
+<li>各ゲートはマスク処理なので０～１のスケーリングを行うシグモイド</li>
+<li>それ以外の活性化関数はハイパボリックタンジェントになる。</li>
+</ul>
+<h3 id="cec">CEC</h3>
+<p>Constant Error Caroucel：誤差カルーセル</p>
+<p>勾配消失問題及び、勾配爆発問題の解決方法として勾配が１であれば良い。
+$$
+\delta^{t-z-1} = \delta^{t-z}\left{W f&rsquo;(u^{t-z-1})\right}=1
+$$ $$
+\frac{\partial E}{\partial c^{t-1}}
+= \frac{\partial E}{\partial c^t} \frac{\partial c^t}{\partial c^{t-1}}
+= \frac{\partial E}{\partial c^t} \frac{\partial}{\partial c^{t-1}}{a^t - c^{t-1}}
+= \frac{\partial E}{\partial c^t}
+$$</p>
+<h4 id="課題">課題</h4>
+<p>ニューラルネットワークの学習特性が無い
+（入力データについて時間依存度に関係なく重みが一律であるため）</p>
+<h3 id="入力ゲートと出力ゲート">入力ゲートと出力ゲート</h3>
+<p>目的：CECの学習特性がない問題を解決する、重み衝突への対応
+方法：各ゲートへの入力値への重みをW,前回の隠れ層の出力への重みをUで可変とする</p>
+<p>※重み衝突とは、特徴が短期的なものか長期的なものか判断できず、重みを適切に調節できないこと</p>
+<h3 id="忘却ゲート">忘却ゲート</h3>
+<p>過去情報がいらなくなった時点でその情報を忘却する機能
+（LSTMのCECに過去情報が不要になっても保持されている問題に対応するため）</p>
+<h3 id="のぞき穴結合">のぞき穴結合</h3>
+<p>Peephole Connectionのこと</p>
+<p>目的</p>
+<ul>
+<li>CEC自身の値もゲート制御に使う</li>
+<li>CECの値を忘却させたり利用するタイミングの自由度を上げる
+各ゲートの入力が短期記憶の前回中間層出力と入力の線形結合だったところにCECの線形結合も加える。</li>
+</ul>
+<p>※あまり性能向上は見られないとのこと</p>
+<h2 id="gru">GRU</h2>
+<p>LSTMのパラメータを大幅に削減し、同等からそれ以上の性能を望める様になった構造
+メモリは今回更新する分を前回メモリから除く構造になっている。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416181802.png" alt="/img/Pasted_image_20230416181802.png"></p>
+<p>隠れ層の状態
+これと前回の隠れ層出力の加重平均を新たな隠れ層出力とする
+$$
+h_{tmp}(t) = f(W_h x(t) + U_h \cdot (r(t) \cdot h(t-1)) +  b_h(t))
+$$</p>
+<p>リセットゲートの出力
+$$
+r(t) = W_r x(t) + U_r \cdot h(t-1) + b_r(t)
+$$
+更新ゲートの出力
+$$
+z(t) = W_z x(t) + U_z \cdot h(t-1) + b_z(t)
+$$
+隠れ層からの出力 (１ステップ前の中間表現と計算された中間表現の線形和)
+$$
+h(t) = z(t) \cdot h(t-1) + (1-z(t)) \cdot h(t)
+$$</p>
+<h2 id="双方向rnn">双方向RNN</h2>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416210047.png" alt="/img/Pasted_image_20230416210047.png">
+(講義スライドより引用)
+未来側から戻ってくる隠れ層を追加する。
+文脈などを考慮することができ、精度が上がるがデータ系列が揃ってからという制約が追加されるため適用可能なタスクの範囲は狭まる。
+機械翻訳や文章の推敲に使われる。</p>
+<p>※順方向と逆方向に伝播したときの中間層表現を合わせたものが特徴量
+　→　実装時は、特徴量次元のaxis=1でconcatenateする　0番目が系列方向、１番目が特徴方向</p>
+<h2 id="seq2seq">Seq2Seq</h2>
+<p>Encoder-Decoderモデル
+機械翻訳に使われる</p>
+<h3 id="encoder-rnn">Encoder-RNN</h3>
+<h4 id="機械翻訳の例での説明">機械翻訳の例での説明</h4>
+<p>Input:テキストデータ</p>
+<ol>
+<li>Tokenize：単語レベルに分割する</li>
+<li>One-hot coding: 各単語のone-hotベクトル化</li>
+<li>Embedding:　分散表現ベクトルにする
+<ul>
+<li>学習によって200~300程度の長さのベクトルにする（次元削減）</li>
+<li>意味の近いものをまとめる</li>
+</ul>
+</li>
+<li>Encoder-RNN：通常のRNNと同様に単語ベクトル系列を与えていき、最後のベクトルを与えたときのHidden Stateを文脈ベクトル(Final State,Thought Vector)とする</li>
+</ol>
+<h4 id="著名なモデル">著名なモデル</h4>
+<p>BERT（<strong>B</strong>idirectional <strong>E</strong>ncoder <strong>R</strong>epresentations from <strong>T</strong>ransformers） ：Googleによって提案された自然言語処理モデル。双方向の文脈理解、汎用性、(ラベルが不要なことから)データ不足への対応というメリットがある。</p>
+<ul>
+<li>MLM（Masked Language Model）:単語系列のいち部を除いて前後の系列から予測させるように学習させる</li>
+<li>NSP（Next Sentence Prediction）: 単語ではなく文のレベルで学習させるために、２つの入力分に対してその２文が隣り合っているかを予測させるタスクを与える。
+(参考：<a href="https://ledge.ai/bert/">BERTとは｜Googleが誇る自然言語処理モデルの仕組み、特徴を解説 | Ledge.ai</a>)</li>
+</ul>
+<h3 id="decoder-rnn">Decoder-RNN</h3>
+<ol>
+<li>Encoder-RNNのFinal Stateから各単語の生成確率を出力していく</li>
+<li>生成確率に従って各単語をランダムに選ぶ</li>
+<li>生成された単語をenbeddingしてDecoder-RNNの次の入力とする</li>
+<li>上記を最後の単語が生成されるまで繰り返す</li>
+</ol>
+<h3 id="hred">HRED</h3>
+<p>１文レベルでの回答しかできないというSeq2Seq の課題に対応する
+→会話全体の文脈を把握したい</p>
+<p>HRED = Seq2Seq + Context RNN
+※Context RNNはEncoder-RNNのFinal Stateの系列をまとめてこれまでの会話コンテキスト全体を表すベクトルに変換する構造</p>
+<h4 id="問題点">問題点</h4>
+<ul>
+<li>出力の多様性が多少の表現レベルでしかなく、会話の展開レベルでの多様性がない</li>
+<li>短く情報量に乏しい答えを出しがち</li>
+</ul>
+<h3 id="vhred">VHRED</h3>
+<p>HREDの問題点に対応するために、VAEの潜在変数の概念を追加したもの</p>
+<h3 id="vae">VAE</h3>
+<h4 id="08_projectg_certificationオートエンコーダhttpshalf-broken-engineergithubio08_projectg_certificationオートエンコーダ"><a href="https://half-broken-engineer.github.io/08_project/G_Certification/%e3%82%aa%e3%83%bc%e3%83%88%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%80">08_project/G_Certification/オートエンコーダ</a></h4>
+<p>隠れ層を潜在変数ｚとする
+vault backup: 2023-07-26 17:01:06 Ken_obsidian</p>
+<p>Affected files:</p>
+<h4 id="vaeの特徴">VAEの特徴</h4>
+<p>潜在変数zに確率分布z~N(0,1)を仮定し確率分布という構造に押し込めたもの
+元のデータの分布（近さや遠さ）が潜在変数の分布にも反映されてほしい</p>
+<h2 id="word2vec">Word2Vec</h2>
+<p>単語をベクトルで効率的に表現するための手法</p>
+<ul>
+<li>RNNの各時点での入力は可変長でなく固定長である必要がある
+→単語を文字コードに基づくビットの系列ではなく一つのベクトルとして表現する</li>
+<li>辞書で一対一対応させるone-hotベクトルはデータ利用効率が低い
+→分散表現学習によりデータ量の削減</li>
+</ul>
+<h2 id="attention-mechanism">Attention Mechanism</h2>
+<p>Seq2Seqでは長い入力系列でも短い入力系列でも同じ内部表現に押し込む必要があり、
+長い入力系列において関連性を保持することが困難であった。</p>
+<p>Attention Mechanismは上記の問題に対応するための入力系列と出力系列の関連を見つけるための仕組み</p>
+<h2 id="vq-vae">VQ-VAE</h2>
+<p>VQ-VAE：潜在変数を離散的な数値になるように学習させる
+VAE：潜在変数をガウス分布に従う様に学習させる</p>
+<p>この離散的な数値に対応させることをVector Quantization（ベクトル量子化処理）という</p>
+<h4 id="vq-vaeのアーキテクチャ">VQ-VAEのアーキテクチャ</h4>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230417184554.png" alt="/img/Pasted_image_20230417184554.png">
+(講義資料より引用)</p>
+<h4 id="vqの手順">VQの手順</h4>
+<ol>
+<li>Encoderから出力される離散化前の潜在変数と事前に用意されているK個の埋め込みベクトルの距離（L2ノルム）を算出する</li>
+<li>潜在変数をK個の埋め込みベクトルのうち最も近い（似ている）ベクトルに置き換える
+$$
+z_q(x) = e_k
+$$
+$$
+k = \underset{j}{argmin} ||z_e(x)-e_j||^2
+$$</li>
+</ol>
+<h4 id="目的">目的</h4>
+<ul>
+<li>適切なデータ表現の獲得：自然界の特徴を捉えるにおいて、離散的な表現が適していると想定されることから。</li>
+<li>[Posterior Collapse](<a href="https://half-broken-engineer.github.io/Posterior">https://half-broken-engineer.github.io/Posterior</a> Collapse)を防ぐ
+vault backup: 2023-07-26 17:01:06 Ken_obsidian</li>
+</ul>
+<p>Affected files:</p>
+<h3 id="学習">学習</h3>
+<h4 id="損失関数">損失関数</h4>
+<blockquote>
+<p>[!inote]- ベースラインとしてVAEでのELBOから出発して、 Vector-Quantizationに伴う誤差項を追加したものを損失関数とする
+ELBOのKLダイバージェンスと再構成誤差については事前分布を1/Kで固定することと事後分布がone-hotベクトルであることからKLダイバージェンスが定数になるため再構成誤差のみが学習に関係する
+Vector-Quantizationに伴う誤差項は以下の２つ</p>
+<ul>
+<li>Codebook Loss = $
+\left|\operatorname{sg}\left[\boldsymbol{z}<em>{\mathrm{e}}(\boldsymbol{x})\right]-\boldsymbol{e}\right|</em>{2}^{2}
+$：埋め込みベクトルの更新に用いる</li>
+<li>Commitment Loss = $
+\beta\left|\boldsymbol{z}<em>{\mathrm{e}}(\boldsymbol{x})-\operatorname{sg}[\boldsymbol{e}]\right|</em>{2}^{2}
+$:　Encoderネットワークの更新に用いる
+$$
+\mathcal{L}<em>{\mathrm{VQ}-\mathrm{VAE}}=\log p\left(\boldsymbol{x} \mid \boldsymbol{z}</em>{\mathrm{q}}(\boldsymbol{x})\right)+\left|\operatorname{sg}\left[\boldsymbol{z}<em>{\mathrm{e}}(\boldsymbol{x})\right]-\boldsymbol{e}\right|</em>{2}^{2}+\beta\left|\boldsymbol{z}<em>{\mathrm{e}}(\boldsymbol{x})-\operatorname{sg}[\boldsymbol{e}]\right|</em>{2}^{2}
+$$</li>
+</ul>
+</blockquote>
+<h4 id="損失関数の導入">損失関数の導入</h4>
+<p>VAEと同様にELBO (Evidence Lower BOund)の最大化でEncoder、Decoderの学習を行うことを考える。
+$$
+\mathcal{L}<em>{\mathrm{ELBO}}=\mathbf{K L}(q(z \mid \boldsymbol{x}) | p(z))+\log p\left(\boldsymbol{x} \mid \boldsymbol{z}</em>{\mathrm{q}}(\boldsymbol{x})\right)
+$$
+第一項は事後分布と事前分布のKLダイバージェンス、2項目は再構成誤差を表す。</p>
+<p>!memo
+結果的に第１項は定数となるため、第二項の再構成誤差について考えることになる。</p>
+<p>第一項のカルバックライブラーダイバージェンスの計算は、</p>
+<ul>
+<li>事前分布$p(z)=1/K$の一様分布であると固定</li>
+<li>$q(z=k \mid \boldsymbol{x})$がone-hotベクトル
+※総和記号の中身 $[q(z=k \mid \boldsymbol{x}) \log q(z=k \mid \boldsymbol{x})]$ は、 $0 \log 0$ か $1 \log 1$ となる
+上記2点を考慮することで以下のようにまとめることができ、定数となる。
+$$
+\begin{aligned}
+\mathbf{K L}(q(z \mid \boldsymbol{x}) | p(z)) &amp; =\mathbb{E}<em>{z \sim q(z \mid \boldsymbol{x})}\left[\log \frac{q(z \mid \boldsymbol{x})}{p(z)}\right] \
+&amp; =\sum</em>{k=1}^{K} q(z=k \mid \boldsymbol{x}) \log q(z=k \mid \boldsymbol{x})-\sum_{k=1}^{K} q(z=k \mid \boldsymbol{x}) \log p(z=k) \
+&amp; =-\log \frac{1}{K} \sum_{k=1}^{K} q(z=k \mid \boldsymbol{x}) \
+&amp; =-\log \frac{1}{K}=\log K
+\end{aligned}
+$$
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230627120744.png" alt="/img/Pasted_image_20230627120744.png"></li>
+</ul>
+<p>(講義資料より引用：KLダイバージェンスの計算の2行目の第一項が０になる説明)</p>
+<h2 id="フレームワーク演習双方向rnn勾配のクリッピング">フレームワーク演習：双方向RNN/勾配のクリッピング</h2>
+<h3 id="データセットの読み込み">データセットの読み込み</h3>
+<ol>
+<li>tensorflow_datasetsをインポート</li>
+<li>以下の関数で訓練、評価、テストセットを作成する
+<pre tabindex="0"><code>tensorflow_datasets.load(dataset_name,split=[&#39;train[:x%]&#39;,&#39;valid[x%:y%]&#39;,&#39;test[y%:]&#39;])
+</code></pre></li>
+<li>イテレータとすることで一つずつ取り出せるようにする。</li>
+</ol>
+<h3 id="データの前処理">データの前処理</h3>
+<ol>
+<li>音声データは長さがまちまちなので、モデルに入力できるようにするために固定の長さに揃える</li>
+<li>tensorflow.data.Datasetオブジェクトにある.map(funtion)メソッドで一つひとつのデータに対して処理を加える</li>
+<li>map関数で引数に与える関数内ではtensorflow.cond(tf.greaterなどの条件,条件が真のときの処理,偽のときの処理)関数などを用いて前処理を行う</li>
+<li>.batchメソッドでミニバッチを構成する</li>
+</ol>
+<h3 id="モデルの定義">モデルの定義</h3>
+<ol>
+<li>tensorflow.keras.models.Sequantialクラスを使ってモデルのインスタンスを生成</li>
+<li>addメソッドで層を追加。
+※tensorflow.keras.layers内のクラスを使う
+<a href="https://www.tensorflow.org/api_docs/python/tf/keras/layers">Module: tf.keras.layers  |  TensorFlow v2.12.0</a>
+※双方向のレイヤーを追加したいときは.add(layers.Bidirectional(追加したい層))という形で追加する</li>
+<li>（summaryメソッドで定義したモデルの概要の確認）</li>
+</ol>
+<h3 id="モデルの学習">モデルの学習</h3>
+<ol>
+<li>.compileメソッドを用いてロス関数、オプティマイザー、評価指標の設定を行う
+※勾配クリッピングについてはオプティマイザーの領域の話であるため、オプティマイザの引数clipvalueに値を与えることで実装できる</li>
+<li>.fitメソッドに準備したデータセットを与えて学習を進める</li>
+</ol>
+<h2 id="フレームワーク演習seq2seq">フレームワーク演習：Seq2Seq</h2>
+<p>系列入力としてsin関数、出力としてcos関数を予測させる。</p>
+<h3 id="モデルの実装">モデルの実装</h3>
+<p>今回においては入力から出力が一本道ではないため、Sequentialは使わず、
+tf.keras.Inputから始めて、順伝播の経路に従って関数に引数を与え,
+最後にtf.keras.models.Model(inputs,outputs)関数でまとめる形式で実装を行った。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>backend<span style="color:#f92672">.</span>clear_session()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># エンコーダー</span>
+</span></span><span style="display:flex;"><span>e_input <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input(shape<span style="color:#f92672">=</span>(NUM_STEPS, NUM_ENC_TOKENS), name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;e_input&#39;</span>)
+</span></span><span style="display:flex;"><span>_, e_state <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>SimpleRNN(NUM_HIDDEN_PARAMS, return_state<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;e_rnn&#39;</span>)(e_input)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># デコーダー</span>
+</span></span><span style="display:flex;"><span>d_input <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input(shape<span style="color:#f92672">=</span>(NUM_STEPS, NUM_DEC_TOKENS), name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;d_input&#39;</span>)
+</span></span><span style="display:flex;"><span>d_rnn <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>SimpleRNN(NUM_HIDDEN_PARAMS, return_sequences<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, return_state<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;d_rnn&#39;</span>)
+</span></span><span style="display:flex;"><span>d_rnn_out, _ <span style="color:#f92672">=</span> d_rnn(d_input, initial_state<span style="color:#f92672">=</span>[e_state])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 全結合</span>
+</span></span><span style="display:flex;"><span>d_dense <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(NUM_DEC_TOKENS, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;linear&#39;</span>, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;d_output&#39;</span>)
+</span></span><span style="display:flex;"><span>d_output <span style="color:#f92672">=</span> d_dense(d_rnn_out)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>model_train <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Model(inputs<span style="color:#f92672">=</span>[e_input, d_input], outputs<span style="color:#f92672">=</span>d_output)
+</span></span><span style="display:flex;"><span>model_train<span style="color:#f92672">.</span>compile(optimizer<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;adam&#39;</span>, loss<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mean_squared_error&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>model_train<span style="color:#f92672">.</span>summary()
+</span></span></code></pre></div><h3 id="データの準備">データの準備</h3>
+<h4 id="訓練時">訓練時</h4>
+<blockquote>
+<p>[!note]- 訓練時と推論時では異なることに注意</p>
+<ul>
+<li>デコーダーの入力には最初の入力がエンコーダーに最後の系列を入力したときの隠れ層の状態（文脈ベクトル）になるため、０番目の要素は飛ばして定義する</li>
+<li>教師データがあるので各サンプルの１番目以降のデコーダー入力は出力系列と同じ</li>
+</ul>
+</blockquote>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230629153350.png" alt="/img/Pasted_image_20230629153350.png"></p>
+<h3 id="推論時">推論時</h3>
+<blockquote>
+<p>[!note]- 訓練時と推論時では異なることに注意</p>
+<ul>
+<li>エンコーダーとデコーダーでModelを分割して定義する</li>
+<li>訓練時と異なり教師データをデコーダーに入力できないため、tf.keras.layers.Inputでデコーダー入力とデコーダーの隠れ層の状態を定義する</li>
+</ul>
+</blockquote>
+<p>推論時の手順</p>
+<ol>
+<li>エンコーダーに入力系列を与えたときの最終の隠れ層の状態（文脈ベクトル）を取得する</li>
+<li>文脈ベクトルをデコーダーの最初の隠れ層の状態、ゼロベクトルを入力として与える</li>
+<li>以降デコーダーの出力と隠れ層の状態を次のステップの入力と隠れ層の状態として与えて１ステップのデータ長分だけ繰り返す</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict</span>(input_data):
+</span></span><span style="display:flex;"><span>  state_value <span style="color:#f92672">=</span> model_pred_e<span style="color:#f92672">.</span>predict(input_data)
+</span></span><span style="display:flex;"><span>  _dy <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  output_data <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, NUM_STEPS):
+</span></span><span style="display:flex;"><span>    y_output, state_value <span style="color:#f92672">=</span> pred_d_model<span style="color:#f92672">.</span>predict([_dy, state_value])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    output_data<span style="color:#f92672">.</span>append(y_output[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>    _dy[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> y_output
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> output_data
+</span></span></code></pre></div><h2 id="フレームワーク演習data-augumentation">フレームワーク演習：Data-Augumentation</h2>
+<h3 id="座標変換">座標変換</h3>
+<h4 id="反転">反転</h4>
+<ul>
+<li>tf.image.random_flip_left_right(image,seed:int)で左右反転</li>
+<li>tf.image.random_flip_up_down(image,seed:int)で上下反転
+※反転するかはランダム</li>
+</ul>
+<h4 id="回転">回転</h4>
+<ul>
+<li>tf.image.rot90(image, k=1)で反時計回りにk✕90°の回転</li>
+<li>tf.keras.preprocessing.image.random_rotationで角度指定なしの回転
+※imageのからarrayへの変換が必要</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>image <span style="color:#f92672">=</span> image_origin
+</span></span><span style="display:flex;"><span>array <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>preprocessing<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>img_to_array(image) 
+</span></span><span style="display:flex;"><span>array <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>preprocessing<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>random_rotation(array, rg<span style="color:#f92672">=</span><span style="color:#ae81ff">360</span>, row_axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, col_axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, channel_axis<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>image <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>preprocessing<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>array_to_img(array)
+</span></span></code></pre></div><h3 id="画像の一部を活用マスクする">画像の一部を活用・マスクする</h3>
+<ul>
+<li>tf.image.random_crop(image,size=(int,int,int),seed:int)で切り抜きして入力画像とする</li>
+<li>以下のrandom_erasing関数を使用してランダムな領域をマスクする
+<a href="https://arxiv.org/pdf/1708.04896v1.pdf">参考資料: &ldquo;Random Erasing Data Augmentation&rdquo;</a></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">random_erasing</span>(img, prob <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>, sl <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.02</span>, sh <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.4</span>, r1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.2</span>, r2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.8</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random() <span style="color:#f92672">&lt;</span> prob:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> img
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        H <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>        W <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>        S <span style="color:#f92672">=</span> H <span style="color:#f92672">*</span> W
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>            S_e <span style="color:#f92672">=</span> S <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform(low<span style="color:#f92672">=</span>sl, high<span style="color:#f92672">=</span>sh)
+</span></span><span style="display:flex;"><span>            r_e <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform(low<span style="color:#f92672">=</span>r1, high<span style="color:#f92672">=</span>r2)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            H_e <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(S_e <span style="color:#f92672">*</span> r_e)
+</span></span><span style="display:flex;"><span>            W_e <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(S_e <span style="color:#f92672">/</span> r_e)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            x_e <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, W)
+</span></span><span style="display:flex;"><span>            y_e <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, H)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> x_e <span style="color:#f92672">+</span> W_e <span style="color:#f92672">&lt;=</span> W <span style="color:#f92672">and</span> y_e <span style="color:#f92672">+</span> H_e <span style="color:#f92672">&lt;=</span> H:
+</span></span><span style="display:flex;"><span>                img_modified <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>copy(img)
+</span></span><span style="display:flex;"><span>                img_modified[y_e:int(y_e <span style="color:#f92672">+</span> H_e <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>), x_e:int(x_e <span style="color:#f92672">+</span> W_e <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>), :] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> img_modified
+</span></span></code></pre></div><h3 id="画素調整系">画素調整系</h3>
+<ul>
+<li>tf.image.random_contrast(image, lower, upper)で０～１で上限下限を設定してコントラスト調整</li>
+<li>tf.image.random_brightness(image, max_delta)で輝度値デルタの絶対値を指定して輝度調整</li>
+<li>tf.image.random_hue(image, max_delta=0.1)で色相δの絶対値を指定して色相調整</li>
+</ul>
+<h3 id="データmix">データMix</h3>
+<ul>
+<li>2つの学習データを混合（ラベル/データ双方を線形補完）させる
+<a href="https://arxiv.org/abs/1710.09412">参考資料: &ldquo;mixup: Beyond Empirical Risk Minimization&rdquo;</a></li>
+<li>β分布に従って混合割合を調整する</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sample_beta_distribution</span>(size, concentration_0, concentration_1):
+</span></span><span style="display:flex;"><span>    gamma_1_sample <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>gamma(shape<span style="color:#f92672">=</span>[size], alpha<span style="color:#f92672">=</span>concentration_1)
+</span></span><span style="display:flex;"><span>    gamma_2_sample <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>gamma(shape<span style="color:#f92672">=</span>[size], alpha<span style="color:#f92672">=</span>concentration_0)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> gamma_1_sample <span style="color:#f92672">/</span> (gamma_1_sample <span style="color:#f92672">+</span> gamma_2_sample)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">mix_up</span>(ds_one, ds_two, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.4</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ds_oneとds_twoは10枚分ずれたmnistのデータセット。</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># どちらのデータセットにも入力データの画像とラベルが含まれている。</span>
+</span></span><span style="display:flex;"><span>    images_one, labels_one <span style="color:#f92672">=</span> ds_one
+</span></span><span style="display:flex;"><span>    images_two, labels_two <span style="color:#f92672">=</span> ds_two
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># この後の処理で必要なため、データセットのバッチサイズを取得</span>
+</span></span><span style="display:flex;"><span>    batch_size <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>shape(images_one)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 上で定義したベータ分布に基づくサンプリングで、バッチサイズ分の混合割合を取得。</span>
+</span></span><span style="display:flex;"><span>    l <span style="color:#f92672">=</span> sample_beta_distribution(batch_size, alpha, alpha)
+</span></span><span style="display:flex;"><span>    x_l <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>reshape(l, (batch_size, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>    y_l <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>reshape(l, (batch_size, <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 2つのデータセットを混合割合に基づいて、入力データ･ラベルの両方を混合する。</span>
+</span></span><span style="display:flex;"><span>    images <span style="color:#f92672">=</span> images_one <span style="color:#f92672">*</span> x_l <span style="color:#f92672">+</span> images_two <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> x_l)
+</span></span><span style="display:flex;"><span>    labels <span style="color:#f92672">=</span> labels_one <span style="color:#f92672">*</span> y_l <span style="color:#f92672">+</span> labels_two <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> y_l)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (images, labels)
+</span></span></code></pre></div><h2 id="フレームワーク演習activate-functions">フレームワーク演習：Activate-Functions</h2>
+<h3 id="実装方法">実装方法</h3>
+<p>tf.keras.layers.Activationから活性化関数を指定する。</p>
+<h3 id="活性化関数の種類と使い道">活性化関数の種類と使い道</h3>
+<h4 id="中間層">中間層</h4>
+<ul>
+<li>シグモイド関数：導関数が元の関数を用いて簡単に表現できるため、誤差逆伝播法の黎明期に使われたが、導関数の最大値が0.25で入力が0から遠ざかるほど0に近い微分値を取るため<strong>勾配消失を起こしやすい</strong>問題がある</li>
+<li>tanh(双曲線正接関数)：導関数の最大値は１であり、シグモイドよりは勾配消失を起こしづらいが、入力が０から遠ざかるほど０に近い微分値を取るため、<strong>勾配消失問題</strong>は依然として残る。入力＝＝０で微分不可能</li>
+<li>ReLU（正規化線形関数、ランプ関数）：入力値が正のとき、微分値が常に１のため、<strong>勾配消失は起こりにくい</strong>、<strong>入力が負のときは微分値が常に０のため学習が進まない問題がある</strong>、入力＝＝０で微分不可能</li>
+<li>Leaky ReLU：ReLUの入力が負のときに学習が進まない問題に対応するために、入力が負の領域にも小さな傾きを与える。</li>
+<li>Swish（シグモイド加重線形関数）：入力＝＝０の点で連続で、<strong>微分不可能な点が存在しない</strong>。シグモイドと入力の積で表され、正の領域の大半で微分値が１程度であり、<strong>勾配消失も起こしにくい</strong></li>
+</ul>
+<h4 id="出力層">出力層</h4>
+<ul>
+<li>シグモイド関数：二値分類</li>
+<li>ソフトマックス関数：多クラス分類</li>
+<li>恒等関数：回帰タスク　（出力層で、このあと層を重ねるわけでは無いため線形関数でも問題無い）</li>
+</ul>
+<h3 id="考察α">考察＋α</h3>
+<h5 id="活性化関数に関するサーベイ論文より">活性化関数に関するサーベイ論文より</h5>
+<p>vault backup: 2023-07-26 17:01:06 Ken_obsidian</p>
+<p>Affected files:</p>
+<h1 id="確認問題">確認問題</h1>
+<h3 id="cnnの復習">CNNの復習</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230414101507.png" alt="/img/Pasted_image_20230414101507.png"></p>
+<h3 id="rnnの3つの重みについて">RNNの3つの重みについて</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230414102743.png" alt="/img/Pasted_image_20230414102743.png">
+一つ前の入力データに対する中間層出力を今回の中間層に入力する際にかけられる重み。</p>
+<h3 id="rnnでの演習チャレンジ">RNNでの演習チャレンジ</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230414105146.png" alt="/img/Pasted_image_20230414105146.png">
+隣接単語から表現ベクトルを作る処理は隣接しているLeftとRightに重みをかけ合わせることでできる。
+（１）では隣接単語が修飾、被修飾のような関係なら可能性はあるが、その場合も足し合わせた言葉が埋め込めるだけのベクトル空間が必要になり、あまり良くはないと考えられる
+（２）は各入寮単語のベクトル構造が保持され、順序情報も残るのでこれが望ましいと考えられる
+（３）では２つの単語の同一度に対して重みをかけている処理になり、求めていることはできない
+（４）では完全によくわからないベクトルを生み出すことになるため、求めていることはできない</p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230414113907.png" alt="/img/Pasted_image_20230414113907.png">
+（<a href="http://edu.net.c.dendai.ac.jp/ad2/2010/3/index.xhtml">Content Free Grammer and Syntax Tree</a>より引用）</p>
+<h3 id="連鎖律の計算の復習">連鎖律の計算の復習</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230414113644.png" alt="/img/Pasted_image_20230414113644.png"></p>
+<h3 id="bpttの数学的記述の確認">BPTTの数学的記述の確認</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230415174004.png" alt="/img/Pasted_image_20230415174004.png">
+$y_1 = g(W_{out}\cdot z_1 + c)$
+※$z_1 = f(W_{in} \cdot x_0 + W \cdot z_0 +b)$</p>
+<h3 id="bpttの実装確認問題">BPTTの実装確認問題</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416000131.png" alt="/img/Pasted_image_20230416000131.png">
+答えは（２）、
+一つ前のdelta_tを求めるため、講義スライド中の下図の式が参考になる。
+文字の対応が異なっているのでややこしいが、コード中のWが入力、Uが中間層（式中の無印Wと対応）、Vが出力層の重みであることがわかるので、活性化関数が恒等写像でｆ’が１であることをあわせて、（２）が正解となる。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416000240.png" alt="/img/Pasted_image_20230416000240.png"></p>
+<h3 id="勾配消失問題シグモイド関数の微分値">勾配消失問題　シグモイド関数の微分値</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416170346.png" alt="/img/Pasted_image_20230416170346.png">
+答えは（２）</p>
+<h3 id="勾配クリッピングの演習チャレンジ">勾配クリッピングの演習チャレンジ</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416171342.png" alt="/img/Pasted_image_20230416171342.png">
+答えは(1),
+クリッピングなので、値が大きいときだけしきい値でキャップをすればよく、rate&lt;1の条件がついている。
+もともとnormサイズのベクトルなので、rateをかければthresholdのサイズになる。</p>
+<h3 id="各ゲートの役割の確認問題">各ゲートの役割の確認問題</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416174413.png" alt="/img/Pasted_image_20230416174413.png">
+不要な過去情報を削除するので、忘却ゲート</p>
+<h3 id="lstmの順伝播の演算の確認">LSTMの順伝播の演算の確認</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416175157.png" alt="/img/Pasted_image_20230416175157.png">
+新しいセルの状態は、セルへの入力とワンステップ前のセルの状態に忘却ゲートを適用したものの和になるので（３）が正解。</p>
+<h3 id="lstmとcecの問題点">LSTMとCECの問題点</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416183842.png" alt="/img/Pasted_image_20230416183842.png">
+LSTM：計算パラメータが多く、効率が悪い
+CEC：学習ができない</p>
+<h3 id="gruの更新ゲートの演習問題">GRUの更新ゲートの演習問題</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416184427.png" alt="/img/Pasted_image_20230416184427.png"></p>
+<h3 id="lstmとgruの違い">LSTMとGRUの違い</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416183959.png" alt="/img/Pasted_image_20230416183959.png">
+計算量がLSTM&gt;GRUで、
+LSTMが隠れ層とCECの２つのメモリ構造で長期短期記憶を表現していたのに対して、GRUは更新制御によって隠れ層のみで長期短期記憶を表現している。</p>
+<h3 id="双方向rnnの実装">双方向RNNの実装</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416210751.png" alt="/img/Pasted_image_20230416210751.png">
+入力xsのforwardとbackwardからaxis=0が時系列方向であることがわかる。
+中間層表現を合わせた特徴とあるので、特徴量の方向でconcatenateした(4)が正解。</p>
+<h3 id="seq2seqの確認">Seq2Seqの確認</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416213248.png" alt="/img/Pasted_image_20230416213248.png">
+正解は（２）
+(1)：双方向RNNの説明
+(3)：木構造RNNの説明：ゲート機構を木構造に拡張したもの
+(4)：LSTM</p>
+<h3 id="embeddingの実装の確認">Embeddingの実装の確認</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416214347.png" alt="/img/Pasted_image_20230416214347.png">
+eとしてembed_sizeの長さのベクトルがほしいので、正解は(1)
+※図中はWとUのサイズが逆になっていると思われる。</p>
+<h3 id="seq2seqとhredvhredの違い">Seq2SeqとHRED,VHREDの違い</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230417171428.png" alt="/img/Pasted_image_20230417171428.png">
+Seq2Seqは文に対して文を回答する形で、前後の文の系列を加味して文脈を理解することはできない
+HREDはSeq2SeqにContext-RNNを組み合わせることで、前後の文の系列を加味して文脈を理解して回答することができるが、生成される回答について話の展開というレベルでの多様性が無いことや、短く情報量の少ない回答を選びがちという問題がある
+VHREDはHREDの上記の問題に対応するためにVAEの潜在変数の概念を取り込んで回答に多様性が生まれる様にしたものである。</p>
+<h3 id="vae-1">VAE</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230417172735.png" alt="/img/Pasted_image_20230417172735.png">
+確率変数</p>
+<h3 id="用語の違いの説明">用語の違いの説明</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230417173854.png" alt="/img/Pasted_image_20230417173854.png">
+RNNは時系列データを処理するのに適したNNモデルのこと
+Seq2Seqは入力系列に対して出力も系列でだすNN
+Word2Vecは自然言語処理において単語を効率的にベクトルに埋め込む分散表現を得る手法
+Attentionは時系列データの入出力の関連度合いに応じて重みをつける手法</p>
+<h1 id="実装演習結果">実装演習結果</h1>
+<h2 id="3_1_simple_rnn_afteripynb">3_1_simple_RNN_after.ipynb</h2>
+<table>
+<thead>
+<tr>
+<th>パラメータ変更</th>
+<th>重み初期化の変更</th>
+<th>活性化関数の変更</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>（ベースライン）<!-- raw HTML omitted -->隠れ層のノード数＝１６<!-- raw HTML omitted -->分散１の正規分布で重みを初期化<!-- raw HTML omitted -->sigmoid関数を使用<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230414113738.png" alt="/img/Pasted_image_20230414113738.png"><!-- raw HTML omitted -->Leraning_rateを0.1→0.01に変更<!-- raw HTML omitted -->※小さすぎたためか収束まで至らず<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230630161418.png" alt="/img/Pasted_image_20230630161418.png"><!-- raw HTML omitted -->重み初期値の分散を0.2に変更/2.0に変更<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230630161725.png" alt="/img/Pasted_image_20230630161725.png"><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230630161847.png" alt="/img/Pasted_image_20230630161847.png"><!-- raw HTML omitted -->隠れ層のノード数を128に変更<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230630162203.png" alt="/img/Pasted_image_20230630162203.png"></td>
+<td>Xavierの初期化 (簡略版)<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230630153353.png" alt="/img/Pasted_image_20230630153353.png">      Heの初期化<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230630153519.png" alt="/img/Pasted_image_20230630153519.png"><!-- raw HTML omitted -->Xavierの初期化（中間層のノード数を128にしたとき）<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230630162349.png" alt="/img/Pasted_image_20230630162349.png"></td>
+<td>ReLU<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230630155220.png" alt="/img/Pasted_image_20230630155220.png"><!-- raw HTML omitted -->tanh関数<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230630155405.png" alt="/img/Pasted_image_20230630155405.png"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="考察">考察</h3>
+<p>今回のケースにおいては、入力値をスケーリングしていないため、ReLU関数を中間層の活性化関数に用いると入力が大きい値のときに誤差逆伝播で中間層出力→W_inに戻すときの$\frac{du}{dw}\cdot\frac{df(u)}{du}$が入力値になるために大きくなる。このことから重みの収束が悪くなる。
+sigmoidやtanhを使った場合は0から離れると導関数の値が０に近づいていくため、収束性は良くなったものと考えられる。</p>
+<p>重み初期値の分散を小さくしすぎるとほとんど同じ値のまま学習がうまく行かない。</p>
+<p>隠れ層のノード数を128にしたときに収束が悪くなったのは、重み初期化の観点だと、初期値を与える分布の分散の値がXavierの初期化の厳密なバージョン($\frac{2}{n_{in}+n_{out}}$)から考えると大きくなりすぎたためだと考えられる。</p>
+<p>hidden_layer_size = 16のとき、厳密なXavierだと1/3倍、hidden_layer_size=128のときだとおよそ1/8倍する必要があるが、等倍だったため分散が大きくなりすぎたものと考えられる。
+実際単純にinit_std＝0.25にして、すべての層の重みの初期化分布の分散を一括で小さくしても収束していく傾向は見られた。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230630164446.png" alt="/img/Pasted_image_20230630164446.png"></p>
+<h4 id="考察α参考図書など">考察＋α　参考図書など</h4>
+<p><a href="https://arxiv.org/abs/1502.01852">He et al., 2015. Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification</a>
+より、重みの初期化による学習の違いは層が深くなるに連れて顕著になる。</p>
+<h2 id="3_4_spoken_digitipynb双方向rnnと勾配クリッピング">3_4_spoken_digit.ipynb　(双方向RNNと勾配クリッピング)</h2>
+<p>tf.keras.layers.Bidirectional を用いて双方向LSTMを実装
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230628085127.png" alt="/img/Pasted_image_20230628085127.png">
+modelインスタンスのコンパイルメソッド実行時の引数として渡すオプティマイザーにclipvalueを引数として設定することで勾配クリッピングを実装
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230628085256.png" alt="/img/Pasted_image_20230628085256.png"></p>
+<h2 id="3_5_seq2seqencoder-decoder_sin-cosipynb">3_5_Seq2Seq(Encoder-Decoder)_sin-cos.ipynb</h2>
+<h3 id="訓練">訓練</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230629153452.png" alt="/img/Pasted_image_20230629153452.png"></p>
+<h3 id="推論">推論</h3>
+<p>sin関数かcos関数を予想
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230629155512.png" alt="/img/Pasted_image_20230629155512.png"></p>
+<h2 id="3_6_data_augmentation_with_tfipynb">3_6_data_augmentation_with_tf.ipynb</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>元画像<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230629163758.png" alt="/img/Pasted_image_20230629163758.png"></td>
+<td>左右反転<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230629163826.png" alt="/img/Pasted_image_20230629163826.png"></td>
+<td>上下反転<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230629163859.png" alt="/img/Pasted_image_20230629163859.png"></td>
+</tr>
+<tr>
+<td>Hue<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230629164146.png" alt="/img/Pasted_image_20230629164146.png"></td>
+<td>コントラスト<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230629164050.png" alt="/img/Pasted_image_20230629164050.png"></td>
+<td>輝度<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230629164117.png" alt="/img/Pasted_image_20230629164117.png"></td>
+</tr>
+<tr>
+<td>回転<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230629164604.png" alt="/img/Pasted_image_20230629164604.png"></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="random-erase">random erase</h4>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230629164712.png" alt="/img/Pasted_image_20230629164712.png"></p>
+<h4 id="mix-up">mix up</h4>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230629164722.png" alt="/img/Pasted_image_20230629164722.png"></p>
+<h4 id="複数手法を組み合わせて実施">複数手法を組み合わせて実施</h4>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230629164753.png" alt="/img/Pasted_image_20230629164753.png"></p>
+<h2 id="3_7_activation_functionsipynb">3_7_activation_functions.ipynb</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>シグモイド関数<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230630111517.png" alt="/img/Pasted_image_20230630111517.png"></td>
+<td>tanh関数<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230630111538.png" alt="/img/Pasted_image_20230630111538.png"></td>
+<td>ReLU<!-- raw HTML omitted --> <img src="https://half-broken-engineer.github.io/img/Pasted_image_20230630111601.png" alt="/img/Pasted_image_20230630111601.png"></td>
+</tr>
+<tr>
+<td>Leaky ReLU<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230630111641.png" alt="/img/Pasted_image_20230630111641.png"></td>
+<td>Swish<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230630111704.png" alt="/img/Pasted_image_20230630111704.png"></td>
+<td>ソフトマックス関数<!-- raw HTML omitted --><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230630111722.png" alt="/img/Pasted_image_20230630111722.png"></td>
+</tr>
+</tbody>
+</table>
+
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">タグ</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://half-broken-engineer.github.io/tags/obsidian_note/">obsidian_note</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/deeplearningday4/" data-tooltip="DeepLearningDay4" aria-label="次: DeepLearningDay4">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">次</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/deeplearningday2/" data-tooltip="DeepLearningDay2" aria-label="前: DeepLearningDay2">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">前</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="この記事を共有する">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://half-broken-engineer.github.io/deeplearningday3/" title="Twitterで共有" aria-label="Twitterで共有">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="コメントを残す">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="トップに戻る">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/half-broken-engineer.github.io\/deeplearningday3\/';
+        
+          this.page.identifier = '\/deeplearningday3\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</footer>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+    inlineMath: [['$','$']]
+    }
+});
+</script>
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/deeplearningday4/" data-tooltip="DeepLearningDay4" aria-label="次: DeepLearningDay4">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">次</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/deeplearningday2/" data-tooltip="DeepLearningDay2" aria-label="前: DeepLearningDay2">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">前</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="この記事を共有する">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://half-broken-engineer.github.io/deeplearningday3/" title="Twitterで共有" aria-label="Twitterで共有">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="コメントを残す">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="トップに戻る">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fhalf-broken-engineer.github.io%2Fdeeplearningday3%2F" aria-label="Twitterで共有">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitterで共有</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://half-broken-engineer.github.io/img/profile.png" alt="プロフィール画像" />
+    
+    <h4 id="about-card-name">Half-Broken Engineer</h4>
+    
+      <div id="about-card-bio">🤖　　　　壊れかけのエンジニア　　　　💻不安を解消したいから💰のお勉強もする</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Japan
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://half-broken-engineer.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://half-broken-engineer.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

@@ -9,49 +9,52 @@
     <lastBuildDate>Wed, 01 Mar 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://half-broken-engineer.github.io/categories/g_certification/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Googleの猫</title>
-      <link>https://half-broken-engineer.github.io/2023/03/google%E3%81%AE%E7%8C%AB/</link>
+      <link>https://half-broken-engineer.github.io/google%E3%81%AE%E7%8C%AB/</link>
       <pubDate>Wed, 01 Mar 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/03/google%E3%81%AE%E7%8C%AB/</guid>
+      <guid>https://half-broken-engineer.github.io/google%E3%81%AE%E7%8C%AB/</guid>
       <description>2012年、猫の概念とみられる画像の抽出</description>
     </item>
     
     <item>
       <title>WSC</title>
-      <link>https://half-broken-engineer.github.io/2023/03/wsc/</link>
+      <link>https://half-broken-engineer.github.io/wsc/</link>
       <pubDate>Wed, 01 Mar 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/03/wsc/</guid>
+      <guid>https://half-broken-engineer.github.io/wsc/</guid>
       <description>WSC(WinogradSchemaChallenge)は類似した2対の文章から構成される代名詞照応解析のデータセットであり,人間には簡単に解けるが人工知能では従来の統語的手がかりだけでは解くのが困黄である特徴がある.</description>
     </item>
     
     <item>
       <title>アンサンブル学習</title>
-      <link>https://half-broken-engineer.github.io/2023/03/%E3%82%A2%E3%83%B3%E3%82%B5%E3%83%B3%E3%83%96%E3%83%AB%E5%AD%A6%E7%BF%92/</link>
+      <link>https://half-broken-engineer.github.io/%E3%82%A2%E3%83%B3%E3%82%B5%E3%83%B3%E3%83%96%E3%83%AB%E5%AD%A6%E7%BF%92/</link>
       <pubDate>Wed, 01 Mar 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/03/%E3%82%A2%E3%83%B3%E3%82%B5%E3%83%B3%E3%83%96%E3%83%AB%E5%AD%A6%E7%BF%92/</guid>
+      <guid>https://half-broken-engineer.github.io/%E3%82%A2%E3%83%B3%E3%82%B5%E3%83%B3%E3%83%96%E3%83%AB%E5%AD%A6%E7%BF%92/</guid>
       <description>目的：予測精度の向上 バイアス：真値と予測値の誤差 バリアンス：予測値の散らばり具合
-メリットとデメリット メリット 弱学習器を使える 精度が上がる デメリット 構築に時間がかかる バイアスとバリアンスのトレードオフの調整が困難 主な種類 バギング ![[バギング]]
-ブースティング ![[ブースティング]]
-スタッキング ![[スタッキング]]</description>
+メリットとデメリット メリット 弱学習器を使える 精度が上がる デメリット 構築に時間がかかる バイアスとバリアンスのトレードオフの調整が困難 主な種類 バギング vault backup: 2023-07-26 17:01:06 Ken_obsidian
+Affected files:
+ブースティング vault backup: 2023-07-26 17:01:06 Ken_obsidian
+Affected files:
+スタッキング vault backup: 2023-07-26 17:01:06 Ken_obsidian
+Affected files:</description>
     </item>
     
     <item>
       <title>異常検知</title>
-      <link>https://half-broken-engineer.github.io/2023/03/%E7%95%B0%E5%B8%B8%E6%A4%9C%E7%9F%A5/</link>
+      <link>https://half-broken-engineer.github.io/%E7%95%B0%E5%B8%B8%E6%A4%9C%E7%9F%A5/</link>
       <pubDate>Wed, 01 Mar 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/03/%E7%95%B0%E5%B8%B8%E6%A4%9C%E7%9F%A5/</guid>
+      <guid>https://half-broken-engineer.github.io/%E7%95%B0%E5%B8%B8%E6%A4%9C%E7%9F%A5/</guid>
       <description>検知したい異常が正解以外のもの→教師あり学習 外れ値、離れ値→教師無し学習</description>
     </item>
     
     <item>
       <title>階層的ニューラルネットワークと構造的ニューラルネットワーク</title>
-      <link>https://half-broken-engineer.github.io/2023/03/%E9%9A%8E%E5%B1%A4%E7%9A%84%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A8%E6%A7%8B%E9%80%A0%E7%9A%84%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/</link>
+      <link>https://half-broken-engineer.github.io/%E9%9A%8E%E5%B1%A4%E7%9A%84%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A8%E6%A7%8B%E9%80%A0%E7%9A%84%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/</link>
       <pubDate>Wed, 01 Mar 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/03/%E9%9A%8E%E5%B1%A4%E7%9A%84%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A8%E6%A7%8B%E9%80%A0%E7%9A%84%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/</guid>
+      <guid>https://half-broken-engineer.github.io/%E9%9A%8E%E5%B1%A4%E7%9A%84%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A8%E6%A7%8B%E9%80%A0%E7%9A%84%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/</guid>
       <description>階層的ニューラルネットワーク：CNNなどのシュルちょくが一意に求まる確定的ニューラルネットと対応
 構造的ニューラルネットワーク：ボルツマンマシンなど、出力が確率的な確率的ニューラルネットワークに対応
 ボルツマンマシン：組み合わせ爆発問題に対応するために制限ボルツマンマシンが生まれた</description>
@@ -59,10 +62,10 @@
     
     <item>
       <title>欠損値の種類</title>
-      <link>https://half-broken-engineer.github.io/2023/03/%E6%AC%A0%E6%90%8D%E5%80%A4%E3%81%AE%E7%A8%AE%E9%A1%9E/</link>
+      <link>https://half-broken-engineer.github.io/%E6%AC%A0%E6%90%8D%E5%80%A4%E3%81%AE%E7%A8%AE%E9%A1%9E/</link>
       <pubDate>Wed, 01 Mar 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/03/%E6%AC%A0%E6%90%8D%E5%80%A4%E3%81%AE%E7%A8%AE%E9%A1%9E/</guid>
+      <guid>https://half-broken-engineer.github.io/%E6%AC%A0%E6%90%8D%E5%80%A4%E3%81%AE%E7%A8%AE%E9%A1%9E/</guid>
       <description>MCAR: Missing Completely At Random 欠損値になるかどうかが完全にランダム、なんの因子の影響も受けない。 とくにバイアスを引き起こすことはないが、実際のデータではあまり見られない。
 MAR: Missing At Random ある因子が欠損値となるかどうかが、 その因子自体とは関係無いが、その他の因子とは関係がある場合です。
 例えば、高齢であればある程収入に関するデータを報告しない(すなわち欠損)が、収入の高さは報告の有無に関係しない、といったケースです。
@@ -72,23 +75,23 @@ MNAR: Missing Not At Random 欠損値になるかどうかがその因子自体�
     
     <item>
       <title>内部共変量シフト</title>
-      <link>https://half-broken-engineer.github.io/2023/03/%E5%86%85%E9%83%A8%E5%85%B1%E5%A4%89%E9%87%8F%E3%82%B7%E3%83%95%E3%83%88/</link>
+      <link>https://half-broken-engineer.github.io/%E5%86%85%E9%83%A8%E5%85%B1%E5%A4%89%E9%87%8F%E3%82%B7%E3%83%95%E3%83%88/</link>
       <pubDate>Wed, 01 Mar 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/03/%E5%86%85%E9%83%A8%E5%85%B1%E5%A4%89%E9%87%8F%E3%82%B7%E3%83%95%E3%83%88/</guid>
+      <guid>https://half-broken-engineer.github.io/%E5%86%85%E9%83%A8%E5%85%B1%E5%A4%89%E9%87%8F%E3%82%B7%E3%83%95%E3%83%88/</guid>
       <description>共変量シフトとは、入力の分布が異なる現象を意味するが、機械学習やパターン認識の分野では訓練データのサンプリングと予測データの入力の分布に偏りがあり、アルゴリズムが対応できなくなることを指すことが多い。
 単なる訓練データセットの中で、共変量シフトは普通の機械学習アルゴリズムではあまり議論されない。
 DeepNetworkでは、深くなった隠れ層において各層とActivationごとに入力分布が変わってしまうことが問題となる。
 この現象を内部の共変量シフト(internalCovariateShift)と呼んでいる。
-[[バッチ正規化|バッチ正規化]]によって対策される。</description>
+バッチ正規化|バッチ正規化によって対策される。</description>
     </item>
     
     <item>
       <title>半教師あり学習</title>
-      <link>https://half-broken-engineer.github.io/2023/03/%E5%8D%8A%E6%95%99%E5%B8%AB%E3%81%82%E3%82%8A%E5%AD%A6%E7%BF%92/</link>
+      <link>https://half-broken-engineer.github.io/%E5%8D%8A%E6%95%99%E5%B8%AB%E3%81%82%E3%82%8A%E5%AD%A6%E7%BF%92/</link>
       <pubDate>Wed, 01 Mar 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/03/%E5%8D%8A%E6%95%99%E5%B8%AB%E3%81%82%E3%82%8A%E5%AD%A6%E7%BF%92/</guid>
+      <guid>https://half-broken-engineer.github.io/%E5%8D%8A%E6%95%99%E5%B8%AB%E3%81%82%E3%82%8A%E5%AD%A6%E7%BF%92/</guid>
       <description>モデルの安定性向上
 識別モデルと生成モデルに利用
 利用できるデータの拡大</description>
@@ -96,37 +99,37 @@ DeepNetworkでは、深くなった隠れ層において各層とActivationご�
     
     <item>
       <title>AAAI</title>
-      <link>https://half-broken-engineer.github.io/2023/01/aaai/</link>
+      <link>https://half-broken-engineer.github.io/aaai/</link>
       <pubDate>Tue, 31 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/aaai/</guid>
+      <guid>https://half-broken-engineer.github.io/aaai/</guid>
       <description>Presidental Panel on Long-Term AI Futures:2008-2009 AIの社会的課題について検討するサブグループにて予想される様々な倫理的問題、法律的課題について議論がなされた</description>
     </item>
     
     <item>
       <title>AIの活用に関する各国の経済成長戦略</title>
-      <link>https://half-broken-engineer.github.io/2023/01/ai%E3%81%AE%E6%B4%BB%E7%94%A8%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E5%90%84%E5%9B%BD%E3%81%AE%E7%B5%8C%E6%B8%88%E6%88%90%E9%95%B7%E6%88%A6%E7%95%A5/</link>
+      <link>https://half-broken-engineer.github.io/ai%E3%81%AE%E6%B4%BB%E7%94%A8%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E5%90%84%E5%9B%BD%E3%81%AE%E7%B5%8C%E6%B8%88%E6%88%90%E9%95%B7%E6%88%A6%E7%95%A5/</link>
       <pubDate>Tue, 31 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/ai%E3%81%AE%E6%B4%BB%E7%94%A8%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E5%90%84%E5%9B%BD%E3%81%AE%E7%B5%8C%E6%B8%88%E6%88%90%E9%95%B7%E6%88%A6%E7%95%A5/</guid>
+      <guid>https://half-broken-engineer.github.io/ai%E3%81%AE%E6%B4%BB%E7%94%A8%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E5%90%84%E5%9B%BD%E3%81%AE%E7%B5%8C%E6%B8%88%E6%88%90%E9%95%B7%E6%88%A6%E7%95%A5/</guid>
       <description> 国 戦略 日本 新産業構造ビジョン 英国 RAS 2020 戦略 ドイツ デジタル戦略2025 中国 インターネットプラスAI3年行動実施法案 </description>
     </item>
     
     <item>
       <title>ARTIFICIAL INTELLIGENCE AUTOMATION,AND THE ECONOMY</title>
-      <link>https://half-broken-engineer.github.io/2023/01/artificial-intelligence-automationand-the-economy/</link>
+      <link>https://half-broken-engineer.github.io/artificial-intelligence-automationand-the-economy/</link>
       <pubDate>Tue, 31 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/artificial-intelligence-automationand-the-economy/</guid>
+      <guid>https://half-broken-engineer.github.io/artificial-intelligence-automationand-the-economy/</guid>
       <description>AI の普及が最大で 300 万件越えの雇用に影響を与える可能性があることを説いている</description>
     </item>
     
     <item>
       <title>COPA</title>
-      <link>https://half-broken-engineer.github.io/2023/01/copa/</link>
+      <link>https://half-broken-engineer.github.io/copa/</link>
       <pubDate>Tue, 31 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/copa/</guid>
+      <guid>https://half-broken-engineer.github.io/copa/</guid>
       <description>Choice of Plausible Alternatives
 「知能を持つ」ことが事象間の因果関係を理解することだと捉え,これを計測しようとしたもの
 前提となる文が与えられた際に、その文章から必然的に考えられる結果として適切な文章を選ばせる。
@@ -135,21 +138,21 @@ COPAは前提を示す文章に対し,2つの因果関係を示す選択肢の�
     
     <item>
       <title>G検定間違った問題メモ</title>
-      <link>https://half-broken-engineer.github.io/2023/01/g%E6%A4%9C%E5%AE%9A%E9%96%93%E9%81%95%E3%81%A3%E3%81%9F%E5%95%8F%E9%A1%8C%E3%83%A1%E3%83%A2/</link>
+      <link>https://half-broken-engineer.github.io/g%E6%A4%9C%E5%AE%9A%E9%96%93%E9%81%95%E3%81%A3%E3%81%9F%E5%95%8F%E9%A1%8C%E3%83%A1%E3%83%A2/</link>
       <pubDate>Tue, 31 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/g%E6%A4%9C%E5%AE%9A%E9%96%93%E9%81%95%E3%81%A3%E3%81%9F%E5%95%8F%E9%A1%8C%E3%83%A1%E3%83%A2/</guid>
+      <guid>https://half-broken-engineer.github.io/g%E6%A4%9C%E5%AE%9A%E9%96%93%E9%81%95%E3%81%A3%E3%81%9F%E5%95%8F%E9%A1%8C%E3%83%A1%E3%83%A2/</guid>
       <description>ドイツやEUにおいてはインターネット上のデータや著作物から学習用データを解析することは営利目的の場合まで含め著作権侵害には当たらない→日本の話しで誤り
 インターネット上のデータ等の著作物から学習用データを解析することは営利目的の場合まで含め著作権侵書には当たらない
 ドローンは150mより高い領域はNG、人とものとは30m以上離れること
 AIの生成した創作物は、人の創作的寄与がある場合において著作物性が認められる。
 GMNT：Googleの開発した現在機械翻訳の精度の評価の高いモデル。
-[[バッチ正規化]]：2015年に提案。各層において、活性関数を掛ける前に伝播してきたデータを正規化する処理。正規化することで極端に小さな値をクリッピングできるので、勾配消失の解決例と考えられる。
+バッチ正規化：2015年に提案。各層において、活性関数を掛ける前に伝播してきたデータを正規化する処理。正規化することで極端に小さな値をクリッピングできるので、勾配消失の解決例と考えられる。
 (ア)に最もよくあてはまる選択肢を1つ選べ. 自然言語理においては,学際的な研究が進められている.その一つとして.,機械が知能を持っているか否かを判断することを目的とした知能テストが多数考案されており,常識推論タスクとして注目を浴びている.
-常識推論タスクの著名なものの一つとして,南カリフォルニア大学のAndrewGordonの研究グループが提案した[[08_project/G_Certification/COPA]](Choice of Plausible Alternatives)というものがある.これは「知能を持つ」ことが事象間の因果関係を理解することだと捉え,これを計測しようとしたものである.
-他の(ア)のタスクとしては,Ernest DavisとHector Levesqueの研究グループが定式化した[[08_project/G_Certification/WSC]]があり,「統語的手がかりだけでは解けない ような照応解析の問題が解けること」が知能を持つこととしてこれをテストの形にした.現在てのテストはAIのトップ会議でコンペティションが開 かれるなどしており,まだまだ精度は低いものの注目を浴びつつある.
+常識推論タスクの著名なものの一つとして,南カリフォルニア大学のAndrewGordonの研究グループが提案した08_project/G_Certification/COPA(Choice of Plausible Alternatives)というものがある.これは「知能を持つ」ことが事象間の因果関係を理解することだと捉え,これを計測しようとしたものである.
+他の(ア)のタスクとしては,Ernest DavisとHector Levesqueの研究グループが定式化した08_project/G_Certification/WSCがあり,「統語的手がかりだけでは解けない ような照応解析の問題が解けること」が知能を持つこととしてこれをテストの形にした.現在てのテストはAIのトップ会議でコンペティションが開 かれるなどしており,まだまだ精度は低いものの注目を浴びつつある.
 分類するのは入力データ
-IBM社のWatsonのような知識ベースのシステムは,[[08_project/G_Certification/フレーム問題]]を避けられない.[[08_project/G_Certification/フレーム問題]]を乗り越えるためには,システム自体が生データからパターンをすることで,
+IBM社のWatsonのような知識ベースのシステムは,08_project/G_Certification/フレーム問題を避けられない.08_project/G_Certification/フレーム問題を乗り越えるためには,システム自体が生データからパターンをすることで,
 自ら知識を獲得する必要がある.これは(オ)の登場で,(オ)アルゴリズムを組み込ま:ステムが,あたかも主観的にデータを判断し,回答を出力
 する状態を可能にした.例えば,簡単な機械学習アルゴリズムであるナイーブベイズを組み込んだシステムでは,スパムメールを問題のおいメールと区別して隔部することが可能である.
 しかし,ナイーブベイズのような簡単な機械学習アルゴリズムの人性能は,与えられたデータの(キ)に大きく依存する.(力)は,スパムメールに関する様々な(ク)と,種々の結果との間の(ケ)を学習することはできる.しかし,(ク)を(コ)する方法のよりよい改善などには寄与できない.
@@ -171,39 +174,39 @@ t-SNE　自由度１のｔ分布を用いて
     
     <item>
       <title>音声認識</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E9%9F%B3%E5%A3%B0%E8%AA%8D%E8%AD%98/</link>
+      <link>https://half-broken-engineer.github.io/%E9%9F%B3%E5%A3%B0%E8%AA%8D%E8%AD%98/</link>
       <pubDate>Tue, 31 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E9%9F%B3%E5%A3%B0%E8%AA%8D%E8%AD%98/</guid>
+      <guid>https://half-broken-engineer.github.io/%E9%9F%B3%E5%A3%B0%E8%AA%8D%E8%AD%98/</guid>
       <description>主要なモデル エルマンネットワーク：前の時刻の隠れノードの出力が現在の時刻の隠れノードのニュー力になる
 要素 雑音・残響抑制（入力：音声、出力：音声）：音声を認識したい対象以外の雑音を分離する 音素状態認識（入力：音声、出力：音素）：音声の周波数スペクトル,すなわち音層特徴量をインプットとして,音素状態のカテゴリに分類する 音素モデル（入力：音素、出力：文字列）：音素がどの文字であるか特定する 単語辞書（入力：文字列、出力；単語）認識した文字列から単語を特定し認識する 言語モデル（入力：単語、出力：単語列）：単語系列仮説の尤度を評価する End to End:音響特徴量から音系,音率から文字列,文字列から単語列に直接変換して言語モデルを学習するアプローチ</description>
     </item>
     
     <item>
       <title>深層学習フレームワークの比較</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E6%B7%B1%E5%B1%A4%E5%AD%A6%E7%BF%92%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E6%AF%94%E8%BC%83/</link>
+      <link>https://half-broken-engineer.github.io/%E6%B7%B1%E5%B1%A4%E5%AD%A6%E7%BF%92%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E6%AF%94%E8%BC%83/</link>
       <pubDate>Tue, 31 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E6%B7%B1%E5%B1%A4%E5%AD%A6%E7%BF%92%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E6%AF%94%E8%BC%83/</guid>
+      <guid>https://half-broken-engineer.github.io/%E6%B7%B1%E5%B1%A4%E5%AD%A6%E7%BF%92%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E6%AF%94%E8%BC%83/</guid>
       <description> Define and Run
 Tensorflow:Google keras:tensorflowのラッパーのライブラリ Caffe:BVLC社 Define by Run Chainer :プリファードネットワーク社 Prefferd Network </description>
     </item>
     
     <item>
       <title>BPR</title>
-      <link>https://half-broken-engineer.github.io/2023/01/bpr/</link>
+      <link>https://half-broken-engineer.github.io/bpr/</link>
       <pubDate>Mon, 30 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/bpr/</guid>
+      <guid>https://half-broken-engineer.github.io/bpr/</guid>
       <description>Business Process Re-engineering</description>
     </item>
     
     <item>
       <title>CRISP-DM</title>
-      <link>https://half-broken-engineer.github.io/2023/01/crisp-dm/</link>
+      <link>https://half-broken-engineer.github.io/crisp-dm/</link>
       <pubDate>Mon, 30 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/crisp-dm/</guid>
+      <guid>https://half-broken-engineer.github.io/crisp-dm/</guid>
       <description> CRoss-Industry Standard Process for Data Miningの略 データマイニングのための産業横断型標準プロセスのこと。
 データを分析することに主眼をおいて、以下の６つのステップで構成される。 大きな順序としての流れをたどりながら、ステップは相互に行ったり来たりする。
 ビジネスの理解 データの理解 データの準備 モデリング 評価 展開 </description>
@@ -211,31 +214,31 @@ Tensorflow:Google keras:tensorflowのラッパーのライブラリ Caffe:BVLC�
     
     <item>
       <title>MLOps</title>
-      <link>https://half-broken-engineer.github.io/2023/01/mlops/</link>
+      <link>https://half-broken-engineer.github.io/mlops/</link>
       <pubDate>Mon, 30 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/mlops/</guid>
+      <guid>https://half-broken-engineer.github.io/mlops/</guid>
       <description>&amp;ldquo;Hidden Technical Debt in Machine Learning Systems&amp;quot;という論文でAiモデル構築部分は全体AIプロジェクトの中で極めて小さいことが示され、全体をシームレスに連携させ、実際の本番環境でAIを活用するための仕組みやシステムなどが概念に横断的に組み込まれている。</description>
     </item>
     
     <item>
       <title>AlexNet</title>
-      <link>https://half-broken-engineer.github.io/2023/01/alexnet/</link>
+      <link>https://half-broken-engineer.github.io/alexnet/</link>
       <pubDate>Sat, 21 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/alexnet/</guid>
-      <description>2012年の[[ILSVRC]]にて他チームを圧倒する精度を出したネットワークモデル。 [[第三次AIブーム]]の火付け役となった。
-トロント大学[[ジェフリー・ヒントン]]が作成。
+      <guid>https://half-broken-engineer.github.io/alexnet/</guid>
+      <description>2012年のILSVRCにて他チームを圧倒する精度を出したネットワークモデル。 第三次AIブームの火付け役となった。
+トロント大学ジェフリー・ヒントンが作成。
 ５層の畳み込み層と３層の全結合層。 過学習への対策に全結合層でのドロップアウトを使用している。
 (ImageNet Classification with Deep Convolutional Neural Networksより引用)</description>
     </item>
     
     <item>
       <title>オートエンコーダ</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E3%82%AA%E3%83%BC%E3%83%88%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%80/</link>
+      <link>https://half-broken-engineer.github.io/%E3%82%AA%E3%83%BC%E3%83%88%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%80/</link>
       <pubDate>Sat, 21 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E3%82%AA%E3%83%BC%E3%83%88%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%80/</guid>
+      <guid>https://half-broken-engineer.github.io/%E3%82%AA%E3%83%BC%E3%83%88%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%80/</guid>
       <description>自己符号化器とも言われる。 入力と同じ出力を返す二層のネットワーク
 隠れ層は入力の次元圧縮になる。
 （猪狩 宇司; 今井 翔太; 江間 有沙; 岡田 陽介; 工藤 郁子; 巣籠 悠輔; 瀬谷 啓介; 徳田 有美子; 中澤 敏明; 藤本 敬介; 松井 孝之; 松尾 豊; 松嶋 達也; 山下 隆義. 深層学習教科書 ディープラーニング G検定（ジェネラリスト）公式テキスト 第2版 (Kindle の位置No.3985-3986). 株式会社 翔泳社. Kindle 版. ）</description>
@@ -243,165 +246,165 @@ Tensorflow:Google keras:tensorflowのラッパーのライブラリ Caffe:BVLC�
     
     <item>
       <title>シンギュラリティ</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E3%82%B7%E3%83%B3%E3%82%AE%E3%83%A5%E3%83%A9%E3%83%AA%E3%83%86%E3%82%A3/</link>
+      <link>https://half-broken-engineer.github.io/%E3%82%B7%E3%83%B3%E3%82%AE%E3%83%A5%E3%83%A9%E3%83%AA%E3%83%86%E3%82%A3/</link>
       <pubDate>Sat, 21 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E3%82%B7%E3%83%B3%E3%82%AE%E3%83%A5%E3%83%A9%E3%83%AA%E3%83%86%E3%82%A3/</guid>
+      <guid>https://half-broken-engineer.github.io/%E3%82%B7%E3%83%B3%E3%82%AE%E3%83%A5%E3%83%A9%E3%83%AA%E3%83%86%E3%82%A3/</guid>
       <description> 人工知能が十分に賢くなり、自分自身よりも賢い人工知能を作るようになった瞬間。 人間の想像の及ばない超越的な知性が誕生するという仮説。 2029年が人間より賢くなるとき、シンギュラリティは2045年
-人工知能が人間を超えて文明の主役にとって代わる時点のことという意味でも使われる。 著名人のコメント 中立 [[レイ・カーツワイル]]：シンギュラリティは２０４５年に到来する ヒューゴ・デ・ガリス：２１世紀の後半にくるとし、このとき人工知能のち脳は人間の知能の１兆の１兆倍になると主張 ヴァーナー・ヴィンジ：シンギュラリティ＝機械が人間の役に立つふりをしなくなること 受容 オレン・エツィオーニ：１００万年後にシンギュラリティを迎える可能性はあるが、終末論的構想は馬鹿げている 否定的 スティーブン・ホーキング：AIの完成は人間の終焉を意味するかもしれない イーロン・マスク：シンギュラリティに危機感を持ち、非営利AI研究組織OpenAIを設立 ビル・ゲイツ </description>
+人工知能が人間を超えて文明の主役にとって代わる時点のことという意味でも使われる。 著名人のコメント 中立 レイ・カーツワイル：シンギュラリティは２０４５年に到来する ヒューゴ・デ・ガリス：２１世紀の後半にくるとし、このとき人工知能のち脳は人間の知能の１兆の１兆倍になると主張 ヴァーナー・ヴィンジ：シンギュラリティ＝機械が人間の役に立つふりをしなくなること 受容 オレン・エツィオーニ：１００万年後にシンギュラリティを迎える可能性はあるが、終末論的構想は馬鹿げている 否定的 スティーブン・ホーキング：AIの完成は人間の終焉を意味するかもしれない イーロン・マスク：シンギュラリティに危機感を持ち、非営利AI研究組織OpenAIを設立 ビル・ゲイツ </description>
     </item>
     
     <item>
       <title>シンボルグラウンディング問題</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%82%B0%E3%83%A9%E3%82%A6%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E5%95%8F%E9%A1%8C/</link>
+      <link>https://half-broken-engineer.github.io/%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%82%B0%E3%83%A9%E3%82%A6%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E5%95%8F%E9%A1%8C/</link>
       <pubDate>Sat, 21 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%82%B0%E3%83%A9%E3%82%A6%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E5%95%8F%E9%A1%8C/</guid>
-      <description>1990年に[[スティーブン・ハルナッド]]により議論。
+      <guid>https://half-broken-engineer.github.io/%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%82%B0%E3%83%A9%E3%82%A6%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E5%95%8F%E9%A1%8C/</guid>
+      <description>1990年にスティーブン・ハルナッドにより議論。
 「記号とその対象が如何にして結びつくのか」という問題。</description>
     </item>
     
     <item>
       <title>ネオコグニトロン</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E3%83%8D%E3%82%AA%E3%82%B3%E3%82%B0%E3%83%8B%E3%83%88%E3%83%AD%E3%83%B3/</link>
+      <link>https://half-broken-engineer.github.io/%E3%83%8D%E3%82%AA%E3%82%B3%E3%82%B0%E3%83%8B%E3%83%88%E3%83%AD%E3%83%B3/</link>
       <pubDate>Sat, 21 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E3%83%8D%E3%82%AA%E3%82%B3%E3%82%B0%E3%83%8B%E3%83%88%E3%83%AD%E3%83%B3/</guid>
+      <guid>https://half-broken-engineer.github.io/%E3%83%8D%E3%82%AA%E3%82%B3%E3%82%B0%E3%83%8B%E3%83%88%E3%83%AD%E3%83%B3/</guid>
       <description>&amp;ndash;
 単純視細胞（S細胞）：画像の濃淡パターン(特徴)を検出する 複雑視細胞（C細胞）：特徴の位置が変動しても同一の特徴であるとみなす </description>
     </item>
     
     <item>
       <title>フレーム問題</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E5%95%8F%E9%A1%8C/</link>
+      <link>https://half-broken-engineer.github.io/%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E5%95%8F%E9%A1%8C/</link>
       <pubDate>Sat, 21 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E5%95%8F%E9%A1%8C/</guid>
-      <description>1969年[[ジョン・マッカーシー]]によって提唱された問題。 人工知能研究における最大の難問と言われる。
-今ある問題に関係のある事象だけを抽出することが難しい問題 [[ダニエル・デネット]]ロボットのダイナマイト処理の話が有名。</description>
+      <guid>https://half-broken-engineer.github.io/%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E5%95%8F%E9%A1%8C/</guid>
+      <description>1969年ジョン・マッカーシーによって提唱された問題。 人工知能研究における最大の難問と言われる。
+今ある問題に関係のある事象だけを抽出することが難しい問題 ダニエル・デネットロボットのダイナマイト処理の話が有名。</description>
     </item>
     
     <item>
       <title>身体性</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E8%BA%AB%E4%BD%93%E6%80%A7/</link>
+      <link>https://half-broken-engineer.github.io/%E8%BA%AB%E4%BD%93%E6%80%A7/</link>
       <pubDate>Sat, 21 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E8%BA%AB%E4%BD%93%E6%80%A7/</guid>
-      <description>知能が成立するためには身体が不可欠とする考え方。 「外界と相互作用できる身体が無いと、概念は捉え切れない」という考え方。 [[08_project/G_Certification/シンボルグラウンディング問題]]と関連付けられる。</description>
+      <guid>https://half-broken-engineer.github.io/%E8%BA%AB%E4%BD%93%E6%80%A7/</guid>
+      <description>知能が成立するためには身体が不可欠とする考え方。 「外界と相互作用できる身体が無いと、概念は捉え切れない」という考え方。 08_project/G_Certification/シンボルグラウンディング問題と関連付けられる。</description>
     </item>
     
     <item>
       <title>人工知能</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD/</link>
+      <link>https://half-broken-engineer.github.io/%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD/</link>
       <pubDate>Sat, 21 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD/</guid>
+      <guid>https://half-broken-engineer.github.io/%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD/</guid>
       <description>コンピュータによる知的な情報処理システムを設計、または実現するための研究分野</description>
     </item>
     
     <item>
       <title>中国語の部屋</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E4%B8%AD%E5%9B%BD%E8%AA%9E%E3%81%AE%E9%83%A8%E5%B1%8B/</link>
+      <link>https://half-broken-engineer.github.io/%E4%B8%AD%E5%9B%BD%E8%AA%9E%E3%81%AE%E9%83%A8%E5%B1%8B/</link>
       <pubDate>Sat, 21 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E4%B8%AD%E5%9B%BD%E8%AA%9E%E3%81%AE%E9%83%A8%E5%B1%8B/</guid>
-      <description>[[ジョン・サール]]が[[強いAI]]が実現不可能だと説明するために用いた思考実験。</description>
+      <guid>https://half-broken-engineer.github.io/%E4%B8%AD%E5%9B%BD%E8%AA%9E%E3%81%AE%E9%83%A8%E5%B1%8B/</guid>
+      <description>ジョン・サールが強いAIが実現不可能だと説明するために用いた思考実験。</description>
     </item>
     
     <item>
       <title>特化型AI</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E7%89%B9%E5%8C%96%E5%9E%8Bai/</link>
+      <link>https://half-broken-engineer.github.io/%E7%89%B9%E5%8C%96%E5%9E%8Bai/</link>
       <pubDate>Sat, 21 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E7%89%B9%E5%8C%96%E5%9E%8Bai/</guid>
+      <guid>https://half-broken-engineer.github.io/%E7%89%B9%E5%8C%96%E5%9E%8Bai/</guid>
       <description>限定された領域の課題に特化して自動的に学習、処理を行うAI。
-[[弱いAI]]と同じような意味で使われることもある。
-[[AlphaGo]]が有名</description>
+弱いAIと同じような意味で使われることもある。
+AlphaGoが有名</description>
     </item>
     
     <item>
       <title>Cycプロジェクト</title>
-      <link>https://half-broken-engineer.github.io/2023/01/cyc%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88/</link>
+      <link>https://half-broken-engineer.github.io/cyc%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/cyc%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88/</guid>
+      <guid>https://half-broken-engineer.github.io/cyc%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88/</guid>
       <description>すべての一般常識をコンピュータに取り込もうとするプロジェクト
-[[ダグラス・レナート]]によって1984年からスタートし現在も継続中。</description>
+ダグラス・レナートによって1984年からスタートし現在も継続中。</description>
     </item>
     
     <item>
       <title>is-aの関係</title>
-      <link>https://half-broken-engineer.github.io/2023/01/is-a%E3%81%AE%E9%96%A2%E4%BF%82/</link>
+      <link>https://half-broken-engineer.github.io/is-a%E3%81%AE%E9%96%A2%E4%BF%82/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/is-a%E3%81%AE%E9%96%A2%E4%BF%82/</guid>
+      <guid>https://half-broken-engineer.github.io/is-a%E3%81%AE%E9%96%A2%E4%BF%82/</guid>
       <description> 継承関係を表す 矢印の向いている側が上位概念で、始点が下位概念 例外を指定しない限り上位概念の属性をすべて引き継ぐ
-[[08_project/G_Certification/part-ofの関係]]と異なり、[[推移律]]が必ず成り立つ </description>
+08_project/G_Certification/part-ofの関係と異なり、推移律が必ず成り立つ </description>
     </item>
     
     <item>
       <title>part-ofの関係</title>
-      <link>https://half-broken-engineer.github.io/2023/01/part-of%E3%81%AE%E9%96%A2%E4%BF%82/</link>
+      <link>https://half-broken-engineer.github.io/part-of%E3%81%AE%E9%96%A2%E4%BF%82/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/part-of%E3%81%AE%E9%96%A2%E4%BF%82/</guid>
-      <description> 矢印の始点は属性を示す。 全体と部分の関係を表し、[[推移律]]は必ずしも成立しない。 最低でも5種類以上の関係があることがわかっており、これをコンピュータに学習させることは難しく、現在も存在していない。 </description>
+      <guid>https://half-broken-engineer.github.io/part-of%E3%81%AE%E9%96%A2%E4%BF%82/</guid>
+      <description> 矢印の始点は属性を示す。 全体と部分の関係を表し、推移律は必ずしも成立しない。 最低でも5種類以上の関係があることがわかっており、これをコンピュータに学習させることは難しく、現在も存在していない。 </description>
     </item>
     
     <item>
       <title>ボードゲーム</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E3%83%9C%E3%83%BC%E3%83%89%E3%82%B2%E3%83%BC%E3%83%A0/</link>
+      <link>https://half-broken-engineer.github.io/%E3%83%9C%E3%83%BC%E3%83%89%E3%82%B2%E3%83%BC%E3%83%A0/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E3%83%9C%E3%83%BC%E3%83%89%E3%82%B2%E3%83%BC%E3%83%A0/</guid>
+      <guid>https://half-broken-engineer.github.io/%E3%83%9C%E3%83%BC%E3%83%89%E3%82%B2%E3%83%BC%E3%83%A0/</guid>
       <description>上から順に易しい問題 計算量が増大することで、単純な幅優先、深さ優先が効かなくなった。
-[[コスト]]を用いた[[Mini-Max法]]などの枠組みで探索を効率化した。 一方で、コストを用いた方法の限界を超えるために[[ブルートフォース]]に基づく[[モンテカルロ法]]での解法も生まれた。
-[[探索と推論]]</description>
+コストを用いたMini-Max法などの枠組みで探索を効率化した。 一方で、コストを用いた方法の限界を超えるためにブルートフォースに基づくモンテカルロ法での解法も生まれた。
+探索と推論</description>
     </item>
     
     <item>
       <title>オントロジー</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E3%82%AA%E3%83%B3%E3%83%88%E3%83%AD%E3%82%B8%E3%83%BC/</link>
+      <link>https://half-broken-engineer.github.io/%E3%82%AA%E3%83%B3%E3%83%88%E3%83%AD%E3%82%B8%E3%83%BC/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E3%82%AA%E3%83%B3%E3%83%88%E3%83%AD%E3%82%B8%E3%83%BC/</guid>
+      <guid>https://half-broken-engineer.github.io/%E3%82%AA%E3%83%B3%E3%83%88%E3%83%AD%E3%82%B8%E3%83%BC/</guid>
       <description> 概念体系を記述するための方法論。 知識を体系化する方法論。
-元は哲学用語で”存在論”（存在に関する体系的理論）という意味。 人工知能用語としては”概念化の明示的な仕様”　by[[トム・グルーパー]]
+元は哲学用語で”存在論”（存在に関する体系的理論）という意味。 人工知能用語としては”概念化の明示的な仕様”　byトム・グルーパー
 目的：知識の共有と活用 手段：語彙やその意味、関係性を明確な約束ごととして定義する
-[[08_project/G_Certification/意味ネットワーク]]では記述方法についての約束ごとが無い。
-２つの構築方法 [[ヘビーウエイトオントロジー]]：[[08_project/G_Certification/Cycプロジェクト]] [[ライトウエイトオントロジー]]：[[]] </description>
+08_project/G_Certification/意味ネットワークでは記述方法についての約束ごとが無い。
+２つの構築方法 ヘビーウエイトオントロジー：08_project/G_Certification/Cycプロジェクト ライトウエイトオントロジー： </description>
     </item>
     
     <item>
       <title>セマンティックWeb</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E3%82%BB%E3%83%9E%E3%83%B3%E3%83%86%E3%82%A3%E3%83%83%E3%82%AFweb/</link>
+      <link>https://half-broken-engineer.github.io/%E3%82%BB%E3%83%9E%E3%83%B3%E3%83%86%E3%82%A3%E3%83%83%E3%82%AFweb/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E3%82%BB%E3%83%9E%E3%83%B3%E3%83%86%E3%82%A3%E3%83%83%E3%82%AFweb/</guid>
+      <guid>https://half-broken-engineer.github.io/%E3%82%BB%E3%83%9E%E3%83%B3%E3%83%86%E3%82%A3%E3%83%83%E3%82%AFweb/</guid>
       <description> Webサイトが持つ意味をコンピュータに理解させ、 コンピュータ同士で処理させるための技術 </description>
     </item>
     
     <item>
       <title>ディープラーニングの社会実装に向けて</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E3%81%AE%E7%A4%BE%E4%BC%9A%E5%AE%9F%E8%A3%85%E3%81%AB%E5%90%91%E3%81%91%E3%81%A6/</link>
+      <link>https://half-broken-engineer.github.io/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E3%81%AE%E7%A4%BE%E4%BC%9A%E5%AE%9F%E8%A3%85%E3%81%AB%E5%90%91%E3%81%91%E3%81%A6/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E3%81%AE%E7%A4%BE%E4%BC%9A%E5%AE%9F%E8%A3%85%E3%81%AB%E5%90%91%E3%81%91%E3%81%A6/</guid>
-      <description>ディープラーニングの社会実装に向けて AI と社会 ビジネスで AI を活用する本質”経営課題を AI で解決し、利益を創出すること” ５日を１分で済ませるくらいの全体最適化が重要 法の遵守 倫理は価値に関する対話 実世界との関わり 現実世界（アナログ）と仮想世界（デジタル）をつなぐためには、現実世界で人の頭の中にだけあるものを IoT や RPA などでデジタル空間に移す必要がある デジタルで容易に情報を変換できる問題に対してはブロックチェーン技術などで改ざんから保護する必要がある。 AI システム開発 解くべく課題はなにか そもそも AI を使うべきなのか どこに AI を使うのか 使うデータはどう集めるのか、加工、分析、学習実装と評価方法は？ 実装後の運用や改善 社会的受容の想定 AI プロジェクトを計画する [[08_project/G_Certification/CRISP-DM]] CRoss-Industry Standard Process for Data Mining の略
+      <guid>https://half-broken-engineer.github.io/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E3%81%AE%E7%A4%BE%E4%BC%9A%E5%AE%9F%E8%A3%85%E3%81%AB%E5%90%91%E3%81%91%E3%81%A6/</guid>
+      <description>ディープラーニングの社会実装に向けて AI と社会 ビジネスで AI を活用する本質”経営課題を AI で解決し、利益を創出すること” ５日を１分で済ませるくらいの全体最適化が重要 法の遵守 倫理は価値に関する対話 実世界との関わり 現実世界（アナログ）と仮想世界（デジタル）をつなぐためには、現実世界で人の頭の中にだけあるものを IoT や RPA などでデジタル空間に移す必要がある デジタルで容易に情報を変換できる問題に対してはブロックチェーン技術などで改ざんから保護する必要がある。 AI システム開発 解くべく課題はなにか そもそも AI を使うべきなのか どこに AI を使うのか 使うデータはどう集めるのか、加工、分析、学習実装と評価方法は？ 実装後の運用や改善 社会的受容の想定 AI プロジェクトを計画する 08_project/G_Certification/CRISP-DM CRoss-Industry Standard Process for Data Mining の略
 データマイニングのための産業横断型標準プロセスのこと。
-[[08_project/G_Certification/MLOps]] Machine Learning と Operations を合成した造語。 AI を本番環境で開発しながら運用するまでの概念。[[DevOps]] から派生。 システム運用開始後も継続してプロセスを回すことで、より推論性のが高く安定したシステムとすることが最も重要。
+08_project/G_Certification/MLOps Machine Learning と Operations を合成した造語。 AI を本番環境で開発しながら運用するまでの概念。DevOps から派生。 システム運用開始後も継続してプロセスを回すことで、より推論性のが高く安定したシステムとすることが最も重要。
 &amp;ldquo;Hidden Technical Debt in Machine Learning Systems&amp;rdquo; という論文で Ai モデル構築部分は全体 AI プロジェクトの中で極めて小さいことが示され、全体をシームレスに連携させ、実際の本番環境で AI を活用するための仕組みやシステムなどが概念に横断的に組み込まれている。
-AIプロジェクトの進め方 検討すべきこと そもそもAIを活用すべきか、利益計画を立てて投資判断をする コストと推論精度のバランスを中長期的に見る必要がある ビジネス・技術上に組み込むべきデータのフィードバック機構をどのようなものにするか 初期から必要十分な推論精度を満たすことは稀、運用を継続しながら推論精度を上げていく ※AIは目的ではなく手段 AIを適用した場合のプロセスを再設計する もともと人が介在する前提だったプロセスを、 AIを利活用するプロセスに変更する必要があるため、[[08_project/G_Certification/BPR]]の必要が生まれる。</description>
+AIプロジェクトの進め方 検討すべきこと そもそもAIを活用すべきか、利益計画を立てて投資判断をする コストと推論精度のバランスを中長期的に見る必要がある ビジネス・技術上に組み込むべきデータのフィードバック機構をどのようなものにするか 初期から必要十分な推論精度を満たすことは稀、運用を継続しながら推論精度を上げていく ※AIは目的ではなく手段 AIを適用した場合のプロセスを再設計する もともと人が介在する前提だったプロセスを、 AIを利活用するプロセスに変更する必要があるため、08_project/G_Certification/BPRの必要が生まれる。</description>
     </item>
     
     <item>
       <title>ニューラルネットワーク</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/</link>
+      <link>https://half-broken-engineer.github.io/%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/</guid>
+      <guid>https://half-broken-engineer.github.io/%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/</guid>
       <description> 1958年、フランク・ローゼンブラッドが提案した単純パーセプトロンが元祖。
-[[ILSVRC]]([[ImageNet]] Large Scale Cisual Recognition Challenge)において [[ジェフリー・ヒントン]]が率いるトロント大学のSuperVisionというチームが 2012年にニューラルネットを用いて圧勝して[[第三次AIブーム]]につながった。
+ILSVRC(ImageNet Large Scale Cisual Recognition Challenge)において ジェフリー・ヒントンが率いるトロント大学のSuperVisionというチームが 2012年にニューラルネットを用いて圧勝して第三次AIブームにつながった。
 目的 明示的なプログラムの代わりに、 中間層を用いて入力から目的とする出力値に変換する数学モデルを構築することが目的
 数学的表現 (ラビットチャレンジの深層学習day1講義資料より引用)
 最適化対象 重み バイアス </description>
@@ -409,97 +412,98 @@ AIプロジェクトの進め方 検討すべきこと そもそもAIを活用�
     
     <item>
       <title>ハノイの塔</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E3%83%8F%E3%83%8E%E3%82%A4%E3%81%AE%E5%A1%94/</link>
+      <link>https://half-broken-engineer.github.io/%E3%83%8F%E3%83%8E%E3%82%A4%E3%81%AE%E5%A1%94/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E3%83%8F%E3%83%8E%E3%82%A4%E3%81%AE%E5%A1%94/</guid>
-      <description>（円盤１がある棒、円盤２がある棒、円盤３がある棒）の形式で表現して探索木をかく。 [[探索と推論]]</description>
+      <guid>https://half-broken-engineer.github.io/%E3%83%8F%E3%83%8E%E3%82%A4%E3%81%AE%E5%A1%94/</guid>
+      <description>（円盤１がある棒、円盤２がある棒、円盤３がある棒）の形式で表現して探索木をかく。 探索と推論</description>
     </item>
     
     <item>
       <title>意味ネットワーク</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E6%84%8F%E5%91%B3%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/</link>
+      <link>https://half-broken-engineer.github.io/%E6%84%8F%E5%91%B3%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E6%84%8F%E5%91%B3%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/</guid>
+      <guid>https://half-broken-engineer.github.io/%E6%84%8F%E5%91%B3%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/</guid>
       <description>心理学における構造モデルとして考案
-概念のラベルのついたノードで表す [[08_project/G_Certification/is-aの関係]]や[[08_project/G_Certification/part-ofの関係]]がある</description>
+概念のラベルのついたノードで表す 08_project/G_Certification/is-aの関係や08_project/G_Certification/part-ofの関係がある</description>
     </item>
     
     <item>
       <title>深さ優先探索</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E6%B7%B1%E3%81%95%E5%84%AA%E5%85%88%E6%8E%A2%E7%B4%A2/</link>
+      <link>https://half-broken-engineer.github.io/%E6%B7%B1%E3%81%95%E5%84%AA%E5%85%88%E6%8E%A2%E7%B4%A2/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E6%B7%B1%E3%81%95%E5%84%AA%E5%85%88%E6%8E%A2%E7%B4%A2/</guid>
+      <guid>https://half-broken-engineer.github.io/%E6%B7%B1%E3%81%95%E5%84%AA%E5%85%88%E6%8E%A2%E7%B4%A2/</guid>
       <description>行き止まりまで行って、ゴールにつかなければ一つノードを戻って探索を行う。
-メリット：一つ手前のノードに戻るだけなので、メモリ保持の要求が小さい デメリット：最短距離でゴールにつく解が必ずしも見つからない。ルート探索の時間がかかるケースがある [[迷路・探索木]]</description>
+メリット：一つ手前のノードに戻るだけなので、メモリ保持の要求が小さい デメリット：最短距離でゴールにつく解が必ずしも見つからない。ルート探索の時間がかかるケースがある 迷路・探索木</description>
     </item>
     
     <item>
       <title>人工知能とロボットの違い</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD%E3%81%A8%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88%E3%81%AE%E9%81%95%E3%81%84/</link>
+      <link>https://half-broken-engineer.github.io/%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD%E3%81%A8%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88%E3%81%AE%E9%81%95%E3%81%84/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD%E3%81%A8%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88%E3%81%AE%E9%81%95%E3%81%84/</guid>
-      <description>人工知能とロボットの違い ロボットの脳にあたる部分が人工知能。 考える（知的な処理能力）という目に見えないものを中心に扱っている学問 ロボットの脳以外の部分を担当している研究者は人工知能の研究者ではない [[人工知能とは]]
-[[人工知能の定義]]</description>
+      <guid>https://half-broken-engineer.github.io/%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD%E3%81%A8%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88%E3%81%AE%E9%81%95%E3%81%84/</guid>
+      <description>人工知能とロボットの違い ロボットの脳にあたる部分が人工知能。 考える（知的な処理能力）という目に見えないものを中心に扱っている学問 ロボットの脳以外の部分を担当している研究者は人工知能の研究者ではない 人工知能とは
+人工知能の定義</description>
     </item>
     
     <item>
       <title>人工知能のブームと冬の時代</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD%E3%81%AE%E3%83%96%E3%83%BC%E3%83%A0%E3%81%A8%E5%86%AC%E3%81%AE%E6%99%82%E4%BB%A3/</link>
+      <link>https://half-broken-engineer.github.io/%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD%E3%81%AE%E3%83%96%E3%83%BC%E3%83%A0%E3%81%A8%E5%86%AC%E3%81%AE%E6%99%82%E4%BB%A3/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD%E3%81%AE%E3%83%96%E3%83%BC%E3%83%A0%E3%81%A8%E5%86%AC%E3%81%AE%E6%99%82%E4%BB%A3/</guid>
-      <description>人工知能のブームと冬の時代 [[第一次AIブーム]] [[探索と推論]]の時代、１９５０年代後半～１９６０年代
-[[第二次AIブーム]] [[知識]]の時代　１９８０年代 [[エキスパートシステム]]と呼ばれる実用的なシステムがたくさん作られた。
-[[第三次AIブーム]] [[ビッグデータ]]を用いた人工知能が自ら知識を獲得する[[08_project/G_Certification/機械学習]]が 実用化。
-[[G検定]]
-[[人工知能とは]]
-[[人工知能研究の歴史]]</description>
+      <guid>https://half-broken-engineer.github.io/%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD%E3%81%AE%E3%83%96%E3%83%BC%E3%83%A0%E3%81%A8%E5%86%AC%E3%81%AE%E6%99%82%E4%BB%A3/</guid>
+      <description>人工知能のブームと冬の時代 第一次AIブーム 探索と推論の時代、１９５０年代後半～１９６０年代
+第二次AIブーム 知識の時代　１９８０年代 エキスパートシステムと呼ばれる実用的なシステムがたくさん作られた。
+第三次AIブーム ビッグデータを用いた人工知能が自ら知識を獲得する08_project/G_Certification/機械学習が 実用化。
+G検定
+人工知能とは
+人工知能研究の歴史</description>
     </item>
     
     <item>
       <title>大まかな分類</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E5%A4%A7%E3%81%BE%E3%81%8B%E3%81%AA%E5%88%86%E9%A1%9E/</link>
+      <link>https://half-broken-engineer.github.io/%E5%A4%A7%E3%81%BE%E3%81%8B%E3%81%AA%E5%88%86%E9%A1%9E/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E5%A4%A7%E3%81%BE%E3%81%8B%E3%81%AA%E5%88%86%E9%A1%9E/</guid>
-      <description>大まかな分類 制御工学：すべての振る舞いがあらかじめ決められている 古典的人口知能：探索・推論、知識データを利用することで、状況に応じて複雑なふるまいをする 機械学習を取り入れた人口知能：多くのサンプルデータをもとに入力と出力の関係を学習したもの 深層学習を取り入れた人工知能：特徴量を自動的に学習するサービスや製品が該当 [[人工知能の定義]]</description>
+      <guid>https://half-broken-engineer.github.io/%E5%A4%A7%E3%81%BE%E3%81%8B%E3%81%AA%E5%88%86%E9%A1%9E/</guid>
+      <description>大まかな分類 制御工学：すべての振る舞いがあらかじめ決められている 古典的人口知能：探索・推論、知識データを利用することで、状況に応じて複雑なふるまいをする 機械学習を取り入れた人口知能：多くのサンプルデータをもとに入力と出力の関係を学習したもの 深層学習を取り入れた人工知能：特徴量を自動的に学習するサービスや製品が該当 人工知能の定義</description>
     </item>
     
     <item>
       <title>東ロボくん</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E6%9D%B1%E3%83%AD%E3%83%9C%E3%81%8F%E3%82%93/</link>
+      <link>https://half-broken-engineer.github.io/%E6%9D%B1%E3%83%AD%E3%83%9C%E3%81%8F%E3%82%93/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E6%9D%B1%E3%83%AD%E3%83%9C%E3%81%8F%E3%82%93/</guid>
+      <guid>https://half-broken-engineer.github.io/%E6%9D%B1%E3%83%AD%E3%83%9C%E3%81%8F%E3%82%93/</guid>
       <description>2011~2016年。東大入試を目指すが読解力の問題で私大合格レベルで開発が凍結</description>
     </item>
     
     <item>
       <title>幅優先探索</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E5%B9%85%E5%84%AA%E5%85%88%E6%8E%A2%E7%B4%A2/</link>
+      <link>https://half-broken-engineer.github.io/%E5%B9%85%E5%84%AA%E5%85%88%E6%8E%A2%E7%B4%A2/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E5%B9%85%E5%84%AA%E5%85%88%E6%8E%A2%E7%B4%A2/</guid>
-      <description>メリット：最短距離でゴールにたどり着く解を必ず見つけられる デメリット：立ち寄ったすべてのノードを記憶するため、メモリ効率が悪い [[迷路・探索木]]</description>
+      <guid>https://half-broken-engineer.github.io/%E5%B9%85%E5%84%AA%E5%85%88%E6%8E%A2%E7%B4%A2/</guid>
+      <description>メリット：最短距離でゴールにたどり着く解を必ず見つけられる デメリット：立ち寄ったすべてのノードを記憶するため、メモリ効率が悪い 迷路・探索木</description>
     </item>
     
     <item>
       <title>機械学習</title>
-      <link>https://half-broken-engineer.github.io/2023/01/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/</link>
+      <link>https://half-broken-engineer.github.io/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/</link>
       <pubDate>Tue, 10 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://half-broken-engineer.github.io/2023/01/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/</guid>
-      <description>定義 「明示的にプログラムしなくても学習する能力をコンピュータに与える研究分野」　by [[アーサー・サミュエル]]
+      <guid>https://half-broken-engineer.github.io/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/</guid>
+      <description>定義 「明示的にプログラムしなくても学習する能力をコンピュータに与える研究分野」　by アーサー・サミュエル
 人工知能を実現するための具体的な手法のうち、 特に人間の学習能力、予測能力をコンピュータで実現しようとする技術や手法
-流れ [[基礎集計]] [[データの前処理]] 学習 評価 学習と評価（検証）
-種類 教師あり学習 回帰 線形回帰 ラッソ回帰：L1正則化項の追加 リッジ回帰：L2正則化項の追加 Elastic Net:ラッソ回帰＋リッジ回帰 分類 [[決定木]] [[ランダムフォレスト]] SVM ロジスティック回帰：シグモイド関数を使った分類手法、他クラス分類においてはソフトマックス関数を使う kNN法 決定木 特徴量のうち、決定的なもの（[[#情報量]]のゲインが大きいもの）から順に条件分岐をかけて、分類結果を得る
+流れ 基礎集計 データの前処理 学習 評価 学習と評価（検証）
+種類 教師あり学習 回帰 線形回帰 ラッソ回帰：L1正則化項の追加 リッジ回帰：L2正則化項の追加 Elastic Net:ラッソ回帰＋リッジ回帰 分類 決定木 ランダムフォレスト SVM ロジスティック回帰：シグモイド関数を使った分類手法、他クラス分類においてはソフトマックス関数を使う kNN法 決定木 特徴量のうち、決定的なもの（情報量のゲインが大きいもの）から順に条件分岐をかけて、分類結果を得る
 モデルの説明 各分岐でのジニ不純度の変化によって特徴量の重要度を説明する。
-各種値の説明 用語 internal node:分岐のこと terminal node:決定木の底の分類の個数 depth:分岐条件の深さ [[ハイパーパラメータ]] maximum depth minimum number of samples to split minimum number of samples per leaf エントロピー 同時確率の二進対数を取って符号を逆転したものの平均値を取る。このときの単位はbit。
-$$
+各種値の説明 用語 internal node:分岐のこと terminal node:決定木の底の分類の個数 depth:分岐条件の深さ ハイパーパラメータ maximum depth minimum number of samples to split minimum number of samples per leaf エントロピー 同時確率の二進対数を取って符号を逆転したものの平均値を取る。このときの単位はbit。
+$$entropy=-p_1​log_2​(p_1​)-p_2​log_2​(p_2​)-&amp;hellip;-p_n​log_2​(p_n​)=-\sum_{i-1}^n​p_i​log_2​(p_i​)$$
+情報量 エントロピーの逆符号。※基本的に対数の底は２ 情報量のゲインは親のエントロピーからこのエントロピーを引いたもの $plog_2(p)$
 ジニ不純度 $G=\sum^{K}_{k=1}p(k)(1-p(k))$
 cost complexity pruning $R_\alpha(T)=R(T)+\alpha|T|$
 Where |T| is the number of leaves , R(T) is the sum of gini impurity of all leaves belonging to the tree.</description>

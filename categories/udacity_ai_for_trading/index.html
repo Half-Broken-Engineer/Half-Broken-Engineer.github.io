@@ -244,7 +244,7 @@
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/2023/02/project4_alpha_research_and_factor_modeling/" aria-label="投稿を開く: project4_alpha_research_and_factor_modeling">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/project4_alpha_research_and_factor_modeling/" aria-label="投稿を開く: project4_alpha_research_and_factor_modeling">
       
           project4_alpha_research_and_factor_modeling
         </a>
@@ -278,15 +278,17 @@
     <div class="postShorten-excerpt">
       
         OverViews
-Overviews Methods Knowledge Factor Covariance Matrix N：要素数 f：ファクターリターン annualization_factor:　252/days_passed
-Actual Retrurn common return ファクターリターンとファクターエクスポージャの内積
+Overviews Methods Knowledge Factor Covariance Matrix $$F = \frac{1}{N-1} f \cdot f^T　\times annualization_factor$$
+N：要素数 f：ファクターリターン annualization_factor:　252/days_passed
+Actual Retrurn $$r_p = \sum_i^N \beta_i\times f_i + s_p$$
+common return ファクターリターンとファクターエクスポージャの内積
 ファクターリターンの計算 日付をインデックスとして、ティッカーをカラムとするreturnsがあるとき
 from sklearn.decomposition import PCA model = PCA(n_components=num_factor) pca.fit(returns) factor_returns = pca.transform(returns) ファクターエクスポージャーの計算 from sklearn.linear_model import LinearRegression model = LinearRegression() model.fit(factor_returns,portfolio_actual_return) exposure = model.coef_ specific return 実際のリターンからコモンリターンを引いたあたいで、ファクターで説明されない部分のリターンを示す。
 この値は小さくしたい
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/2023/02/project4_alpha_research_and_factor_modeling/" class="postShorten-excerpt_link link" aria-label="投稿を開く: project4_alpha_research_and_factor_modeling">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/project4_alpha_research_and_factor_modeling/" class="postShorten-excerpt_link link" aria-label="投稿を開く: project4_alpha_research_and_factor_modeling">続きを読む</a>
         
         
       </p>
@@ -314,7 +316,7 @@ from sklearn.decomposition import PCA model = PCA(n_components=num_factor) pca.f
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/2023/01/project7_combining_signals_for_enhanced_alpha/" aria-label="投稿を開く: project7_combining_signals_for_enhanced_alpha">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/project7_combining_signals_for_enhanced_alpha/" aria-label="投稿を開く: project7_combining_signals_for_enhanced_alpha">
       
           project7_combining_signals_for_enhanced_alpha
         </a>
@@ -351,7 +353,7 @@ from sklearn.decomposition import PCA model = PCA(n_components=num_factor) pca.f
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/2023/01/project7_combining_signals_for_enhanced_alpha/" class="postShorten-excerpt_link link" aria-label="投稿を開く: project7_combining_signals_for_enhanced_alpha">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/project7_combining_signals_for_enhanced_alpha/" class="postShorten-excerpt_link link" aria-label="投稿を開く: project7_combining_signals_for_enhanced_alpha">続きを読む</a>
         
         
       </p>
