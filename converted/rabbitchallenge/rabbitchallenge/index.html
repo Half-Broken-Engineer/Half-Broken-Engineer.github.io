@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/half-broken-engineer.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "Half-Broken Engineer",
+    
+    "image": "https://half-broken-engineer.github.io/img/profile.png"
+    
+  },
+  "name":"壊れかけのエンジニアのログ",
+  "description":" ラビット★チャレンジ : よくある質問（受講者用）\n修了要件 以下3つの条件をみたすことで修了者ナンバーを受領できる。受験の際にはそのナンバーが必要になる。\nシラバス変更後も2年間は有効。\nビデオ学習 レポート全提出 認定テスト合格 実行環境 GoogleColaboratory\nレポート作成 各章につき100文字以上で要点をまとめ、実装演習結果、確認テストについての自身の考察を入れる 各科目の基準点が足りない場合や、実装演習が不足する場合は差し戻し レポートは、「機械学習」「深層学習day1」等 科目ごとに１つのレポート レポートの確認（受理完了）は、約3～7営業日程いただいております。 ※修了認定間際のレポート提出は、万が一何か不備があった場合でも事務局からの差し戻しができず、 軽微なミスでも不合格となったり修了認定が出来なくなることがございます。 余裕を持った学習計画を立てた上で取り組みをお願いいたします。 形式：PDF 提出方法：各種レポート提出フォーム［PDF版］ラビット受講生専用 実装演習 基本的に実装演習コードにそって行う。\nデバッグ Python主要エラーを参考にpythonコードはデバッグする。\n参考サイト Stack overflow回答は英語。私はほとんどこれを読んで解決します Stack overflow(日本語)最近出てきた。まだ検索で引っかかることは少ない 質問してみても良いかも QA@IT日本語Q\u0026amp;Aサイト。見たことがない teratail【テラテイル】｜ITエンジニア特化型Q\u0026amp;Aサイト 日本のPythonコミュニティ - python.jp GIthubのIssue ",
+  "url":"https:\/\/half-broken-engineer.github.io\/converted\/rabbitchallenge\/rabbitchallenge\/",
+  "keywords":"[]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.112.5 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Half-Broken Engineer">
+<meta name="keywords" content="">
+<meta name="description" content=" ラビット★チャレンジ : よくある質問（受講者用）
+修了要件 以下3つの条件をみたすことで修了者ナンバーを受領できる。受験の際にはそのナンバーが必要になる。
+シラバス変更後も2年間は有効。
+ビデオ学習 レポート全提出 認定テスト合格 実行環境 GoogleColaboratory
+レポート作成 各章につき100文字以上で要点をまとめ、実装演習結果、確認テストについての自身の考察を入れる 各科目の基準点が足りない場合や、実装演習が不足する場合は差し戻し レポートは、「機械学習」「深層学習day1」等 科目ごとに１つのレポート レポートの確認（受理完了）は、約3～7営業日程いただいております。 ※修了認定間際のレポート提出は、万が一何か不備があった場合でも事務局からの差し戻しができず、 軽微なミスでも不合格となったり修了認定が出来なくなることがございます。 余裕を持った学習計画を立てた上で取り組みをお願いいたします。 形式：PDF 提出方法：各種レポート提出フォーム［PDF版］ラビット受講生専用 実装演習 基本的に実装演習コードにそって行う。
+デバッグ Python主要エラーを参考にpythonコードはデバッグする。
+参考サイト Stack overflow回答は英語。私はほとんどこれを読んで解決します Stack overflow(日本語)最近出てきた。まだ検索で引っかかることは少ない 質問してみても良いかも QA@IT日本語Q&amp;Aサイト。見たことがない teratail【テラテイル】｜ITエンジニア特化型Q&amp;Aサイト 日本のPythonコミュニティ - python.jp GIthubのIssue ">
+
+
+<meta property="og:description" content=" ラビット★チャレンジ : よくある質問（受講者用）
+修了要件 以下3つの条件をみたすことで修了者ナンバーを受領できる。受験の際にはそのナンバーが必要になる。
+シラバス変更後も2年間は有効。
+ビデオ学習 レポート全提出 認定テスト合格 実行環境 GoogleColaboratory
+レポート作成 各章につき100文字以上で要点をまとめ、実装演習結果、確認テストについての自身の考察を入れる 各科目の基準点が足りない場合や、実装演習が不足する場合は差し戻し レポートは、「機械学習」「深層学習day1」等 科目ごとに１つのレポート レポートの確認（受理完了）は、約3～7営業日程いただいております。 ※修了認定間際のレポート提出は、万が一何か不備があった場合でも事務局からの差し戻しができず、 軽微なミスでも不合格となったり修了認定が出来なくなることがございます。 余裕を持った学習計画を立てた上で取り組みをお願いいたします。 形式：PDF 提出方法：各種レポート提出フォーム［PDF版］ラビット受講生専用 実装演習 基本的に実装演習コードにそって行う。
+デバッグ Python主要エラーを参考にpythonコードはデバッグする。
+参考サイト Stack overflow回答は英語。私はほとんどこれを読んで解決します Stack overflow(日本語)最近出てきた。まだ検索で引っかかることは少ない 質問してみても良いかも QA@IT日本語Q&amp;Aサイト。見たことがない teratail【テラテイル】｜ITエンジニア特化型Q&amp;Aサイト 日本のPythonコミュニティ - python.jp GIthubのIssue ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RabbitChallenge">
+<meta name="twitter:title" content="RabbitChallenge">
+<meta property="og:url" content="https://half-broken-engineer.github.io/converted/rabbitchallenge/rabbitchallenge/">
+<meta property="twitter:url" content="https://half-broken-engineer.github.io/converted/rabbitchallenge/rabbitchallenge/">
+<meta property="og:site_name" content="壊れかけのエンジニアのログ">
+<meta property="og:description" content=" ラビット★チャレンジ : よくある質問（受講者用）
+修了要件 以下3つの条件をみたすことで修了者ナンバーを受領できる。受験の際にはそのナンバーが必要になる。
+シラバス変更後も2年間は有効。
+ビデオ学習 レポート全提出 認定テスト合格 実行環境 GoogleColaboratory
+レポート作成 各章につき100文字以上で要点をまとめ、実装演習結果、確認テストについての自身の考察を入れる 各科目の基準点が足りない場合や、実装演習が不足する場合は差し戻し レポートは、「機械学習」「深層学習day1」等 科目ごとに１つのレポート レポートの確認（受理完了）は、約3～7営業日程いただいております。 ※修了認定間際のレポート提出は、万が一何か不備があった場合でも事務局からの差し戻しができず、 軽微なミスでも不合格となったり修了認定が出来なくなることがございます。 余裕を持った学習計画を立てた上で取り組みをお願いいたします。 形式：PDF 提出方法：各種レポート提出フォーム［PDF版］ラビット受講生専用 実装演習 基本的に実装演習コードにそって行う。
+デバッグ Python主要エラーを参考にpythonコードはデバッグする。
+参考サイト Stack overflow回答は英語。私はほとんどこれを読んで解決します Stack overflow(日本語)最近出てきた。まだ検索で引っかかることは少ない 質問してみても良いかも QA@IT日本語Q&amp;Aサイト。見たことがない teratail【テラテイル】｜ITエンジニア特化型Q&amp;Aサイト 日本のPythonコミュニティ - python.jp GIthubのIssue ">
+<meta name="twitter:description" content=" ラビット★チャレンジ : よくある質問（受講者用）
+修了要件 以下3つの条件をみたすことで修了者ナンバーを受領できる。受験の際にはそのナンバーが必要になる。
+シラバス変更後も2年間は有効。
+ビデオ学習 レポート全提出 認定テスト合格 実行環境 GoogleColaboratory
+レポート作成 各章につき100文字以上で要点をまとめ、実装演習結果、確認テストについての自身の考察を入れる 各科目の基準点が足りない場合や、実装演習が不足する場合は差し戻し レポートは、「機械学習」「深層学習day1」等 科目ごとに１つのレポート レポートの確認（受理完了）は、約3～7営業日程いただいております。 ※修了認定間際のレポート提出は、万が一何か不備があった場合でも事務局からの差し戻しができず、 軽微なミスでも不合格となったり修了認定が出来なくなることがございます。 余裕を持った学習計画を立てた上で取り組みをお願いいたします。 形式：PDF 提出方法：各種レポート提出フォーム［PDF版］ラビット受講生専用 実装演習 基本的に実装演習コードにそって行う。
+デバッグ Python主要エラーを参考にpythonコードはデバッグする。
+参考サイト Stack overflow回答は英語。私はほとんどこれを読んで解決します Stack overflow(日本語)最近出てきた。まだ検索で引っかかることは少ない 質問してみても良いかも QA@IT日本語Q&amp;Aサイト。見たことがない teratail【テラテイル】｜ITエンジニア特化型Q&amp;Aサイト 日本のPythonコミュニティ - python.jp GIthubのIssue ">
+<meta property="og:locale" content="ja">
+
+  
+    <meta property="article:published_time" content="2023-01-25T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2023-01-25T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="RabbitChallenge">
+    
+  
+  
+    
+      <meta property="article:tag" content="obsidian_note">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@overcome_kidney">
+
+
+  <meta name="twitter:creator" content="@overcome_kidney">
+
+
+
+
+
+
+  <meta property="og:image" content="https://half-broken-engineer.github.io/img/profile.png">
+  <meta property="twitter:image" content="https://half-broken-engineer.github.io/img/profile.png">
+
+
+
+
+
+
+    <title>RabbitChallenge</title>
+
+    <link rel="icon" href="https://half-broken-engineer.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://half-broken-engineer.github.io/converted/rabbitchallenge/rabbitchallenge/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://half-broken-engineer.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://half-broken-engineer.github.io/css/mystyle.css">
+      
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://half-broken-engineer.github.io/" aria-label="ホームページへ">壊れかけのエンジニアのログ</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://half-broken-engineer.github.io/#about" aria-label="リンクを開く: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://half-broken-engineer.github.io/img/profile.png" alt="プロフィール画像" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://half-broken-engineer.github.io/#about" aria-label="著者についてもっと読む">
+          <img class="sidebar-profile-picture" src="https://half-broken-engineer.github.io/img/profile.png" alt="プロフィール画像" />
+        </a>
+        <h4 class="sidebar-profile-name">Half-Broken Engineer</h4>
+        
+          <h5 class="sidebar-profile-bio">🤖　　　　壊れかけのエンジニア　　　　💻不安を解消したいから💰のお勉強もする</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">ホーム</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">カテゴリー</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">タグ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">アーカイブ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">プロフィール</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Half-Broken-Engineer" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      RabbitChallenge
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2023-01-25T00:00:00&#43;09:00">
+        
+  
+  
+  
+  
+    2023-01-25
+  
+
+      </time>
+    
+    
+  
+  
+    <span>カテゴリー</span>
+    
+      <a class="category-link" href="https://half-broken-engineer.github.io/categories/rabbitchallenge">RabbitChallenge</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <ul>
+<li></li>
+</ul>
+<p><a href="https://ai999.careers/rabbit/faq/student.html">ラビット★チャレンジ : よくある質問（受講者用）</a></p>
+<h1 id="修了要件">修了要件</h1>
+<p>以下3つの条件をみたすことで修了者ナンバーを受領できる。受験の際にはそのナンバーが必要になる。</p>
+<p>シラバス変更後も2年間は有効。</p>
+<ul>
+<li>ビデオ学習</li>
+<li>レポート全提出</li>
+<li>認定テスト合格</li>
+</ul>
+<h1 id="実行環境">実行環境</h1>
+<p><a href="https://half-broken-engineer.github.io/GoogleColaboratory">GoogleColaboratory</a></p>
+<h1 id="レポート作成">レポート作成</h1>
+<ul>
+<li>各章につき100文字以上で要点をまとめ、実装演習結果、確認テストについての自身の考察を入れる</li>
+<li>各科目の基準点が足りない場合や、実装演習が不足する場合は差し戻し</li>
+<li>レポートは、「機械学習」「深層学習day1」等 科目ごとに１つのレポート</li>
+<li>レポートの確認（受理完了）は、約3～7営業日程いただいております。
+※修了認定間際のレポート提出は、万が一何か不備があった場合でも事務局からの差し戻しができず、
+軽微なミスでも不合格となったり修了認定が出来なくなることがございます。
+余裕を持った学習計画を立てた上で取り組みをお願いいたします。</li>
+</ul>
+<p>形式：PDF
+提出方法：<a href="https://ws.formzu.net/fgen/S50745943/">各種レポート提出フォーム［PDF版］ラビット受講生専用</a>
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230320113222.png" alt="/img/Pasted_image_20230320113222.png"><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230320113234.png" alt="/img/Pasted_image_20230320113234.png">
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230320113252.png" alt="/img/Pasted_image_20230320113252.png">
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230320113305.png" alt="/img/Pasted_image_20230320113305.png"></p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230711163350.png" alt="/img/Pasted_image_20230711163350.png">
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230711163417.png" alt="/img/Pasted_image_20230711163417.png"></p>
+<h2 id="実装演習">実装演習</h2>
+<p>基本的に実装演習コードにそって行う。</p>
+<h1 id="デバッグ">デバッグ</h1>
+<p><a href="https://half-broken-engineer.github.io/Python%e4%b8%bb%e8%a6%81%e3%82%a8%e3%83%a9%e3%83%bc">Python主要エラー</a>を参考にpythonコードはデバッグする。</p>
+<h2 id="参考サイト">参考サイト</h2>
+<ul>
+<li>Stack overflow<!-- raw HTML omitted -->回答は英語。私はほとんどこれを読んで解決します</li>
+<li>Stack overflow(日本語)<!-- raw HTML omitted -->最近出てきた。まだ検索で引っかかることは少ない 質問してみても良いかも</li>
+<li>QA@IT<!-- raw HTML omitted -->日本語Q&amp;Aサイト。見たことがない</li>
+<li><a href="https://teratail.com/help/question-tips">teratail【テラテイル】｜ITエンジニア特化型Q&amp;Aサイト</a></li>
+<li><a href="https://www.python.jp/pages/community.html">日本のPythonコミュニティ - python.jp</a></li>
+<li>GIthubのIssue</li>
+</ul>
+
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">タグ</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://half-broken-engineer.github.io/tags/obsidian_note/">obsidian_note</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/converted/rabbitchallenge/appliedmathematics/" data-tooltip="AppliedMathematics" aria-label="次: AppliedMathematics">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">次</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/converted/udacity_ai_for_trading/project7_combining_signals_for_enhanced_alpha/" data-tooltip="project7_combining_signals_for_enhanced_alpha" aria-label="前: project7_combining_signals_for_enhanced_alpha">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">前</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="この記事を共有する">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://half-broken-engineer.github.io/converted/rabbitchallenge/rabbitchallenge/" title="Twitterで共有" aria-label="Twitterで共有">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="コメントを残す">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="トップに戻る">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/half-broken-engineer.github.io\/converted\/rabbitchallenge\/rabbitchallenge\/';
+        
+          this.page.identifier = '\/converted\/rabbitchallenge\/rabbitchallenge\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</footer>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+    inlineMath: [['$','$']]
+    }
+});
+</script>
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/converted/rabbitchallenge/appliedmathematics/" data-tooltip="AppliedMathematics" aria-label="次: AppliedMathematics">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">次</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/converted/udacity_ai_for_trading/project7_combining_signals_for_enhanced_alpha/" data-tooltip="project7_combining_signals_for_enhanced_alpha" aria-label="前: project7_combining_signals_for_enhanced_alpha">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">前</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="この記事を共有する">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://half-broken-engineer.github.io/converted/rabbitchallenge/rabbitchallenge/" title="Twitterで共有" aria-label="Twitterで共有">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="コメントを残す">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="トップに戻る">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fhalf-broken-engineer.github.io%2Fconverted%2Frabbitchallenge%2Frabbitchallenge%2F" aria-label="Twitterで共有">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitterで共有</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://half-broken-engineer.github.io/img/profile.png" alt="プロフィール画像" />
+    
+    <h4 id="about-card-name">Half-Broken Engineer</h4>
+    
+      <div id="about-card-bio">🤖　　　　壊れかけのエンジニア　　　　💻不安を解消したいから💰のお勉強もする</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Japan
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://half-broken-engineer.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://half-broken-engineer.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

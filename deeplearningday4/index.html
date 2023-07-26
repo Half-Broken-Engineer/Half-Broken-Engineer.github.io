@@ -127,7 +127,7 @@
 
   <body>
     <div id="blog">
-      <header id="header" data-behavior="5">
+      <header id="header" data-behavior="2">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
     <a class="header-title-link" href="https://half-broken-engineer.github.io/" aria-label="ホームページへ">壊れかけのエンジニアのログ</a>
@@ -147,7 +147,7 @@
   
 </header>
 
-      <nav id="sidebar" data-behavior="5">
+      <nav id="sidebar" data-behavior="2">
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
@@ -247,7 +247,7 @@
 
       
 
-      <div id="main" data-behavior="5"
+      <div id="main" data-behavior="2"
         class="
                hasCoverMetaIn
                ">
@@ -564,14 +564,16 @@ DQN の工夫は</p>
 <ul>
 <li>入力：盤面特徴入力 19✕19 の 48 チャンネル</li>
 <li>出力：19✕19 マスの着手予想確率
-<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230711201510.png" alt="/img/Pasted_image_20230711201510.png"></li>
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230711201510.png" alt="/img/Pasted_image_20230711201510.png">
+（講義スライドより引用）</li>
 </ul>
 </li>
 <li>Value Net
 <ul>
 <li>入力：盤面特徴入力 19✕19 の 48 チャンネル</li>
 <li>出力：1~1 の範囲での現在の局面の勝率
-<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230711201517.png" alt="/img/Pasted_image_20230711201517.png"></li>
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230711201517.png" alt="/img/Pasted_image_20230711201517.png">
+（講義スライドより引用）</li>
 </ul>
 </li>
 </ul>
@@ -619,9 +621,11 @@ DQN の工夫は</p>
 <li>バックアップ</li>
 <li>成長</li>
 </ol>
-<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230707144705.png" alt="/img/Pasted_image_20230707144705.png"></p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230707144705.png" alt="/img/Pasted_image_20230707144705.png">
+（講義スライドより引用）</p>
 <h3 id="alphagozero">AlphaGoZero</h3>
-<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230711201537.png" alt="/img/Pasted_image_20230711201537.png"></p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230711201537.png" alt="/img/Pasted_image_20230711201537.png">
+（講義スライドより引用）</p>
 <h4 id="alphagozero-と-alphago-の違い">AlphaGoZero と AlphaGo の違い</h4>
 <ol>
 <li>教師あり学習を一切行わず、強化学習のみで作成</li>
@@ -659,13 +663,15 @@ AlphaGo で使われるモンテカルロ木探索アルゴリズムは Asynchro
 <h4 id="モデル並列">モデル並列</h4>
 <p>モデルが大きいときに利用
 パラメータ数が多いほどスピードアップの効率も向上</p>
-<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230708143852.png" alt="/img/Pasted_image_20230708143852.png"></p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230708143852.png" alt="/img/Pasted_image_20230708143852.png">
+（講義スライドより引用）</p>
 <ol>
 <li>親モデルを複数の部分で分割し、各ワーカに割り当てる</li>
 <li>それぞれのワーカで分割したモデルを学習させる</li>
-<li>学習が終わったら一つのモデルに復元
-<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230708143726.png" alt="/img/Pasted_image_20230708143726.png"></li>
+<li>学習が終わったら一つのモデルに復元</li>
 </ol>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230708143726.png" alt="/img/Pasted_image_20230708143726.png">
+（講義スライドより引用）</p>
 <!-- raw HTML omitted -->
 <h4 id="データ並列">データ並列</h4>
 <ul>
@@ -675,11 +681,12 @@ AlphaGo で使われるモンテカルロ木探索アルゴリズムは Asynchro
 処理速度は非同期型が速いが、学習が不安定（Stale Gradient Problem）で同期型のほうが精度が良いので、同期型が主流
 <ul>
 <li>同期型：すべての子モデルの計算が終わるのを待って全ワーカーの勾配の平均をつかって親モデルの更新を行う</li>
-<li>非同期型：各ワーカーごとに学習させて、学習が終わった子モデルをパラメータサーバーにキューとして Push して、新しいデータがでたらパラメータサーバから pop して学習させる
-<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230708133547.png" alt="/img/Pasted_image_20230708133547.png"></li>
+<li>非同期型：各ワーカーごとに学習させて、学習が終わった子モデルをパラメータサーバーにキューとして Push して、新しいデータがでたらパラメータサーバから pop して学習させる</li>
 </ul>
 </li>
 </ul>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230708133547.png" alt="/img/Pasted_image_20230708133547.png"></p>
+<p>（講義スライドより引用）</p>
 <h3 id="gpu-による高速化">GPU による高速化</h3>
 <p>GPGPU: General Purpose GPU で本来のグラフィック以外の用途で使用される GPU の総称</p>
 <h4 id="cpu-と-gpu-の比較">CPU と GPU の比較</h4>
@@ -769,7 +776,8 @@ w = {0,1} のため、</p>
 <ul>
 <li>教師モデル：複雑なモデルや、アンサンブルを用いた高精度なモデル</li>
 <li>生徒モデル：簡略化した構造を持つ軽量なモデル
-<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230708152913.png" alt="/img/Pasted_image_20230708152913.png"></li>
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230708152913.png" alt="/img/Pasted_image_20230708152913.png">
+（講義スライドより引用）</li>
 </ul>
 <h4 id="プルーニング">プルーニング</h4>
 <p>精度に寄与していないニューロンを切り落とす
@@ -820,7 +828,8 @@ w = {0,1} のため、</p>
 <h4 id="手法">手法</h4>
 <p><strong>Depthwise Convolution</strong>(K✕K✕1 のカーネルをそれぞれのチャンネルに畳み込む) と <strong>Pointwise Covolution</strong>（1✕1✕C のカーネルを M 個）による軽量化
 通常の CNN の計算では空間方向とチャンネル方法の畳み込みを同時に行っていたのを個別に行っている</p>
-<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230707170356.png" alt="/img/Pasted_image_20230707170356.png"></p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230707170356.png" alt="/img/Pasted_image_20230707170356.png">
+（講義スライドより引用）</p>
 <h5 id="depthwise-convolution">Depthwise Convolution</h5>
 <ul>
 <li>入力の <strong>チャンネルごと</strong> に畳み込み</li>
@@ -829,13 +838,15 @@ w = {0,1} のため、</p>
 </ul>
 <p>※チャンネルごとで畳みこみをしているため、チャンネル方向の関係性が考慮されない問題がある。
 　→　Pointwise Convolution をセット使うことで対応</p>
-<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230707171340.png" alt="/img/Pasted_image_20230707171340.png"></p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230707171340.png" alt="/img/Pasted_image_20230707171340.png">
+（講義スライドより引用）</p>
 <h5 id="pointwise-convolution">Pointwise Convolution</h5>
 <ul>
 <li>入力マップの <strong>ポイントごと</strong> に畳み込みを実施</li>
 <li>出力のチャンネル数はフィルタ数で決定される</li>
 </ul>
-<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230707171452.png" alt="/img/Pasted_image_20230707171452.png"></p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230707171452.png" alt="/img/Pasted_image_20230707171452.png">
+（講義スライドより引用）</p>
 <h3 id="densenet">DenseNet</h3>
 <h4 id="概要-1">概要</h4>
 <ul>
@@ -865,7 +876,7 @@ w = {0,1} のため、</p>
 <li>学習の高速化：正規化することで極端に小さな値をクリッピングできることで、勾配消失の解決</li>
 <li>初期値への依存が少なくなる</li>
 <li>過学習が起こりにくい：各層の出力の正規化により、外れ値が少なくなる</li>
-<li><a href="https://half-broken-engineer.github.io/08_project/G_Certification/%e5%86%85%e9%83%a8%e5%85%b1%e5%a4%89%e9%87%8f%e3%82%b7%e3%83%95%e3%83%88">08_project/G_Certification/内部共変量シフト</a> への対応</li>
+<li><a href="https://half-broken-engineer.github.io/%e5%86%85%e9%83%a8%e5%85%b1%e5%a4%89%e9%87%8f%e3%82%b7%e3%83%95%e3%83%88">内部共変量シフト</a> への対応</li>
 </ul>
 <p>バッチ正規化はミニバッチ単位で Normalization するのでバッチサイズが小さいときに学習が収束しない問題が起こる。
 その際には Layer Normalization などを使う</p>
@@ -962,7 +973,8 @@ Causal 畳み込みと同等の処理にマスクテンソルと畳み込みフ�
 <img src="https://half-broken-engineer.github.io/img/Pasted_image_20230710095051.png" alt="/img/Pasted_image_20230710095051.png">
 （講義スライドより引用）</p>
 <h4 id="skip-connection">Skip Connection</h4>
-<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230710095249.png" alt="/img/Pasted_image_20230710095249.png"></p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230710095249.png" alt="/img/Pasted_image_20230710095249.png">
+（講義スライドより引用）</p>
 <p>$$ H(x) = F(x) + x$$</p>
 <p>※H(x) が中間層の出力、学習部分は F(x) となる</p>
 <p>深い NN の学習を可能に
@@ -1223,10 +1235,12 @@ $$mAP = \frac{1}{C}\overset{N}{\underset{i=1}\sum{AP_i}}$$
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230712122722.png" alt="/img/Pasted_image_20230712122722.png">
 （講義スライドより引用）</p>
 <h4 id="ネットワークアーキテクチャ">ネットワークアーキテクチャ</h4>
-<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230712121934.png" alt="/img/Pasted_image_20230712121934.png"></p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230712121934.png" alt="/img/Pasted_image_20230712121934.png">
+（講義スライドより引用）</p>
 <h4 id="特徴マップからの出力">特徴マップからの出力</h4>
 <p>各クラスのConfidence＋デフォルトボックスの調整項がマップ別に設定される特徴量あたりのDefault Box個数分あって、それを特徴マップサイズ分持つ</p>
-<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230712235240.png" alt="/img/Pasted_image_20230712235240.png"></p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230712235240.png" alt="/img/Pasted_image_20230712235240.png">
+（講義スライドより引用）</p>
 <p>※SSDでは層ごとに特徴量あたりのDefault Box数を変更しているが、これは計算量との兼ね合いで変更しているだけで特に深い意味があるわけではない</p>
 <h4 id="defaultboxが多いときに発生する問題とその対応">DefaultBoxが多いときに発生する問題とその対応</h4>
 <ul>
@@ -1239,7 +1253,8 @@ $$mAP = \frac{1}{C}\overset{N}{\underset{i=1}\sum{AP_i}}$$
 </ul>
 <h4 id="損失関数">損失関数</h4>
 <p>クラス分類に関する損失と、物体検出した位置に関する損失をあわせて評価する</p>
-<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230713084628.png" alt="/img/Pasted_image_20230713084628.png"></p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230713084628.png" alt="/img/Pasted_image_20230713084628.png">
+（講義スライドより引用）</p>
 <h3 id="semantic-segmentation">Semantic Segmentation</h3>
 <p>ピクセルごとにクラス情報を持つためには、畳み込みでダウンサンプリングしてきたものを入力と同サイズまでアップサンプリングする必要がある</p>
 <p>ダウンサンプリングしないという選択肢は受容野と計算量、メモリの兼ね合いから難しいため、
@@ -1260,12 +1275,15 @@ $$mAP = \frac{1}{C}\overset{N}{\underset{i=1}\sum{AP_i}}$$
 <ul>
 <li>Pooling層の出力をelement-wise addition　（FCN）</li>
 <li>スキップ接続　Encoderの特徴量マップを対応するデコーダーの入力に連結する　（U-Net）
-<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230713001657.png" alt="/img/Pasted_image_20230713001657.png"></li>
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230713001657.png" alt="/img/Pasted_image_20230713001657.png">
+（講義スライドより引用）</li>
 <li>Unpooling:Pooling時に採用した位置のインデックス情報を保持しておいてアップサンプリング時に活用
 <img src="https://half-broken-engineer.github.io/img/Pasted_image_20230713001902.png" alt="/img/Pasted_image_20230713001902.png">
+（講義スライドより引用）
 DeconvNet（上）とSegNet（下）
 ※SegNetではUpSamplingにおいて、逆畳み込みは行っておらず、Unpoolingのみ、これによってメモリ効率がよく高速に動作する
-<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230713001844.png" alt="/img/Pasted_image_20230713001844.png"></li>
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230713001844.png" alt="/img/Pasted_image_20230713001844.png">
+（講義スライドより引用）</li>
 </ul>
 </li>
 </ul>
@@ -1291,7 +1309,7 @@ SSDが小さな物体検出が苦手かどうか、VOC07とVOC12のクラス数�
 原著論文&quot;https://arxiv.org/pdf/1512.02325.pdf&rdquo;　において、オブジェクトのサイズと精度の比較が出ていた。
 （新しいデータ拡張で改善できたという文脈）
 <img src="https://half-broken-engineer.github.io/img/Pasted_image_20230718175028.png" alt="/img/Pasted_image_20230718175028.png">
-（論文より引用）</p>
+（Wei Liu,SSD: Single Shot MultiBox Detector,<a href="https://arxiv.org/pdf/1512.02325.pdf">&ldquo;https://arxiv.org/pdf/1512.02325.pdf&rdquo;</a>&ldquo;Arxivより引用）</p>
 <p>認定テストでデータセットに関する問題が出たため、以下の参考サイトで確認
 OICID 2018:&ldquo;<a href="https://github.com/openimages/dataset/blob/main/READMEV3.md%22">https://github.com/openimages/dataset/blob/main/READMEV3.md"</a>
 &ldquo;<a href="https://storage.googleapis.com/openimages/web/factsfigures_v7.html%22">https://storage.googleapis.com/openimages/web/factsfigures_v7.html"</a>
@@ -1313,8 +1331,9 @@ MS COCO: <a href="https://cocodataset.org/#format-results">https://cocodataset.o
 <p>RCNN：関心領域ごとにCNNに入力
 Fast R-CNN ：画像全体をCNNに入力して、特徴量を抽出したFeature Mapに対してROIに対応する部分を抽出、サイズ調整するROI Poolingを行う</p>
 <p>→　計算量を大幅に削減</p>
-<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230713085612.png" alt="/img/Pasted_image_20230713085612.png"></p>
-<p>※ROI poolingでは入力画像と特徴量マップの解像度が異なるために、実際の画像のROIとROI Poolingで対応する領域が異なる問題がある
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230713085612.png" alt="/img/Pasted_image_20230713085612.png">
+（R. Girshick, &ldquo;Fast R-CNN,&rdquo; in Proc. of ICCV, 2015より引用）
+※ROI poolingでは入力画像と特徴量マップの解像度が異なるために、実際の画像のROIとROI Poolingで対応する領域が異なる問題がある
 （参考：&ldquo;<a href="https://qiita.com/yu4u/items/5cbe9db166a5d72f9eb8%22">https://qiita.com/yu4u/items/5cbe9db166a5d72f9eb8"</a>）</p>
 <h4 id="roi-pooling">ROI Pooling</h4>
 <ol>
@@ -3077,7 +3096,7 @@ MathJax.Hub.Config({
 });
 </script>
       </div>
-      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="2">
         
 <div class="post-actions-wrap">
   <nav >
@@ -3137,7 +3156,7 @@ MathJax.Hub.Config({
 
       </div>
       
-<div id="share-options-bar" class="share-options-bar" data-behavior="5">
+<div id="share-options-bar" class="share-options-bar" data-behavior="2">
   <i id="btn-close-shareoptions" class="fa fa-times"></i>
   <ul class="share-options">
     

@@ -32,7 +32,7 @@
     }
     
   },
-  "description": "要点(最低100字) 再帰型NNの概念 要点 実装キャプチャ・演習 LSTM 要点 GRU 要点 実装キャプチャ ・演習 双方向RNN 要点 実装キャプチャ・演習 Seq2Seq 要点 Word2vec 要点 Attention Mechanism 要点 VQ-VAE 要点 フレームワーク演習：双方向RNN/勾配のクリッピング 要点 実装キャプチャ フレームワーク演習：Seq2Seq 要点 実装キャプチャ フレームワーク演習：Data-Augumentation 要点 実装キャプチャ フレームワーク演習：Activate-Functions 要点 実装キャプチャ 再帰型NNの概念 再帰型NN→RNN\n時系列データとは 時間的順序を追って一定間隔ごとに観察され、 相互に統計的依存関係が認められるようなデータの系列\n時系列データの例 音声データ テキストデータ RNNの全体像 $u^t = W_{(in)}x^t + W{z^{t-1}} + b$ $z^t = f(W_{(in)}x^t + Wz^{t-1} + b)$ $v^t = W_{(out)} z^t + c$ $y^t = g(W_{(out)} z^t + c)$",
+  "description": "再帰型NNの概念 再帰型NN→RNN\n時系列データとは 時間的順序を追って一定間隔ごとに観察され、 相互に統計的依存関係が認められるようなデータの系列\n時系列データの例 音声データ テキストデータ RNNの全体像 （講義スライドより引用）\n$u^t = W_{(in)}x^t + W{z^{t-1}} + b$ $z^t = f(W_{(in)}x^t + Wz^{t-1} + b)$ $v^t = W_{(out)} z^t + c$ $y^t = g(W_{(out)} z^t + c)$\n$W_{(in)}$：入力層から中間層への重み $W_{(out)}$：中間層から出力層への重み\nu[:,t+1] = np.dot(X,W_in) + np.dot(z[:,t].reshape(1,-1),W) + b z[:,t+1] = functions.sigmoid(u[:,t+1]) v = np.dot(z[:,t+1].reshape(1,-1),W_out) y[:,t] = functions.sigmoid(v + c) ※実装上は1次元目がデータ列になるため、重みに対して左から入力を掛ける形になる。\nRNNの特徴 初期の状態と過去の時間t-1の状態を保持し、そこから次の時間でのtを再帰的に求める再帰構造をもつ\nBPTT (Back Propagation Through Time) BPの復習 誤差を微分のチェインルールに従って、誤差から逆算していくことで不要な再起的計算を避けて微分を算出できる。\nBPTTの数学的記述 ※（パラメータ更新と合わせて、実装例と一致するように、数式展開で確認しながら表現変えてます） 誤差関数を3つの重みと２つのバイアスでそれぞれ微分する。",
   "keywords": []
 }
 
@@ -43,26 +43,50 @@
 <meta name="generator" content="Hugo 0.112.5 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Half-Broken Engineer">
 <meta name="keywords" content="">
-<meta name="description" content="要点(最低100字) 再帰型NNの概念 要点 実装キャプチャ・演習 LSTM 要点 GRU 要点 実装キャプチャ ・演習 双方向RNN 要点 実装キャプチャ・演習 Seq2Seq 要点 Word2vec 要点 Attention Mechanism 要点 VQ-VAE 要点 フレームワーク演習：双方向RNN/勾配のクリッピング 要点 実装キャプチャ フレームワーク演習：Seq2Seq 要点 実装キャプチャ フレームワーク演習：Data-Augumentation 要点 実装キャプチャ フレームワーク演習：Activate-Functions 要点 実装キャプチャ 再帰型NNの概念 再帰型NN→RNN
+<meta name="description" content="再帰型NNの概念 再帰型NN→RNN
 時系列データとは 時間的順序を追って一定間隔ごとに観察され、 相互に統計的依存関係が認められるようなデータの系列
-時系列データの例 音声データ テキストデータ RNNの全体像 $u^t = W_{(in)}x^t &#43; W{z^{t-1}} &#43; b$ $z^t = f(W_{(in)}x^t &#43; Wz^{t-1} &#43; b)$ $v^t = W_{(out)} z^t &#43; c$ $y^t = g(W_{(out)} z^t &#43; c)$">
+時系列データの例 音声データ テキストデータ RNNの全体像 （講義スライドより引用）
+$u^t = W_{(in)}x^t &#43; W{z^{t-1}} &#43; b$ $z^t = f(W_{(in)}x^t &#43; Wz^{t-1} &#43; b)$ $v^t = W_{(out)} z^t &#43; c$ $y^t = g(W_{(out)} z^t &#43; c)$
+$W_{(in)}$：入力層から中間層への重み $W_{(out)}$：中間層から出力層への重み
+u[:,t&#43;1] = np.dot(X,W_in) &#43; np.dot(z[:,t].reshape(1,-1),W) &#43; b z[:,t&#43;1] = functions.sigmoid(u[:,t&#43;1]) v = np.dot(z[:,t&#43;1].reshape(1,-1),W_out) y[:,t] = functions.sigmoid(v &#43; c) ※実装上は1次元目がデータ列になるため、重みに対して左から入力を掛ける形になる。
+RNNの特徴 初期の状態と過去の時間t-1の状態を保持し、そこから次の時間でのtを再帰的に求める再帰構造をもつ
+BPTT (Back Propagation Through Time) BPの復習 誤差を微分のチェインルールに従って、誤差から逆算していくことで不要な再起的計算を避けて微分を算出できる。
+BPTTの数学的記述 ※（パラメータ更新と合わせて、実装例と一致するように、数式展開で確認しながら表現変えてます） 誤差関数を3つの重みと２つのバイアスでそれぞれ微分する。">
 
 
-<meta property="og:description" content="要点(最低100字) 再帰型NNの概念 要点 実装キャプチャ・演習 LSTM 要点 GRU 要点 実装キャプチャ ・演習 双方向RNN 要点 実装キャプチャ・演習 Seq2Seq 要点 Word2vec 要点 Attention Mechanism 要点 VQ-VAE 要点 フレームワーク演習：双方向RNN/勾配のクリッピング 要点 実装キャプチャ フレームワーク演習：Seq2Seq 要点 実装キャプチャ フレームワーク演習：Data-Augumentation 要点 実装キャプチャ フレームワーク演習：Activate-Functions 要点 実装キャプチャ 再帰型NNの概念 再帰型NN→RNN
+<meta property="og:description" content="再帰型NNの概念 再帰型NN→RNN
 時系列データとは 時間的順序を追って一定間隔ごとに観察され、 相互に統計的依存関係が認められるようなデータの系列
-時系列データの例 音声データ テキストデータ RNNの全体像 $u^t = W_{(in)}x^t &#43; W{z^{t-1}} &#43; b$ $z^t = f(W_{(in)}x^t &#43; Wz^{t-1} &#43; b)$ $v^t = W_{(out)} z^t &#43; c$ $y^t = g(W_{(out)} z^t &#43; c)$">
+時系列データの例 音声データ テキストデータ RNNの全体像 （講義スライドより引用）
+$u^t = W_{(in)}x^t &#43; W{z^{t-1}} &#43; b$ $z^t = f(W_{(in)}x^t &#43; Wz^{t-1} &#43; b)$ $v^t = W_{(out)} z^t &#43; c$ $y^t = g(W_{(out)} z^t &#43; c)$
+$W_{(in)}$：入力層から中間層への重み $W_{(out)}$：中間層から出力層への重み
+u[:,t&#43;1] = np.dot(X,W_in) &#43; np.dot(z[:,t].reshape(1,-1),W) &#43; b z[:,t&#43;1] = functions.sigmoid(u[:,t&#43;1]) v = np.dot(z[:,t&#43;1].reshape(1,-1),W_out) y[:,t] = functions.sigmoid(v &#43; c) ※実装上は1次元目がデータ列になるため、重みに対して左から入力を掛ける形になる。
+RNNの特徴 初期の状態と過去の時間t-1の状態を保持し、そこから次の時間でのtを再帰的に求める再帰構造をもつ
+BPTT (Back Propagation Through Time) BPの復習 誤差を微分のチェインルールに従って、誤差から逆算していくことで不要な再起的計算を避けて微分を算出できる。
+BPTTの数学的記述 ※（パラメータ更新と合わせて、実装例と一致するように、数式展開で確認しながら表現変えてます） 誤差関数を3つの重みと２つのバイアスでそれぞれ微分する。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DeepLearningDay3">
 <meta name="twitter:title" content="DeepLearningDay3">
 <meta property="og:url" content="https://half-broken-engineer.github.io/deeplearningday3/">
 <meta property="twitter:url" content="https://half-broken-engineer.github.io/deeplearningday3/">
 <meta property="og:site_name" content="壊れかけのエンジニアのログ">
-<meta property="og:description" content="要点(最低100字) 再帰型NNの概念 要点 実装キャプチャ・演習 LSTM 要点 GRU 要点 実装キャプチャ ・演習 双方向RNN 要点 実装キャプチャ・演習 Seq2Seq 要点 Word2vec 要点 Attention Mechanism 要点 VQ-VAE 要点 フレームワーク演習：双方向RNN/勾配のクリッピング 要点 実装キャプチャ フレームワーク演習：Seq2Seq 要点 実装キャプチャ フレームワーク演習：Data-Augumentation 要点 実装キャプチャ フレームワーク演習：Activate-Functions 要点 実装キャプチャ 再帰型NNの概念 再帰型NN→RNN
+<meta property="og:description" content="再帰型NNの概念 再帰型NN→RNN
 時系列データとは 時間的順序を追って一定間隔ごとに観察され、 相互に統計的依存関係が認められるようなデータの系列
-時系列データの例 音声データ テキストデータ RNNの全体像 $u^t = W_{(in)}x^t &#43; W{z^{t-1}} &#43; b$ $z^t = f(W_{(in)}x^t &#43; Wz^{t-1} &#43; b)$ $v^t = W_{(out)} z^t &#43; c$ $y^t = g(W_{(out)} z^t &#43; c)$">
-<meta name="twitter:description" content="要点(最低100字) 再帰型NNの概念 要点 実装キャプチャ・演習 LSTM 要点 GRU 要点 実装キャプチャ ・演習 双方向RNN 要点 実装キャプチャ・演習 Seq2Seq 要点 Word2vec 要点 Attention Mechanism 要点 VQ-VAE 要点 フレームワーク演習：双方向RNN/勾配のクリッピング 要点 実装キャプチャ フレームワーク演習：Seq2Seq 要点 実装キャプチャ フレームワーク演習：Data-Augumentation 要点 実装キャプチャ フレームワーク演習：Activate-Functions 要点 実装キャプチャ 再帰型NNの概念 再帰型NN→RNN
+時系列データの例 音声データ テキストデータ RNNの全体像 （講義スライドより引用）
+$u^t = W_{(in)}x^t &#43; W{z^{t-1}} &#43; b$ $z^t = f(W_{(in)}x^t &#43; Wz^{t-1} &#43; b)$ $v^t = W_{(out)} z^t &#43; c$ $y^t = g(W_{(out)} z^t &#43; c)$
+$W_{(in)}$：入力層から中間層への重み $W_{(out)}$：中間層から出力層への重み
+u[:,t&#43;1] = np.dot(X,W_in) &#43; np.dot(z[:,t].reshape(1,-1),W) &#43; b z[:,t&#43;1] = functions.sigmoid(u[:,t&#43;1]) v = np.dot(z[:,t&#43;1].reshape(1,-1),W_out) y[:,t] = functions.sigmoid(v &#43; c) ※実装上は1次元目がデータ列になるため、重みに対して左から入力を掛ける形になる。
+RNNの特徴 初期の状態と過去の時間t-1の状態を保持し、そこから次の時間でのtを再帰的に求める再帰構造をもつ
+BPTT (Back Propagation Through Time) BPの復習 誤差を微分のチェインルールに従って、誤差から逆算していくことで不要な再起的計算を避けて微分を算出できる。
+BPTTの数学的記述 ※（パラメータ更新と合わせて、実装例と一致するように、数式展開で確認しながら表現変えてます） 誤差関数を3つの重みと２つのバイアスでそれぞれ微分する。">
+<meta name="twitter:description" content="再帰型NNの概念 再帰型NN→RNN
 時系列データとは 時間的順序を追って一定間隔ごとに観察され、 相互に統計的依存関係が認められるようなデータの系列
-時系列データの例 音声データ テキストデータ RNNの全体像 $u^t = W_{(in)}x^t &#43; W{z^{t-1}} &#43; b$ $z^t = f(W_{(in)}x^t &#43; Wz^{t-1} &#43; b)$ $v^t = W_{(out)} z^t &#43; c$ $y^t = g(W_{(out)} z^t &#43; c)$">
+時系列データの例 音声データ テキストデータ RNNの全体像 （講義スライドより引用）
+$u^t = W_{(in)}x^t &#43; W{z^{t-1}} &#43; b$ $z^t = f(W_{(in)}x^t &#43; Wz^{t-1} &#43; b)$ $v^t = W_{(out)} z^t &#43; c$ $y^t = g(W_{(out)} z^t &#43; c)$
+$W_{(in)}$：入力層から中間層への重み $W_{(out)}$：中間層から出力層への重み
+u[:,t&#43;1] = np.dot(X,W_in) &#43; np.dot(z[:,t].reshape(1,-1),W) &#43; b z[:,t&#43;1] = functions.sigmoid(u[:,t&#43;1]) v = np.dot(z[:,t&#43;1].reshape(1,-1),W_out) y[:,t] = functions.sigmoid(v &#43; c) ※実装上は1次元目がデータ列になるため、重みに対して左から入力を掛ける形になる。
+RNNの特徴 初期の状態と過去の時間t-1の状態を保持し、そこから次の時間でのtを再帰的に求める再帰構造をもつ
+BPTT (Back Propagation Through Time) BPの復習 誤差を微分のチェインルールに従って、誤差から逆算していくことで不要な再起的計算を避けて微分を算出できる。
+BPTTの数学的記述 ※（パラメータ更新と合わせて、実装例と一致するように、数式展開で確認しながら表現変えてます） 誤差関数を3つの重みと２つのバイアスでそれぞれ微分する。">
 <meta property="og:locale" content="ja">
 
   
@@ -135,7 +159,7 @@
 
   <body>
     <div id="blog">
-      <header id="header" data-behavior="5">
+      <header id="header" data-behavior="2">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
     <a class="header-title-link" href="https://half-broken-engineer.github.io/" aria-label="ホームページへ">壊れかけのエンジニアのログ</a>
@@ -155,7 +179,7 @@
   
 </header>
 
-      <nav id="sidebar" data-behavior="5">
+      <nav id="sidebar" data-behavior="2">
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
@@ -255,7 +279,7 @@
 
       
 
-      <div id="main" data-behavior="5"
+      <div id="main" data-behavior="2"
         class="
                hasCoverMetaIn
                ">
@@ -300,76 +324,6 @@
               <ul>
 <li></li>
 </ul>
-<h1 id="要点最低100字">要点(最低100字)</h1>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 再帰型NNの概念
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 要点</li>
-<li><input checked="" disabled="" type="checkbox"> 実装キャプチャ・演習</li>
-</ul>
-</li>
-<li><input checked="" disabled="" type="checkbox"> LSTM
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 要点</li>
-</ul>
-</li>
-<li><input checked="" disabled="" type="checkbox"> GRU
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 要点</li>
-<li><input checked="" disabled="" type="checkbox"> 実装キャプチャ ・演習</li>
-</ul>
-</li>
-<li><input checked="" disabled="" type="checkbox"> 双方向RNN
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 要点</li>
-<li><input checked="" disabled="" type="checkbox"> 実装キャプチャ・演習</li>
-</ul>
-</li>
-<li><input checked="" disabled="" type="checkbox"> Seq2Seq
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 要点</li>
-</ul>
-</li>
-<li><input checked="" disabled="" type="checkbox"> Word2vec
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 要点</li>
-</ul>
-</li>
-<li><input checked="" disabled="" type="checkbox"> Attention Mechanism
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 要点</li>
-</ul>
-</li>
-<li><input checked="" disabled="" type="checkbox"> VQ-VAE
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 要点</li>
-</ul>
-</li>
-<li><input checked="" disabled="" type="checkbox"> フレームワーク演習：双方向RNN/勾配のクリッピング
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 要点</li>
-<li><input checked="" disabled="" type="checkbox"> 実装キャプチャ</li>
-</ul>
-</li>
-<li><input checked="" disabled="" type="checkbox"> フレームワーク演習：Seq2Seq
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 要点</li>
-<li><input checked="" disabled="" type="checkbox"> 実装キャプチャ</li>
-</ul>
-</li>
-<li><input checked="" disabled="" type="checkbox"> フレームワーク演習：Data-Augumentation
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 要点</li>
-<li><input checked="" disabled="" type="checkbox"> 実装キャプチャ</li>
-</ul>
-</li>
-<li><input checked="" disabled="" type="checkbox"> フレームワーク演習：Activate-Functions
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 要点</li>
-<li><input checked="" disabled="" type="checkbox"> 実装キャプチャ</li>
-</ul>
-</li>
-</ul>
 <h2 id="再帰型nnの概念">再帰型NNの概念</h2>
 <p>再帰型NN→RNN</p>
 <h3 id="時系列データとは">時系列データとは</h3>
@@ -381,7 +335,8 @@
 <li>テキストデータ</li>
 </ul>
 <h3 id="rnnの全体像">RNNの全体像</h3>
-<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230414102514.png" alt="/img/Pasted_image_20230414102514.png"></p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230414102514.png" alt="/img/Pasted_image_20230414102514.png">
+（講義スライドより引用）</p>
 <p>$u^t = W_{(in)}x^t + W{z^{t-1}} + b$
 $z^t = f(W_{(in)}x^t + Wz^{t-1} + b)$
 $v^t = W_{(out)} z^t + c$
@@ -488,7 +443,8 @@ $$</p>
 <h2 id="gru">GRU</h2>
 <p>LSTMのパラメータを大幅に削減し、同等からそれ以上の性能を望める様になった構造
 メモリは今回更新する分を前回メモリから除く構造になっている。
-<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416181802.png" alt="/img/Pasted_image_20230416181802.png"></p>
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416181802.png" alt="/img/Pasted_image_20230416181802.png">
+（講義スライドより引用）</p>
 <p>隠れ層の状態
 これと前回の隠れ層出力の加重平均を新たな隠れ層出力とする</p>
 <p>$$
@@ -508,8 +464,8 @@ h(t) = z(t) \cdot h(t-1) + (1-z(t)) \cdot h(t)
 $$</p>
 <h2 id="双方向rnn">双方向RNN</h2>
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416210047.png" alt="/img/Pasted_image_20230416210047.png">
-(講義スライドより引用)
-未来側から戻ってくる隠れ層を追加する。
+(講義スライドより引用)</p>
+<p>未来側から戻ってくる隠れ層を追加する。
 文脈などを考慮することができ、精度が上がるがデータ系列が揃ってからという制約が追加されるため適用可能なタスクの範囲は狭まる。
 機械翻訳や文章の推敲に使われる。</p>
 <p>※順方向と逆方向に伝播したときの中間層表現を合わせたものが特徴量
@@ -558,9 +514,13 @@ $$</p>
 <h3 id="vhred">VHRED</h3>
 <p>HREDの問題点に対応するために、VAEの潜在変数の概念を追加したもの</p>
 <h3 id="vae">VAE</h3>
-<h4 id="08_projectg_certificationオートエンコーダhttpshalf-broken-engineergithubio08_projectg_certificationオートエンコーダ"><a href="https://half-broken-engineer.github.io/08_project/G_Certification/%e3%82%aa%e3%83%bc%e3%83%88%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%80">08_project/G_Certification/オートエンコーダ</a></h4>
-<p>隠れ層を潜在変数ｚとする
-<img src="https://half-broken-engineer.github.io/08_project/G_Certification/%E3%82%AA%E3%83%BC%E3%83%88%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%80" alt="08_project/G_Certification/オートエンコーダ"></p>
+<h4 id="オートエンコーダhttpshalf-broken-engineergithubioオートエンコーダ"><a href="https://half-broken-engineer.github.io/%e3%82%aa%e3%83%bc%e3%83%88%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%80">オートエンコーダ</a></h4>
+<p>隠れ層を潜在変数ｚとする</p>
+<p>自己符号化器とも言われる。
+入力と同じ出力を返す二層のネットワーク</p>
+<p>隠れ層は入力の次元圧縮になる。</p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230121182358.png" alt="/img/Pasted_image_20230121182358.png">
+（猪狩 宇司; 今井 翔太; 江間 有沙; 岡田 陽介; 工藤 郁子; 巣籠 悠輔; 瀬谷 啓介; 徳田 有美子; 中澤 敏明; 藤本 敬介; 松井 孝之; 松尾 豊; 松嶋 達也; 山下 隆義. 深層学習教科書 ディープラーニング G検定（ジェネラリスト）公式テキスト 第2版 (Kindle の位置No.3985-3986). 株式会社 翔泳社. Kindle 版. ）</p>
 <h4 id="vaeの特徴">VAEの特徴</h4>
 <p>潜在変数zに確率分布z~N(0,1)を仮定し確率分布という構造に押し込めたもの
 元のデータの分布（近さや遠さ）が潜在変数の分布にも反映されてほしい</p>
@@ -597,7 +557,7 @@ $$</p>
 <h4 id="目的">目的</h4>
 <ul>
 <li>適切なデータ表現の獲得：自然界の特徴を捉えるにおいて、離散的な表現が適していると想定されることから。</li>
-<li>[Posterior Collapse](<a href="https://half-broken-engineer.github.io/Posterior">https://half-broken-engineer.github.io/Posterior</a> Collapse)を防ぐ</li>
+<li><a href="https://half-broken-engineer.github.io/Posterior_Collapse">Posterior_Collapse</a>を防ぐ</li>
 </ul>
 <p>VAEをPixel CNNなどの強力なデコーダーと組み合わせたときに、潜在変数がデータの特徴をうまく捉えられなくなる現象。
 VQ-VAEで離散的な潜在変数を学習するようにすることで回避できるとされる</p>
@@ -1181,7 +1141,7 @@ MathJax.Hub.Config({
 });
 </script>
       </div>
-      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="2">
         
 <div class="post-actions-wrap">
   <nav >
@@ -1241,7 +1201,7 @@ MathJax.Hub.Config({
 
       </div>
       
-<div id="share-options-bar" class="share-options-bar" data-behavior="5">
+<div id="share-options-bar" class="share-options-bar" data-behavior="2">
   <i id="btn-close-shareoptions" class="fa fa-times"></i>
   <ul class="share-options">
     

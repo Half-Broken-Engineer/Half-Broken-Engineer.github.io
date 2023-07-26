@@ -32,7 +32,7 @@
     }
     
   },
-  "description": "要点(最低100字) 識別と生成 識別：データを目的別クラスに分類する $P(C_k|x)$：条件Xが与えられた条件の元でのクラスkの確率 高次元から低次元へ 必要な学習データは比較的少ない 応用例 画像認識 生成：特定クラスのデータを生成する $P(x|C_k)$：クラスｋという条件のものとでのデータCkの分布 低次元から高次元へ 必要な学習データが多い 応用例 画像の超解像 テキスト生成 主要なモデル 識別モデル 決定木 ロジスティック回帰 SVM 08_project/G_Certification/ニューラルネットワーク 生成モデル 隠れマルコフモデル ベイジアンネットワーク VAE GAN DRAW 識別器の開発アプローチ 上から順に学習コストが大→小\n生成モデル的アプローチ ベイズの定理を活用 モデル化の対象 各クラスの生起確率 データのクラス条件付き密度 データを人工的に生成できる 確率的な識別 識別モデル 決定理論に基づき識別結果を得る データがクラスに属する確率をモデル化 確率的な識別 識別関数 入力値ｘを直接クラスに写像（変換）する関数f(x)を推定 データの属するクラス情報のみ（確率は計算されない） 決定的な識別 生成モデルと識別モデルの比較 生成モデルのアプローチではより複雑なデータ分布を学習しようとするので、計算量が多い。\n（講義ビデオより引用）\n識別モデルと識別関数 モデルは推論結果の取り扱いを変更でき、間違いの程度も評価できるが 識別関数ではそれらが出来ない。結果を一足飛びに得る。\n（講義ビデオより引用）\n深層学習の強み：万能近似定理 万能近似定理：活性化関数をもつネットワークを使うことで、どんな関数でも近似できるという定理 これまでの機械学習では人間が関数を設計していた ノーフリーランチの定理\nニューラルネットの数学的表現 (ラビットチャレンジの深層学習day1講義資料より引用)\n回帰と分類の違い 回帰：連続する実数値を取る関数の近似 分類：離散的な結果を予想するための分析\n線形と非線形の違い 線形な関数は以下の性質を持つが、非線形関数は持たない。\n加法性:$f(a+b) = f(a) + f(b)$ 斉次性$f(ka) = k\\times f(a)$ 活性化関数 ステップ関数 def step_func(x): if x \u0026gt; 0: return 1 else: return 0 問題点：線形分離可能なものしか学習出来なかった",
+  "description": "要点(最低100字) 識別と生成 識別：データを目的別クラスに分類する $P(C_k|x)$：条件Xが与えられた条件の元でのクラスkの確率 高次元から低次元へ 必要な学習データは比較的少ない 応用例 画像認識 生成：特定クラスのデータを生成する $P(x|C_k)$：クラスｋという条件のものとでのデータCkの分布 低次元から高次元へ 必要な学習データが多い 応用例 画像の超解像 テキスト生成 主要なモデル 識別モデル 決定木 ロジスティック回帰 SVM ニューラルネットワーク 生成モデル 隠れマルコフモデル ベイジアンネットワーク VAE GAN DRAW 識別器の開発アプローチ 上から順に学習コストが大→小\n生成モデル的アプローチ ベイズの定理を活用 モデル化の対象 各クラスの生起確率 データのクラス条件付き密度 データを人工的に生成できる 確率的な識別 識別モデル 決定理論に基づき識別結果を得る データがクラスに属する確率をモデル化 確率的な識別 識別関数 入力値ｘを直接クラスに写像（変換）する関数f(x)を推定 データの属するクラス情報のみ（確率は計算されない） 決定的な識別 生成モデルと識別モデルの比較 生成モデルのアプローチではより複雑なデータ分布を学習しようとするので、計算量が多い。\n（講義ビデオより引用）\n識別モデルと識別関数 モデルは推論結果の取り扱いを変更でき、間違いの程度も評価できるが 識別関数ではそれらが出来ない。結果を一足飛びに得る。\n（講義ビデオより引用）\n深層学習の強み：万能近似定理 万能近似定理：活性化関数をもつネットワークを使うことで、どんな関数でも近似できるという定理 これまでの機械学習では人間が関数を設計していた ノーフリーランチの定理\nニューラルネットの数学的表現 (ラビットチャレンジの深層学習day1講義資料より引用)\n回帰と分類の違い 回帰：連続する実数値を取る関数の近似 分類：離散的な結果を予想するための分析\n線形と非線形の違い 線形な関数は以下の性質を持つが、非線形関数は持たない。\n加法性:$f(a+b) = f(a) + f(b)$ 斉次性$f(ka) = k\\times f(a)$ 活性化関数 ステップ関数 def step_func(x): if x \u0026gt; 0: return 1 else: return 0 問題点：線形分離可能なものしか学習出来なかった",
   "keywords": []
 }
 
@@ -43,7 +43,7 @@
 <meta name="generator" content="Hugo 0.112.5 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Half-Broken Engineer">
 <meta name="keywords" content="">
-<meta name="description" content="要点(最低100字) 識別と生成 識別：データを目的別クラスに分類する $P(C_k|x)$：条件Xが与えられた条件の元でのクラスkの確率 高次元から低次元へ 必要な学習データは比較的少ない 応用例 画像認識 生成：特定クラスのデータを生成する $P(x|C_k)$：クラスｋという条件のものとでのデータCkの分布 低次元から高次元へ 必要な学習データが多い 応用例 画像の超解像 テキスト生成 主要なモデル 識別モデル 決定木 ロジスティック回帰 SVM 08_project/G_Certification/ニューラルネットワーク 生成モデル 隠れマルコフモデル ベイジアンネットワーク VAE GAN DRAW 識別器の開発アプローチ 上から順に学習コストが大→小
+<meta name="description" content="要点(最低100字) 識別と生成 識別：データを目的別クラスに分類する $P(C_k|x)$：条件Xが与えられた条件の元でのクラスkの確率 高次元から低次元へ 必要な学習データは比較的少ない 応用例 画像認識 生成：特定クラスのデータを生成する $P(x|C_k)$：クラスｋという条件のものとでのデータCkの分布 低次元から高次元へ 必要な学習データが多い 応用例 画像の超解像 テキスト生成 主要なモデル 識別モデル 決定木 ロジスティック回帰 SVM ニューラルネットワーク 生成モデル 隠れマルコフモデル ベイジアンネットワーク VAE GAN DRAW 識別器の開発アプローチ 上から順に学習コストが大→小
 生成モデル的アプローチ ベイズの定理を活用 モデル化の対象 各クラスの生起確率 データのクラス条件付き密度 データを人工的に生成できる 確率的な識別 識別モデル 決定理論に基づき識別結果を得る データがクラスに属する確率をモデル化 確率的な識別 識別関数 入力値ｘを直接クラスに写像（変換）する関数f(x)を推定 データの属するクラス情報のみ（確率は計算されない） 決定的な識別 生成モデルと識別モデルの比較 生成モデルのアプローチではより複雑なデータ分布を学習しようとするので、計算量が多い。
 （講義ビデオより引用）
 識別モデルと識別関数 モデルは推論結果の取り扱いを変更でき、間違いの程度も評価できるが 識別関数ではそれらが出来ない。結果を一足飛びに得る。
@@ -55,7 +55,7 @@
 加法性:$f(a&#43;b) = f(a) &#43; f(b)$ 斉次性$f(ka) = k\times f(a)$ 活性化関数 ステップ関数 def step_func(x): if x &gt; 0: return 1 else: return 0 問題点：線形分離可能なものしか学習出来なかった">
 
 
-<meta property="og:description" content="要点(最低100字) 識別と生成 識別：データを目的別クラスに分類する $P(C_k|x)$：条件Xが与えられた条件の元でのクラスkの確率 高次元から低次元へ 必要な学習データは比較的少ない 応用例 画像認識 生成：特定クラスのデータを生成する $P(x|C_k)$：クラスｋという条件のものとでのデータCkの分布 低次元から高次元へ 必要な学習データが多い 応用例 画像の超解像 テキスト生成 主要なモデル 識別モデル 決定木 ロジスティック回帰 SVM 08_project/G_Certification/ニューラルネットワーク 生成モデル 隠れマルコフモデル ベイジアンネットワーク VAE GAN DRAW 識別器の開発アプローチ 上から順に学習コストが大→小
+<meta property="og:description" content="要点(最低100字) 識別と生成 識別：データを目的別クラスに分類する $P(C_k|x)$：条件Xが与えられた条件の元でのクラスkの確率 高次元から低次元へ 必要な学習データは比較的少ない 応用例 画像認識 生成：特定クラスのデータを生成する $P(x|C_k)$：クラスｋという条件のものとでのデータCkの分布 低次元から高次元へ 必要な学習データが多い 応用例 画像の超解像 テキスト生成 主要なモデル 識別モデル 決定木 ロジスティック回帰 SVM ニューラルネットワーク 生成モデル 隠れマルコフモデル ベイジアンネットワーク VAE GAN DRAW 識別器の開発アプローチ 上から順に学習コストが大→小
 生成モデル的アプローチ ベイズの定理を活用 モデル化の対象 各クラスの生起確率 データのクラス条件付き密度 データを人工的に生成できる 確率的な識別 識別モデル 決定理論に基づき識別結果を得る データがクラスに属する確率をモデル化 確率的な識別 識別関数 入力値ｘを直接クラスに写像（変換）する関数f(x)を推定 データの属するクラス情報のみ（確率は計算されない） 決定的な識別 生成モデルと識別モデルの比較 生成モデルのアプローチではより複雑なデータ分布を学習しようとするので、計算量が多い。
 （講義ビデオより引用）
 識別モデルと識別関数 モデルは推論結果の取り扱いを変更でき、間違いの程度も評価できるが 識別関数ではそれらが出来ない。結果を一足飛びに得る。
@@ -71,7 +71,7 @@
 <meta property="og:url" content="https://half-broken-engineer.github.io/deeplearningday1/">
 <meta property="twitter:url" content="https://half-broken-engineer.github.io/deeplearningday1/">
 <meta property="og:site_name" content="壊れかけのエンジニアのログ">
-<meta property="og:description" content="要点(最低100字) 識別と生成 識別：データを目的別クラスに分類する $P(C_k|x)$：条件Xが与えられた条件の元でのクラスkの確率 高次元から低次元へ 必要な学習データは比較的少ない 応用例 画像認識 生成：特定クラスのデータを生成する $P(x|C_k)$：クラスｋという条件のものとでのデータCkの分布 低次元から高次元へ 必要な学習データが多い 応用例 画像の超解像 テキスト生成 主要なモデル 識別モデル 決定木 ロジスティック回帰 SVM 08_project/G_Certification/ニューラルネットワーク 生成モデル 隠れマルコフモデル ベイジアンネットワーク VAE GAN DRAW 識別器の開発アプローチ 上から順に学習コストが大→小
+<meta property="og:description" content="要点(最低100字) 識別と生成 識別：データを目的別クラスに分類する $P(C_k|x)$：条件Xが与えられた条件の元でのクラスkの確率 高次元から低次元へ 必要な学習データは比較的少ない 応用例 画像認識 生成：特定クラスのデータを生成する $P(x|C_k)$：クラスｋという条件のものとでのデータCkの分布 低次元から高次元へ 必要な学習データが多い 応用例 画像の超解像 テキスト生成 主要なモデル 識別モデル 決定木 ロジスティック回帰 SVM ニューラルネットワーク 生成モデル 隠れマルコフモデル ベイジアンネットワーク VAE GAN DRAW 識別器の開発アプローチ 上から順に学習コストが大→小
 生成モデル的アプローチ ベイズの定理を活用 モデル化の対象 各クラスの生起確率 データのクラス条件付き密度 データを人工的に生成できる 確率的な識別 識別モデル 決定理論に基づき識別結果を得る データがクラスに属する確率をモデル化 確率的な識別 識別関数 入力値ｘを直接クラスに写像（変換）する関数f(x)を推定 データの属するクラス情報のみ（確率は計算されない） 決定的な識別 生成モデルと識別モデルの比較 生成モデルのアプローチではより複雑なデータ分布を学習しようとするので、計算量が多い。
 （講義ビデオより引用）
 識別モデルと識別関数 モデルは推論結果の取り扱いを変更でき、間違いの程度も評価できるが 識別関数ではそれらが出来ない。結果を一足飛びに得る。
@@ -81,7 +81,7 @@
 回帰と分類の違い 回帰：連続する実数値を取る関数の近似 分類：離散的な結果を予想するための分析
 線形と非線形の違い 線形な関数は以下の性質を持つが、非線形関数は持たない。
 加法性:$f(a&#43;b) = f(a) &#43; f(b)$ 斉次性$f(ka) = k\times f(a)$ 活性化関数 ステップ関数 def step_func(x): if x &gt; 0: return 1 else: return 0 問題点：線形分離可能なものしか学習出来なかった">
-<meta name="twitter:description" content="要点(最低100字) 識別と生成 識別：データを目的別クラスに分類する $P(C_k|x)$：条件Xが与えられた条件の元でのクラスkの確率 高次元から低次元へ 必要な学習データは比較的少ない 応用例 画像認識 生成：特定クラスのデータを生成する $P(x|C_k)$：クラスｋという条件のものとでのデータCkの分布 低次元から高次元へ 必要な学習データが多い 応用例 画像の超解像 テキスト生成 主要なモデル 識別モデル 決定木 ロジスティック回帰 SVM 08_project/G_Certification/ニューラルネットワーク 生成モデル 隠れマルコフモデル ベイジアンネットワーク VAE GAN DRAW 識別器の開発アプローチ 上から順に学習コストが大→小
+<meta name="twitter:description" content="要点(最低100字) 識別と生成 識別：データを目的別クラスに分類する $P(C_k|x)$：条件Xが与えられた条件の元でのクラスkの確率 高次元から低次元へ 必要な学習データは比較的少ない 応用例 画像認識 生成：特定クラスのデータを生成する $P(x|C_k)$：クラスｋという条件のものとでのデータCkの分布 低次元から高次元へ 必要な学習データが多い 応用例 画像の超解像 テキスト生成 主要なモデル 識別モデル 決定木 ロジスティック回帰 SVM ニューラルネットワーク 生成モデル 隠れマルコフモデル ベイジアンネットワーク VAE GAN DRAW 識別器の開発アプローチ 上から順に学習コストが大→小
 生成モデル的アプローチ ベイズの定理を活用 モデル化の対象 各クラスの生起確率 データのクラス条件付き密度 データを人工的に生成できる 確率的な識別 識別モデル 決定理論に基づき識別結果を得る データがクラスに属する確率をモデル化 確率的な識別 識別関数 入力値ｘを直接クラスに写像（変換）する関数f(x)を推定 データの属するクラス情報のみ（確率は計算されない） 決定的な識別 生成モデルと識別モデルの比較 生成モデルのアプローチではより複雑なデータ分布を学習しようとするので、計算量が多い。
 （講義ビデオより引用）
 識別モデルと識別関数 モデルは推論結果の取り扱いを変更でき、間違いの程度も評価できるが 識別関数ではそれらが出来ない。結果を一足飛びに得る。
@@ -163,7 +163,7 @@
 
   <body>
     <div id="blog">
-      <header id="header" data-behavior="5">
+      <header id="header" data-behavior="2">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
     <a class="header-title-link" href="https://half-broken-engineer.github.io/" aria-label="ホームページへ">壊れかけのエンジニアのログ</a>
@@ -183,7 +183,7 @@
   
 </header>
 
-      <nav id="sidebar" data-behavior="5">
+      <nav id="sidebar" data-behavior="2">
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
@@ -283,7 +283,7 @@
 
       
 
-      <div id="main" data-behavior="5"
+      <div id="main" data-behavior="2"
         class="
                hasCoverMetaIn
                ">
@@ -364,7 +364,7 @@
 <li><a href="https://half-broken-engineer.github.io/%e6%b1%ba%e5%ae%9a%e6%9c%a8">決定木</a></li>
 <li>ロジスティック回帰</li>
 <li>SVM</li>
-<li><a href="https://half-broken-engineer.github.io/08_project/G_Certification/%e3%83%8b%e3%83%a5%e3%83%bc%e3%83%a9%e3%83%ab%e3%83%8d%e3%83%83%e3%83%88%e3%83%af%e3%83%bc%e3%82%af">08_project/G_Certification/ニューラルネットワーク</a></li>
+<li><a href="https://half-broken-engineer.github.io/%e3%83%8b%e3%83%a5%e3%83%bc%e3%83%a9%e3%83%ab%e3%83%8d%e3%83%83%e3%83%88%e3%83%af%e3%83%bc%e3%82%af">ニューラルネットワーク</a></li>
 </ul>
 </li>
 <li>生成モデル
@@ -821,7 +821,7 @@ Sigmoid関数自体が入力の値域を0~1にまるめてしまうので、
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/mlops/" data-tooltip="MLOps" aria-label="次: MLOps">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/project4_alpha_research_and_factor_modeling/" data-tooltip="project4_alpha_research_and_factor_modeling" aria-label="次: project4_alpha_research_and_factor_modeling">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">次</span>
@@ -913,7 +913,7 @@ MathJax.Hub.Config({
 });
 </script>
       </div>
-      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="2">
         
 <div class="post-actions-wrap">
   <nav >
@@ -921,7 +921,7 @@ MathJax.Hub.Config({
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/mlops/" data-tooltip="MLOps" aria-label="次: MLOps">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/project4_alpha_research_and_factor_modeling/" data-tooltip="project4_alpha_research_and_factor_modeling" aria-label="次: project4_alpha_research_and_factor_modeling">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">次</span>
@@ -973,7 +973,7 @@ MathJax.Hub.Config({
 
       </div>
       
-<div id="share-options-bar" class="share-options-bar" data-behavior="5">
+<div id="share-options-bar" class="share-options-bar" data-behavior="2">
   <i id="btn-close-shareoptions" class="fa fa-times"></i>
   <ul class="share-options">
     

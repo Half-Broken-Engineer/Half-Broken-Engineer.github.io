@@ -244,7 +244,7 @@
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/deeplearningday4/" aria-label="投稿を開く: DeepLearningDay4">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/rabbitchallenge/deeplearningday4/" aria-label="投稿を開く: DeepLearningDay4">
       
           DeepLearningDay4
         </a>
@@ -281,7 +281,7 @@
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/deeplearningday4/" class="postShorten-excerpt_link link" aria-label="投稿を開く: DeepLearningDay4">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/converted/rabbitchallenge/deeplearningday4/" class="postShorten-excerpt_link link" aria-label="投稿を開く: DeepLearningDay4">続きを読む</a>
         
         
       </p>
@@ -309,7 +309,7 @@
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/deeplearningday3/" aria-label="投稿を開く: DeepLearningDay3">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/rabbitchallenge/deeplearningday3/" aria-label="投稿を開く: DeepLearningDay3">
       
           DeepLearningDay3
         </a>
@@ -342,13 +342,19 @@
     </div>
     <div class="postShorten-excerpt">
       
-        要点(最低100字) 再帰型NNの概念 要点 実装キャプチャ・演習 LSTM 要点 GRU 要点 実装キャプチャ ・演習 双方向RNN 要点 実装キャプチャ・演習 Seq2Seq 要点 Word2vec 要点 Attention Mechanism 要点 VQ-VAE 要点 フレームワーク演習：双方向RNN/勾配のクリッピング 要点 実装キャプチャ フレームワーク演習：Seq2Seq 要点 実装キャプチャ フレームワーク演習：Data-Augumentation 要点 実装キャプチャ フレームワーク演習：Activate-Functions 要点 実装キャプチャ 再帰型NNの概念 再帰型NN→RNN
+        再帰型NNの概念 再帰型NN→RNN
 時系列データとは 時間的順序を追って一定間隔ごとに観察され、 相互に統計的依存関係が認められるようなデータの系列
-時系列データの例 音声データ テキストデータ RNNの全体像 $u^t = W_{(in)}x^t + W{z^{t-1}} + b$ $z^t = f(W_{(in)}x^t + Wz^{t-1} + b)$ $v^t = W_{(out)} z^t + c$ $y^t = g(W_{(out)} z^t + c)$
+時系列データの例 音声データ テキストデータ RNNの全体像 （講義スライドより引用）
+$u^t = W_{(in)}x^t + W{z^{t-1}} + b$ $z^t = f(W_{(in)}x^t + Wz^{t-1} + b)$ $v^t = W_{(out)} z^t + c$ $y^t = g(W_{(out)} z^t + c)$
+$W_{(in)}$：入力層から中間層への重み $W_{(out)}$：中間層から出力層への重み
+u[:,t+1] = np.dot(X,W_in) + np.dot(z[:,t].reshape(1,-1),W) + b z[:,t+1] = functions.sigmoid(u[:,t+1]) v = np.dot(z[:,t+1].reshape(1,-1),W_out) y[:,t] = functions.sigmoid(v + c) ※実装上は1次元目がデータ列になるため、重みに対して左から入力を掛ける形になる。
+RNNの特徴 初期の状態と過去の時間t-1の状態を保持し、そこから次の時間でのtを再帰的に求める再帰構造をもつ
+BPTT (Back Propagation Through Time) BPの復習 誤差を微分のチェインルールに従って、誤差から逆算していくことで不要な再起的計算を避けて微分を算出できる。
+BPTTの数学的記述 ※（パラメータ更新と合わせて、実装例と一致するように、数式展開で確認しながら表現変えてます） 誤差関数を3つの重みと２つのバイアスでそれぞれ微分する。
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/deeplearningday3/" class="postShorten-excerpt_link link" aria-label="投稿を開く: DeepLearningDay3">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/converted/rabbitchallenge/deeplearningday3/" class="postShorten-excerpt_link link" aria-label="投稿を開く: DeepLearningDay3">続きを読む</a>
         
         
       </p>
@@ -376,7 +382,7 @@
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/deeplearningday2/" aria-label="投稿を開く: DeepLearningDay2">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/rabbitchallenge/deeplearningday2/" aria-label="投稿を開く: DeepLearningDay2">
       
           DeepLearningDay2
         </a>
@@ -425,7 +431,7 @@ network[&#39;W1&#39;] = np.random.randn(input_layer_size, hidden_layer_size) / n
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/deeplearningday2/" class="postShorten-excerpt_link link" aria-label="投稿を開く: DeepLearningDay2">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/converted/rabbitchallenge/deeplearningday2/" class="postShorten-excerpt_link link" aria-label="投稿を開く: DeepLearningDay2">続きを読む</a>
         
         
       </p>
@@ -453,7 +459,7 @@ network[&#39;W1&#39;] = np.random.randn(input_layer_size, hidden_layer_size) / n
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/deeplearningday1/" aria-label="投稿を開く: DeepLearningDay1">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/rabbitchallenge/deeplearningday1/" aria-label="投稿を開く: DeepLearningDay1">
       
           DeepLearningDay1
         </a>
@@ -486,7 +492,7 @@ network[&#39;W1&#39;] = np.random.randn(input_layer_size, hidden_layer_size) / n
     </div>
     <div class="postShorten-excerpt">
       
-        要点(最低100字) 識別と生成 識別：データを目的別クラスに分類する $P(C_k|x)$：条件Xが与えられた条件の元でのクラスkの確率 高次元から低次元へ 必要な学習データは比較的少ない 応用例 画像認識 生成：特定クラスのデータを生成する $P(x|C_k)$：クラスｋという条件のものとでのデータCkの分布 低次元から高次元へ 必要な学習データが多い 応用例 画像の超解像 テキスト生成 主要なモデル 識別モデル 決定木 ロジスティック回帰 SVM 08_project/G_Certification/ニューラルネットワーク 生成モデル 隠れマルコフモデル ベイジアンネットワーク VAE GAN DRAW 識別器の開発アプローチ 上から順に学習コストが大→小
+        要点(最低100字) 識別と生成 識別：データを目的別クラスに分類する $P(C_k|x)$：条件Xが与えられた条件の元でのクラスkの確率 高次元から低次元へ 必要な学習データは比較的少ない 応用例 画像認識 生成：特定クラスのデータを生成する $P(x|C_k)$：クラスｋという条件のものとでのデータCkの分布 低次元から高次元へ 必要な学習データが多い 応用例 画像の超解像 テキスト生成 主要なモデル 識別モデル 決定木 ロジスティック回帰 SVM ニューラルネットワーク 生成モデル 隠れマルコフモデル ベイジアンネットワーク VAE GAN DRAW 識別器の開発アプローチ 上から順に学習コストが大→小
 生成モデル的アプローチ ベイズの定理を活用 モデル化の対象 各クラスの生起確率 データのクラス条件付き密度 データを人工的に生成できる 確率的な識別 識別モデル 決定理論に基づき識別結果を得る データがクラスに属する確率をモデル化 確率的な識別 識別関数 入力値ｘを直接クラスに写像（変換）する関数f(x)を推定 データの属するクラス情報のみ（確率は計算されない） 決定的な識別 生成モデルと識別モデルの比較 生成モデルのアプローチではより複雑なデータ分布を学習しようとするので、計算量が多い。
 （講義ビデオより引用）
 識別モデルと識別関数 モデルは推論結果の取り扱いを変更でき、間違いの程度も評価できるが 識別関数ではそれらが出来ない。結果を一足飛びに得る。
@@ -499,7 +505,7 @@ network[&#39;W1&#39;] = np.random.randn(input_layer_size, hidden_layer_size) / n
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/deeplearningday1/" class="postShorten-excerpt_link link" aria-label="投稿を開く: DeepLearningDay1">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/converted/rabbitchallenge/deeplearningday1/" class="postShorten-excerpt_link link" aria-label="投稿を開く: DeepLearningDay1">続きを読む</a>
         
         
       </p>
@@ -527,7 +533,7 @@ network[&#39;W1&#39;] = np.random.randn(input_layer_size, hidden_layer_size) / n
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/machinelearning/" aria-label="投稿を開く: MachineLearning">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/rabbitchallenge/machinelearning/" aria-label="投稿を開く: MachineLearning">
       
           MachineLearning
         </a>
@@ -569,7 +575,7 @@ network[&#39;W1&#39;] = np.random.randn(input_layer_size, hidden_layer_size) / n
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/machinelearning/" class="postShorten-excerpt_link link" aria-label="投稿を開く: MachineLearning">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/converted/rabbitchallenge/machinelearning/" class="postShorten-excerpt_link link" aria-label="投稿を開く: MachineLearning">続きを読む</a>
         
         
       </p>
@@ -597,7 +603,7 @@ network[&#39;W1&#39;] = np.random.randn(input_layer_size, hidden_layer_size) / n
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/appliedmathematics/" aria-label="投稿を開く: AppliedMathematics">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/rabbitchallenge/appliedmathematics/" aria-label="投稿を開く: AppliedMathematics">
       
           AppliedMathematics
         </a>
@@ -645,7 +651,7 @@ $$A^\top\vec{u}=\sigma\vec{v} \tag{5}$$ $\sum =$ $$ \begin{pmatrix} \sigma_{1} &
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/appliedmathematics/" class="postShorten-excerpt_link link" aria-label="投稿を開く: AppliedMathematics">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/converted/rabbitchallenge/appliedmathematics/" class="postShorten-excerpt_link link" aria-label="投稿を開く: AppliedMathematics">続きを読む</a>
         
         
       </p>
@@ -673,7 +679,7 @@ $$A^\top\vec{u}=\sigma\vec{v} \tag{5}$$ $\sum =$ $$ \begin{pmatrix} \sigma_{1} &
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/rabbitchallenge/" aria-label="投稿を開く: RabbitChallenge">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/rabbitchallenge/rabbitchallenge/" aria-label="投稿を開く: RabbitChallenge">
       
           RabbitChallenge
         </a>
@@ -716,7 +722,7 @@ $$A^\top\vec{u}=\sigma\vec{v} \tag{5}$$ $\sum =$ $$ \begin{pmatrix} \sigma_{1} &
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/rabbitchallenge/" class="postShorten-excerpt_link link" aria-label="投稿を開く: RabbitChallenge">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/converted/rabbitchallenge/rabbitchallenge/" class="postShorten-excerpt_link link" aria-label="投稿を開く: RabbitChallenge">続きを読む</a>
         
         
       </p>

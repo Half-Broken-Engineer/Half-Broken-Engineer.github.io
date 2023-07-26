@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/half-broken-engineer.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "Half-Broken Engineer",
+    
+    "image": "https://half-broken-engineer.github.io/img/profile.png"
+    
+  },
+  "name":"壊れかけのエンジニアのログ",
+  "description":"要点(最低100字) 機械学習モデリングプロセス 問題設定 データ選定 前処理 機械学習モデル剪定 モデルの学習 モデルの評価 ルールベースと機械学習の比較 タスクTと性能指標Pがあるときに、性能が経験Eによって改善されるとき、 タスクTおよび性能指標Pに関して経験E から学習すると言われる\n人がプログラムするのは学習の仕方　（認識の仕方では無い） ルールベースは認識の仕方自体をプログラムする。\n主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。\n線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式\n直線、平面→線形回帰 曲線、局面→非線形\n線形回帰に関連する値 教師データに含まれるもの 入力$\\vec{x} = (x_1,x_2,\\dots,x_m)^\\top \\in R^m$ 出力$y\\in R$ 学習によって最適化していくもの パラメータ$\\vec{w} = (w_1,w_2,\\dots,w_m)^\\top \\in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\\hat{y} = w_0 \u002b \\sum_{i=1}^n \\vec{w}^\\top \\vec{x}$　（※データセットで考えるときは$\\vec{\\hat{y}} = X・\\vec{w}$） 誤差$\\epsilon = y - \\hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \\frac{1}{n_{train}}\\sum(y-\\hat{y})^2$ を用いて最適化する。 $\\hat{\\vec{w}} = arg \\min_{w \\in R^m} MSE$ MSEが最小値を取るとき",
+  "url":"https:\/\/half-broken-engineer.github.io\/converted\/rabbitchallenge\/machinelearning\/",
+  "keywords":"[]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.112.5 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Half-Broken Engineer">
+<meta name="keywords" content="">
+<meta name="description" content="要点(最低100字) 機械学習モデリングプロセス 問題設定 データ選定 前処理 機械学習モデル剪定 モデルの学習 モデルの評価 ルールベースと機械学習の比較 タスクTと性能指標Pがあるときに、性能が経験Eによって改善されるとき、 タスクTおよび性能指標Pに関して経験E から学習すると言われる
+人がプログラムするのは学習の仕方　（認識の仕方では無い） ルールベースは認識の仕方自体をプログラムする。
+主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。
+線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式
+直線、平面→線形回帰 曲線、局面→非線形
+線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\hat{y} = w_0 &#43; \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき">
+
+
+<meta property="og:description" content="要点(最低100字) 機械学習モデリングプロセス 問題設定 データ選定 前処理 機械学習モデル剪定 モデルの学習 モデルの評価 ルールベースと機械学習の比較 タスクTと性能指標Pがあるときに、性能が経験Eによって改善されるとき、 タスクTおよび性能指標Pに関して経験E から学習すると言われる
+人がプログラムするのは学習の仕方　（認識の仕方では無い） ルールベースは認識の仕方自体をプログラムする。
+主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。
+線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式
+直線、平面→線形回帰 曲線、局面→非線形
+線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\hat{y} = w_0 &#43; \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MachineLearning">
+<meta name="twitter:title" content="MachineLearning">
+<meta property="og:url" content="https://half-broken-engineer.github.io/converted/rabbitchallenge/machinelearning/">
+<meta property="twitter:url" content="https://half-broken-engineer.github.io/converted/rabbitchallenge/machinelearning/">
+<meta property="og:site_name" content="壊れかけのエンジニアのログ">
+<meta property="og:description" content="要点(最低100字) 機械学習モデリングプロセス 問題設定 データ選定 前処理 機械学習モデル剪定 モデルの学習 モデルの評価 ルールベースと機械学習の比較 タスクTと性能指標Pがあるときに、性能が経験Eによって改善されるとき、 タスクTおよび性能指標Pに関して経験E から学習すると言われる
+人がプログラムするのは学習の仕方　（認識の仕方では無い） ルールベースは認識の仕方自体をプログラムする。
+主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。
+線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式
+直線、平面→線形回帰 曲線、局面→非線形
+線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\hat{y} = w_0 &#43; \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき">
+<meta name="twitter:description" content="要点(最低100字) 機械学習モデリングプロセス 問題設定 データ選定 前処理 機械学習モデル剪定 モデルの学習 モデルの評価 ルールベースと機械学習の比較 タスクTと性能指標Pがあるときに、性能が経験Eによって改善されるとき、 タスクTおよび性能指標Pに関して経験E から学習すると言われる
+人がプログラムするのは学習の仕方　（認識の仕方では無い） ルールベースは認識の仕方自体をプログラムする。
+主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。
+線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式
+直線、平面→線形回帰 曲線、局面→非線形
+線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\hat{y} = w_0 &#43; \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき">
+<meta property="og:locale" content="ja">
+
+  
+    <meta property="article:published_time" content="2023-01-26T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2023-01-26T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="RabbitChallenge">
+    
+  
+  
+    
+      <meta property="article:tag" content="obsidian_note">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@overcome_kidney">
+
+
+  <meta name="twitter:creator" content="@overcome_kidney">
+
+
+
+
+
+
+  <meta property="og:image" content="https://half-broken-engineer.github.io/img/profile.png">
+  <meta property="twitter:image" content="https://half-broken-engineer.github.io/img/profile.png">
+
+
+
+
+
+
+    <title>MachineLearning</title>
+
+    <link rel="icon" href="https://half-broken-engineer.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://half-broken-engineer.github.io/converted/rabbitchallenge/machinelearning/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://half-broken-engineer.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://half-broken-engineer.github.io/css/mystyle.css">
+      
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://half-broken-engineer.github.io/" aria-label="ホームページへ">壊れかけのエンジニアのログ</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://half-broken-engineer.github.io/#about" aria-label="リンクを開く: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://half-broken-engineer.github.io/img/profile.png" alt="プロフィール画像" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://half-broken-engineer.github.io/#about" aria-label="著者についてもっと読む">
+          <img class="sidebar-profile-picture" src="https://half-broken-engineer.github.io/img/profile.png" alt="プロフィール画像" />
+        </a>
+        <h4 class="sidebar-profile-name">Half-Broken Engineer</h4>
+        
+          <h5 class="sidebar-profile-bio">🤖　　　　壊れかけのエンジニア　　　　💻不安を解消したいから💰のお勉強もする</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">ホーム</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">カテゴリー</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">タグ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">アーカイブ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">プロフィール</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Half-Broken-Engineer" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://half-broken-engineer.github.io/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      MachineLearning
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2023-01-26T00:00:00&#43;09:00">
+        
+  
+  
+  
+  
+    2023-01-26
+  
+
+      </time>
+    
+    
+  
+  
+    <span>カテゴリー</span>
+    
+      <a class="category-link" href="https://half-broken-engineer.github.io/categories/rabbitchallenge">RabbitChallenge</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <ul>
+<li></li>
+</ul>
+<h1 id="要点最低100字">要点(最低100字)</h1>
+<h2 id="機械学習モデリングプロセス">機械学習モデリングプロセス</h2>
+<ol>
+<li>問題設定</li>
+<li>データ選定</li>
+<li>前処理</li>
+<li>機械学習モデル剪定</li>
+<li>モデルの学習</li>
+<li>モデルの評価</li>
+</ol>
+<h2 id="ルールベースと機械学習の比較">ルールベースと機械学習の比較</h2>
+<p>タスクTと性能指標Pがあるときに、性能が経験Eによって改善されるとき、
+タスクTおよび性能指標Pに関して経験E から学習すると言われる</p>
+<p>人がプログラムするのは学習の仕方　（認識の仕方では無い）
+ルールベースは認識の仕方自体をプログラムする。</p>
+<h2 id="主なモデル">主なモデル</h2>
+<ul>
+<li>教師あり学習
+<ul>
+<li>回帰
+<ul>
+<li>線形回帰・非線形回帰：最小二乗法、尤度最適化</li>
+</ul>
+</li>
+<li>分類
+<ul>
+<li>ロジスティック回帰；尤度最大化</li>
+<li>最近傍・K-近傍アルゴリズム</li>
+<li>SVM：マージン最大化</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>教師なし学習
+<ul>
+<li>クラスタリング
+<ul>
+<li>K-Means</li>
+</ul>
+</li>
+<li>次元削減
+<ul>
+<li>主成分分析：分散最大化</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="回帰問題">回帰問題</h2>
+<p>入力（説明変数、特徴量）から出力（目的変数）を予測する問題
+一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。
+どの学習方法でも共通。</p>
+<h3 id="線形回帰">線形回帰</h3>
+<p>線形とは→ざっくりというと比例。　n次元の超平面の方程式</p>
+<p>直線、平面→線形回帰
+曲線、局面→非線形</p>
+<h4 id="線形回帰に関連する値">線形回帰に関連する値</h4>
+<ul>
+<li>教師データに含まれるもの
+<ul>
+<li>入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$</li>
+<li>出力$y\in R$</li>
+</ul>
+</li>
+<li>学習によって最適化していくもの
+<ul>
+<li>パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m$$</li>
+<li>切片$w_0$</li>
+</ul>
+</li>
+<li>学習の際に使う値
+<ul>
+<li>予測値$\hat{y} = w_0 + \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$）</li>
+<li>誤差$\epsilon = y - \hat{y}$</li>
+</ul>
+</li>
+</ul>
+<h4 id="線形回帰の最適化手法最尤法">線形回帰の最適化手法(最尤法)</h4>
+<p>最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。
+$\hat{\vec{w}} = arg \min_{w \in R^m} MSE$
+MSEが最小値を取るとき</p>
+<p>$$\frac{\partial MSE}{\partial \vec{w}} = 0$$</p>
+<p>$$\frac{\partial MSE}{\partial \vec{w}} = \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(X・\vec{w}-Y)^2$$</p>
+<p>$$  = \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(X・\vec{w}-Y)^{\top}(X・\vec{w}-Y)$$</p>
+<p>$$  = \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(\vec{w^{\top}}・X^\top-Y^\top)(X・\vec{w}-Y)$$</p>
+<p>$$  = \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(\vec{w^{\top}}X^\top X\vec{w}　- \vec{w^{\top}}・X^\top Y - Y^\top X・\vec{w} + Y^\top Y)$$
+第２項と３項は$(AB)^T = B^T A^T$より同じ、
+$\frac{\partial w^T X}{\partial w} = X$,$\frac{\partial w^T A x}{\partial w} = (A+A^T)w$, $(X^T X)^T = X^T X$から第１項は$2X^\top X\vec{w}$
+$$=\frac{1}{n_{train}}(2X^\top X\vec{w} - 2X^\top Y) = 0$$</p>
+<p>以上より、
+$\hat{\vec{w}} = (X^T X)^{-1}X^T Y( = X^{-1}Y)$</p>
+<p>学習後の予測値は</p>
+<p>$$\hat{y} = w_0 + \sum_{i=1}^n \vec{\hat{w}}^\top \vec{x}$$</p>
+<p>$$ = X_{test} (X_{train}^T X_{train})^{-1}X_{train}^T Y_{train}$$
+※逆行列は常に存在するわけでは無い、一般化逆行列をもちいる。</p>
+<blockquote>
+<p>[!note]
+外れ値に弱いという特徴があるので、<a href="https://half-broken-engineer.github.io/Huber%e6%90%8d%e5%a4%b1">Huber損失</a>、<a href="https://half-broken-engineer.github.io/Tukey%e6%90%8d%e5%a4%b1">Tukey損失</a>を使うこともある</p>
+</blockquote>
+<h4 id="実装">実装</h4>
+<h5 id="最小構成">最小構成</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.linear_model <span style="color:#f92672">import</span> LinearRegression
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> LinearRegression() <span style="color:#75715e">#モデルインスタンスの生成</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit(input_train,target_train) <span style="color:#75715e"># 学習</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>prediction <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>predict(input_test) <span style="color:#75715e"># 予測結果</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>coef_ <span style="color:#75715e"># 学習後に各特徴量の係数が得られる</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>intercept_ <span style="color:#75715e"># 学習後の切片</span>
+</span></span></code></pre></div><h3 id="非線形回帰">非線形回帰</h3>
+<p>特徴量の２次以上の項を使ったり、非線形関数を使った回帰。</p>
+<ul>
+<li>説明変数について非線形</li>
+<li>パラメータについては線形</li>
+</ul>
+<p>$\Phi$は基底関数。
+よく使われる基底関数として</p>
+<ul>
+<li>多項式関数：$\phi_j = x^j$</li>
+<li>ガウス型基底関数：$\phi_j = exp(\frac{(x-\mu_j)^2}{2h_j})$ $where  h_j = \frac{\sigma^2}{2}$</li>
+<li>スプライン関数/Bスプライン関数がある</li>
+</ul>
+<h4 id="非線形回帰に関連する値">非線形回帰に関連する値</h4>
+<ul>
+<li>教師データに含まれるもの
+<ul>
+<li>入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ ※mは特徴量の数</li>
+<li>出力$y\in R$</li>
+</ul>
+</li>
+<li>学習によって最適化していくもの
+<ul>
+<li>パラメータ$\vec{w} = (w_1,w_2,\dots,w_k)^\top \in R^k$</li>
+<li>切片$w_0$</li>
+</ul>
+</li>
+<li>学習の際に使う値
+<ul>
+<li>非線形関数ベクトル$\phi(\vec{x}) = (\phi_1(\vec{x}),\phi_2(\vec{x}),\dots,\phi_k(\vec{x}))^\top \in R^k$　※kは基底関数の数、基底関数はハイパーパラメータ</li>
+<li>予測値$\hat{y} = w_0 + \sum_{i=1}^n \vec{w}^\top \Phi(\vec{x})$　</li>
+<li>誤差$\epsilon = y - \hat{y}$</li>
+</ul>
+</li>
+</ul>
+<h4 id="非線形回帰に関する最適化">非線形回帰に関する最適化</h4>
+<p>非線形回帰となっているが、パラメータについては線形なので、結局計算式はほぼ変わらない。
+差分は基底関数によって説明変数を一度別の空間に飛ばしているだけ。</p>
+<p>学習後の予測値は線形回帰のときの説明変数の行列Xを$\Phi(X)$に入れ替えれば良いので、
+$$\hat{y} = \Phi(X_{test}) (\Phi(X_{train})^T \Phi(X_{train}))^{-1}\Phi(X_{train})^T Y_{train}$$</p>
+<h2 id="分類問題">分類問題</h2>
+<ul>
+<li>識別的アプローチ：入力Xが与えられたときのクラスｋに当てはまる確率自体をモデル化する</li>
+<li>生成的アプローチ：事前確率と観測モデルをモデル化して、ベイズの定理を用いて事後確率を求める</li>
+</ul>
+<p>回帰問題と違い目的変数の値域が狭いので、関数で射影して値域を狭める。
+よく使うのは</p>
+<p>ロジスティック回帰など分類問題で使われる。</p>
+<p>値域は$[0,1]$ でx=0のとき0.5,</p>
+<p>$\frac{1}{1+exp(-x)}$</p>
+<p>微分値は　
+$\frac{\delta\sigma(x)}{\delta x} = \sigma(x)\times (1-\sigma(x))$</p>
+<h3 id="ロジスティック回帰">ロジスティック回帰</h3>
+<p>確率的な出力をする分類器。
+識別的アプローチになる。</p>
+<p>目的変数
+$P(Y=y_i|\vec{x_i}) = \sigma(\vec{w}^T\cdot\vec{x_i})^{y_i}\times(1-\sigma(\vec{w}^T\cdot\vec{x_i}))^{1-y_i}$</p>
+<p>データからその分布のパラメータを推定したい。</p>
+<p><a href="https://half-broken-engineer.github.io/%e5%b0%a4%e5%ba%a6%e9%96%a2%e6%95%b0">尤度関数</a>の最大化を行う。（このとき、同じ確率分布から得られた独立のデータ点という独立同分布の仮定を置く）
+L(w) = $\Pi_{i=0}^n (\sigma(\vec{w}^T\cdot\vec{x_i})^{y_i}\times(1-\sigma(\vec{w}^T\cdot\vec{x_i}))^{1-y_i})$</p>
+<p>※シグモイド関数の影響で解析的に解くことが困難なため、勾配降下法によって求める</p>
+<h4 id="パラメータ最適化">パラメータ最適化</h4>
+<p>勾配降下法を行う場合も損失関数をパラメータで微分した値を求めるのは同じ。
+最適パラメータを求める方法がパラメータ更新という手法になる。</p>
+<h5 id="損失関数の微分値">損失関数の微分値</h5>
+<p>尤度関数を最大化するにあたって、以下のように損失関数を定義する。</p>
+<p>$E(w) = -log(L(w))$と置くと。　※logは単調増加関数なので、尤度関数最大のとき損失関数最小</p>
+<p>$E(w) = -\sum_{i=1}^n(y_i\cdot log(p_i) + (1-y_i)log(1-p_i))$
+$E(w) = \sum_{i=1}^n E_i(w)$,$z_i = w^Tx_i$とすると</p>
+<p>$$\frac{\partial E(w)}{\partial w} = \sum_{i=1}^n\frac{\partial E_i(w)}{\partial p_i} \times \frac{\partial p_i}{\partial z_i} \times \frac{\partial z_i}{\partial w}$$ 　
+$$\frac{\partial E(w)}{\partial w} = \sum_{i=1}^n(-1)(\frac{y_i}{p_i}-\frac{1-y_i}{1-p_i})\times(p_i \cdot (1-p_i))\times(x_i)$$</p>
+<p>$$\frac{\partial E(w)}{\partial w} = \sum_{i=1}^n(-1)(y_i-p_i)\times(x_i)$$</p>
+<h5 id="勾配降下法">勾配降下法</h5>
+<p>学習率$\eta$と損失関数の微分値を用いて以下のようにパラメータを更新する。</p>
+<p>$$w^{(k+1)} = w^{(k)} - \eta \frac{\partial E(w)}{\partial w} = w^{(k)} + \eta \sum_{i=1}^n(y_i-p_i)x_i$$</p>
+<p>※　すべてのデータを用いるので、メモリや計算時間が大きい問題がある。
+→　<a href="https://half-broken-engineer.github.io/%e7%a2%ba%e7%8e%87%e7%9a%84%e5%8b%be%e9%85%8d%e9%99%8d%e4%b8%8b%e6%b3%95">確率的勾配降下法</a></p>
+<h5 id="確率的勾配降下法">確率的勾配降下法</h5>
+<p>ランダムにデータを一個選んで、それによってパラメータを更新する。
+勾配降下法で１回更新する間に、データ数回分パラメータを更新できるので効率が良い。</p>
+<p>$$w^{(k+1)} = w^{(k)} - \eta \frac{\partial E_i(w)}{\partial w} = w^{(k)} + \eta (y_i-p_i)x_i$$</p>
+<h3 id="svmサポートベクターマシン">SVMサポートベクターマシン</h3>
+<p>決定的な出力を出す分類器。</p>
+<p>線形SVM：$y(x) = w^Tx + b$
+非線形SVM：$y(x) = w^T\Phi(x) + b$</p>
+<p>マージンを最大化する境界面を与えるパラメータw,bを学習する。
+予測は$sign{y(x)}$で正例負例を分類。
+ソフトマージン：誤分類を許容する割合を調整する係数Cと誤分類のとき１，それ以外を０とするスラック変数の積の和を評価関数に追加し、汎化性能を高める。C→∞で誤分類を許容しない。C→０で誤分類に寛容になる。
+カーネル法：決定境界を新しい空間に転写し、線形にすることで線形問題として解くことが可能になる
+カーネルトリック：関数が級数展開できることから内積計算を一つの関数による射影で計算簡略化する</p>
+<p>カーネル変数$k(x,x\prime) = \Phi(x)^T\cdot \Phi(x)$
+$\Phi(x)$は特徴ベクトル</p>
+<p>マージン：決定境界面と最も近いデータとの距離
+サポートベクトル：境界面と最も近いデータ点。マージン上の点</p>
+<h3 id="k近傍法">k近傍法</h3>
+<p>最近傍のデータをk個取って来てそれらが最も多く所属するクラスに識別する。
+kは比較するデータ点数の数
+<a href="https://half-broken-engineer.github.io/%e6%80%a0%e6%83%b0%e5%ad%a6%e7%bf%92">怠惰学習</a>に属し、データ暗記するだけなので、
+訓練フェーズは明には存在せず、データや特徴量が多くても訓練は高速に終わる。
+一方で予測に関してはデータ点との距離の比較が必要になるので、データ点や特徴量が多いと時間がかかる
+決定境界は線形とは限らない</p>
+<p>kを大きくすると境界線（決定境界）がなめらかになる→ノイズがあるデータではｋを大きくすると良い
+ｋが大きいと精度が上がるわけでは無いので、ハイパーパラメータとして調整が必要。
+kは訓練時間、予測時間にあまり影響を与えない。</p>
+<h2 id="未学習と過学習">未学習と過学習</h2>
+<ul>
+<li>未学習　Underfitting　学習データに対して十分小さな誤差が得られないモデル
+<ul>
+<li>原因　モデルの表現力不足</li>
+<li>対策　表現力の高いモデルの利用　次数を上げるなど。</li>
+</ul>
+</li>
+<li>過学習　Overfitting
+<ul>
+<li>原因　表現力が高すぎる　（データサンプル不足もあるが、その場合はデータを増やす）</li>
+<li>対策　表現力の抑制
+<ul>
+<li>不要な基底関数の削除</li>
+<li>損失関数に正則化項(罰則項)を追加することで表現力を抑制する</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="正則化のビジュアル的なイメージ">正則化のビジュアル的なイメージ</h3>
+<p>正則化項　$R(\vec{w})\leq \gamma$の条件を満たす損失関数$E(\vec{w})$の最小値を与えるパラメータ$\vec{w}$は
+$E(\vec{w})$の等高線と$R(\vec{w})= \gamma$でで描かれる図形の接点となる。
+座標空間はパラメータ$\vec{w}$と同次元。</p>
+<p>L１ノルムを使った正則化をすると、頂点で接点を持つ確率が高いので、余分なパラメータを０にする効果がある。
+L2ノルムを使った正則化をすると、パラメータ全体の値がちいさくなる効果がある</p>
+<blockquote>
+<p>&lt;講義動画より引用&gt;
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230126213817.png" alt="/img/Pasted_image_20230126213817.png"></p>
+</blockquote>
+<h1 id="教師なし学習">教師なし学習</h1>
+<h2 id="次元削減">次元削減</h2>
+<h3 id="主成分分析pcaprincipal-conponent-analysis">主成分分析　（PCA：Principal conponent analysis）</h3>
+<p>データの分散が最大になるような空間に射影する。もとの変量、説明変数を合成してデータをうまく説明する主成分を生成する。
+射影の結果変数統合された潜在変数の意味の解釈は主観的になり、一意に定まらないことに注意。
+主成分はノルムが１になるように正規化し、主成分同士は直行するように設定する</p>
+<ol>
+<li>もとの座標系で各軸ごとの平均値を引く</li>
+<li>$\vec{PC} = argmax_{\vec{PC}} \sum_i^N {\vec{x_i} \cdot \vec{PC}}^2$ （$|\vec{PC}| = 1$）</li>
+</ol>
+<p>再構成誤差：主成分に射影したあと元の空間に戻したときにどれだけ誤差が出るか。データが一直線上にある時には最高性誤差は0%</p>
+<h4 id="メモ">メモ</h4>
+<ul>
+<li>主成分の数の最大は特徴量の数</li>
+<li>非線形変換は出来ない</li>
+<li>どれだけの主成分を残すべきかは、Total Varianceに対して、Variance by PCがどのくらいあるかで判断する。可視化の観点では3次元以下</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Make the bar plot</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>bar(np<span style="color:#f92672">.</span>arange(num_factor_exposures), pca<span style="color:#f92672">.</span>explained_variance_ratio_);
+</span></span></code></pre></div><p>画像圧縮に使われることもある
+<a href="https://ichi.pro/shuseibun-bunseki-niyoru-gazo-asshuku-271480171554223#:~:text=%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E3%81%AB%E3%82%88%E3%82%8B%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE.%20%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E3%81%AB%E3%82%88%E3%82%8B%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE%E3%81%AF%E3%80%81%E6%AC%A1%E5%85%83%E5%89%8A%E6%B8%9B%E6%89%8B%E6%B3%95%E3%81%AE%E9%A0%BB%E7%B9%81%E3%81%AB%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A7%E3%81%99%E3%80%82.%20%E7%94%BB%E5%83%8F%E3%82%92%E5%9C%A7%E7%B8%AE%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AB%E7%89%B9%E7%95%B0%E5%80%A4%E5%88%86%E8%A7%A3%E3%82%92%E6%8E%A1%E7%94%A8%E3%81%97%E3%81%9F%E4%BB%A5%E5%89%8D%E3%81%AE%E6%8A%95%E7%A8%BF%E3%82%92%E6%80%9D%E3%81%84%E5%87%BA%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82.%20%E7%94%BB%E5%83%8F%E3%81%AFRGB%E3%82%AB%E3%83%A9%E3%83%BC%E5%80%A4%E3%81%A7%E8%A1%A8%E3%81%95%E3%82%8C%E3%82%8B%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E8%A1%8C%E5%88%97%E3%81%A7%E3%81%99%E3%80%82.,%E3%81%97%E3%81%9F%E3%81%8C%E3%81%A3%E3%81%A6%E3%80%81%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E3%80%81%E8%A1%8C%E5%88%97%EF%BC%88%E7%94%BB%E5%83%8F%EF%BC%89%E3%81%AE%E6%AC%A1%E5%85%83%E3%82%92%E7%B8%AE%E5%B0%8F%E3%81%97%E3%80%81%E3%81%9D%E3%82%8C%E3%82%89%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84%E6%AC%A1%E5%85%83%E3%82%92%E6%8A%95%E5%BD%B1%E3%81%97%E3%81%A6%E3%80%81%E5%93%81%E8%B3%AA%E3%82%92%E7%B6%AD%E6%8C%81%E3%81%97%E3%81%AA%E3%81%8C%E3%82%89k%E9%87%8D%E3%81%BF%E3%81%8C%E5%B0%8F%E3%81%95%E3%81%84%E7%94%BB%E5%83%8F%E3%82%92%E5%86%8D%E6%A7%8B%E6%88%90%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82.%20%E3%81%AB%E3%82%88%E3%82%8B%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE%20https%3A%2F%2Faaronschlegel.me%2Fprincipal-component-analysis-r-example.html%20%E3%81%AF%E3%80%81%E6%AC%A1%E5%85%83%E5%89%8A%E6%B8%9B%E6%89%8B%E6%B3%95%E3%81%AE%E9%A0%BB%E7%B9%81%E3%81%AB%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A7%E3%81%99%E3%80%82.">主成分分析による画像圧縮</a></p>
+<h2 id="クラスタリング">クラスタリング</h2>
+<ul>
+<li>階層型と非階層型のアルゴリズムがある
+<ul>
+<li>階層型のクラスタリング構造はデンドログラムと言われる</li>
+</ul>
+</li>
+<li>いくつのグループに分けるかは選択可能</li>
+<li>用いる類似度は様々な定義の仕方がある</li>
+</ul>
+<h3 id="k-means">K-Means</h3>
+<p>ｋはクラスタの数</p>
+<ol>
+<li>各クラスタの中心の初期値を設定</li>
+<li>各データ点に対して、各クラスタ中心との距離を計算して最も近いクラスタに割り当て</li>
+<li>クラスタの中心を更新</li>
+<li>収束するまで２，３を繰り返す</li>
+</ol>
+<h4 id="工夫">工夫</h4>
+<ul>
+<li>クラスタの初期値やｋの値などを変えて複数回評価して、良い結果が得られたモデルを採用する
+<ul>
+<li>ｋは少なすぎても多すぎても良くない</li>
+<li>クラスタがうまく離れるように初期値を与える</li>
+</ul>
+</li>
+</ul>
+<h2 id="モデルの評価">モデルの評価</h2>
+<h3 id="誤差の収束と過学習未学習">誤差の収束と過学習、未学習</h3>
+<p>訓練誤差と検証誤差を比較することで判断する。
+￥</p>
+<ul>
+<li>未学習：訓練誤差と検証誤差ともに大きい</li>
+<li>ちょうど良い：訓練誤差と検証誤差ともに小さい</li>
+<li>過学習：訓練誤差は小さいが、検証誤差が大きい</li>
+</ul>
+<h3 id="データの分割">データの分割</h3>
+<h4 id="ホールドアウト法">ホールドアウト法</h4>
+<p>単純な方法。</p>
+<p>学習用とテスト用の２つに分割して、
+予測精度や誤り率などの指標を算出するのに利用。</p>
+<ul>
+<li>データ分割の割合で学習性能と評価性能のトレードオフが発生する</li>
+<li><strong>データが大量にある場合を除いて性能が出にくい</strong></li>
+</ul>
+<h4 id="クロスバリデーション法cv法">クロスバリデーション法　CV法</h4>
+<p>データを分割したあと、イテレーションごとに学習用とテスト用の役割を変えながら繰り返す。
+このイテレーションごとに得られる性能値の平均をCV値という</p>
+<h1 id="実装演習結果">実装演習結果</h1>
+<h2 id="線形回帰モデルボストンの不動産価格予測">線形回帰モデル（ボストンの不動産価格予測）</h2>
+<ul>
+<li>説明変数
+<ul>
+<li>CRIM： 町ごとの一人当たり犯罪率</li>
+<li>ZN ：25,000sq.ft.以上の住宅用地に指定された土地の割合</li>
+<li>INDUS：町ごとの非小売業用地面積の割合</li>
+<li>CHAS ：チャールズ川のダミー変数（川に面している場合は1、そうでない場合は0）。</li>
+<li>NOX ：一酸化窒素濃度（1,000万分の1)</li>
+<li>RM ：一戸あたりの平均部屋数</li>
+<li>AGE ：1940年以前に建てられた持ち家の割合</li>
+<li>DIS：ボストンの5つの雇用中心地までの距離の加重平均</li>
+<li>RAD ：放射状高速道路へのアクセス指数</li>
+<li>TAX ：1万ドルあたりの固定資産税評価額</li>
+<li>PTRATIO： 町ごとの生徒と教師の比率</li>
+<li>B ：1000(Bk - 0.63)^2 ただし、Bkは町ごとの黒人の割合である。</li>
+<li>LSTAT： 下層階級の人口割合</li>
+</ul>
+</li>
+<li>目的変数
+<ul>
+<li>MEDV　1000ドル単位の持ち家の中央値</li>
+</ul>
+</li>
+</ul>
+<h3 id="個人的に一から実装したコード">個人的に一から実装したコード</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;housing_price_regression.ipynb
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Automatically generated by Colaboratory.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Original file is located at
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    https://colab.research.google.com/drive/1pjg8KYQ3yZfN420k_deyI_pvOnMG4Rvb
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.datasets <span style="color:#f92672">import</span> load_boston
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pandas <span style="color:#f92672">import</span> DataFrame
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.linear_model <span style="color:#f92672">import</span> LinearRegression
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#前処理用</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy.stats <span style="color:#f92672">import</span> zscore
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> MinMaxScaler
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#可視化用</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># データセットの取得</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>boston <span style="color:#f92672">=</span> load_boston()
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> DataFrame(boston[<span style="color:#e6db74">&#39;data&#39;</span>],columns<span style="color:#f92672">=</span>boston[<span style="color:#e6db74">&#39;feature_names&#39;</span>])
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#39;target&#39;</span>]<span style="color:#f92672">=</span>boston<span style="color:#f92672">.</span>target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 前処理なしで学習</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 学習用変数をデータセットから抽出</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>target_train <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>loc[:,<span style="color:#e6db74">&#39;target&#39;</span>]<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>input_train <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>loc[:,boston[<span style="color:#e6db74">&#39;feature_names&#39;</span>]]<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## モデルの学習</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> LinearRegression()
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit(input_train,target_train)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 学習結果の可視化　各特徴量の寄与度を確認（後のデータ前処理ありとの比較用）</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>bar(boston[<span style="color:#e6db74">&#39;feature_names&#39;</span>],list(model<span style="color:#f92672">.</span>coef_))
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 前処理ありで学習</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 学習用変数をデータセットから抽出</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mm <span style="color:#f92672">=</span> MinMaxScaler()
+</span></span><span style="display:flex;"><span>standardized_target_train <span style="color:#f92672">=</span> mm<span style="color:#f92672">.</span>fit_transform(df<span style="color:#f92672">.</span>loc[:,<span style="color:#e6db74">&#39;target&#39;</span>]<span style="color:#f92672">.</span>values<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>))<span style="color:#f92672">.</span>squeeze()
+</span></span><span style="display:flex;"><span>standardized_input_train <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>loc[:,boston[<span style="color:#e6db74">&#39;feature_names&#39;</span>]]<span style="color:#f92672">.</span>apply(zscore)<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## モデルの学習</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>model_2 <span style="color:#f92672">=</span> LinearRegression()
+</span></span><span style="display:flex;"><span>model_2<span style="color:#f92672">.</span>fit(standardized_input_train,standardized_target_train)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 学習結果の可視化　各特徴量の寄与度を確認</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>bar(boston[<span style="color:#e6db74">&#39;feature_names&#39;</span>],list(model_2<span style="color:#f92672">.</span>coef_))
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## TOP3とBOTTOM3の取得と可視化</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sorted_indices_by_coef <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argsort(model_2<span style="color:#f92672">.</span>coef_)
+</span></span><span style="display:flex;"><span>top3_positive_features <span style="color:#f92672">=</span> boston[<span style="color:#e6db74">&#39;feature_names&#39;</span>][sorted_indices_by_coef[:<span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]]
+</span></span><span style="display:flex;"><span>worst3_negative_features <span style="color:#f92672">=</span> boston[<span style="color:#e6db74">&#39;feature_names&#39;</span>][sorted_indices_by_coef[:<span style="color:#ae81ff">3</span>]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;Top 3 Positive Features</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i,feature <span style="color:#f92672">in</span> enumerate(top3_positive_features):
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">{</span>feature<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endfor</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Worst 3 Negative Features</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i,feature <span style="color:#f92672">in</span> enumerate(worst3_negative_features):
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">{</span>feature<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endfor</span>
+</span></span></code></pre></div><h3 id="出力の画像">出力の画像</h3>
+<p>＜標準化なしで各特徴量の係数の可視化を行った結果＞
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325103507.png" alt="/img/Pasted_image_20230325103507.png"></p>
+<p>＜説明変数を標準化,目的変数を正規化して各特徴量の可視化を行った結果＞
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325103515.png" alt="/img/Pasted_image_20230325103515.png">
+＜TOPとBOTTOMの特徴量３つ＞
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230126185304.png" alt="/img/Pasted_image_20230126185304.png"></p>
+<h3 id="課題部屋数が4で犯罪率が03の物件はいくらになるか">課題（部屋数が4で犯罪率が0.3の物件はいくらになるか？）</h3>
+<p>部屋数と犯罪率を説明変数、住宅価格を目的変数として重回帰分析を行い、
+指定のパラメータを与えて推論を行った。
+結果は約4,240ドル
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325103303.png" alt="/img/Pasted_image_20230325103303.png">
+わかりづらいが、下図を見るとRMのデータが5-10の範囲に偏っているため、その範囲外は外挿による推定となり、精度が下がる可能性がある。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325104355.png" alt="/img/Pasted_image_20230325104355.png">
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325104248.png" alt="/img/Pasted_image_20230325104248.png"></p>
+<h3 id="実装演習モデルの評価">実装演習、モデルの評価</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325105214.png" alt="/img/Pasted_image_20230325105214.png">
+訓練データとテストデータの誤差の平均や分布を見るに、過学習は指定なさそうだと思われる。
+一方で、決定係数からモデルの当てはまりの良さはあまり良くはない(&lt;0.5)ので、いくつかの工夫が必要な様に見受けられる。</p>
+<h2 id="非線形回帰モデル四次式にノイズを加えた目的関数を推定">非線形回帰モデル（四次式にノイズを加えた目的関数を推定）</h2>
+<h3 id="線形回帰-1">線形回帰</h3>
+<p>ベースラインとして線形回帰を最初に行った。
+当たり前だが、モデルの表現力が足りていない。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325170908.png" alt="/img/Pasted_image_20230325170908.png"></p>
+<h3 id="rbfカーネルを用いた非線形回帰">RBFカーネルを用いた非線形回帰</h3>
+<h4 id="デフォルトの実行結果">デフォルトの実行結果</h4>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325171658.png" alt="/img/Pasted_image_20230325171658.png"></p>
+<h4 id="rbfカーネル関数とridge回帰を組み合わせた実装">rbfカーネル関数とRidge回帰を組み合わせた実装</h4>
+<p>リッジ回帰とRBFカーネルのパラメータを変更してみる。
+デフォルトのalpha=0.0002,γ=1/n_featuresで同じ結果が得られることを確認。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325172212.png" alt="/img/Pasted_image_20230325172212.png"></p>
+<h4 id="罰則項の係数を上げる">罰則項の係数を上げる</h4>
+<p>alpha=0.02 (１００倍)で確かに表現力が落ちていることを確認
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325172452.png" alt="/img/Pasted_image_20230325172452.png"></p>
+<h4 id="rbfカーネルのγを変更">RBFカーネルのγを変更</h4>
+<p>γ＝１００（１００倍）にすると一つひとつのデータへの感度が上がることを確認。
+RBFカーネルが$K(x, x&rsquo;)=\exp(-\gamma||x-x&rsquo;||^2)$で表されることを考えると妥当な結果。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325173858.png" alt="/img/Pasted_image_20230325173858.png"></p>
+<h4 id="rbfカーネルと罰則項のパラメータを変更">RBFカーネルと罰則項のパラメータを変更</h4>
+<p>alpha=1 (5000倍),γ＝１００（１００倍）
+罰則項の係数を大きくすることである程度、過学習は抑制できたが、RBFカーネルのパラメータ設定が間違っていると不自然な傾向が見られる。
+非線形変換を行う部分に対応するので、
+RBFカーネルのパラメータ設定は規定の1/n_featuresを参考にして、
+極端な値にしないことが望ましいのではないかと感じた。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325174031.png" alt="/img/Pasted_image_20230325174031.png"></p>
+<h3 id="多項式回帰">多項式回帰</h3>
+<p>PipeLineを用いて、複数処理を一つのモデルに追加。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325174632.png" alt="/img/Pasted_image_20230325174632.png"></p>
+<h4 id="ラッソ回帰">ラッソ回帰</h4>
+<p>スパース化を行うラッソ回帰で罰則化項を極端にした結果。
+モデルの表現力を抑制しすぎた結果、平均値を出力するだけのモデルとなった。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325174813.png" alt="/img/Pasted_image_20230325174813.png"></p>
+<h4 id="svr">SVR</h4>
+<p>Cは誤差への感度、イプシロンは誤差を無視する範囲を調整する。
+ハイパーパラメータの調整はグリッドサーチでCV後の決定係数の良い組み合わせを採用する。</p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325175757.png" alt="/img/Pasted_image_20230325175757.png"></p>
+<h4 id="単純な全結合のdeeplearningモデルによる非線形回帰">単純な全結合のDeepLearningモデルによる非線形回帰</h4>
+<p>デフォルトの設定ではかなり層数が多いのと、パラメータ数もデータ点数に対して過剰に見受けられるが、結果的にはある程度うまく行っている。</p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325180722.png" alt="/img/Pasted_image_20230325180722.png">
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325180928.png" alt="/img/Pasted_image_20230325180928.png">
+今回のケースではせいぜい４次の多項式なので、４層前後で良いのではないかと考えて実行したところ、四層でも十分な表現力が得られた。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325182052.png" alt="/img/Pasted_image_20230325182052.png">
+また、今回のケースはDLを使用しているもののほぼ古典的な範囲なので、パラメータ数はサンプル数のオーダーで十分と想定して調整したところ、おおよそ問題なかった。
+（データ点数が９０だったので、隠れ層１:10,隠れ層2:30,隠れ層3:30,隠れ層4:30のパラメータを当てた）
+もとの設定だと明らかに過剰な表現力を持っていたが、過学習していないのは近年話題になっていたOverparametrized Regimeに関連する二重降下の影響と想定。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325182927.png" alt="/img/Pasted_image_20230325182927.png"></p>
+<h2 id="ロジスティック回帰モデルタイタニックの生存者の予測">ロジスティック回帰モデル（タイタニックの生存者の予測）</h2>
+<h3 id="課題年齢が３０歳で男の乗客は生き残れるか">課題：年齢が３０歳で男の乗客は生き残れるか？</h3>
+<p>８割がた死亡するという結果。
+元データの分布を見ても妥当な結果だと思われる。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325115738.png" alt="/img/Pasted_image_20230325115738.png">
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325115821.png" alt="/img/Pasted_image_20230325115821.png">
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325115844.png" alt="/img/Pasted_image_20230325115844.png"></p>
+<h3 id="個人的に１から実装したコード">個人的に１から実装したコード</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> seaborn <span style="color:#66d9ef">as</span> sns
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy.stats <span style="color:#f92672">import</span> zscore
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> StandardScaler
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.linear_model <span style="color:#f92672">import</span> LogisticRegressionCV
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> accuracy_score,recall_score,precision_score,f1_score
+</span></span><span style="display:flex;"><span><span style="color:#f92672">%</span>matplotlib inline
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># kaggle公式から落としてきたデータのロード</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>titanic_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;./datasets/titanic/train.csv&#34;</span>)
+</span></span><span style="display:flex;"><span>test_titanic_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;./datasets/titanic/test.csv&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 欠損値の確認</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> column <span style="color:#f92672">in</span> titanic_df<span style="color:#f92672">.</span>columns:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Does </span><span style="color:#e6db74">{</span>column<span style="color:#e6db74">}</span><span style="color:#e6db74"> have null record? : </span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;yes&#39;</span> <span style="color:#66d9ef">if</span> any(titanic_df[column]<span style="color:#f92672">.</span>isna()) <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;No&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endfor</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> column <span style="color:#f92672">in</span> test_titanic_df<span style="color:#f92672">.</span>columns:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Does </span><span style="color:#e6db74">{</span>column<span style="color:#e6db74">}</span><span style="color:#e6db74"> have null record? : </span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;yes&#39;</span> <span style="color:#66d9ef">if</span> any(test_titanic_df[column]<span style="color:#f92672">.</span>isna()) <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;No&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endfor</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># データの確認</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sns<span style="color:#f92672">.</span>pairplot(titanic_df,hue<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Survived&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [markdown]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Passenger IDは特に意味のあるデータでは無いので、対象から外す。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 名前は家族関係などを示すため意味が無いとは言えないが、数値変換するのが今回に関して困難なため削除。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># チケット番号はIDのようなもののため削除。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># キャビン番号は活動位置情報に関わりそうだが、今回は見送り。やるならアルファベッド部分ごとに列をつくって続く数字を変数とするか？</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Survivedが目的変数で0=死亡,1＝生存</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 順序尺度は線形変換＋シグモイドでそのまま解釈がうまく行かなさそうなのと、分布的にone-hotベクトルに変更したほうがうまく行きそうなので、２パターン作って確認する</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 前処理用の関数定義</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## one-hot coding</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">one_hot</span>(df,columns):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> column <span style="color:#f92672">in</span> columns:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> symbol <span style="color:#f92672">in</span> df[column]<span style="color:#f92672">.</span>unique():
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> (str(symbol)<span style="color:#f92672">==</span><span style="color:#e6db74">&#39;nan&#39;</span>):
+</span></span><span style="display:flex;"><span>                df[column<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;_&#39;</span><span style="color:#f92672">+</span>str(symbol)] <span style="color:#f92672">=</span> (df[column]<span style="color:#f92672">==</span>symbol)<span style="color:#f92672">.</span>apply(int)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#endfor</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#endfor</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 前処理　名義尺度の変数をone-hotコーディングするのと、余分なカラムの削除、スケーリングを行う</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">preprocess_titanic_df</span>(df,standard_scalar,is_train<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    df:                 DataFrame (titanic dataset)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    standard_scalar:    StandardScalar Instance, use same instance for train and test dataset. 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    is_train:           bool
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    output_df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>copy()
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># change numerical value</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    one_hot(output_df,[<span style="color:#e6db74">&#39;Sex&#39;</span>,<span style="color:#e6db74">&#39;Embarked&#39;</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># remove unnecessary columns</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    output_df<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#39;PassengerId&#39;</span>,<span style="color:#e6db74">&#39;Name&#39;</span>,<span style="color:#e6db74">&#39;Ticket&#39;</span>,<span style="color:#e6db74">&#39;Cabin&#39;</span>,<span style="color:#e6db74">&#39;Sex&#39;</span>,<span style="color:#e6db74">&#39;Embarked&#39;</span>],axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># manage missing data</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    output_df<span style="color:#f92672">.</span>loc[output_df[<span style="color:#e6db74">&#39;Age&#39;</span>]<span style="color:#f92672">.</span>isna(),<span style="color:#e6db74">&#39;Age&#39;</span>] <span style="color:#f92672">=</span> output_df[<span style="color:#e6db74">&#39;Age&#39;</span>]<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>    output_df<span style="color:#f92672">.</span>loc[output_df[<span style="color:#e6db74">&#39;Fare&#39;</span>]<span style="color:#f92672">.</span>isna(),<span style="color:#e6db74">&#39;Fare&#39;</span>] <span style="color:#f92672">=</span> output_df[<span style="color:#e6db74">&#39;Fare&#39;</span>]<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># change scale</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">## regularize variables on ratio scale</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> is_train:
+</span></span><span style="display:flex;"><span>        output_df[<span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>](https:<span style="color:#f92672">//</span>half<span style="color:#f92672">-</span>broken<span style="color:#f92672">-</span>engineer<span style="color:#f92672">.</span>github<span style="color:#f92672">.</span>io<span style="color:#f92672">/</span><span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>) <span style="color:#f92672">=</span> standard_scalar<span style="color:#f92672">.</span>fit_transform(output_df[<span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>](https:<span style="color:#f92672">//</span>half<span style="color:#f92672">-</span>broken<span style="color:#f92672">-</span>engineer<span style="color:#f92672">.</span>github<span style="color:#f92672">.</span>io<span style="color:#f92672">/</span><span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        output_df[<span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>](https:<span style="color:#f92672">//</span>half<span style="color:#f92672">-</span>broken<span style="color:#f92672">-</span>engineer<span style="color:#f92672">.</span>github<span style="color:#f92672">.</span>io<span style="color:#f92672">/</span><span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>) <span style="color:#f92672">=</span> standard_scalar<span style="color:#f92672">.</span>transform(output_df[<span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>](https:<span style="color:#f92672">//</span>half<span style="color:#f92672">-</span>broken<span style="color:#f92672">-</span>engineer<span style="color:#f92672">.</span>github<span style="color:#f92672">.</span>io<span style="color:#f92672">/</span><span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#endif</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">## normalize variable on ordinal scale </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    PCLASS_MAX <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>    PCLASS_MIN <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    output_df[<span style="color:#e6db74">&#39;Pclass&#39;</span>] <span style="color:#f92672">=</span> (output_df[<span style="color:#e6db74">&#39;Pclass&#39;</span>] <span style="color:#f92672">-</span> PCLASS_MIN)<span style="color:#f92672">/</span>(PCLASS_MAX<span style="color:#f92672">-</span>PCLASS_MIN)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> output_df
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 順序尺度の方も変更one-hotベクトルに変更</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">preprocess_titanic_df_2</span>(df,standard_scalar,is_train<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    df:                 DataFrame (titanic dataset)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    standard_scalar:    StandardScalar Instance, use same instance for train and test dataset. 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    is_train:           bool
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    output_df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>copy()
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># change numerical value</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    one_hot(output_df,[<span style="color:#e6db74">&#39;Sex&#39;</span>,<span style="color:#e6db74">&#39;Embarked&#39;</span>,<span style="color:#e6db74">&#39;Pclass&#39;</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># remove unnecessary columns</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    output_df<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#39;Pclass&#39;</span>,<span style="color:#e6db74">&#39;PassengerId&#39;</span>,<span style="color:#e6db74">&#39;Name&#39;</span>,<span style="color:#e6db74">&#39;Ticket&#39;</span>,<span style="color:#e6db74">&#39;Cabin&#39;</span>,<span style="color:#e6db74">&#39;Sex&#39;</span>,<span style="color:#e6db74">&#39;Embarked&#39;</span>],axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># manage missing data</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    output_df<span style="color:#f92672">.</span>loc[output_df[<span style="color:#e6db74">&#39;Age&#39;</span>]<span style="color:#f92672">.</span>isna(),<span style="color:#e6db74">&#39;Age&#39;</span>] <span style="color:#f92672">=</span> output_df[<span style="color:#e6db74">&#39;Age&#39;</span>]<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>    output_df<span style="color:#f92672">.</span>loc[output_df[<span style="color:#e6db74">&#39;Fare&#39;</span>]<span style="color:#f92672">.</span>isna(),<span style="color:#e6db74">&#39;Fare&#39;</span>] <span style="color:#f92672">=</span> output_df[<span style="color:#e6db74">&#39;Fare&#39;</span>]<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># change scale</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">## regularize variables on ratio scale</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> is_train:
+</span></span><span style="display:flex;"><span>        output_df[<span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>](https:<span style="color:#f92672">//</span>half<span style="color:#f92672">-</span>broken<span style="color:#f92672">-</span>engineer<span style="color:#f92672">.</span>github<span style="color:#f92672">.</span>io<span style="color:#f92672">/</span><span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>) <span style="color:#f92672">=</span> standard_scalar<span style="color:#f92672">.</span>fit_transform(output_df[<span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>](https:<span style="color:#f92672">//</span>half<span style="color:#f92672">-</span>broken<span style="color:#f92672">-</span>engineer<span style="color:#f92672">.</span>github<span style="color:#f92672">.</span>io<span style="color:#f92672">/</span><span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        output_df[<span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>](https:<span style="color:#f92672">//</span>half<span style="color:#f92672">-</span>broken<span style="color:#f92672">-</span>engineer<span style="color:#f92672">.</span>github<span style="color:#f92672">.</span>io<span style="color:#f92672">/</span><span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>) <span style="color:#f92672">=</span> standard_scalar<span style="color:#f92672">.</span>transform(output_df[<span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>](https:<span style="color:#f92672">//</span>half<span style="color:#f92672">-</span>broken<span style="color:#f92672">-</span>engineer<span style="color:#f92672">.</span>github<span style="color:#f92672">.</span>io<span style="color:#f92672">/</span><span style="color:#e6db74">&#39;Age&#39;</span>,<span style="color:#e6db74">&#39;Fare&#39;</span>,<span style="color:#e6db74">&#39;SibSp&#39;</span>,<span style="color:#e6db74">&#39;Parch&#39;</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#endif</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> output_df
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#前処理</span>
+</span></span><span style="display:flex;"><span>std_scaler <span style="color:#f92672">=</span> StandardScaler()
+</span></span><span style="display:flex;"><span>titanic_df_preprocessed <span style="color:#f92672">=</span> preprocess_titanic_df(titanic_df,std_scaler)
+</span></span><span style="display:flex;"><span>test_titanic_df_preprocessed <span style="color:#f92672">=</span> preprocess_titanic_df(test_titanic_df,std_scaler,is_train<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>std_scaler_2 <span style="color:#f92672">=</span> StandardScaler()
+</span></span><span style="display:flex;"><span>titanic_df_preprocessed_2 <span style="color:#f92672">=</span> preprocess_titanic_df_2(titanic_df,std_scaler_2)
+</span></span><span style="display:flex;"><span>test_titanic_df_preprocessed_2 <span style="color:#f92672">=</span> preprocess_titanic_df_2(test_titanic_df,std_scaler_2,is_train<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>titanic_df_preprocessed_2<span style="color:#f92672">.</span>head()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 学習器にかけるデータの準備</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>feature_train <span style="color:#f92672">=</span> titanic_df_preprocessed[titanic_df_preprocessed<span style="color:#f92672">.</span>columns[<span style="color:#ae81ff">1</span>:]]<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>feature_train_2 <span style="color:#f92672">=</span> titanic_df_preprocessed_2[titanic_df_preprocessed_2<span style="color:#f92672">.</span>columns[<span style="color:#ae81ff">1</span>:]]<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>label_train <span style="color:#f92672">=</span> titanic_df_preprocessed[<span style="color:#e6db74">&#34;Survived&#34;</span>]<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>feature_test <span style="color:#f92672">=</span> test_titanic_df_preprocessed[titanic_df_preprocessed<span style="color:#f92672">.</span>columns[<span style="color:#ae81ff">1</span>:]]<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>feature_test_2 <span style="color:#f92672">=</span> test_titanic_df_preprocessed_2[titanic_df_preprocessed_2<span style="color:#f92672">.</span>columns[<span style="color:#ae81ff">1</span>:]]<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ロジスティック回帰モデルの学習</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>logi_reg <span style="color:#f92672">=</span> LogisticRegressionCV()
+</span></span><span style="display:flex;"><span>logi_reg2 <span style="color:#f92672">=</span> LogisticRegressionCV()
+</span></span><span style="display:flex;"><span>logi_reg<span style="color:#f92672">.</span>fit(feature_train,label_train)
+</span></span><span style="display:flex;"><span>logi_reg2<span style="color:#f92672">.</span>fit(feature_train_2,label_train)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 予測</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>train_prediction <span style="color:#f92672">=</span> logi_reg<span style="color:#f92672">.</span>predict(feature_train)
+</span></span><span style="display:flex;"><span>test_prediction <span style="color:#f92672">=</span> logi_reg<span style="color:#f92672">.</span>predict(feature_test)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>train_prediction_2 <span style="color:#f92672">=</span> logi_reg2<span style="color:#f92672">.</span>predict(feature_train_2)
+</span></span><span style="display:flex;"><span>test_prediction_2 <span style="color:#f92672">=</span> logi_reg2<span style="color:#f92672">.</span>predict(feature_test_2)
+</span></span></code></pre></div><p>&lt;各特徴量と生存者の分布の確認&gt;</p>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230127214258.png" alt="/img/Pasted_image_20230127214258.png"></p>
+<h2 id="主成分分析乳がん検査データ">主成分分析（乳がん検査データ）</h2>
+<h3 id="デフォルトの実行結果-1">デフォルトの実行結果</h3>
+<p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325213921.png" alt="/img/Pasted_image_20230325213921.png">
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325213957.png" alt="/img/Pasted_image_20230325213957.png">
+極端な正例と不例の偏りはなく、訓練とテストの精度がともに高いのでうまく予測できている様に思われる。</p>
+<h3 id="32次元のデータを2次元上に次元圧縮した際にうまく判別できるかを確認">32次元のデータを2次元上に次元圧縮した際に、うまく判別できるかを確認</h3>
+<p>主成分分析と主成分ごとの寄与率の確認</p>
+<p>下図から第２主成分までの累積寄与率は６割強であることがわかる。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325214412.png" alt="/img/Pasted_image_20230325214412.png">
+第二主成分までを使った２次元プロットでデータの分布を確認した。
+分布を見たところ、境界付近での難しさはありそうだが、境界線は引ける様に見受けられる。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325214619.png" alt="/img/Pasted_image_20230325214619.png">
+上記のPCAモデルを用いて写像変換したデータでロジスティック回帰を行った。
+テストデータの精度は若干下がったものの９割を超えており、うまく判別できていると言える。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325215226.png" alt="/img/Pasted_image_20230325215226.png"></p>
+<h2 id="k-means-1">K-Means</h2>
+<p>デフォルト設定、各クラスタ中心の初期値をk-means++で実行した場合。
+k-means++は完全なランダムではなく、一つのクラスタ中心をランダムに設定したあとはそこから離れた点が選ばれる確率を上げてクラスタ中心の初期値を設定する。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325221313.png" alt="/img/Pasted_image_20230325221313.png">
+初期値を完全ランダムにした場合。
+ラベルとクラス間の対応が若干変わっているが、本質的な結果に変わりはなかった。
+以上のことから、ここから精度を上げるにはクラスタ中心の初期設定ではなく、特徴量エンジニアリングやモデルの変更が必要だとわかる。
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230325221711.png" alt="/img/Pasted_image_20230325221711.png"></p>
+<h2 id="サポートベクターマシン該当ファイルなし非線形回帰のところでsvrを実装演習した">サポートベクターマシン（該当ファイルなし、非線形回帰のところでSVRを実装演習した）</h2>
+<h1 id="考察">考察</h1>
+<h2 id="ボストン不動産価格予測">ボストン不動産価格予測</h2>
+<h3 id="運用上の気づき">運用上の気づき</h3>
+<p>説明変数の標準化を行っておかないと各特徴量の影響度が比較しづらくなるので、
+モデル学習の前の前処理も適切に行う必要がある。
+今回は目的変数が住宅価格のメジアンということで、外れ値影響が少ないと考えられることから、
+目的変数については価格がマイナスになると分かりづらいと考えて正規化にしたが、
+説明変数に前処理を入れていれば特徴量間の比較という目的が果たせるので、説明変数については人から見たときに値の大小がわかりやすい元の値のままにしておくのが望ましいのでは無いかと考えた。</p>
+<h3 id="結果に対して">結果に対して</h3>
+<p>演習結果に載せたように、
+プラス影響のTOP３は</p>
+<ol>
+<li>一戸あたりの平均部屋数</li>
+<li>放射状高速道路へのアクセス指数</li>
+<li>25,000sq.ft.以上の住宅用地に指定された土地の割合</li>
+</ol>
+<p>マイナス影響を与えるWorst３は</p>
+<ol>
+<li>下層階級の人口割合</li>
+<li>ボストンの5つの雇用中心地までの距離の加重平均</li>
+<li>1万ドルあたりの固定資産税評価額</li>
+</ol>
+<p>となっている。
+基本的には特徴量が住環境やコストにかかわるため、特徴量→目的変数の因果が明確になっていそうだが、
+Worstの特徴量の下層階級の人口割合については、周辺住民の質という観点で近い要素になりそうな犯罪率CRIMが相対的に寄与度が小さいことから、価格と特徴量の因果の方向についてさらなる確認が必要だと考える。
+また、B（＝1000×(Bk -0.63)^2）の特徴量が２乗の値を取ってしまっているので、もとのBkの値によっては解釈を考える必要がある。</p>
+<p>課題において設定されたパラメータがデータセット内であまり見られない値であったが、実際の分析においてもモデルを学習する際に使用したデータの分布と予測するさいに用いるデータの分布の違いについては把握しておく必要があると感じた。</p>
+<h2 id="タイタニックの生存者の予測">タイタニックの生存者の予測</h2>
+<p>はじめの特徴量の整理が重要に感じた。
+特徴量が質的変数の場合はダミー変数生成の際に各カテゴリに対応した0,1のダミー変数をそれぞれ作成しないと行けないと考える。
+２クラスのときは一つのダミー変数でも良いが、欠損値を考えると、２つの特徴量に分割したほうが、表現しやすいと思われる。
+データ量とのトレードオフと考えられるため、今回は元データを確認して、欠損値があるもののみ対応した。</p>
+<p>欠損値があったものは、Age,Fare,Cabin,Embarked</p>
+<ul>
+<li>Pclass：順序尺度　→　one-hot coding</li>
+<li>Sex：名義尺度　→　one-hot coding</li>
+<li>Age：比例尺度　→　標準化、欠損値は平均値で補完</li>
+<li>SibSp：比例尺度　→　標準化</li>
+<li>Parch：比例尺度　→　標準化</li>
+<li>Fare：比例尺度　→　標準化、欠損値は平均値で補完</li>
+<li>Embarked：名義尺度　→　one-hot coding 欠損値は各クラスのダミー変数をすべて０にして対応</li>
+</ul>
+<h1 id="参考文献">参考文献</h1>
+<p><a href="https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf">https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf</a></p>
+<p><a href="https://vimeo.com/showcase/7439075/video/446979589">Vimeoで 機械学習</a></p>
+<p><a href="https://datachemeng.com/supportvectorregression/">サポートベクター回帰(Support Vector Regression, SVR)～サンプル数10000以下ならこれを使うべし！～ | データ化学工学研究室(金子研究室)＠明治大学 理工学部 応用化学科</a></p>
+<p><a href="https://cometscome.github.io/DLAP2020/slides/DL_Physics2020_mori.pdf">https://cometscome.github.io/DLAP2020/slides/DL_Physics2020_mori.pdf</a></p>
+
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">タグ</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://half-broken-engineer.github.io/tags/obsidian_note/">obsidian_note</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/converted/transcript/tsla_2022_q4/" data-tooltip="TSLA_2022_Q4" aria-label="次: TSLA_2022_Q4">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">次</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/converted/transcript/msft_2023_q2/" data-tooltip="MSFT_2023_Q2" aria-label="前: MSFT_2023_Q2">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">前</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="この記事を共有する">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://half-broken-engineer.github.io/converted/rabbitchallenge/machinelearning/" title="Twitterで共有" aria-label="Twitterで共有">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="コメントを残す">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="トップに戻る">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/half-broken-engineer.github.io\/converted\/rabbitchallenge\/machinelearning\/';
+        
+          this.page.identifier = '\/converted\/rabbitchallenge\/machinelearning\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</footer>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+    inlineMath: [['$','$']]
+    }
+});
+</script>
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/converted/transcript/tsla_2022_q4/" data-tooltip="TSLA_2022_Q4" aria-label="次: TSLA_2022_Q4">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">次</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://half-broken-engineer.github.io/converted/transcript/msft_2023_q2/" data-tooltip="MSFT_2023_Q2" aria-label="前: MSFT_2023_Q2">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">前</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="この記事を共有する">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://half-broken-engineer.github.io/converted/rabbitchallenge/machinelearning/" title="Twitterで共有" aria-label="Twitterで共有">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="コメントを残す">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="トップに戻る">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fhalf-broken-engineer.github.io%2Fconverted%2Frabbitchallenge%2Fmachinelearning%2F" aria-label="Twitterで共有">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitterで共有</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://half-broken-engineer.github.io/img/profile.png" alt="プロフィール画像" />
+    
+    <h4 id="about-card-name">Half-Broken Engineer</h4>
+    
+      <div id="about-card-bio">🤖　　　　壊れかけのエンジニア　　　　💻不安を解消したいから💰のお勉強もする</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Japan
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://half-broken-engineer.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://half-broken-engineer.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
