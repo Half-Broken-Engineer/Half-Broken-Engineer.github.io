@@ -312,13 +312,17 @@ Tensorflow:Google keras:tensorflowのラッパーのライブラリ Caffe:BVLC�
       
       <guid>https://half-broken-engineer.github.io/2023/01/appliedmathematics/</guid>
       <description>要点(最低100字) 目次 線形代数 確率・統計 情報理論 線形代数 固有値・固有ベクトルの求め方 固有値分解とは 特異値・特位置ベクトルの概要 特異値分解について 固有値・固有ベクトル 固有ベクトルは対応する行列をかけた際に、ベクトルの方向が変わらないベクトル。 固有値は固有ベクトルに行列をかけたときに何倍になるかを示す。
+$$A\vec{a}=\lambda\vec{a} \tag{1}$$ のとき、$\vec{a}$が固有ベクトル、λが固有値
 求め方は[[固有方程式]]で固有値を求めたあと、固有値を（１）式に代入して連立方程式を解く。
 固有ベクトルの大きさについては１にしておくのが一般的。（※後の特異値を求めるときにそちらのほうが都合が良い）
-固有値分解 固有値ベクトルを列ベクトルに持つ行列Vと、対応する固有値を対角成分に持つ対角行列Λを用いて行列Aは以下の式に分解できる。
+固有値分解 固有値ベクトルを列ベクトルに持つ行列Vと、対応する固有値を対角成分に持つ対角行列Λを用いて行列Aは以下の式に分解できる。 $$ A = V\Lambda V^{-1} \tag{2}$$
 プログラミング的には、対角行列の演算負荷が低いことから、計算速度向上、リソース節約につながる。
 import numpy as np values,vectors = np.linalg.eig(matrix) 特異値・特異ベクトル 固有値については正方行列のみしか扱えなかったが、これをm×nの行列に拡張したもの。
 Uの列ベクトルを左特異ベクトル、、Vの列ベクトルを右特異ベクトルという。 Σの対角成分は特異値という。 ※このとき、ベクトルのノルムは１、σ&amp;gt;0,特異値の数はmin(m,n)となる。今回はｍ＜ｎとした。
-特異値分解 $AA^\top$または$A^\top A$を求める　（計算量の問題で、$A^\top A$のほうが次数が少ないときはそちらを使う。式(4)に$A^\top$を掛けるか、式(5)にAを掛けるかの違い） $AA^\top$または$A^\top A$の固有方程式を解く 固有値の正の平方根を特異値とする 特異値を$(A^{\top} A - \sigma^2 E) \vec{v} = \vec{0}$または$(AA^{\top} - \sigma^2 E ) \vec{u} = \vec{0}$に代入して、どちらかの特異ベクトルを求める※重解のときはグラムシュミットの直交化方を用いて、同じ特異値に対する特異ベクトルを直交化すること。 式(4)または(5)を用いてもう一方の特異ベクトルを求める import numpy as np u,sigma,vt = np.linalg.svd(matrix) 確率・統計 条件付き確率について理解を深める ベイズ則の概要を知る 期待値・分散の求め方 様々な確率分布の概要を知る 客観確率と主観確率 客観確率：頻度確率とも言う。データに基づく事実 主観確率：ベイズ確率。条件の元で推測される信念の度合い。　診断など 条件付き確率 事象Y＝ｙが与えられた上での、事象X=xとなる確率 $P(X=x|Y=y) = \frac{P(X=x,Y=y)}{P(Y=y)}$</description>
+$$ A = U\Sigma V^{\top} \tag{3}$$
+$$A\vec{v}=\sigma\vec{u} \tag{4}$$
+$$A^\top\vec{u}=\sigma\vec{v} \tag{5}$$
+$$ \sum = \begin{pmatrix} \sigma_{1} &amp;amp; 0 &amp;amp; \dots &amp;amp; &amp;amp; &amp;amp;0 \ 0&amp;amp;\sigma_{2}&amp;amp; 0 &amp;amp; \dots &amp;amp; &amp;amp;0\ 0 &amp;amp; 0 &amp;amp;\ddots&amp;amp;0 &amp;amp;\dots&amp;amp;\vdots\ \vdots&amp;amp;\dots&amp;amp;0&amp;amp;\sigma_m&amp;amp;0&amp;amp;\dots \end{pmatrix} $$</description>
     </item>
     
     <item>
