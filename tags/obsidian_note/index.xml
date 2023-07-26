@@ -73,12 +73,12 @@ network[&amp;#39;W1&amp;#39;] = np.random.randn(input_layer_size, hidden_layer_s
       
       <guid>https://half-broken-engineer.github.io/%E3%82%A2%E3%83%B3%E3%82%B5%E3%83%B3%E3%83%96%E3%83%AB%E5%AD%A6%E7%BF%92/</guid>
       <description>目的：予測精度の向上 バイアス：真値と予測値の誤差 バリアンス：予測値の散らばり具合
-メリットとデメリット メリット 弱学習器を使える 精度が上がる デメリット 構築に時間がかかる バイアスとバリアンスのトレードオフの調整が困難 主な種類 バギング vault backup: 2023-07-26 17:01:06 Ken_obsidian
-Affected files:
-ブースティング vault backup: 2023-07-26 17:01:06 Ken_obsidian
-Affected files:
-スタッキング vault backup: 2023-07-26 17:01:06 Ken_obsidian
-Affected files:</description>
+メリットとデメリット メリット 弱学習器を使える 精度が上がる デメリット 構築に時間がかかる バイアスとバリアンスのトレードオフの調整が困難 主な種類 バギング vault backup: 2023-07-26 18:02:06 Ken_obsidian
+Affected files: .obsidian_win/workspace.json
+ブースティング vault backup: 2023-07-26 18:02:06 Ken_obsidian
+Affected files: .obsidian_win/workspace.json
+スタッキング vault backup: 2023-07-26 18:02:06 Ken_obsidian
+Affected files: .obsidian_win/workspace.json</description>
     </item>
     
     <item>
@@ -502,7 +502,7 @@ AlphaGoが有名</description>
 元は哲学用語で”存在論”（存在に関する体系的理論）という意味。 人工知能用語としては”概念化の明示的な仕様”　byトム・グルーパー
 目的：知識の共有と活用 手段：語彙やその意味、関係性を明確な約束ごととして定義する
 08_project/G_Certification/意味ネットワークでは記述方法についての約束ごとが無い。
-２つの構築方法 ヘビーウエイトオントロジー：08_project/G_Certification/Cycプロジェクト ライトウエイトオントロジー： </description>
+２つの構築方法 ヘビーウエイトオントロジー：08_project/G_Certification/Cycプロジェクト ライトウエイトオントロジー：オントロジー </description>
     </item>
     
     <item>

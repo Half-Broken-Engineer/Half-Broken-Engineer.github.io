@@ -654,8 +654,8 @@ AlphaGo で使われるモンテカルロ木探索アルゴリズムは Asynchro
 <h3 id="分散深層学習">分散深層学習</h3>
 <p>深層学習はデータ量、パラメータ更新のための計算量から高速な計算が求められる
 →複数の計算資源（ワーカー）を使用して並列で NN を構成することで効率のよい学習を行いたい</p>
-<p>モデルが大きいとき→<a href="https://half-broken-engineer.github.io//%e3%83%a2%e3%83%87%e3%83%ab%e4%b8%a6%e5%88%97">モデル並列</a>
-データが多いとき→<a href="https://half-broken-engineer.github.io//%e3%83%87%e3%83%bc%e3%82%bf%e4%b8%a6%e5%88%97">データ並列</a></p>
+<p>モデルが大きいとき→<a href="https://half-broken-engineer.github.io/DeepLearningDay4/%e3%83%a2%e3%83%87%e3%83%ab%e4%b8%a6%e5%88%97">モデル並列</a>
+データが多いとき→<a href="https://half-broken-engineer.github.io/DeepLearningDay4/%e3%83%87%e3%83%bc%e3%82%bf%e4%b8%a6%e5%88%97">データ並列</a></p>
 <h4 id="モデル並列">モデル並列</h4>
 <p>モデルが大きいときに利用
 パラメータ数が多いほどスピードアップの効率も向上</p>
@@ -859,8 +859,9 @@ w = {0,1} のため、</p>
 <li>ハイパーパラメータの追加：Growth_rate</li>
 </ul>
 <h3 id="layer-正規化instance-正規化">Layer 正規化/Instance 正規化</h3>
-<p>vault backup: 2023-07-26 17:01:06 Ken_obsidian</p>
-<p>Affected files:</p>
+<p>vault backup: 2023-07-26 18:02:06 Ken_obsidian</p>
+<p>Affected files:
+.obsidian_win/workspace.json</p>
 <p>バッチ正規化はミニバッチ単位で Normalization するのでバッチサイズが小さいときに学習が収束しない問題が起こる。
 その際には Layer Normalization などを使う</p>
 <h4 id="正規化手法のイメージ比較">正規化手法のイメージ比較</h4>
@@ -1129,10 +1130,12 @@ S. Zagoruyko and N. Komodakis, “Wide Residual Networks,&ldquo;<a href="https:/
 <p>IoUを固定してmAPを算出する
 IoUを変化させたときの平均を取った$mAP_{COCO}$という指標もある</p>
 <h4 id="クラス分類">クラス分類</h4>
-<p>vault backup: 2023-07-26 17:01:06 Ken_obsidian</p>
-<p>Affected files:</p>
-<p>vault backup: 2023-07-26 17:01:06 Ken_obsidian</p>
-<p>Affected files:</p>
+<p>vault backup: 2023-07-26 18:02:06 Ken_obsidian</p>
+<p>Affected files:
+.obsidian_win/workspace.json</p>
+<p>vault backup: 2023-07-26 18:02:06 Ken_obsidian</p>
+<p>Affected files:
+.obsidian_win/workspace.json</p>
 <p>モデルの利用目的ごとに適切な閾値の設定を行う</p>
 <h4 id="bounding-boxの予測性能">Bounding Boxの予測性能</h4>
 <p>指標：IoU （Intercection over Union）　※別名Jaccard係数</p>
@@ -1311,7 +1314,7 @@ Fast R-CNN ：画像全体をCNNに入力して、特徴量を抽出したFeatur
 <p><img src="https://half-broken-engineer.github.io/img/Pasted_image_20230713090927.png" alt="/img/Pasted_image_20230713090927.png">
 （講義スライドより引用）</p>
 <h4 id="roi-align">ROI Align</h4>
-<p>[ROI Pooling](<a href="https://half-broken-engineer.github.io//ROI">https://half-broken-engineer.github.io//ROI</a> Pooling)の位置ずれ問題に対応</p>
+<p>[ROI Pooling](<a href="https://half-broken-engineer.github.io/DeepLearningDay4/ROI">https://half-broken-engineer.github.io/DeepLearningDay4/ROI</a> Pooling)の位置ずれ問題に対応</p>
 <ol>
 <li>(丸め込みは行わない)</li>
 <li>N×Nの固定領域の際は候補領域を縦横でN等分ずつにする</li>
