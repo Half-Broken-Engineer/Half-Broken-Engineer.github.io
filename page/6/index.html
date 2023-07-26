@@ -346,8 +346,7 @@
 主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。
 線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式
 直線、平面→線形回帰 曲線、局面→非線形
-線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m $$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき
-以上より、 $\hat{\vec{w}} = (X^T X)^{-1}X^T Y( = X^{-1}Y)$
+線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m$ 切片$w_0$ 学習の際に使う値 予測値$\hat{y} = w_0 + \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき $$\frac{\partial MSE}{\partial \vec{w}} = 0$$
       
       <p>
         
@@ -733,49 +732,16 @@ Uの列ベクトルを左特異ベクトル、、Vの列ベクトルを右特異
 
         </section>
         <footer>
-  <script type="text/javascript">
-    MathJax = {
-      tex: {
-        inlineMath: [['$','$'], ['\\(','\\)']],
-        processEscapes: true,
-        tags: "ams",
-        autoload: {
-          color: [],
-          colorV2: ['color']
-        },
-        packages: {'[+]': ['noerrors']}
-      },
-      chtml: {
-        matchFontHeight: false,
-        displayAlign: "left", 
-        displayIndent: "2em"
-      },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        renderActions: {
-           
-          find_script_mathtex: [10, function (doc) {
-            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            }
-          }, '']
-        }
-      },
-      loader: {
-        load: ['[tex]/noerrors']
-      }
-    };
-  </script>
-  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/latest.js" id="MathJax-script"></script>
-  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </footer>
-
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+    inlineMath: [['$','$']]
+    }
+});
+</script>
       </div>
     </div>
     
