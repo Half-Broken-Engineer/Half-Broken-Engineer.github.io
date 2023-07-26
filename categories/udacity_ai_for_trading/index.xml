@@ -9,22 +9,6 @@
     <lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://half-broken-engineer.github.io/categories/udacity_ai_for_trading/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>project4_alpha_research_and_factor_modeling</title>
-      <link>https://half-broken-engineer.github.io/converted/udacity_ai_for_trading/project4_alpha_research_and_factor_modeling/</link>
-      <pubDate>Wed, 01 Feb 2023 00:00:00 +0900</pubDate>
-      
-      <guid>https://half-broken-engineer.github.io/converted/udacity_ai_for_trading/project4_alpha_research_and_factor_modeling/</guid>
-      <description>OverViews
-Overviews Methods Knowledge Factor Covariance Matrix $$F = \frac{1}{N-1} f \cdot f^T　\times annualization_factor$$
-N：要素数 f：ファクターリターン annualization_factor:　252/days_passed
-Actual Retrurn $$r_p = \sum_i^N \beta_i\times f_i + s_p$$
-common return ファクターリターンとファクターエクスポージャの内積
-ファクターリターンの計算 日付をインデックスとして、ティッカーをカラムとするreturnsがあるとき
-from sklearn.decomposition import PCA model = PCA(n_components=num_factor) pca.fit(returns) factor_returns = pca.transform(returns) ファクターエクスポージャーの計算 from sklearn.linear_model import LinearRegression model = LinearRegression() model.fit(factor_returns,portfolio_actual_return) exposure = model.coef_ specific return 実際のリターンからコモンリターンを引いたあたいで、ファクターで説明されない部分のリターンを示す。
-この値は小さくしたい</description>
-    </item>
-    
-    <item>
-      <title>project4_alpha_research_and_factor_modeling</title>
       <link>https://half-broken-engineer.github.io/project4_alpha_research_and_factor_modeling/</link>
       <pubDate>Wed, 01 Feb 2023 00:00:00 +0900</pubDate>
       
@@ -37,15 +21,6 @@ common return ファクターリターンとファクターエクスポージャ
 ファクターリターンの計算 日付をインデックスとして、ティッカーをカラムとするreturnsがあるとき
 from sklearn.decomposition import PCA model = PCA(n_components=num_factor) pca.fit(returns) factor_returns = pca.transform(returns) ファクターエクスポージャーの計算 from sklearn.linear_model import LinearRegression model = LinearRegression() model.fit(factor_returns,portfolio_actual_return) exposure = model.coef_ specific return 実際のリターンからコモンリターンを引いたあたいで、ファクターで説明されない部分のリターンを示す。
 この値は小さくしたい</description>
-    </item>
-    
-    <item>
-      <title>project7_combining_signals_for_enhanced_alpha</title>
-      <link>https://half-broken-engineer.github.io/converted/udacity_ai_for_trading/project7_combining_signals_for_enhanced_alpha/</link>
-      <pubDate>Tue, 24 Jan 2023 00:00:00 +0900</pubDate>
-      
-      <guid>https://half-broken-engineer.github.io/converted/udacity_ai_for_trading/project7_combining_signals_for_enhanced_alpha/</guid>
-      <description>dollar volumeで半年の平均を取って、トップ５００を抽出 NYSEのカレンダー 終値を利用</description>
     </item>
     
     <item>

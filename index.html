@@ -241,7 +241,71 @@
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/rabbitchallenge/deeplearningday4/" aria-label="投稿を開く: DeepLearningDay4">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB/" aria-label="投稿を開く: はじめに">
+      
+          はじめに
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2023-06-26T02:18:24&#43;09:00">
+        
+  
+  
+  
+  
+    2023-06-26
+  
+
+      </time>
+    
+    
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt">
+      
+        <p>知識と情報の整理というか置き場として使ってます。
+あんまり人に見られることを想定していないです…
+Bing AIから参照して要約させたりするためにインターネット上にあげているといっても過言ではない。</p>
+<p>投資関連情報は以下のリンク先から取ってきています
+<a href="https://financialmodelingprep.com/developer/docs/">Data provided by Financial Modeling Prep</a></p>
+<p>obsidian_noteのタグがついているページは、
+他のノートソフトからの自動変換によるページ生成なので、
+数式の行列が複数行が1行に崩れているなど、多少変になっています。</p>
+      
+      <p>
+        
+          <a href="https://half-broken-engineer.github.io/%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB/" class="postShorten-excerpt_link link" aria-label="投稿を開く: はじめに">続きを読む</a>
+        
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+          
+            
+  
+    
+      
+        
+      
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title">
+      
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/deeplearningday4/" aria-label="投稿を開く: DeepLearningDay4">
       
           DeepLearningDay4
         </a>
@@ -278,7 +342,7 @@
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/converted/rabbitchallenge/deeplearningday4/" class="postShorten-excerpt_link link" aria-label="投稿を開く: DeepLearningDay4">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/deeplearningday4/" class="postShorten-excerpt_link link" aria-label="投稿を開く: DeepLearningDay4">続きを読む</a>
         
         
       </p>
@@ -306,21 +370,21 @@
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/transcript/aapl_2023_q2/" aria-label="投稿を開く: AAPL_2023_Q2">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/deeplearningday3/" aria-label="投稿を開く: DeepLearningDay3">
       
-          AAPL_2023_Q2
+          DeepLearningDay3
         </a>
       </h1>
       
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2023-05-04T21:35:32-04:00">
+      <time datetime="2023-03-29T00:00:00&#43;09:00">
         
   
   
   
   
-    2023-05-04
+    2023-03-29
   
 
       </time>
@@ -330,9 +394,7 @@
   
     <span>カテゴリー</span>
     
-      <a class="category-link" href="https://half-broken-engineer.github.io/categories/transcript">transcript</a>, 
-    
-      <a class="category-link" href="https://half-broken-engineer.github.io/categories/earning-call">earning call</a>
+      <a class="category-link" href="https://half-broken-engineer.github.io/categories/rabbitchallenge">RabbitChallenge</a>
     
   
 
@@ -341,12 +403,19 @@
     </div>
     <div class="postShorten-excerpt">
       
-        Operator: Good day, and welcome to the Apple’s Q2 Fiscal Year 2023 Earnings Conference Call. Today&rsquo;s call is being recorded. At this time, for opening remarks and introductions, I would like to turn the call over to Suhasini Chandramouli, Director of Investor Relations. Please go ahead.
-Suhasini Chandramouli : Thank you. Good afternoon and thank you for joining us. Speaking first today is Apple&rsquo;s CEO, Tim Cook; and he&rsquo;ll be followed by CFO, Luca Maestri.
+        再帰型NNの概念 再帰型NN→RNN
+時系列データとは 時間的順序を追って一定間隔ごとに観察され、 相互に統計的依存関係が認められるようなデータの系列
+時系列データの例 音声データ テキストデータ RNNの全体像 （講義スライドより引用）
+$u^t = W_{(in)}x^t + W{z^{t-1}} + b$ $z^t = f(W_{(in)}x^t + Wz^{t-1} + b)$ $v^t = W_{(out)} z^t + c$ $y^t = g(W_{(out)} z^t + c)$
+$W_{(in)}$：入力層から中間層への重み $W_{(out)}$：中間層から出力層への重み
+u[:,t+1] = np.dot(X,W_in) + np.dot(z[:,t].reshape(1,-1),W) + b z[:,t+1] = functions.sigmoid(u[:,t+1]) v = np.dot(z[:,t+1].reshape(1,-1),W_out) y[:,t] = functions.sigmoid(v + c) ※実装上は1次元目がデータ列になるため、重みに対して左から入力を掛ける形になる。
+RNNの特徴 初期の状態と過去の時間t-1の状態を保持し、そこから次の時間でのtを再帰的に求める再帰構造をもつ
+BPTT (Back Propagation Through Time) BPの復習 誤差を微分のチェインルールに従って、誤差から逆算していくことで不要な再起的計算を避けて微分を算出できる。
+BPTTの数学的記述 ※（パラメータ更新と合わせて、実装例と一致するように、数式展開で確認しながら表現変えてます） 誤差関数を3つの重みと２つのバイアスでそれぞれ微分する。
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/converted/transcript/aapl_2023_q2/" class="postShorten-excerpt_link link" aria-label="投稿を開く: AAPL_2023_Q2">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/deeplearningday3/" class="postShorten-excerpt_link link" aria-label="投稿を開く: DeepLearningDay3">続きを読む</a>
         
         
       </p>
@@ -374,21 +443,21 @@ Suhasini Chandramouli : Thank you. Good afternoon and thank you for joining us. 
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/transcript/amzn_2023_q1/" aria-label="投稿を開く: AMZN_2023_Q1">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/deeplearningday2/" aria-label="投稿を開く: DeepLearningDay2">
       
-          AMZN_2023_Q1
+          DeepLearningDay2
         </a>
       </h1>
       
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2023-04-27T19:55:02-04:00">
+      <time datetime="2023-03-25T00:00:00&#43;09:00">
         
   
   
   
   
-    2023-04-27
+    2023-03-25
   
 
       </time>
@@ -398,9 +467,7 @@ Suhasini Chandramouli : Thank you. Good afternoon and thank you for joining us. 
   
     <span>カテゴリー</span>
     
-      <a class="category-link" href="https://half-broken-engineer.github.io/categories/transcript">transcript</a>, 
-    
-      <a class="category-link" href="https://half-broken-engineer.github.io/categories/earning-call">earning call</a>
+      <a class="category-link" href="https://half-broken-engineer.github.io/categories/rabbitchallenge">RabbitChallenge</a>
     
   
 
@@ -409,12 +476,23 @@ Suhasini Chandramouli : Thank you. Good afternoon and thank you for joining us. 
     </div>
     <div class="postShorten-excerpt">
       
-        Operator: Good day, everyone, and welcome to the Amazon.com First Quarter 2023 Financial Results Teleconference. At this time, all participants are in a listen-only mode. After the presentation, we will conduct a question-and-answer session. Today’s call is being recorded. For opening remarks, I will be turning the call over to the Vice President of Investor Relations, Dave Fildes. Thank you, sir. Please go ahead.
-Dave Fildes: Hello, and welcome to our Q1 2023 financial results conference call.
+        要点(最低100字) 勾配消失問題 誤差逆伝播の復習 誤差から微分を逆算していくことで不要な再帰的計算を避けて微分を算出できる
+確認問題１ 勾配消失問題の復習 誤差逆伝播が入力層に進んでいくに連れて勾配がどんどん減衰していくために パラメータ更新が入力層に近い側で進まなくなり、最適値に収束しなくなる現象
+微分値の絶対値が１未満になると減衰していくことになる。
+活性化関数の微分 $(1-sigmoid(x))\cdot sigmoid(x)$ シグモイド関数の微分は最大値が0.25であり、多層になると減衰が進んでいく。 （実装ノートより引用）
+確認問題２ （２）
+活性化関数による勾配消失対策 ReLU関数：勾配消失問題への対応とスパース化で貢献
+（講義スライドより引用） 微分値は正の範囲で１，負の範囲で０
+重みの初期化 Xavierの初期化 手法 正規分布での初期化値を一つ前の層のノード数で割る。（初期の方法でLeCunが提案したもの。） →各レイヤの出力の分散は「$n_{in} \times var_{in} \times var_{out}$」となるので、出力の分散を入力ノード数で割ることで分散を一定にできる。 逆伝播の方向も考慮した、入出力の平均値で割ってスケーリングするのが現在の方法
+network[&#39;W1&#39;] = np.random.randn(input_layer_size, hidden_layer_size) / np.sqrt((input_layer_size+hidden_layer_size)/2) network[&#39;W2&#39;] = np.random.randn(hidden_layer_size, output_layer_size) / np.sqrt((hidden_layer_size+output_layer_size)/2) 対象の活性化関数 sigmoid 双曲線関数 ※Xavierの初期化は0近辺で線形近似できる前提をおいているので、ReLUには使えない。 効果 もともとSigmoidに対して、正規分布で初期化した際は活性化関数への入力が０から外れすぎることで出力が0か1に偏っていたのが、 分散を抑制することで0~1にうまくバラける様になった。
+またネットワーク全体で見たときに各層の分散が一定に保たれる。
+Heの初期化 手法 あるレイヤーを経た後の出力の分散は、ReLU を考慮すると、「1/2 × $n_{in}$ × 入力の分散 × 重みの分散」となります。そこで、Kaiming (He) 初期化では、重みを
+として、標準偏差が $\sqrt{2/n_{in}}$ の正規分布によって初期化
+network[&#39;W1&#39;] = np.random.randn(input_layer_size, hidden_layer_size) / np.
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/converted/transcript/amzn_2023_q1/" class="postShorten-excerpt_link link" aria-label="投稿を開く: AMZN_2023_Q1">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/deeplearningday2/" class="postShorten-excerpt_link link" aria-label="投稿を開く: DeepLearningDay2">続きを読む</a>
         
         
       </p>
@@ -442,21 +520,21 @@ Dave Fildes: Hello, and welcome to our Q1 2023 financial results conference call
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/transcript/meta_2023_q1/" aria-label="投稿を開く: META_2023_Q1">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/project4_alpha_research_and_factor_modeling/" aria-label="投稿を開く: project4_alpha_research_and_factor_modeling">
       
-          META_2023_Q1
+          project4_alpha_research_and_factor_modeling
         </a>
       </h1>
       
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2023-04-26T20:59:04-04:00">
+      <time datetime="2023-02-01T00:00:00&#43;09:00">
         
   
   
   
   
-    2023-04-26
+    2023-02-01
   
 
       </time>
@@ -466,9 +544,7 @@ Dave Fildes: Hello, and welcome to our Q1 2023 financial results conference call
   
     <span>カテゴリー</span>
     
-      <a class="category-link" href="https://half-broken-engineer.github.io/categories/transcript">transcript</a>, 
-    
-      <a class="category-link" href="https://half-broken-engineer.github.io/categories/earning-call">earning call</a>
+      <a class="category-link" href="https://half-broken-engineer.github.io/categories/udacity_ai_for_trading">Udacity_AI_for_Trading</a>
     
   
 
@@ -477,11 +553,18 @@ Dave Fildes: Hello, and welcome to our Q1 2023 financial results conference call
     </div>
     <div class="postShorten-excerpt">
       
-        Operator: Good afternoon. My name is Dave, and I will be your conference operator today. At this time, I would like to welcome everyone to the Meta First Quarter Earnings Conference Call. All lines have been placed on mute to prevent any background noise. After the speakers&rsquo; remarks, there will be a question-and-answer session. [Operator Instructions] This call will be recorded. Thank you very much. Ms. Deborah Crawford, Meta&rsquo;s Vice President of Investor Relations.
+        OverViews
+Overviews Methods Knowledge Factor Covariance Matrix $$F = \frac{1}{N-1} f \cdot f^T　\times annualization_factor$$
+N：要素数 f：ファクターリターン annualization_factor:　252/days_passed
+Actual Retrurn $$r_p = \sum_i^N \beta_i\times f_i + s_p$$
+common return ファクターリターンとファクターエクスポージャの内積
+ファクターリターンの計算 日付をインデックスとして、ティッカーをカラムとするreturnsがあるとき
+from sklearn.decomposition import PCA model = PCA(n_components=num_factor) pca.fit(returns) factor_returns = pca.transform(returns) ファクターエクスポージャーの計算 from sklearn.linear_model import LinearRegression model = LinearRegression() model.fit(factor_returns,portfolio_actual_return) exposure = model.coef_ specific return 実際のリターンからコモンリターンを引いたあたいで、ファクターで説明されない部分のリターンを示す。
+この値は小さくしたい
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/converted/transcript/meta_2023_q1/" class="postShorten-excerpt_link link" aria-label="投稿を開く: META_2023_Q1">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/project4_alpha_research_and_factor_modeling/" class="postShorten-excerpt_link link" aria-label="投稿を開く: project4_alpha_research_and_factor_modeling">続きを読む</a>
         
         
       </p>
@@ -509,21 +592,21 @@ Dave Fildes: Hello, and welcome to our Q1 2023 financial results conference call
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/transcript/goog_2023_q1/" aria-label="投稿を開く: GOOG_2023_Q1">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/deeplearningday1/" aria-label="投稿を開く: DeepLearningDay1">
       
-          GOOG_2023_Q1
+          DeepLearningDay1
         </a>
       </h1>
       
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2023-04-25T21:17:02-04:00">
+      <time datetime="2023-01-28T00:00:00&#43;09:00">
         
   
   
   
   
-    2023-04-25
+    2023-01-28
   
 
       </time>
@@ -533,9 +616,7 @@ Dave Fildes: Hello, and welcome to our Q1 2023 financial results conference call
   
     <span>カテゴリー</span>
     
-      <a class="category-link" href="https://half-broken-engineer.github.io/categories/transcript">transcript</a>, 
-    
-      <a class="category-link" href="https://half-broken-engineer.github.io/categories/earning-call">earning call</a>
+      <a class="category-link" href="https://half-broken-engineer.github.io/categories/rabbitchallenge">RabbitChallenge</a>
     
   
 
@@ -544,12 +625,20 @@ Dave Fildes: Hello, and welcome to our Q1 2023 financial results conference call
     </div>
     <div class="postShorten-excerpt">
       
-        Operator: Welcome, everyone. Thank you for standing by for the Alphabet First Quarter 2023 Earnings Conference Call. [Operator Instructions] I would now like to hand the conference over to your speaker today, Jim Friedland, Director of Investor Relations. Please go ahead.
-Jim Friedland: Thank you. Good afternoon, everyone and welcome to Alphabet’s first quarter 2023 earnings conference call. With us today are Sundar Pichai, Philipp Schindler and Ruth Porat. Now I will quickly cover the Safe Harbor.
+        要点(最低100字) 識別と生成 識別：データを目的別クラスに分類する $P(C_k|x)$：条件Xが与えられた条件の元でのクラスkの確率 高次元から低次元へ 必要な学習データは比較的少ない 応用例 画像認識 生成：特定クラスのデータを生成する $P(x|C_k)$：クラスｋという条件のものとでのデータCkの分布 低次元から高次元へ 必要な学習データが多い 応用例 画像の超解像 テキスト生成 主要なモデル 識別モデル 決定木 ロジスティック回帰 SVM ニューラルネットワーク 生成モデル 隠れマルコフモデル ベイジアンネットワーク VAE GAN DRAW 識別器の開発アプローチ 上から順に学習コストが大→小
+生成モデル的アプローチ ベイズの定理を活用 モデル化の対象 各クラスの生起確率 データのクラス条件付き密度 データを人工的に生成できる 確率的な識別 識別モデル 決定理論に基づき識別結果を得る データがクラスに属する確率をモデル化 確率的な識別 識別関数 入力値ｘを直接クラスに写像（変換）する関数f(x)を推定 データの属するクラス情報のみ（確率は計算されない） 決定的な識別 生成モデルと識別モデルの比較 生成モデルのアプローチではより複雑なデータ分布を学習しようとするので、計算量が多い。
+（講義ビデオより引用）
+識別モデルと識別関数 モデルは推論結果の取り扱いを変更でき、間違いの程度も評価できるが 識別関数ではそれらが出来ない。結果を一足飛びに得る。
+（講義ビデオより引用）
+深層学習の強み：万能近似定理 万能近似定理：活性化関数をもつネットワークを使うことで、どんな関数でも近似できるという定理 これまでの機械学習では人間が関数を設計していた ノーフリーランチの定理
+ニューラルネットの数学的表現 (ラビットチャレンジの深層学習day1講義資料より引用)
+回帰と分類の違い 回帰：連続する実数値を取る関数の近似 分類：離散的な結果を予想するための分析
+線形と非線形の違い 線形な関数は以下の性質を持つが、非線形関数は持たない。
+加法性:$f(a+b) = f(a) + f(b)$ 斉次性$f(ka) = k\times f(a)$ 活性化関数 ステップ関数 def step_func(x): if x &gt; 0: return 1 else: return 0 問題点：線形分離可能なものしか学習出来なかった
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/converted/transcript/goog_2023_q1/" class="postShorten-excerpt_link link" aria-label="投稿を開く: GOOG_2023_Q1">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/deeplearningday1/" class="postShorten-excerpt_link link" aria-label="投稿を開く: DeepLearningDay1">続きを読む</a>
         
         
       </p>
@@ -577,21 +666,21 @@ Jim Friedland: Thank you. Good afternoon, everyone and welcome to Alphabet’s f
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/transcript/msft_2023_q3/" aria-label="投稿を開く: MSFT_2023_Q3">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/machinelearning/" aria-label="投稿を開く: MachineLearning">
       
-          MSFT_2023_Q3
+          MachineLearning
         </a>
       </h1>
       
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2023-04-25T21:15:21-04:00">
+      <time datetime="2023-01-26T00:00:00&#43;09:00">
         
   
   
   
   
-    2023-04-25
+    2023-01-26
   
 
       </time>
@@ -601,9 +690,7 @@ Jim Friedland: Thank you. Good afternoon, everyone and welcome to Alphabet’s f
   
     <span>カテゴリー</span>
     
-      <a class="category-link" href="https://half-broken-engineer.github.io/categories/transcript">transcript</a>, 
-    
-      <a class="category-link" href="https://half-broken-engineer.github.io/categories/earning-call">earning call</a>
+      <a class="category-link" href="https://half-broken-engineer.github.io/categories/rabbitchallenge">RabbitChallenge</a>
     
   
 
@@ -612,79 +699,16 @@ Jim Friedland: Thank you. Good afternoon, everyone and welcome to Alphabet’s f
     </div>
     <div class="postShorten-excerpt">
       
-        Operator: Greetings, and welcome to the Microsoft Fiscal Year 2023 Third Quarter Earnings Conference Call. At this time, all participants are in a listen-only mode. A question-and-answer session will follow the formal presentation. [Operator Instructions] As a reminder, this conference is being recorded. I would now like to turn the conference over to your host, Brett Iversen, Vice President of Investor Relations. Please go ahead.
-Brett Iversen: Good afternoon, and thank you for joining us today.
+        要点(最低100字) 機械学習モデリングプロセス 問題設定 データ選定 前処理 機械学習モデル剪定 モデルの学習 モデルの評価 ルールベースと機械学習の比較 タスクTと性能指標Pがあるときに、性能が経験Eによって改善されるとき、 タスクTおよび性能指標Pに関して経験E から学習すると言われる
+人がプログラムするのは学習の仕方　（認識の仕方では無い） ルールベースは認識の仕方自体をプログラムする。
+主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。
+線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式
+直線、平面→線形回帰 曲線、局面→非線形
+線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\hat{y} = w_0 + \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/converted/transcript/msft_2023_q3/" class="postShorten-excerpt_link link" aria-label="投稿を開く: MSFT_2023_Q3">続きを読む</a>
-        
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-            
-  
-    
-      
-        
-      
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-bottom">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title">
-      
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/transcript/tsla_2023_q1/" aria-label="投稿を開く: TSLA_2023_Q1">
-      
-          TSLA_2023_Q1
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time datetime="2023-04-19T18:54:06-04:00">
-        
-  
-  
-  
-  
-    2023-04-19
-  
-
-      </time>
-    
-    
-  
-  
-    <span>カテゴリー</span>
-    
-      <a class="category-link" href="https://half-broken-engineer.github.io/categories/transcript">transcript</a>, 
-    
-      <a class="category-link" href="https://half-broken-engineer.github.io/categories/earning-call">earning call</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt">
-      
-        Martin Viecha: Good afternoon, everyone, and welcome to Tesla&rsquo;s First Quarter 2023 Q&amp;A Webcast. My name is Martin Viecha, VP of Investor Relations and I&rsquo;m joined today by Elon Musk, Zachary Kirkhorn, and a number of other executives. Our Q1 results were announced at about 3:00 P.M. Central Time in the update deck we published at the same link as this webcast. During this call, we will discuss our business outlook and make forward-looking statements.
-      
-      <p>
-        
-          <a href="https://half-broken-engineer.github.io/converted/transcript/tsla_2023_q1/" class="postShorten-excerpt_link link" aria-label="投稿を開く: TSLA_2023_Q1">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/machinelearning/" class="postShorten-excerpt_link link" aria-label="投稿を開く: MachineLearning">続きを読む</a>
         
         
       </p>
@@ -708,7 +732,7 @@ Brett Iversen: Good afternoon, and thank you for joining us today.
           </li>
         
       
-      <li class="pagination-number">page 1 / 25</li>
+      <li class="pagination-number">page 1 / 2</li>
     </ul>
   </div>
 

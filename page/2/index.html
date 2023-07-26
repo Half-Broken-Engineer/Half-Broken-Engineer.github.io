@@ -241,21 +241,21 @@
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/rabbitchallenge/deeplearningday3/" aria-label="投稿を開く: DeepLearningDay3">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/appliedmathematics/" aria-label="投稿を開く: AppliedMathematics">
       
-          DeepLearningDay3
+          AppliedMathematics
         </a>
       </h1>
       
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2023-03-29T00:00:00&#43;09:00">
+      <time datetime="2023-01-25T00:00:00&#43;09:00">
         
   
   
   
   
-    2023-03-29
+    2023-01-25
   
 
       </time>
@@ -274,19 +274,22 @@
     </div>
     <div class="postShorten-excerpt">
       
-        再帰型NNの概念 再帰型NN→RNN
-時系列データとは 時間的順序を追って一定間隔ごとに観察され、 相互に統計的依存関係が認められるようなデータの系列
-時系列データの例 音声データ テキストデータ RNNの全体像 （講義スライドより引用）
-$u^t = W_{(in)}x^t + W{z^{t-1}} + b$ $z^t = f(W_{(in)}x^t + Wz^{t-1} + b)$ $v^t = W_{(out)} z^t + c$ $y^t = g(W_{(out)} z^t + c)$
-$W_{(in)}$：入力層から中間層への重み $W_{(out)}$：中間層から出力層への重み
-u[:,t+1] = np.dot(X,W_in) + np.dot(z[:,t].reshape(1,-1),W) + b z[:,t+1] = functions.sigmoid(u[:,t+1]) v = np.dot(z[:,t+1].reshape(1,-1),W_out) y[:,t] = functions.sigmoid(v + c) ※実装上は1次元目がデータ列になるため、重みに対して左から入力を掛ける形になる。
-RNNの特徴 初期の状態と過去の時間t-1の状態を保持し、そこから次の時間でのtを再帰的に求める再帰構造をもつ
-BPTT (Back Propagation Through Time) BPの復習 誤差を微分のチェインルールに従って、誤差から逆算していくことで不要な再起的計算を避けて微分を算出できる。
-BPTTの数学的記述 ※（パラメータ更新と合わせて、実装例と一致するように、数式展開で確認しながら表現変えてます） 誤差関数を3つの重みと２つのバイアスでそれぞれ微分する。
+        要点(最低100字) 目次 線形代数 確率・統計 情報理論 線形代数 固有値・固有ベクトルの求め方 固有値分解とは 特異値・特位置ベクトルの概要 特異値分解について 固有値・固有ベクトル 固有ベクトルは対応する行列をかけた際に、ベクトルの方向が変わらないベクトル。 固有値は固有ベクトルに行列をかけたときに何倍になるかを示す。
+$$A\vec{a}=\lambda\vec{a} \tag{1}$$ のとき、$\vec{a}$が固有ベクトル、λが固有値
+求め方は固有方程式で固有値を求めたあと、固有値を（１）式に代入して連立方程式を解く。
+固有ベクトルの大きさについては１にしておくのが一般的。（※後の特異値を求めるときにそちらのほうが都合が良い）
+固有値分解 固有値ベクトルを列ベクトルに持つ行列Vと、対応する固有値を対角成分に持つ対角行列Λを用いて行列Aは以下の式に分解できる。
+$$ A = V\Lambda V^{-1} \tag{2}$$
+プログラミング的には、対角行列の演算負荷が低いことから、計算速度向上、リソース節約につながる。
+import numpy as np values,vectors = np.linalg.eig(matrix) 特異値・特異ベクトル 固有値については正方行列のみしか扱えなかったが、これをm×nの行列に拡張したもの。
+Uの列ベクトルを左特異ベクトル、、Vの列ベクトルを右特異ベクトルという。 Σの対角成分は特異値という。 ※このとき、ベクトルのノルムは１、σ&gt;0,特異値の数はmin(m,n)となる。今回はｍ＜ｎとした。
+$$ A = U\Sigma V^{\top} \tag{3}$$
+$$A\vec{v}=\sigma\vec{u} \tag{4}$$
+$$A^\top\vec{u}=\sigma\vec{v} \tag{5}$$ $\sum =$ $$ \begin{pmatrix} \sigma_{1} &amp; 0 &amp; \dots &amp; &amp; &amp;0 \ 0&amp;\sigma_{2}&amp; 0 &amp; \dots &amp; &amp;0\ 0 &amp; 0 &amp;\ddots&amp;0 &amp;\dots&amp;\vdots\ \vdots&amp;\dots&amp;0&amp;\sigma_m&amp;0&amp;\dots \end{pmatrix} $$
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/converted/rabbitchallenge/deeplearningday3/" class="postShorten-excerpt_link link" aria-label="投稿を開く: DeepLearningDay3">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/appliedmathematics/" class="postShorten-excerpt_link link" aria-label="投稿を開く: AppliedMathematics">続きを読む</a>
         
         
       </p>
@@ -314,21 +317,21 @@ BPTTの数学的記述 ※（パラメータ更新と合わせて、実装例と
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/rabbitchallenge/deeplearningday2/" aria-label="投稿を開く: DeepLearningDay2">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/rabbitchallenge/" aria-label="投稿を開く: RabbitChallenge">
       
-          DeepLearningDay2
+          RabbitChallenge
         </a>
       </h1>
       
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2023-03-25T00:00:00&#43;09:00">
+      <time datetime="2023-01-25T00:00:00&#43;09:00">
         
   
   
   
   
-    2023-03-25
+    2023-01-25
   
 
       </time>
@@ -347,23 +350,17 @@ BPTTの数学的記述 ※（パラメータ更新と合わせて、実装例と
     </div>
     <div class="postShorten-excerpt">
       
-        要点(最低100字) 勾配消失問題 誤差逆伝播の復習 誤差から微分を逆算していくことで不要な再帰的計算を避けて微分を算出できる
-確認問題１ 勾配消失問題の復習 誤差逆伝播が入力層に進んでいくに連れて勾配がどんどん減衰していくために パラメータ更新が入力層に近い側で進まなくなり、最適値に収束しなくなる現象
-微分値の絶対値が１未満になると減衰していくことになる。
-活性化関数の微分 $(1-sigmoid(x))\cdot sigmoid(x)$ シグモイド関数の微分は最大値が0.25であり、多層になると減衰が進んでいく。 （実装ノートより引用）
-確認問題２ （２）
-活性化関数による勾配消失対策 ReLU関数：勾配消失問題への対応とスパース化で貢献
-（講義スライドより引用） 微分値は正の範囲で１，負の範囲で０
-重みの初期化 Xavierの初期化 手法 正規分布での初期化値を一つ前の層のノード数で割る。（初期の方法でLeCunが提案したもの。） →各レイヤの出力の分散は「$n_{in} \times var_{in} \times var_{out}$」となるので、出力の分散を入力ノード数で割ることで分散を一定にできる。 逆伝播の方向も考慮した、入出力の平均値で割ってスケーリングするのが現在の方法
-network[&#39;W1&#39;] = np.random.randn(input_layer_size, hidden_layer_size) / np.sqrt((input_layer_size+hidden_layer_size)/2) network[&#39;W2&#39;] = np.random.randn(hidden_layer_size, output_layer_size) / np.sqrt((hidden_layer_size+output_layer_size)/2) 対象の活性化関数 sigmoid 双曲線関数 ※Xavierの初期化は0近辺で線形近似できる前提をおいているので、ReLUには使えない。 効果 もともとSigmoidに対して、正規分布で初期化した際は活性化関数への入力が０から外れすぎることで出力が0か1に偏っていたのが、 分散を抑制することで0~1にうまくバラける様になった。
-またネットワーク全体で見たときに各層の分散が一定に保たれる。
-Heの初期化 手法 あるレイヤーを経た後の出力の分散は、ReLU を考慮すると、「1/2 × $n_{in}$ × 入力の分散 × 重みの分散」となります。そこで、Kaiming (He) 初期化では、重みを
-として、標準偏差が $\sqrt{2/n_{in}}$ の正規分布によって初期化
-network[&#39;W1&#39;] = np.random.randn(input_layer_size, hidden_layer_size) / np.
+         ラビット★チャレンジ : よくある質問（受講者用）
+修了要件 以下3つの条件をみたすことで修了者ナンバーを受領できる。受験の際にはそのナンバーが必要になる。
+シラバス変更後も2年間は有効。
+ビデオ学習 レポート全提出 認定テスト合格 実行環境 GoogleColaboratory
+レポート作成 各章につき100文字以上で要点をまとめ、実装演習結果、確認テストについての自身の考察を入れる 各科目の基準点が足りない場合や、実装演習が不足する場合は差し戻し レポートは、「機械学習」「深層学習day1」等 科目ごとに１つのレポート レポートの確認（受理完了）は、約3～7営業日程いただいております。 ※修了認定間際のレポート提出は、万が一何か不備があった場合でも事務局からの差し戻しができず、 軽微なミスでも不合格となったり修了認定が出来なくなることがございます。 余裕を持った学習計画を立てた上で取り組みをお願いいたします。 形式：PDF 提出方法：各種レポート提出フォーム［PDF版］ラビット受講生専用 実装演習 基本的に実装演習コードにそって行う。
+デバッグ Python主要エラーを参考にpythonコードはデバッグする。
+参考サイト Stack overflow回答は英語。私はほとんどこれを読んで解決します Stack overflow(日本語)最近出てきた。まだ検索で引っかかることは少ない 質問してみても良いかも QA@IT日本語Q&amp;Aサイト。見たことがない teratail【テラテイル】｜ITエンジニア特化型Q&amp;Aサイト 日本のPythonコミュニティ - python.jp GIthubのIssue 
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/converted/rabbitchallenge/deeplearningday2/" class="postShorten-excerpt_link link" aria-label="投稿を開く: DeepLearningDay2">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/rabbitchallenge/" class="postShorten-excerpt_link link" aria-label="投稿を開く: RabbitChallenge">続きを読む</a>
         
         
       </p>
@@ -391,21 +388,21 @@ network[&#39;W1&#39;] = np.random.randn(input_layer_size, hidden_layer_size) / n
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/g_certification/google%E3%81%AE%E7%8C%AB/" aria-label="投稿を開く: Googleの猫">
+        <a class="link-unstyled" href="https://half-broken-engineer.github.io/project7_combining_signals_for_enhanced_alpha/" aria-label="投稿を開く: project7_combining_signals_for_enhanced_alpha">
       
-          Googleの猫
+          project7_combining_signals_for_enhanced_alpha
         </a>
       </h1>
       
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2023-03-01T00:00:00&#43;09:00">
+      <time datetime="2023-01-24T00:00:00&#43;09:00">
         
   
   
   
   
-    2023-03-01
+    2023-01-24
   
 
       </time>
@@ -415,7 +412,7 @@ network[&#39;W1&#39;] = np.random.randn(input_layer_size, hidden_layer_size) / n
   
     <span>カテゴリー</span>
     
-      <a class="category-link" href="https://half-broken-engineer.github.io/categories/g_certification">G_Certification</a>
+      <a class="category-link" href="https://half-broken-engineer.github.io/categories/udacity_ai_for_trading">Udacity_AI_for_Trading</a>
     
   
 
@@ -424,278 +421,11 @@ network[&#39;W1&#39;] = np.random.randn(input_layer_size, hidden_layer_size) / n
     </div>
     <div class="postShorten-excerpt">
       
-        2012年、猫の概念とみられる画像の抽出
+        dollar volumeで半年の平均を取って、トップ５００を抽出 NYSEのカレンダー 終値を利用
       
       <p>
         
-          <a href="https://half-broken-engineer.github.io/converted/g_certification/google%E3%81%AE%E7%8C%AB/" class="postShorten-excerpt_link link" aria-label="投稿を開く: Googleの猫">続きを読む</a>
-        
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-            
-  
-    
-      
-        
-      
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-bottom">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title">
-      
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/g_certification/wsc/" aria-label="投稿を開く: WSC">
-      
-          WSC
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time datetime="2023-03-01T00:00:00&#43;09:00">
-        
-  
-  
-  
-  
-    2023-03-01
-  
-
-      </time>
-    
-    
-  
-  
-    <span>カテゴリー</span>
-    
-      <a class="category-link" href="https://half-broken-engineer.github.io/categories/g_certification">G_Certification</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt">
-      
-        WSC(WinogradSchemaChallenge)は類似した2対の文章から構成される代名詞照応解析のデータセットであり,人間には簡単に解けるが人工知能では従来の統語的手がかりだけでは解くのが困黄である特徴がある.
-      
-      <p>
-        
-          <a href="https://half-broken-engineer.github.io/converted/g_certification/wsc/" class="postShorten-excerpt_link link" aria-label="投稿を開く: WSC">続きを読む</a>
-        
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-            
-  
-    
-      
-        
-      
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-bottom">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title">
-      
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/g_certification/%E3%82%A2%E3%83%B3%E3%82%B5%E3%83%B3%E3%83%96%E3%83%AB%E5%AD%A6%E7%BF%92/" aria-label="投稿を開く: アンサンブル学習">
-      
-          アンサンブル学習
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time datetime="2023-03-01T00:00:00&#43;09:00">
-        
-  
-  
-  
-  
-    2023-03-01
-  
-
-      </time>
-    
-    
-  
-  
-    <span>カテゴリー</span>
-    
-      <a class="category-link" href="https://half-broken-engineer.github.io/categories/g_certification">G_Certification</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt">
-      
-         目的：予測精度の向上 バイアス：真値と予測値の誤差 バリアンス：予測値の散らばり具合
-メリットとデメリット メリット 弱学習器を使える 精度が上がる デメリット 構築に時間がかかる バイアスとバリアンスのトレードオフの調整が困難 主な種類 バギング 概要 全体から重複を許してランダムサンプリング(ブートストラップサンプリング )して それぞれのサンプルごとに個別のモデルを学習して
-回帰なら平均値 分類なら多数決 の結果を全体の出力とする 主なモデルとしては ランダムフォレスト が上げられる (ブートストラップサンプリング – 【AI・機械学習用語集】より引用)
-メリット 複数の弱学習器を使うことからバリアンスを抑えることができ、過学習を避けやすい 並列に処理できるため学習時間が短い デメリット 精度向上自体はブートストラップサンプリングの多様性に依存するため思った程は無い (注意点)データのサンプリングをしすぎると結局バリアンスが高くなってしまい過学習に繋がる可能性がある ブースティング 概要 バギングと異なりすべてのデータを利用する。 モデルの学習結果を受けてデータの重み付けを行い、 前のモデルの弱点を克服するモデルを順次学習して、 最終的に集計した結果を用いる。
-(アンサンブル学習を超わかりやすく解説【機械学習入門30】より引用）
-メリット モデルの弱点を克服するように学習していくのでバイアスが下がりやすい デメリット 同じデータを何度も使うため、過学習に陥りやすい スタッキング 概要 複数のモデルの結果を入力として学習するメタモデルを積み重ねていく手法 ２層より増やすこともある。 各モデルのバイアス、バリアンスのバランスを調整して最終的に高い精度を出すことができる。 メリット 様々な計算方法を目的に合わせて使用できるため、精度が上がりやすい デメリット 複数モデルを作り、その上でメタモデルも学習するので学習コストが大きい 
-      
-      <p>
-        
-          <a href="https://half-broken-engineer.github.io/converted/g_certification/%E3%82%A2%E3%83%B3%E3%82%B5%E3%83%B3%E3%83%96%E3%83%AB%E5%AD%A6%E7%BF%92/" class="postShorten-excerpt_link link" aria-label="投稿を開く: アンサンブル学習">続きを読む</a>
-        
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-            
-  
-    
-      
-        
-      
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-bottom">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title">
-      
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/g_certification/%E7%95%B0%E5%B8%B8%E6%A4%9C%E7%9F%A5/" aria-label="投稿を開く: 異常検知">
-      
-          異常検知
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time datetime="2023-03-01T00:00:00&#43;09:00">
-        
-  
-  
-  
-  
-    2023-03-01
-  
-
-      </time>
-    
-    
-  
-  
-    <span>カテゴリー</span>
-    
-      <a class="category-link" href="https://half-broken-engineer.github.io/categories/g_certification">G_Certification</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt">
-      
-        検知したい異常が正解以外のもの→教師あり学習 外れ値、離れ値→教師無し学習
-      
-      <p>
-        
-          <a href="https://half-broken-engineer.github.io/converted/g_certification/%E7%95%B0%E5%B8%B8%E6%A4%9C%E7%9F%A5/" class="postShorten-excerpt_link link" aria-label="投稿を開く: 異常検知">続きを読む</a>
-        
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-            
-  
-    
-      
-        
-      
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-bottom">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title">
-      
-        <a class="link-unstyled" href="https://half-broken-engineer.github.io/converted/g_certification/%E9%9A%8E%E5%B1%A4%E7%9A%84%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A8%E6%A7%8B%E9%80%A0%E7%9A%84%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/" aria-label="投稿を開く: 階層的ニューラルネットワークと構造的ニューラルネットワーク">
-      
-          階層的ニューラルネットワークと構造的ニューラルネットワーク
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time datetime="2023-03-01T00:00:00&#43;09:00">
-        
-  
-  
-  
-  
-    2023-03-01
-  
-
-      </time>
-    
-    
-  
-  
-    <span>カテゴリー</span>
-    
-      <a class="category-link" href="https://half-broken-engineer.github.io/categories/g_certification">G_Certification</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt">
-      
-        階層的ニューラルネットワーク：CNNなどのシュルちょくが一意に求まる確定的ニューラルネットと対応
-構造的ニューラルネットワーク：ボルツマンマシンなど、出力が確率的な確率的ニューラルネットワークに対応
-ボルツマンマシン：組み合わせ爆発問題に対応するために制限ボルツマンマシンが生まれた
-      
-      <p>
-        
-          <a href="https://half-broken-engineer.github.io/converted/g_certification/%E9%9A%8E%E5%B1%A4%E7%9A%84%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A8%E6%A7%8B%E9%80%A0%E7%9A%84%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/" class="postShorten-excerpt_link link" aria-label="投稿を開く: 階層的ニューラルネットワークと構造的ニューラルネットワーク">続きを読む</a>
+          <a href="https://half-broken-engineer.github.io/project7_combining_signals_for_enhanced_alpha/" class="postShorten-excerpt_link link" aria-label="投稿を開く: project7_combining_signals_for_enhanced_alpha">続きを読む</a>
         
         
       </p>
@@ -718,15 +448,8 @@ network[&#39;W1&#39;] = np.random.randn(input_layer_size, hidden_layer_size) / n
           </li>
         
         
-          <li class="pagination-next">
-            <a class="btn btn--default btn--small" href="https://half-broken-engineer.github.io/page/3/" aria-label="古い投稿">
-              <span>古い投稿</span>
-              <i class="fa fa-angle-right text-base icon-ml"></i>
-            </a>
-          </li>
-        
       
-      <li class="pagination-number">page 2 / 25</li>
+      <li class="pagination-number">page 2 / 2</li>
     </ul>
   </div>
 
