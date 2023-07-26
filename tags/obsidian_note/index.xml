@@ -306,7 +306,7 @@ Tensorflow:Google keras:tensorflowのラッパーのライブラリ Caffe:BVLC�
 主なモデル 教師あり学習 回帰 線形回帰・非線形回帰：最小二乗法、尤度最適化 分類 ロジスティック回帰；尤度最大化 最近傍・K-近傍アルゴリズム SVM：マージン最大化 教師なし学習 クラスタリング K-Means 次元削減 主成分分析：分散最大化 回帰問題 入力（説明変数、特徴量）から出力（目的変数）を予測する問題 一般的に、外挿問題（学習データに含まれない範囲の値域）での予測の精度が下がる。 どの学習方法でも共通。
 線形回帰 線形とは→ざっくりというと比例。　n次元の超平面の方程式
 直線、平面→線形回帰 曲線、局面→非線形
-線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\hat{y} = w_0 + \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取ると\n\n$$\frac{\partial MSE}{\partial \vec{w}} = 0$$ $$\frac{\partial MSE}{\partial \vec{w}} = \frac{1}{n_{train}}\frac{\partial}{\partial \vec{w}}(X・\vec{w}-Y)^2$$</description>
+線形回帰に関連する値 教師データに含まれるもの 入力$\vec{x} = (x_1,x_2,\dots,x_m)^\top \in R^m$ 出力$y\in R$ 学習によって最適化していくもの パラメータ$\vec{w} = (w_1,w_2,\dots,w_m)^\top \in R^m$$ 切片$w_0$ 学習の際に使う値 予測値$\hat{y} = w_0 + \sum_{i=1}^n \vec{w}^\top \vec{x}$　（※データセットで考えるときは$\vec{\hat{y}} = X・\vec{w}$） 誤差$\epsilon = y - \hat{y}$ 線形回帰の最適化手法(最尤法) 最小２乗誤差　$MSE = \frac{1}{n_{train}}\sum(y-\hat{y})^2$ を用いて最適化する。 $\hat{\vec{w}} = arg \min_{w \in R^m} MSE$ MSEが最小値を取るとき</description>
     </item>
     
     <item>
@@ -319,11 +319,14 @@ Tensorflow:Google keras:tensorflowのラッパーのライブラリ Caffe:BVLC�
 $$A\vec{a}=\lambda\vec{a} \tag{1}$$ のとき、$\vec{a}$が固有ベクトル、λが固有値
 求め方は固有方程式で固有値を求めたあと、固有値を（１）式に代入して連立方程式を解く。
 固有ベクトルの大きさについては１にしておくのが一般的。（※後の特異値を求めるときにそちらのほうが都合が良い）
-固有値分解 固有値ベクトルを列ベクトルに持つ行列Vと、対応する固有値を対角成分に持つ対角行列Λを用いて行列Aは以下の式に分解できる。 $$ A = V\Lambda V^{-1} \tag{2}$$
+固有値分解 固有値ベクトルを列ベクトルに持つ行列Vと、対応する固有値を対角成分に持つ対角行列Λを用いて行列Aは以下の式に分解できる。
+$$ A = V\Lambda V^{-1} \tag{2}$$
 プログラミング的には、対角行列の演算負荷が低いことから、計算速度向上、リソース節約につながる。
 import numpy as np values,vectors = np.linalg.eig(matrix) 特異値・特異ベクトル 固有値については正方行列のみしか扱えなかったが、これをm×nの行列に拡張したもの。
 Uの列ベクトルを左特異ベクトル、、Vの列ベクトルを右特異ベクトルという。 Σの対角成分は特異値という。 ※このとき、ベクトルのノルムは１、σ&amp;gt;0,特異値の数はmin(m,n)となる。今回はｍ＜ｎとした。
-$$ A = U\Sigma V^{\top} \tag{3}$$ $$A\vec{v}=\sigma\vec{u} \tag{4}$$ $$A^\top\vec{u}=\sigma\vec{v} \tag{5}$$ $\sum =$ $$ \begin{pmatrix} \sigma_{1} &amp;amp; 0 &amp;amp; \dots &amp;amp; &amp;amp; &amp;amp;0 \ 0&amp;amp;\sigma_{2}&amp;amp; 0 &amp;amp; \dots &amp;amp; &amp;amp;0\ 0 &amp;amp; 0 &amp;amp;\ddots&amp;amp;0 &amp;amp;\dots&amp;amp;\vdots\ \vdots&amp;amp;\dots&amp;amp;0&amp;amp;\sigma_m&amp;amp;0&amp;amp;\dots \end{pmatrix} $$</description>
+$$ A = U\Sigma V^{\top} \tag{3}$$
+$$A\vec{v}=\sigma\vec{u} \tag{4}$$
+$$A^\top\vec{u}=\sigma\vec{v} \tag{5}$$ $\sum =$ $$ \begin{pmatrix} \sigma_{1} &amp;amp; 0 &amp;amp; \dots &amp;amp; &amp;amp; &amp;amp;0 \ 0&amp;amp;\sigma_{2}&amp;amp; 0 &amp;amp; \dots &amp;amp; &amp;amp;0\ 0 &amp;amp; 0 &amp;amp;\ddots&amp;amp;0 &amp;amp;\dots&amp;amp;\vdots\ \vdots&amp;amp;\dots&amp;amp;0&amp;amp;\sigma_m&amp;amp;0&amp;amp;\dots \end{pmatrix} $$</description>
     </item>
     
     <item>

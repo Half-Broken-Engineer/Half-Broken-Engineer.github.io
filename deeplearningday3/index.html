@@ -400,12 +400,12 @@ $W_{(out)}$：中間層から出力層への重み</p>
 <p>誤差を微分のチェインルールに従って、誤差から逆算していくことで不要な再起的計算を避けて微分を算出できる。</p>
 <h4 id="bpttの数学的記述">BPTTの数学的記述</h4>
 <p>※（パラメータ更新と合わせて、実装例と一致するように、数式展開で確認しながら表現変えてます）
-誤差関数を3つの重みと２つのバイアスでそれぞれ微分する。
-$$\frac{\partial E^t}{\partial W_{(in)}} = \frac{\partial E^t}{\partial u^t}\left[\frac{\partial u^t}{\partial W_{(in)}}\right]^T = \sum_{0\leq k \leq t} \delta^{k}\cdot x^{k}$$
-$$\frac{\partial E^t}{\partial W_{(out)}} = \frac{\partial E^t}{\partial v^t}\frac{\partial v^t}{\partial W_{(out)}} = \delta^{out, t}\cdot z^t$$
-$$\frac{\partial E^t}{\partial W} = \frac{\partial E^t}{\partial u^t}\left[\frac{\partial u^t}{\partial W}\right]^T= \sum_{0\leq k \leq t} \delta^{k}\cdot z^{k-1}$$
-$$\frac{\partial E^t}{\partial b} = \frac{\partial E^t}{\partial u^t} \left[\frac{\partial u^t}{\partial b}\right]^T = \sum_{0\leq k \leq t} \delta^{k}$$
-$$\frac{\partial E^t}{\partial c} = \frac{\partial E^t}{\partial v^t} \frac{\partial v^t}{\partial c} = \delta^{out, t} \cdot 1 = \delta^{out, t}$$
+誤差関数を3つの重みと２つのバイアスでそれぞれ微分する。</p>
+<p>$$\frac{\partial E^t}{\partial W_{(in)}} = \frac{\partial E^t}{\partial u^t}\left[\frac{\partial u^t}{\partial W_{(in)}}\right]^T = \sum_{0\leq k \leq t} \delta^{k}\cdot x^{k}$$</p>
+<p>$$\frac{\partial E^t}{\partial W_{(out)}} = \frac{\partial E^t}{\partial v^t}\frac{\partial v^t}{\partial W_{(out)}} = \delta^{out, t}\cdot z^t$$</p>
+<p>$$\frac{\partial E^t}{\partial W} = \frac{\partial E^t}{\partial u^t}\left[\frac{\partial u^t}{\partial W}\right]^T= \sum_{0\leq k \leq t} \delta^{k}\cdot z^{k-1}$$</p>
+<p>$$\frac{\partial E^t}{\partial b} = \frac{\partial E^t}{\partial u^t} \left[\frac{\partial u^t}{\partial b}\right]^T = \sum_{0\leq k \leq t} \delta^{k}$$</p>
+<p>$$\frac{\partial E^t}{\partial c} = \frac{\partial E^t}{\partial v^t} \frac{\partial v^t}{\partial c} = \delta^{out, t} \cdot 1 = \delta^{out, t}$$
 ※$\delta^t = \frac{\partial E}{\partial u^t}$ ,$\delta^{out, t} = \frac{\partial E}{\partial v^t}$とおいている。$\left[\right]^T$は転置ではなく、時間に遡って微分という意味。新しい処理が入ったというよりも、$u_t$にかかわるパラメータは過去時刻の中間層出力ｚを介して時間を遡る必要があることを明示しているだけ。</p>
 <p>$$
 \frac{\partial E^t}{\partial u^t} = \frac{\partial E^t}{\partial v^t} \frac{\partial v^t}{\partial u^t}=\frac{\partial E^t}{\partial v^t} \frac{\partial{W_{(out)}f(u^t) + c}}{\partial u^t} = \delta^{out, t} f&rsquo;(u^t)W^T_{(out)} = \delta^t
@@ -422,26 +422,26 @@ $$</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">２で割ってればわからなくも無いがあえてやる必要も無いと思う。
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
 </span></span></code></pre></div><p>中間層～中間層の重みと入力層の重みは時間的に遡って誤差を逆伝播させるので、前の時間との関係式を確認
-する。
-$$
+する。</p>
+<p>$$
 \delta^{t-1} = \frac{\partial E^t}{\partial u^{t-1}} = \frac{\partial E^t}{\partial u^t} \frac{\partial u^t}{\partial u^{t-1}}
-$$
-$$
+$$</p>
+<p>$$
 = \delta^t\left{
 \frac{\partial u^t}{\partial z^{t-1}} \frac{\partial z^{t-1}}{\partial u^{t-1}}
 \right} = \delta^t {W f&rsquo;(u^{t-1})}
-$$
-$$
+$$</p>
+<p>$$
 \delta^{t-k-1} = \delta^{t-k}{Wf&rsquo;(u^{t-k-1})}
 $$
 ※kはt-1以下の任意の定数</p>
 <h3 id="パラメータ更新">パラメータ更新</h3>
 <p>上の式で各時刻tに対して行っていたのを全域にわたって和を取ってパラメータ更新する。</p>
-<p>$$W^{new}<em>{(in)} = W^{old}</em>{(in)} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E^t}{\partial W_{(in)}} = W^{old}<em>{(in)} - \epsilon \sum</em>{0\leq t \leq \tau} \sum_{0\leq k \leq t} \delta^{k}\cdot x^{k}$$
-$$W^{new}<em>{(out)} = W^{old}</em>{(out)} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E^t}{\partial W_{(out)}} = W^{old}<em>{(out)} - \epsilon \sum</em>{0\leq t \leq \tau}\delta^{out, t}z^t$$
-$$W^{new} = W^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partial W} = W^{old} - \epsilon \sum_{0\leq t \leq \tau} \sum_{0\leq k \leq t} \delta^{k}\cdot z^{k-1}$$
-$$b^{new} = b^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partial b} = b^{old} - \epsilon \sum_{0\leq t \leq \tau} \sum_{0\leq k \leq t} \delta^{k}$$
-$$c^{new} = c^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partial c} = c^{old} - \epsilon \sum_{0\leq t \leq \tau}\delta^{out, t}$$</p>
+<p>$$W^{new}<em>{(in)} = W^{old}</em>{(in)} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E^t}{\partial W_{(in)}} = W^{old}<em>{(in)} - \epsilon \sum</em>{0\leq t \leq \tau} \sum_{0\leq k \leq t} \delta^{k}\cdot x^{k}$$</p>
+<p>$$W^{new}<em>{(out)} = W^{old}</em>{(out)} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E^t}{\partial W_{(out)}} = W^{old}<em>{(out)} - \epsilon \sum</em>{0\leq t \leq \tau}\delta^{out, t}z^t$$</p>
+<p>$$W^{new} = W^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partial W} = W^{old} - \epsilon \sum_{0\leq t \leq \tau} \sum_{0\leq k \leq t} \delta^{k}\cdot z^{k-1}$$</p>
+<p>$$b^{new} = b^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partial b} = b^{old} - \epsilon \sum_{0\leq t \leq \tau} \sum_{0\leq k \leq t} \delta^{k}$$</p>
+<p>$$c^{new} = c^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partial c} = c^{old} - \epsilon \sum_{0\leq t \leq \tau}\delta^{out, t}$$</p>
 <h2 id="lstm">LSTM</h2>
 <p>BPTTの一つ前の時刻のδを求める式を見るとわかる様に、ワンステップ戻るのに活性化関数の導関数と重みを掛ける計算になっているため、時系列を遡るほど勾配消失問題が起こりやすくなる。
 →長い時系列の学習が困難。</p>
@@ -457,8 +457,8 @@ $$c^{new} = c^{old} - \epsilon \sum_{0\leq t \leq \tau}\frac{\partial E}{\partia
 </ul>
 <h3 id="cec">CEC</h3>
 <p>Constant Error Caroucel：誤差カルーセル</p>
-<p>勾配消失問題及び、勾配爆発問題の解決方法として勾配が１であれば良い。
-$$
+<p>勾配消失問題及び、勾配爆発問題の解決方法として勾配が１であれば良い。</p>
+<p>$$
 \delta^{t-z-1} = \delta^{t-z}\left{W f&rsquo;(u^{t-z-1})\right}=1
 $$ $$
 \frac{\partial E}{\partial c^{t-1}}
@@ -490,13 +490,16 @@ $$</p>
 メモリは今回更新する分を前回メモリから除く構造になっている。
 <img src="https://half-broken-engineer.github.io/img/Pasted_image_20230416181802.png" alt="/img/Pasted_image_20230416181802.png"></p>
 <p>隠れ層の状態
-これと前回の隠れ層出力の加重平均を新たな隠れ層出力とす\n\n$$
+これと前回の隠れ層出力の加重平均を新たな隠れ層出力とする</p>
+<p>$$
 h_{tmp}(t) = f(W_h x(t) + U_h \cdot (r(t) \cdot h(t-1)) +  b_h(t))
 $$</p>
-<p>リセットゲートの出\n\n$$
+<p>リセットゲートの出力</p>
+<p>$$
 r(t) = W_r x(t) + U_r \cdot h(t-1) + b_r(t)
 $$
-更新ゲートの出\n\n$$
+更新ゲートの出力</p>
+<p>$$
 z(t) = W_z x(t) + U_z \cdot h(t-1) + b_z(t)
 $$
 隠れ層からの出力 (１ステップ前の中間表現と計算された中間表現の線形和)
@@ -583,13 +586,14 @@ VAE：潜在変数をガウス分布に従う様に学習させる</p>
 <h4 id="vqの手順">VQの手順</h4>
 <ol>
 <li>Encoderから出力される離散化前の潜在変数と事前に用意されているK個の埋め込みベクトルの距離（L2ノルム）を算出する</li>
-<li>潜在変数をK個の埋め込みベクトルのうち最も近い（似ている）ベクトルに置き換え\n\n$$
-z_q(x) = e_k
-$$
-$$
-k = \underset{j}{argmin} ||z_e(x)-e_j||^2
-$$</li>
+<li>潜在変数をK個の埋め込みベクトルのうち最も近い（似ている）ベクトルに置き換える</li>
 </ol>
+<p>$$
+z_q(x) = e_k
+$$</p>
+<p>$$
+k = \underset{j}{argmin} ||z_e(x)-e_j||^2
+$$</p>
 <h4 id="目的">目的</h4>
 <ul>
 <li>適切なデータ表現の獲得：自然界の特徴を捉えるにおいて、離散的な表現が適していると想定されることから。</li>
@@ -609,14 +613,15 @@ Vector-Quantizationに伴う誤差項は以下の２つ</p>
 $：埋め込みベクトルの更新に用いる</li>
 <li>Commitment Loss = $
 \beta\left|\boldsymbol{z}<em>{\mathrm{e}}(\boldsymbol{x})-\operatorname{sg}[\boldsymbol{e}]\right|</em>{2}^{2}
-$:　Encoderネットワークの更新に用い\n\n$$
-\mathcal{L}<em>{\mathrm{VQ}-\mathrm{VAE}}=\log p\left(\boldsymbol{x} \mid \boldsymbol{z}</em>{\mathrm{q}}(\boldsymbol{x})\right)+\left|\operatorname{sg}\left[\boldsymbol{z}<em>{\mathrm{e}}(\boldsymbol{x})\right]-\boldsymbol{e}\right|</em>{2}^{2}+\beta\left|\boldsymbol{z}<em>{\mathrm{e}}(\boldsymbol{x})-\operatorname{sg}[\boldsymbol{e}]\right|</em>{2}^{2}
-$$</li>
+$:　Encoderネットワークの更新に用いる</li>
 </ul>
 </blockquote>
+<p>$$
+\mathcal{L}<em>{\mathrm{VQ}-\mathrm{VAE}}=\log p\left(\boldsymbol{x} \mid \boldsymbol{z}</em>{\mathrm{q}}(\boldsymbol{x})\right)+\left|\operatorname{sg}\left[\boldsymbol{z}<em>{\mathrm{e}}(\boldsymbol{x})\right]-\boldsymbol{e}\right|</em>{2}^{2}+\beta\left|\boldsymbol{z}<em>{\mathrm{e}}(\boldsymbol{x})-\operatorname{sg}[\boldsymbol{e}]\right|</em>{2}^{2}
+$$</p>
 <h4 id="損失関数の導入">損失関数の導入</h4>
-<p>VAEと同様にELBO (Evidence Lower BOund)の最大化でEncoder、Decoderの学習を行うことを考える。
-$$
+<p>VAEと同様にELBO (Evidence Lower BOund)の最大化でEncoder、Decoderの学習を行うことを考える。</p>
+<p>$$
 \mathcal{L}<em>{\mathrm{ELBO}}=\mathbf{K L}(q(z \mid \boldsymbol{x}) | p(z))+\log p\left(\boldsymbol{x} \mid \boldsymbol{z}</em>{\mathrm{q}}(\boldsymbol{x})\right)
 $$
 第一項は事後分布と事前分布のKLダイバージェンス、2項目は再構成誤差を表す。</p>
@@ -627,8 +632,9 @@ $$
 <li>事前分布$p(z)=1/K$の一様分布であると固定</li>
 <li>$q(z=k \mid \boldsymbol{x})$がone-hotベクトル
 ※総和記号の中身 $[q(z=k \mid \boldsymbol{x}) \log q(z=k \mid \boldsymbol{x})]$ は、 $0 \log 0$ か $1 \log 1$ となる
-上記2点を考慮することで以下のようにまとめることができ、定数となる。
-$$
+上記2点を考慮することで以下のようにまとめることができ、定数となる。</li>
+</ul>
+<p>$$
 \begin{aligned}
 \mathbf{K L}(q(z \mid \boldsymbol{x}) | p(z)) &amp; =\mathbb{E}<em>{z \sim q(z \mid \boldsymbol{x})}\left[\log \frac{q(z \mid \boldsymbol{x})}{p(z)}\right] \
 &amp; =\sum</em>{k=1}^{K} q(z=k \mid \boldsymbol{x}) \log q(z=k \mid \boldsymbol{x})-\sum_{k=1}^{K} q(z=k \mid \boldsymbol{x}) \log p(z=k) \
@@ -636,8 +642,7 @@ $$
 &amp; =-\log \frac{1}{K}=\log K
 \end{aligned}
 $$
-<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230627120744.png" alt="/img/Pasted_image_20230627120744.png"></li>
-</ul>
+<img src="https://half-broken-engineer.github.io/img/Pasted_image_20230627120744.png" alt="/img/Pasted_image_20230627120744.png"></p>
 <p>(講義資料より引用：KLダイバージェンスの計算の2行目の第一項が０になる説明)</p>
 <h2 id="フレームワーク演習双方向rnn勾配のクリッピング">フレームワーク演習：双方向RNN/勾配のクリッピング</h2>
 <h3 id="データセットの読み込み">データセットの読み込み</h3>

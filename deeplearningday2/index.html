@@ -526,8 +526,8 @@ RMSPropはAdaGradが学習段階初期の特徴量分布に大きく依存する
 <h3 id="正則化">正則化</h3>
 <p>過学習が起こらない範囲で重みのばらつきを出す必要がある。
 重みに制約を与えることを荷重減衰という。WeightDecay</p>
-<p>pノルムに係数をかけて誤差関数に加える。
-$$\begin{array}{ll}
+<p>pノルムに係数をかけて誤差関数に加える。</p>
+<p>$$\begin{array}{ll}
 E_n(w) +  \frac{1}{p} \overbrace{\lambda}^{hyper \space parameter} || w ||_p^p &amp; : 誤差関数に、pノルムのp乗を加える \<br>
 || w ||_p =
 \Bigl(
