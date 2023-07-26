@@ -521,9 +521,9 @@
 <h3 id="方策勾配法">方策勾配法</h3>
 <p>方策をモデル化して最適化する手法</p>
 <p>方策の良さ (価値関数) を J として、方策関数のパラメータを更新していく</p>
-<p>$$\pi(s, a | \theta) \<br>
-\space\<br>
-\underbrace{\theta^{(t+1)}}<em>{パラメータ} = \theta^{(t)} + \epsilon \nabla \underbrace{J(\theta)}</em>{報酬の期待値} \
+<p>$$\pi(s, a | \theta)$$
+$$<br>
+\underbrace{\theta^{(t+1)}}<em>{パラメータ} = \theta^{(t)} + \epsilon \nabla \underbrace{J(\theta)}</em>{報酬の期待値}
 $$</p>
 <p>$$\nabla_\theta J(\theta) = \nabla_{\theta} \underbrace{\sum_{a \in A}\pi_{\theta}(a|s) Q^{\pi}(s, a)}_{報酬の期待値}$$</p>
 <p>$$\nabla_{\theta}J(\theta) = \mathbb{E}<em>{\pi</em>{\theta}}[(\nabla_{\theta}log\pi_{\theta}(a|s)Q^{\pi}(s,a))]$$</p>
@@ -1033,14 +1033,14 @@ S. Zagoruyko and N. Komodakis, “Wide Residual Networks,&ldquo;<a href="https:/
 <h4 id="最適化問題">最適化問題</h4>
 <p>目的関数をAccuracyとして、
 使用するメモリ容量と、処理能力（FLOPS）の制約を満たす条件下で最大化を目指す</p>
-<p>$$</p>
-<p>\begin{array}{ll}\
+<p>$$
+\begin{array}{ll}\
 \max <em>{d, w, r}&amp;\operatorname{Accuracy}(\mathcal{N}(d, w, r))\
 \text { s.t. }&amp;\mathcal{N}(d, w, r)=\bigodot</em>{i=1 \ldots s} \hat{\mathcal{F}}_i^{d \cdot \hat{L}<em>i}\left(X</em>{\left\langle r \cdot \hat{H}_i, r \cdot \hat{W}_i, w \cdot \hat{C}_i\right\rangle}\right)\
 &amp;\operatorname{Memory}(\mathcal{N})\leq\text { target_memory } \
 &amp;\operatorname{FLOPS}(\mathcal{N})\leq\text { target_flops } \
-\end{array}</p>
-<p>$$</p>
+\end{array}
+$$</p>
 <ul>
 <li>制約条件の第一式はネットワークの定義式</li>
 <li>Residualブロックなどの処理ブロック一つをステージとしてiを用いて表現</li>
@@ -1538,14 +1538,14 @@ c：候補文の長さ</p>
 参考：&ldquo;<a href="https://blog.pangeanic.com/ensuring-good-machine-translation-using-bleu-scoring%22">https://blog.pangeanic.com/ensuring-good-machine-translation-using-bleu-scoring"</a></p>
 <p>modified n-gram precision
 あるngramトークンの候補文における出現回数をCount,
-参照訳ごとの出現回数のうち最大値をMax_Ref_Countとして
-$$
+参照訳ごとの出現回数のうち最大値をMax_Ref_Countとして</p>
+<p>$$
 Count_{clip}=\min (\text { Count }, max_Ref_Count)
 $$</p>
 <p>$$
 p_n = \frac{\sum_{\text {n-gram } \in C} \operatorname{Count}<em>{\text {clip }}(\mathrm{n} \text {-gram })}{\sum</em>{\mathrm{n} \text {-gram } \in C} \operatorname{Count}(\mathrm{n} \text {-gram })}
-$$
-参考：&ldquo;<a href="https://nryotaro.dev/posts/bleu/%22">https://nryotaro.dev/posts/bleu/"</a></p>
+$$</p>
+<p>参考：&ldquo;<a href="https://nryotaro.dev/posts/bleu/%22">https://nryotaro.dev/posts/bleu/"</a></p>
 <!-- raw HTML omitted -->
 <h2 id="bert">BERT</h2>
 <p>Bidirectional Transformers</p>
@@ -1843,23 +1843,24 @@ $$</p>
 <h4 id="効率的な計算のためのforward-backward-algorythm">効率的な計算のためのforward-backward algorythm</h4>
 <p>問題意識：$P(l^\star|x)$を算出する際に愚直に行うのは効率が悪い</p>
 <ol>
-<li>
-<p>排反な事象への分類：特定のフレームにおいて特定のラベルを通って正解テキスト$l^\star$に縮約したときになる確率を考える
+<li>排反な事象への分類：特定のフレームにおいて特定のラベルを通って正解テキスト$l^\star$に縮約したときになる確率を考える
 ($l^\prime$は$l^\star$の各ラベルの間にブランクを挿入したラベル系列)
-$$\left.P\left(\boldsymbol{l}^* \mid \boldsymbol{x}\right)=\sum_{s=1}^{\left|\boldsymbol{l}^{\prime}\right|} \underbrace{\sum_{\substack{\boldsymbol{\pi} \in \mathcal{B}^{-1}\left(\boldsymbol{l}^*\right), \pi_t=l_s^{\prime}}} P(\boldsymbol{\pi} \mid \boldsymbol{x})}_{\text{※１：特定フレームに着目した排反事象の確率の和}} \quad \right.\text{ (for any t )}$$</p>
-</li>
-<li>
-<p>前向き確率、後ろ向き確率を使って※１の値を表現する
-(以下の数式中の[]はガウス記号で、その値を超えない最大の整数を示す。ベクトルの下付き文字a:bは成分a~bまでの要素を持つベクトルを示す)</p>
+$$\left.P\left(\boldsymbol{l}^* \mid \boldsymbol{x}\right)=\sum_{s=1}^{\left|\boldsymbol{l}^{\prime}\right|} \underbrace{\sum_{\substack{\boldsymbol{\pi} \in \mathcal{B}^{-1}\left(\boldsymbol{l}^*\right), \pi_t=l_s^{\prime}}} P(\boldsymbol{\pi} \mid \boldsymbol{x})}_{\text{※１：特定フレームに着目した排反事象の確率の和}} \quad \right.\text{ (for any t )}$$</li>
+<li>前向き確率、後ろ向き確率を使って※１の値を表現する
+(以下の数式中の[]はガウス記号で、その値を超えない最大の整数を示す。ベクトルの下付き文字a:bは成分a~bまでの要素を持つベクトルを示す)
 <ul>
 <li>前向き確率 $\alpha_t(s)$
-始点からフレーム $t$ 、拡張ラベル $s$ の頂点に到達するまでの全パスの確率の総和
-$$
+始点からフレーム $t$ 、拡張ラベル $s$ の頂点に到達するまでの全パスの確率の総和</li>
+</ul>
+</li>
+</ol>
+<p>$$
 \alpha_t(s) \equiv \sum_{\mathcal{B}\left(\pi_{1: t}\right)=l_{1:[s / 2]}^*} \prod_{t^{\prime}=1}^t y_{\pi_{t^{\prime}}}^{t^{\prime}}
-$$</li>
-<li>後ろ向き確率 $\beta_t(s)$
-フレーム $t$ 、拡張ラベル $s$ の頂点から終点まで到達する全パスの確率の総和
-$$
+$$</p>
+<pre><code>- 後ろ向き確率 $\beta_t(s)$
+   フレーム $t$ 、拡張ラベル $s$ の頂点から終点まで到達する全パスの確率の総和
+</code></pre>
+<p>$$
 \beta_t(s) \equiv \sum_{\mathcal{B}\left(\pi_{t: T}\right)=l_{[s / 2]: l^* \mid}} \prod_{t^{\prime}=t}^T y_{t_{t^{\prime}}}^{t^{\prime}}
 $$
 $$
@@ -1871,14 +1872,11 @@ $$
 &amp;
 \end{aligned}
 $$
-以上より、前向き確率と後ろ向き確率を用いて、フレームｔにおいてラベルｓの頂点を通るパスの確率の総和は以下の様に示せる
-$$
+以上より、前向き確率と後ろ向き確率を用いて、フレームｔにおいてラベルｓの頂点を通るパスの確率の総和は以下の様に示せる</p>
+<p>$$
 \sum_{\substack{\pi \in \mathcal{B}^{-1}\left(l^*\right), \pi_t=l_s^{\prime}}} P(\boldsymbol{\pi} \mid \boldsymbol{x}) = \frac{\alpha_t(s) \beta_t(s)}{y_{l_s^\star}^{t}}
-$$</li>
-</ul>
-</li>
-<li>
-<p>前向き確率、後ろ向き確率を再帰計算によって求める
+$$
+3. 前向き確率、後ろ向き確率を再帰計算によって求める
 初項についてはブランクか、正解ラベルの１文字目の２通りしか無いので以下の様になる。
 $$
 \begin{equation}\
@@ -1892,12 +1890,10 @@ y_{l_{1}^\star}^0 &amp; \text{s=2:正解ラベルの１文字目} \
 <p>$$
 それ以降の遷移について考えると下図の様に３通りで
 <img src="https://half-broken-engineer.github.io/img/Pasted_image_20230716131712.png" alt="/img/Pasted_image_20230716131712.png">
-（状態遷移：講義スライドより引用）
-$$
+（状態遷移：講義スライドより引用）</p>
+<p>$$
 \alpha_{t+1}(s)= \begin{cases}{\left[\alpha_t(s)+\alpha_t(s-1)\right] y_{l_s^<em>}^{t+1}} &amp; \text { (if } l_s^</em>=\text { blank or } l_{s-2}^<em>=l_s^</em> \text { ) } \ {\left[\alpha_t(s)+\alpha_t(s-1)+\alpha_t(s-2)\right] y_{l_s^*}^{t+1}} &amp; \text { (otherwise) }\end{cases}
 $$</p>
-</li>
-</ol>
 <p>後ろ向き確率についても同様</p>
 <h4 id="損失関数の誤差逆伝播">損失関数の誤差逆伝播</h4>
 <p>出力層の各ノード$y_k^t$に対する損失関数の勾配の計算は、前向き確率及び、後ろ向き確率を用いて以下の様になる。</p>
